@@ -91,22 +91,22 @@ QuestItemDeliveryHandler:
     debug: false
     type: task
     # Manages players delivering items to NPCs
-    # Requires: <[objective]> AND <[quest_internalname]>
+    # Requires: <[objective]> AND <[quest_internalname]> AND <[stage]>
     script:
     - define progress:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]>
     - define total:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.total]>
     - define delivery_quantity:<player.item_in_hand.quantity>
-    - define delivery_item:<player.item_in_hand.material.name>
+    #- define delivery_item:<player.item_in_hand.scriptname||<player.item_in_hand.material.name>>
     # We only want to take items if items need to be taken
     - if <[progress]> < <[total]>:
         - define remainder:<[total].sub[<[progress]>]>
         - if <[delivery_quantity]> >= <[remainder]>:
-            - take <[delivery_item]> quantity:<[delivery_quantity].sub[<[remainder]>]>
+            - take iteminhand quantity:<[delivery_quantity].sub[<[remainder]>]>
             - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:<[total]>
             # Advance a stage
             - inject QuestStageProgressHandler
         - else:
-            - take <[delivery_item]> quantity:<[delivery_quantity]>
+            - take iteminhand quantity:<[delivery_quantity]>
             - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:<[progress].add[delivery_quantity]>
             # Show current progress
             - inject QuestProgressHandler

@@ -13,6 +13,9 @@ UnlockAvenfeldQuestDeliveryHandler:
             - define objective:3
         - case slime_ball:
             - define objective:4
+        - case default:
+            - narrate format:RoyalGeographerFormat "Whenever you've got the items I'm looking for, just hand them over."
+            - run QuestProgressHandler def:UnlockAvenfeld
     - inject QuestItemDeliveryHandler
     - if <[InProgress]>:
         - choose <[delivery_item]>:
@@ -37,4 +40,11 @@ UnlockAvenfeldSpellCastHandler:
         - if !<yaml[<[data]>].contains[quests.active.<[quest_internalname]>]>:
             - stop
         - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]> == 2:
-            - inject QuestStageProgressHandler
+            - inject QuestCompletionHandler
+            - run UnlockAvenfeldCompletion
+
+UnlockAvenfeldCompletion:
+    type: task
+    debug: false
+    script:
+    - zap FindFireTempleOffer s@RoyalGeographerInteract

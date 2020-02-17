@@ -129,7 +129,7 @@ RoyalGeographerInteract:
                 - run QuestAcceptHandler def:FindWaterTemple
                 - zap FindWaterTempleActive
             chat trigger:
-                SkeletalRogueHuntAcceptance:
+                FindWaterTempleAcceptance:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:

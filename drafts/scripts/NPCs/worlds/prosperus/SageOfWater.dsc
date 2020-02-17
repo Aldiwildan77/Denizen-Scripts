@@ -24,7 +24,7 @@ SageOfWaterInteract:
                     script:
                     - define data:<player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.FindWaterTemple]>:
-                        - narrate "Greetings, <player.name>."
+                        - narrate format:SageOfWaterFormat "Greetings, <player.name>."
                         - zap NoSageOfWaterStorylineQuests
                     - else if <player.has_flag[SageOfWaterSeen]>:
                         - narrate format:SageOfWaterFormat "Greetings, <player.name>."
@@ -38,7 +38,8 @@ SageOfWaterInteract:
                         - wait 0.7s
                         - narrate "I had to lock the portal to the Water Temple. The forces of evil have overtaken it. My only choice was to keep them from spreading."
                         - yaml id:<[data]> set quests.active.FindWaterTemple.stages.1.objectives.1.progress:1
-                        - run QuestStageProgressHandler def:FindWaterTemple|1
+                        - run QuestCompletionHandler def:FindWaterTemple
+                        - run FindWaterTempleCompletion
         GeneralDialogue:
             proximity trigger:
                 entry:

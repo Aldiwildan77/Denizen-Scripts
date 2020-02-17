@@ -245,7 +245,7 @@ WarmasterReinwaldInteract:
                 script:
                 - define data:<player.uuid>_quest_data
                 - if <proc[QuestsAvailableHandler].context[WarmasterReinwald]>:
-                    - run QuestInventoryGUIHandler def:WarmasterReinwald
+                    - inject QuestInventoryGUIHandler def:WarmasterReinwald
                 - else:
                     - if <yaml[<[data]>].contains[quests.active.WeeklyEliteHunt]> || <yaml[<[data]>].contains[quests.active.WeeklyVeteranHunt]>:
                         - narrate format:WarmasterReinwaldFormat "I appreciate your enthusiasm! But you've got all the quests I have to offer right now - keep up the hunt."

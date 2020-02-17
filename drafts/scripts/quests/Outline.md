@@ -71,9 +71,9 @@ This file serves to track the progress on converting the existing quests to the 
 
 ## Geographer Quests
 
-- [ ] Unlock Avenfeld
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Unlock Avenfeld
+    - [x] Dialogue written
+    - [x] Script backend written
 - [ ] Become an Explorer
     - [ ] Dialogue written
     - [ ] Script backend written
@@ -85,6 +85,8 @@ This file serves to track the progress on converting the existing quests to the 
     - [x] Script backend written
 
 ## Spell Quests
+
+TODO: Write task script for checking active quests when right clicking NPCs
 
 ### Youngling
 - [ ] Blink Spell

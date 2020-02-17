@@ -30,7 +30,7 @@ player_data:
                         progress: 0
                         total: 512
                     3:
-                        name: "Deliver sulphur"
+                        name: "Deliver gunpowder"
                         progress: 0
                         total: 64
                     4:
