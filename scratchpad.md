@@ -2,6 +2,26 @@
 
 Stuff I come up with on lunch breaks.
 
+## Combat
+
+### Item economy design
+
+* Modular item construction
+  * Build items from components
+    * We sort of already do this with gems and sockets, and that system will remain, but it should be marginal
+    * But you can also imagine different item components, or infusions, or whatever lore-based approach is useful to take
+    * Importantly, the major function here is to let players choose stat combinations (and therefore playstyles)
+  * Item archetypes determine stat universes, for example:
+    * Crit damage
+    * Crit chance
+    * Attack speed
+    * Magic power
+  * Components can be traded
+    * Rarity matters
+    * Not permanent unlocks
+  * Gold sinks
+    * Cost for forging
+
 ## Mobs
 
 ### Elites
