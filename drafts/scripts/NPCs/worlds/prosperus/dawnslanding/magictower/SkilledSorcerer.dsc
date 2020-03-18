@@ -24,7 +24,7 @@ SkilledSorcererInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.UnlockBlink]> && <player.has_permission[server.squire]>:
                         - narrate format:SkilledSorcererFormat "Greetings, <player.name>."
                         - if <proc[QuestsAvailableHandler].context[SkilledSorcerer]>:
@@ -42,7 +42,7 @@ SkilledSorcererInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - narrate format:SkilledSorcererFormat "Greetings, <player.name>."
                     - if <proc[QuestsAvailableHandler].context[SkilledSorcerer]>:
                         - narrate format:SkilledSorcererformat "Ready to learn some more spells?"
@@ -50,7 +50,7 @@ SkilledSorcererInteract:
                         - narrate format:SkilledSorcererFormat "For now, I've taught you all I can."
             click trigger:
                 script:
-                - define data:<player.uuid>_quest_data
+                - define data <player.uuid>_quest_data
                 - if <proc[QuestsAvailableHandler].context[SkilledSorcerer]>:
                     - inject QuestInventoryGUIHandler def:SkilledSorcerer
                 - else:

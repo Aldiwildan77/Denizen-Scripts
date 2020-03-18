@@ -14,7 +14,7 @@ WoodToolsQuestCraftingHandler:
     debug: false
     events:
         on player crafts wooden_*:
-        - define data:<player.uuid>_quest_data
+        - define data <player.uuid>_quest_data
         - define quest_internalname:WoodTools
         - if <yaml[<[data]>].contains[quests.active.WoodTools].not>:
             - stop

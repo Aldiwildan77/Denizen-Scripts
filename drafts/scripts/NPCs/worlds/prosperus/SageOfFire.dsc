@@ -22,7 +22,7 @@ SageOfFireInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.FindFireTemple]>:
                         - narrate format:SageOfFireFormat "Greetings, <player.name>."
                         - zap NoSageOfFireStorylineQuests

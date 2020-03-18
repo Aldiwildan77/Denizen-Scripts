@@ -19,7 +19,7 @@ DawnPostmasterInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.MeetPostmaster]>:
                         - narrate format:DawnPostmasterFormat "<player.name>, is it? And the Quest Master sent you?"
                         - zap MeetPostmasterActive
@@ -32,7 +32,7 @@ DawnPostmasterInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.MeetPostmaster]>:
                         - narrate format:DawnPostmasterFormat "<player.name>, is it? And the Quest Master sent you?"
             click trigger:

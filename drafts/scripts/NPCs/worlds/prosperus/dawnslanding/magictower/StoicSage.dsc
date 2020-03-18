@@ -24,7 +24,7 @@ StoicSageInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.UnlockBlink]> && <player.has_permission[server.page]>:
                         - narrate format:StoicSageFormat "Greetings, <player.name>."
                         - if <proc[QuestsAvailableHandler].context[StoicSage]>:
@@ -42,7 +42,7 @@ StoicSageInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - narrate format:StoicSageFormat "Greetings, <player.name>."
                     - if <proc[QuestsAvailableHandler].context[StoicSage]>:
                         - narrate format:StoicSageformat "Ready to learn some more spells?"
@@ -50,7 +50,7 @@ StoicSageInteract:
                         - narrate format:StoicSageFormat "For now, I've taught you all I can."
             click trigger:
                 script:
-                - define data:<player.uuid>_quest_data
+                - define data <player.uuid>_quest_data
                 - if <proc[QuestsAvailableHandler].context[StoicSage]>:
                     - inject QuestInventoryGUIHandler def:StoicSage
                 - else:

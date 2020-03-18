@@ -19,7 +19,7 @@ RepairMasterFormat:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - define quest_internalname:MeetSkillTrainers
                     - define objective:5
                     - if <yaml[<[data]>].contains[quests.active.<[quest_internalname]>]> && <yaml[<[data]>].read[quests.active.<[quest_internalname]>.objective.<[objective]>].progress> == 0:

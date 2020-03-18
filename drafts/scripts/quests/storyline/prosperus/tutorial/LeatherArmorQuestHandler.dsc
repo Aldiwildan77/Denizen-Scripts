@@ -9,7 +9,7 @@ LeatherArmorQuestCraftingHandler:
     debug: false
     events:
         on player crafts leather_*:
-        - define data:<player.uuid>_quest_data
+        - define data <player.uuid>_quest_data
         - define quest_internalname:LeatherArmor
         - define stage:1
         - if <yaml[<[data]>].contains[quests.active.LeatherArmor].not>:

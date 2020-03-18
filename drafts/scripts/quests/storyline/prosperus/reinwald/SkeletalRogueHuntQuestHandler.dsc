@@ -9,7 +9,7 @@ SkeletalRogueHuntHandler:
     debug: false
     events:
         on player kills entity:
-        - define data:<player.uuid>_quest_data
+        - define data <player.uuid>_quest_data
         - define quest_internalname:SkeletalRogueHunt
         - if <yaml[<[data]>].contains[quests.active.SkeletalRogueHunt].not>:
             - stop

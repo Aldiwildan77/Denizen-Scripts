@@ -24,7 +24,7 @@ WarmasterReinwaldInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.EliteHunt]>:
                         - zap EliteHuntCompleted
                     - else if <yaml[<[data]>].contains[quests.completed.LichHunt]>:
@@ -243,7 +243,7 @@ WarmasterReinwaldInteract:
                     - run ReinwaldWeeklyQuestsCheck
             click trigger:
                 script:
-                - define data:<player.uuid>_quest_data
+                - define data <player.uuid>_quest_data
                 - if <proc[QuestsAvailableHandler].context[WarmasterReinwald]>:
                     - inject QuestInventoryGUIHandler def:WarmasterReinwald
                 - else:

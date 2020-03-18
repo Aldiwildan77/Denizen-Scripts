@@ -24,7 +24,7 @@ WiseWizardInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.UnlockBlink]>:
                         - narrate format:WiseWizardFormat "Greetings, <player.name>."
                         - zap BlinkUnlocked
@@ -56,7 +56,7 @@ WiseWizardInteract:
                     - run QuestProgressHandler def:UnlockBlink
             click trigger:
                 script:
-                - define data:<player.uuid>_quest_data
+                - define data <player.uuid>_quest_data
                 - define quest_internalname:UnlockBlink
                 - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]> == 1:
                     - inject UnlockBlinkQuestDeliveryHandler
@@ -66,7 +66,7 @@ WiseWizardInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - narrate format:WiseWizardFormat "Greetings, <player.name>."
                     - if <proc[QuestsAvailableHandler].context[WiseWizard]>:
                         - narrate format:WiseWizardformat "Ready to learn some more spells?"
@@ -74,7 +74,7 @@ WiseWizardInteract:
                         - narrate format:WiseWizardFormat "For now, I've taught you all I can."
             click trigger:
                 script:
-                - define data:<player.uuid>_quest_data
+                - define data <player.uuid>_quest_data
                 - if <proc[QuestsAvailableHandler].context[WiseWizard]>:
                     - inject QuestInventoryGUIHandler def:WiseWizard
                 - else:

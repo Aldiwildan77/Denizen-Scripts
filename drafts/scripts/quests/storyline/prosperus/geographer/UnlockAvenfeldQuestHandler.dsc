@@ -35,7 +35,7 @@ UnlockAvenfeldSpellCastHandler:
         on magicspells player completes spell:
         - if <context.spell_name> != realmwarp-avenfeld:
             - stop
-        - define data:<player.uuid>_quest_data
+        - define data <player.uuid>_quest_data
         - define quest_internalname:UnlockAvenfeld
         - if !<yaml[<[data]>].contains[quests.active.<[quest_internalname]>]>:
             - stop

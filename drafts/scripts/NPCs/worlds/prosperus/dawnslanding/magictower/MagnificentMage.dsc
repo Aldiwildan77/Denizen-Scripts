@@ -24,7 +24,7 @@ MagnificentMageInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.UnlockBlink]> && <player.has_permission[server.apprentice]>:
                         - narrate format:MagnificentMageFormat "Greetings, <player.name>."
                         - if <proc[QuestsAvailableHandler].context[MagnificentMage]>:
@@ -42,7 +42,7 @@ MagnificentMageInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - narrate format:MagnificentMageFormat "Greetings, <player.name>."
                     - if <proc[QuestsAvailableHandler].context[MagnificentMage]>:
                         - narrate format:MagnificentMageformat "Ready to learn some more spells?"
@@ -50,7 +50,7 @@ MagnificentMageInteract:
                         - narrate format:MagnificentMageFormat "For now, I've taught you all I can."
             click trigger:
                 script:
-                - define data:<player.uuid>_quest_data
+                - define data <player.uuid>_quest_data
                 - if <proc[QuestsAvailableHandler].context[MagnificentMage]>:
                     - inject QuestInventoryGUIHandler def:MagnificentMage
                 - else:

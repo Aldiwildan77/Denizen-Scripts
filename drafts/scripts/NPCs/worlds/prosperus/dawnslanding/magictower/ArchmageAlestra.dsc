@@ -24,7 +24,7 @@ ArchmageAlestraInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.UnlockBlink]> && <player.has_permission[server.apprentice]>:
                         - narrate format:ArchmageAlestraFormat "Greetings, <player.name>."
                         - if <proc[QuestsAvailableHandler].context[ArchmageAlestra]>:
@@ -42,7 +42,7 @@ ArchmageAlestraInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - narrate format:ArchmageAlestraFormat "Greetings, <player.name>."
                     - if <proc[QuestsAvailableHandler].context[ArchmageAlestra]>:
                         - narrate format:ArchmageAlestraformat "Ready to learn some more spells?"
@@ -50,7 +50,7 @@ ArchmageAlestraInteract:
                         - narrate format:ArchmageAlestraFormat "For now, I've taught you all I can."
             click trigger:
                 script:
-                - define data:<player.uuid>_quest_data
+                - define data <player.uuid>_quest_data
                 - if <proc[QuestsAvailableHandler].context[ArchmageAlestra]>:
                     - inject QuestInventoryGUIHandler def:ArchmageAlestra
                 - else:

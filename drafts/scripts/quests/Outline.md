@@ -89,12 +89,12 @@ This file serves to track the progress on converting the existing quests to the 
 TODO: Write task script for checking active quests when right clicking NPCs
 
 ### Youngling
-- [ ] Blink Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Confusion Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Blink Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Confusion Spell
+    - [x] Dialogue written
+    - [x] Script backend written
 - [ ] Drainlife Spell
     - NYI
     - [ ] Dialogue written
@@ -111,9 +111,9 @@ TODO: Write task script for checking active quests when right clicking NPCs
     - NYI
     - [ ] Dialogue written
     - [ ] Script backend written
-- [ ] Food Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Food Spell
+    - [x] Dialogue written
+    - [x] Script backend written
 - [ ] Haste Spell
     - NYI
     - [ ] Dialogue written
@@ -132,113 +132,113 @@ TODO: Write task script for checking active quests when right clicking NPCs
     - [ ] Script backend written
 
 ### Page
-- [ ] Aquabolt Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Cripple Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Deathgrip Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] EnchantArrows-Nature Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Farm Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Flamebolt Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Gills Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Gust Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Icewall Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Lightwalk Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Naturebolt Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Night Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Night-Avenfeld Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Night-Heavens Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Realmwarp-Avenfeld Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Rootbind Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Sun Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Sun-Avenfeld Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Sun-Heavens Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Windbolt Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Aquabolt Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Cripple Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Deathgrip Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] EnchantArrows-Nature Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Farm Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Flamebolt Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Gills Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Gust Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Icewall Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Lightwalk Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Naturebolt Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Night Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Night-Avenfeld Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Night-Heavens Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Realmwarp-Avenfeld Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Rootbind Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Sun Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Sun-Avenfeld Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Sun-Heavens Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Windbolt Spell
+    - [x] Dialogue written
+    - [x] Script backend written
 
 ### Squire
-- [ ] Crippling Wave Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Escape Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Farm-Carrots Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Farm-Potatoes Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Farm-Wheat Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Fire Nova Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Gustlaunch Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Gustleap Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Iceblock Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Roar Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Rootsurge Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Safefall Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Shockwave Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Tenacity Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Windwalk Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Crippling Wave Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Escape Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Farm-Carrots Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Farm-Potatoes Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Farm-Wheat Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Fire Nova Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Gustlaunch Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Gustleap Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Iceblock Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Roar Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Rootsurge Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Safefall Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Shockwave Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Tenacity Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Windwalk Spell
+    - [x] Dialogue written
+    - [x] Script backend written
 
 ### Apprentice
 - [ ] Itemsummon Spell

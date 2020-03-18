@@ -12,7 +12,7 @@ QuestDataHandler:
     # Handles loading and unloading player quest data on join/quit
     events:
         on player joins:
-        - define data:<player.uuid>_quest_data
+        - define data <player.uuid>_quest_data
         - if <server.has_file[playerdata/<player.uuid>/quest_data.yml]>:
             - ~yaml load:playerdata/<player.uuid>/quest_data.yml id:<[data]>
         - else:
@@ -28,7 +28,7 @@ QuestRequirementsHandler:
     debug: false
     definitions: quest_internalname
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     # Completed quests
     - foreach <yaml[<[quest_internalname]>].read[config.requirements.quests_completed]> as:QuestsCompleted:
         - if <yaml[<[data]>].contains[quests.completed.<[QuestsCompleted]>].not>:
@@ -49,7 +49,7 @@ QuestAcceptHandler:
     definitions: quest_internalname
     # Handles accepting a quest
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - yaml id:<[quest_internalname]> copykey:player_data.<[quest_internalname]> quests.active.<[quest_internalname]> to_id:<[data]>
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.current_stage:1
     - run QuestResetTimeHandler def:<[quest_internalname]>
@@ -67,7 +67,7 @@ QuestStageProgressHandler:
     definitions: quest_internalname|objective
     ## This script will add 1 to the stage progress and should only be run when an objective is completed
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     # Set current stage definition
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
     # Advance the current stage progress by 1
@@ -124,7 +124,7 @@ QuestProgressHandler:
     definitions: quest_internalname
     # Shows the player their progress for the designated quest
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
     # Show the quest name
     - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
@@ -142,7 +142,7 @@ QuestStageAdvanceHandler:
     definitions: quest_internalname
     # Advances the quest stage by one and narrates information about the new stage
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     # Add one to the current stage
     - yaml id:<[data]> set quests.active.<[quest-quest_internalname]>.current_stage:++
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
@@ -162,7 +162,7 @@ QuestQuitHandler:
     definitions: quest_internalname
     # Handles everything related to quitting a quest
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
     - narrate "<red>QUEST QUIT: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
 
@@ -172,7 +172,7 @@ QuestCompletionHandler:
     definitions: quest_internalname
     # Handles everything related to completing a quest
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.completion_count:++
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.last_completed:<util.date.time.duration>
@@ -187,7 +187,7 @@ QuestRepeatableHandler:
     definitions: quest_internalname
     # Checks whether a quest is repeatable
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - define current_week:<util.date.time.duration.in_weeks.round_to[0]>
     - define current_day:<util.date.time.duration.in_days.round_to[0]>
     - define last_completed:<yaml[<[data]>].read[quests.completed.<[quest_internalname]>.last_completed].as_duration>
@@ -219,7 +219,7 @@ QuestRewardHandler:
     definitions: quest_internalname
     # Handles quest reward distribution
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - if <yaml[<[quest_internalname]>].contains[rewards.money]>:
         - money give quantity:<yaml[<[quest_internalname]>].read[rewards.money]> players:<player>
         - narrate "<gold><yaml[<[quest_internalname]>].read[rewards.money]> gold"
@@ -244,7 +244,7 @@ QuestLoginResetHandler:
     # Handles any expirations and resets on login
     events:
         on player joins:
-        - define data:<player.uuid>_quest_data
+        - define data <player.uuid>_quest_data
         - foreach <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>:
             - define reset_time:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.reset_time]>
             - if <util.date.time.duration> >= <[reset_time]>:
@@ -271,7 +271,7 @@ QuestResetTimeHandler:
     definitions: quest_internalname
     # Handles quest reset times
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - define current_week:<util.date.time.duration.in_weeks.round_to[0]>
     - define current_day:<util.date.time.duration.in_days.round_to[0]>
     - choose <yaml[<[quest_internalname]>].read[config.reset.period]>:
@@ -294,7 +294,7 @@ QuestAvailabilityHandler:
     definitions: quest_internalname
     # Checks whether a quest is available
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - if <yaml[<[data]>].read[quests.completed.<[quest_internalname]>].reset_time||null> > <util.date.time.duration>:
         - determine false
     - else:
@@ -306,7 +306,7 @@ QuestsAvailableHandler:
     definitions: npc_name
     # Returns whether any quest is available for an npc
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - define quest_list:<yaml[quest_npc_list].read[<[npc_name]>]>
     - define inventory_list:li@
     - foreach <[quest_list]>:
@@ -321,7 +321,7 @@ QuestInventoryGUIHandler:
     definitions: npc_name
     # Opens an inventory GUI with available quests
     script:
-    - define data:<player.uuid>_quest_data
+    - define data <player.uuid>_quest_data
     - define quest_list:<yaml[quest_npc_list].read[<[npc_name]>]>
     - define inventory_list:li@
     - foreach <[quest_list]>:

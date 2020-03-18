@@ -22,7 +22,7 @@ RoyalGeographerInteract:
             proximity trigger:
                 entry:
                     script:
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.completed.FindFireTemple]> && <yaml[<[data]>].contains[quests.completed.FindWaterTemple]> && <yaml[<[data]>].contains[quests.completed.UnlockAvenfeld]>:
                         - zap NoRoyalGeographerStorylineQuests
                     - else if <yaml[<[data]>].contains[quests.completed.EliteHunt]>:
@@ -72,7 +72,7 @@ RoyalGeographerInteract:
                     - run QuestProgressHandler def:UnlockAvenfeld
             click trigger:
                 script:
-                - define data:<player.uuid>_quest_data
+                - define data <player.uuid>_quest_data
                 - define quest_internalname:UnlockAvenfeld
                 - if !<yaml[<[data]>].contains[quests.active.<[quest_internalname]>]>:
                     - stop
@@ -108,7 +108,7 @@ RoyalGeographerInteract:
                     - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - wait 0.7s
                     - narrate format:RoyalGeographerFormat "Have you found the Altar of Flame yet?"
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.FindFireTemple]> && <yaml[<[data]>].read[quests.active.FindFireTemple.current_stage]> == 2:
                         - run QuestCompletionHandler def:FindFireTemple
                         - zap FindWaterTempleOffer
@@ -143,7 +143,7 @@ RoyalGeographerInteract:
                     - narrate format:RoyalGeographerFormat "Good day, <player.name>!"
                     - wait 0.7s
                     - narrate format:RoyalGeographerFormat "Have you found the Altar of Water yet?"
-                    - define data:<player.uuid>_quest_data
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.FindWaterTemple]> && <yaml[<[data]>].read[quests.active.FindWaterTemple.current_stage]> == 2:
                         - run QuestCompletionHandler def:FindWaterTemple
                         - zap NoRoyalGeographerStorylineQuests

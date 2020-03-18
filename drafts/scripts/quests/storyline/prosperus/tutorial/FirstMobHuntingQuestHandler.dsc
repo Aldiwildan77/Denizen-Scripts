@@ -9,7 +9,7 @@ FirstMobHuntingHandler:
     debug: false
     events:
         on player kills entity:
-        - define data:<player.uuid>_quest_data
+        - define data <player.uuid>_quest_data
         - define quest_internalname:<[quest_internalname]>
         - define stage:1
         - if <yaml[<[data]>].contains[quests.active.<[quest_internalname]>].not>:
