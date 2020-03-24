@@ -2,6 +2,16 @@
 
 Stuff I come up with on lunch breaks.
 
+## Economy
+
+### Villager trades at spawn
+
+* Centralized and reliable NPCs for trading with
+  * Prices higher than those that can be found elsewhere
+  * Gold sinks somehow
+    * Pay gold to improve supplies? Reduce prices?
+  * Reduces the need for villager spawners
+
 ## Combat
 
 ### Item economy design
