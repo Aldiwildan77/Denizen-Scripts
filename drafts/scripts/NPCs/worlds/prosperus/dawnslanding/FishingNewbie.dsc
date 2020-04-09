@@ -4,7 +4,7 @@ FishingNewbieAssignment:
     - FishingNewbieInteract
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:fishingnewbie>'
+        - teleport npc location:<npc.anchor[fishingnewbie]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

@@ -7,7 +7,7 @@
 "Wahrheit Judged You":
     type: assignment
     interact scripts:
-    - 10 Judged
+    - Judged
     actions:
         on assignment:
         - runtask 'script:Bitch' instant
@@ -15,7 +15,7 @@
 "Bitch":
     type: task
     script:
-    - teleport npc 'location:<anchor:wahrheit-ranks2>'
+    - teleport npc location:<npc.anchor[wahrheit-ranks2]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3
     

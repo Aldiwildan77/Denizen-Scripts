@@ -12,7 +12,7 @@
 "Wahrheit Bothers You":
     type: assignment
     interact scripts:
-    - 10 Introductions
+    - Introductions
     actions:
         on assignment:
         - runtask 'script:Break In Them Newbies' instant
@@ -29,7 +29,7 @@
 "Break In Them Newbies":
     type: task
     script:
-    - teleport npc 'location:<anchor:tutwahrheit>'
+    - teleport npc location:<npc.anchor[tutwahrheit]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3
     

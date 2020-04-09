@@ -7,7 +7,7 @@ StoicSageAssignment:
     - StoicSageInteract
     actions:
         on assignment:
-        - teleport npc location:<anchor:StoicSage>
+        - teleport npc location:<npc.anchor[StoicSage>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
 

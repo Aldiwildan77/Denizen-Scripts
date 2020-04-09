@@ -6,7 +6,7 @@
 "Sage of Flame":
     type: assignment
     interact scripts:
-    - 10 Fire Temple Challenger
+    - Fire Temple Challenger
     actions:
         on assignment:
         - run "script:Flame Gate" instant
@@ -16,7 +16,7 @@
 "Flame Gate":
     type: task
     script:
-    - teleport npc 'location:<anchor:ftsage>'
+    - teleport npc location:<npc.anchor[ftsage]>
     - trigger name:proximity toggle:true radius:3
     - flag server firetempleclear:true
     - flag server firetemplechallenger:!

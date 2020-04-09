@@ -2,7 +2,7 @@
     type: assignment
     debug: false
     interact scripts:
-    - 10 Arcane Forger Forging
+    - Arcane Forger Forging
     actions:
         on assignment:
         - teleport npc <npc.anchor[badlucknpc]>

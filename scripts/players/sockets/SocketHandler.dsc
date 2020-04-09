@@ -85,7 +85,7 @@ sockets_sword_sealed_potential:
 prismatic_seer:
     type: assignment
     interact scripts:
-    - 10 sockets
+    - sockets
     actions:
         on assignment:
         - teleport npc <npc.anchor[prismaticseer]>

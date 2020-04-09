@@ -1,7 +1,7 @@
 alchemist_arcaena:
     type: assignment
     interact scripts:
-    - 10 alchemist_arcaena_interact
+    - alchemist_arcaena_interact
     actions:
         on assignment:
         - teleport npc <npc.anchor[alchemist_arcaena]>

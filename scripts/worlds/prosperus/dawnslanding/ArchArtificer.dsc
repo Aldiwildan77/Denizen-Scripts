@@ -2,7 +2,7 @@
     type: assignment
     debug: false
     interact scripts:
-    - 10 Artificing
+    - Artificing
     actions:
         on assignment:
         - teleport npc <npc.anchor[archartificer]>

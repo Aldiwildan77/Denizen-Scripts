@@ -7,7 +7,7 @@ WiseWizardAssignment:
     - WiseWizardInteract
     actions:
         on assignment:
-        - teleport npc location:<anchor:WiseWizard>
+        - teleport npc location:<npc.anchor[WiseWizard>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
 

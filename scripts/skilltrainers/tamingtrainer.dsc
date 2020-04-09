@@ -1,7 +1,7 @@
 "Taming Master":
     type: assignment
     interact scripts:
-    - 10 Taming
+    - Taming
     actions:
         on assignment:
         - teleport npc <npc.anchor[tamingmaster]>

@@ -1,7 +1,7 @@
 "Repair Master":
     type: assignment
     interact scripts:
-    - 10 Repair
+    - Repair
     actions:
         on assignment:
         - teleport npc <npc.anchor[repairmaster]>

@@ -7,7 +7,7 @@ SkilledSorcererAssignment:
     - SkilledSorcererInteract
     actions:
         on assignment:
-        - teleport npc location:<anchor:SkilledSorcerer>
+        - teleport npc location:<npc.anchor[SkilledSorcerer>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
 

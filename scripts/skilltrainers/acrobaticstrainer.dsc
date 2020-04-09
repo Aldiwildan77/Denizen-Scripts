@@ -1,7 +1,7 @@
 "Acrobatics Master":
     type: assignment
     interact scripts:
-    - 10 Acrobatics
+    - Acrobatics
     actions:
         on assignment:
         - teleport npc <npc.anchor[acrobaticsmaster]>

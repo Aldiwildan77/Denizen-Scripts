@@ -7,7 +7,7 @@
 "Emira Ivese":
     type: assignment
     interact scripts:
-    - 10 Water Boss Fight
+    - Water Boss Fight
     actions:
         on assignment:
         - run 'script:Ice and Corruption' instant
@@ -15,7 +15,7 @@
 "Ice and Corruption":
     type: task
     script:
-    - teleport npc 'location:<anchor:wtboss1>'
+    - teleport npc location:<npc.anchor[wtboss1]>
     - trigger name:proximity toggle:true radius:3
 "Water Boss Format":
     type: format
@@ -23,7 +23,7 @@
 "Water Champion":
     type: task
     script:
-    - teleport npc 'location:<anchor:wtboss3>'
+    - teleport npc location:<npc.anchor[wtboss3]>
     - narrate "format:Water Boss Format" "You are more than you appear... my time has come to an end."
     - narrate "format:Water Boss Format" "I may be defeated, but you will not best the others!"
     - narrate "<yellow>Ivese disappears in a rapidly-ascending shard of ice. You hear a sort of shining sound coming from the main platform."
@@ -68,7 +68,7 @@
                     script:
                     - narrate "format:Water Boss Format" "You should not meddle in affairs that are above you, <player.name>. I am beyond your power."
                     - narrate "format:Water Boss Format" "Prepare to face your end!"
-                    - teleport npc 'location:<anchor:wtboss2>'                    
+                    - teleport npc location:<npc.anchor[wtboss2]>                    
 #                    - listen kill "script:Water Champion" id:wtboss type:entity target:guardian qty:2
                     - execute as_npc "summon Guardian -11 132 226 {Elder:1}"
                     - execute as_npc "summon Guardian 4 132 248 {Elder:1}"

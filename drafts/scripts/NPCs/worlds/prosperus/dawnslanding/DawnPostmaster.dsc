@@ -4,7 +4,7 @@ DawnPostmasterAssignment:
     - DawnPostmasterInteract
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:dawnpostmaster>'
+        - teleport npc location:<npc.anchor[dawnpostmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

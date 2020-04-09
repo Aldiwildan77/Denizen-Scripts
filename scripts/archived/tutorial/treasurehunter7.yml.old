@@ -7,7 +7,7 @@
 "Raiders Of The Lost Ark7":
     type: assignment
     interact scripts:
-    - 10 Diamonds7
+    - Diamonds7
     actions:
         on assignment:
         - runtask 'script:Emeralds7' instant
@@ -15,7 +15,7 @@
 "Emeralds7":
     type: task
     script:
-    - teleport npc 'location:<anchor:treasurehunter7>'
+    - teleport npc location:<npc.anchor[treasurehunter7]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     
 "Diamonds7":

@@ -7,7 +7,7 @@
 "Destiny":
     type: assignment
     interact scripts:
-    - 10 Busta Move
+    - Busta Move
     actions:
         on assignment:
         - runtask 'script:Dance with me' instant

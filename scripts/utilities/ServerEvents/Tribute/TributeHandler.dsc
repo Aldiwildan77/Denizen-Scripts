@@ -38,14 +38,14 @@ Tribute_Handler:
     debug: false
     events:
         on system time hourly:
-        - announce to_console "Tribute Handler system time event run"
+        # - announce to_console "Tribute Handler system time event run"
         - if <util.date.format[EEE]> != Fri && <util.date.format[EEE]> != Mon:
             #- announce to_console "Date is not Friday or Monday, Tribute Handler stopping"
             - stop
         - else if <util.date.format[EEE]> == Fri:
-            - announce to_console "Date is Friday, Tribute Handler running"
+            # - announce to_console "Date is Friday, Tribute Handler running"
             - if <yaml[events].read[tribute.active]>:
-                - announce to_console "Tribute event already active, Tribute Handler stopping"
+                # - announce to_console "Tribute event already active, Tribute Handler stopping"
                 - stop
             - else:
                 - announce to_console "Activating Tribute"

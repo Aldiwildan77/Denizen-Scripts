@@ -7,10 +7,10 @@
 "Swabby":
     type: assignment
     interact scripts:
-    - 10 Seafaring
+    - Seafaring
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:shipSwabby>'
+        - teleport npc location:<npc.anchor[shipSwabby]>
         - trigger name:proximity toggle:true
         
 "Swabby Format":

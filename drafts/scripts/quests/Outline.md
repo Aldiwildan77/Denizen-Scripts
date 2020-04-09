@@ -2,6 +2,16 @@
 
 This file serves to track the progress on converting the existing quests to the new system written in Denizen.
 
+## Answers to stupid questions I ask myself all the time
+
+### Q: How the fuck do I check whether a quest is available?
+
+A:
+
+Well, dumbass, you wrote a handler for that, and if you're reading this, you forgot about it.
+
+- if <proc[QuestAvailabilityHandler].context[QuestName]>:
+
 ## Tutorial Quests
 
 - [x] Deliver Swabby's package
@@ -241,15 +251,15 @@ TODO: Write task script for checking active quests when right clicking NPCs
     - [x] Script backend written
 
 ### Apprentice
-- [ ] Itemsummon Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Searing Flames Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Shadowstun Spell
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Itemsummon Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Searing Flames Spell
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Shadowstun Spell
+    - [x] Dialogue written
+    - [x] Script backend written
 
 ### Knight
 
@@ -282,12 +292,12 @@ TODO: Write task script for checking active quests when right clicking NPCs
 - [ ] Death Tower
     - [ ] Dialogue written
     - [ ] Script backend written
-- [ ] JQ1
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] JQ2
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] JQ1
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] JQ2
+    - [x] Dialogue written
+    - [x] Script backend written
 - [ ] Library
     - [ ] Dialogue written
     - [ ] Script backend written
@@ -296,43 +306,43 @@ TODO: Write task script for checking active quests when right clicking NPCs
     - [ ] Script backend written
 
 ## Weekly Quests
-- [ ] Zombies
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Skeletons
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Creepers
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Spiders
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Endermen
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Slimes
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Cave Spiders
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Pig Zombies
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Magma Cubes
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Ghasts
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Blazes
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Zombies
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Skeletons
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Creepers
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Spiders
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Endermen
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Slimes
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Cave Spiders
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Pig Zombies
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Magma Cubes
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Ghasts
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Blazes
+    - [x] Dialogue written
+    - [x] Script backend written
 
-- [ ] Veterans
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Elites
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Veterans
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Elites
+    - [x] Dialogue written
+    - [x] Script backend written

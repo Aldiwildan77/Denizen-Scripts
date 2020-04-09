@@ -1,7 +1,7 @@
 "Woodcutting Master":
     type: assignment
     interact scripts:
-    - 10 Woodcutting
+    - Woodcutting
     actions:
         on assignment:
         - teleport npc <npc.anchor[woodcuttingmaster]>

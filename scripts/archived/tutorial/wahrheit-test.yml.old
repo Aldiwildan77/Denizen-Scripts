@@ -11,7 +11,7 @@
 "Wahrheit Quizzes You":
     type: assignment
     interact scripts:
-    - 10 Final Countdown
+    - Final Countdown
     actions:
         on assignment:
         - runtask 'script:Riddler' instant
@@ -38,7 +38,7 @@
 "Riddler":
     type: task
     script:
-    - teleport npc 'location:<anchor:wahrheit-test>'
+    - teleport npc location:<npc.anchor[wahrheit-test]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3 cooldown:0.1s
     

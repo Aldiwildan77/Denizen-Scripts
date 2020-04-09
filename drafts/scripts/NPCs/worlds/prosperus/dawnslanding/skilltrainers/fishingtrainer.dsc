@@ -1,7 +1,7 @@
 "Fishing Master":
     type: assignment
     interact scripts:
-    - 10 Fishing
+    - Fishing
     actions:
         on assignment:
         - teleport npc <npc.anchor[fishingmaster]>

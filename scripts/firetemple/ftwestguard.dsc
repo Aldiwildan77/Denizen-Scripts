@@ -7,7 +7,7 @@
 "West Guard":
     type: assignment
     interact scripts:
-    - 10 Player Approaches
+    - Player Approaches
     actions:
         on assignment:
         - runtask 'script:West Challenge' instant
@@ -15,7 +15,7 @@
 "West Challenge":
     type: task
     script:
-    - teleport npc 'location:<anchor:ftwest>'
+    - teleport npc location:<npc.anchor[ftwest]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     
 "Wave1":

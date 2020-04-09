@@ -7,7 +7,7 @@
 "Bookkeeper Assign":
     type: assignment
     interact scripts:
-    - 10 Bookkeeper
+    - Bookkeeper
     actions:
         on assignment:
         - run "Bookkeeper Assigned" instant
@@ -17,7 +17,7 @@
 "Bookkeeper Assigned":
     type: task
     script:
-    - teleport npc 'location:<anchor:bookkeeper>'
+    - teleport npc location:<npc.anchor[bookkeeper]>
     - trigger name:proximity toggle:true radius:3
 "Library Win":
     type: task

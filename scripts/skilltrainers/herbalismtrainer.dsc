@@ -1,7 +1,7 @@
 "Herbalism Master":
     type: assignment
     interact scripts:
-    - 10 Herbalism
+    - Herbalism
     actions:
         on assignment:
         - teleport npc <npc.anchor[herbalismmaster]>

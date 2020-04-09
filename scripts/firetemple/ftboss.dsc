@@ -7,7 +7,7 @@
 "Lord Emfyrius":
     type: assignment
     interact scripts:
-    - 10 Get Out My House
+    - Get Out My House
     actions:
         on assignment:
         - run 'script:Flame and Darkness' instant
@@ -15,7 +15,7 @@
 "Flame and Darkness":
     type: task
     script:
-    - teleport npc 'location:<anchor:ftboss1>'
+    - teleport npc location:<npc.anchor[ftboss1]>
     - trigger name:proximity toggle:true radius:3
 "Boss Format":
     type: format
@@ -23,7 +23,7 @@
 "Champion":
     type: task
     script:
-    - teleport npc 'location:<anchor:ftboss3>'
+    - teleport npc location:<npc.anchor[ftboss3]>
     - narrate "format:Boss Format" "It seems you are truly a powerful warrior... I have been bested."
     - narrate "format:Boss Format" "You may have conquered me, but this is not the end!"
     - narrate "<yellow>Emfyrius disappears in a fountain of lava. You hear a sort of shining sound coming from the main platform."
@@ -48,7 +48,7 @@
                     script:
                     - narrate "format:Boss Format" "You have chosen poorly, <player.name>. This is my kingdom, I am the Lord of Flame!"
                     - narrate "format:Boss Format" "I will engulf you!"
-                    - teleport npc 'location:<anchor:ftboss2>'                    
+                    - teleport npc location:<npc.anchor[ftboss2]>                    
                     - listen kill script:Champion id:Miniboss type:entity target:Wither qty:2
                     - execute as_npc "warp <player.name> ftboss"
                     - execute as_npc "spawnmob wither 1 -13,127,-36"

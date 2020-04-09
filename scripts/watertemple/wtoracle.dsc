@@ -7,10 +7,10 @@
 "Oracle of Water":
     type: assignment
     interact scripts:
-    - 10 Water Savior
+    - Water Savior
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:wtoracle>'
+        - teleport npc location:<npc.anchor[wtoracle]>
         - trigger name:proximity toggle:true
     
 "Water Oracle Format":

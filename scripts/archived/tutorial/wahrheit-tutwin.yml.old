@@ -7,7 +7,7 @@
 "Wahrheit Congratulates You":
     type: assignment
     interact scripts:
-    - 10 There Will Be Cake
+    - There Will Be Cake
     actions:
         on assignment:
         - runtask 'script:Cake' instant
@@ -15,7 +15,7 @@
 "Cake":
     type: task
     script:
-    - teleport npc 'location:<anchor:wahrheit-lwc>'
+    - teleport npc location:<npc.anchor[wahrheit-lwc]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3
 

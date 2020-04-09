@@ -6,7 +6,7 @@
 "Sage of Water":
     type: assignment
     interact scripts:
-    - 10 Water Temple Challenger
+    - Water Temple Challenger
     actions:
         on assignment:
         - run "script:Water Gate" instant
@@ -16,7 +16,7 @@
 "Water Gate":
     type: task
     script:
-    - teleport npc 'location:<anchor:wtsage>'
+    - teleport npc location:<npc.anchor[wtsage]>
     - trigger name:proximity toggle:true radius:3
     - flag server watertempleclear:true
     - flag server watertemple-challenger:!

@@ -2,7 +2,7 @@ TributeAssignment:
     type: assignment
     debug: false
     interact scripts:
-    - 10 TributeNPC
+    - TributeNPC
     actions:
         on assignment:
         - teleport npc <npc.anchor[tributenpc]>

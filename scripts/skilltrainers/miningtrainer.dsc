@@ -1,7 +1,7 @@
 "Mining Master":
     type: assignment
     interact scripts:
-    - 10 Mining
+    - Mining
     actions:
         on assignment:
         - teleport npc <npc.anchor[miningmaster]>

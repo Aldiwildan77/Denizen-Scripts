@@ -1,7 +1,7 @@
 "Excavation Master":
     type: assignment
     interact scripts:
-    - 10 Excavation
+    - Excavation
     actions:
         on assignment:
         - teleport npc <npc.anchor[excavationmaster]>

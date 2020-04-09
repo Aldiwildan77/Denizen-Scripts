@@ -2,10 +2,10 @@ RoyalGeographerAssignment:
     type: assignment
     debug: false
     interact scripts:
-    - 10 RoyalGeographerInteract
+    - RoyalGeographerInteract
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:RoyalGeographer>'
+        - teleport npc location:<npc.anchor[RoyalGeographer]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
 

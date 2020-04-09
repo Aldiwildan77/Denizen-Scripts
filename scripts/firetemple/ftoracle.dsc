@@ -7,7 +7,7 @@
 "Oracle of Flame":
     type: assignment
     interact scripts:
-    - 10 Flame Savior
+    - Flame Savior
     actions:
         on assignment:
         - run 'script:Redemption' instant
@@ -15,7 +15,7 @@
 "Redemption":
     type: task
     script:
-    - teleport npc 'location:<anchor:ftoracle>'
+    - teleport npc location:<npc.anchor[ftoracle]>
     - trigger name:proximity toggle:true radius:3
     
 "Oracle Format":

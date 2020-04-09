@@ -7,7 +7,7 @@
 "Servant of Flame":
     type: assignment
     interact scripts:
-    - 10 Great Balls of Fire
+    - Great Balls of Fire
     actions:
         on assignment:
         - runtask 'script:Kill Invaders' instant
@@ -15,7 +15,7 @@
 "Kill Invaders":
     type: task
     script:
-    - teleport npc 'location:<anchor:ftminiboss>'
+    - teleport npc location:<npc.anchor[ftminiboss]>
     - trigger name:proximity toggle:true radius:25
 "Servant Format":
     type: format

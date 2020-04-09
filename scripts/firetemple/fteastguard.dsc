@@ -7,7 +7,7 @@
 "East Guard":
     type: assignment
     interact scripts:
-    - 10 JP Finished
+    - JP Finished
     actions:
         on assignment:
         - runtask 'script:East Challenge' instant
@@ -15,7 +15,7 @@
 "East Challenge":
     type: task
     script:
-    - teleport npc 'location:<anchor:fteast>'
+    - teleport npc location:<npc.anchor[fteast]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
 
 "Fire Guard Format":

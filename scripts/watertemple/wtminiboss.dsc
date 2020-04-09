@@ -7,14 +7,14 @@
 "Lieutenant Iqueo":
     type: assignment
     interact scripts:
-    - 10 Water Fight Script
+    - Water Fight Script
     actions:
         on assignment:
         - run 'script:Kill Water Invaders'
 "Kill Water Invaders":
     type: task
     script:
-    - teleport npc 'location:<anchor:wtminiboss>'
+    - teleport npc location:<npc.anchor[wtminiboss]>
     - trigger name:proximity toggle:true radius:6
 "Water Servant Format":
     type: format
@@ -22,7 +22,7 @@
 "Water Proceed":
     type: task
     script:
-    - teleport npc 'location:<anchor:wtminiboss2>'
+    - teleport npc location:<npc.anchor[wtminiboss2]>
     - narrate "format:Water Servant Format" "Emira... I've failed you..."
     - narrate "<yellow>Some of the ice below you melts away."
     - switch state:on location:-7,77,146,ultimatus
@@ -62,7 +62,7 @@
 #                    - execute as_npc "spawnmob guardian 1 -11,48,245"
 #                    - execute as_npc "spawnmob guardian 1 -11,48,235"
 #                    - execute as_npc "spawnmob guardian 1 -16,48,240"
-                    - teleport npc 'location:<anchor:wtminiboss2>'
+                    - teleport npc location:<npc.anchor[wtminiboss2]>
                     - mmspawnmob mobtype:WaterTemple-Miniboss location:-10,45,245,ultimatus
                     - switch state:off location:-7,77,148,ultimatus
                     - zap "step:In Combat"

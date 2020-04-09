@@ -1,7 +1,7 @@
 "Alchemy Master":
     type: assignment
     interact scripts:
-    - 10 Alchemy
+    - Alchemy
     actions:
         on assignment:
         - teleport npc <npc.anchor[alchemymaster]>

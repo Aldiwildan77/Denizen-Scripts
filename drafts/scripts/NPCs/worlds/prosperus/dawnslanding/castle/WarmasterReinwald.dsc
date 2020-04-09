@@ -4,10 +4,10 @@ WarmasterReinwaldAssignment:
     type: assignment
     debug: false
     interact scripts:
-    - 10 WarmasterReinwaldInteract
+    - WarmasterReinwaldInteract
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:warmasterreinwald>'
+        - teleport npc location:<npc.anchor[warmasterreinwald]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
 

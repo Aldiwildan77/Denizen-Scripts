@@ -7,7 +7,7 @@
 "Arena Master":
     type: assignment
     interact scripts:
-    - 10 Round 1
+    - Round 1
     actions:
         on assignment:
         - runtask 'script:Summon the Whores' instant
@@ -15,7 +15,7 @@
 "Summon the Whores":
     type: task
     script:
-    - teleport npc 'location:<anchor:ma1>'
+    - teleport npc location:<npc.anchor[ma1]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3
 

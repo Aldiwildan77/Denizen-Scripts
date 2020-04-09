@@ -6,10 +6,10 @@
 "New Quest Master":
     type: assignment
     interact scripts:
-    - 10 Newbie
+    - Newbie
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:questmaster>'
+        - teleport npc location:<npc.anchor[questmaster]>
         - trigger name:proximity toggle:true
     
 "Quest Master Format":

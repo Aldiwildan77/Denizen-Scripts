@@ -7,10 +7,10 @@ QuestMasterAssignment:
     type: assignment
     debug: false
     interact scripts:
-    - 10 QuestMasterInteract
+    - QuestMasterInteract
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:questmaster>'
+        - teleport npc location:<npc.anchor[questmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
     

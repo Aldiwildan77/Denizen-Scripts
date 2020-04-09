@@ -2,10 +2,10 @@ SageOfWaterAssignment:
     type: assignment
     debug: false
     interact scripts:
-    - 10 SageOfWaterInteract
+    - SageOfWaterInteract
     actions:
         on assignment:
-        - teleport npc 'location:<anchor:SageOfWater>'
+        - teleport npc location:<npc.anchor[SageOfWater]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
 

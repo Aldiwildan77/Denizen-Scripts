@@ -6,7 +6,7 @@
 "Grand Librarian":
     type: assignment
     interact scripts:
-    - 10 Librarian
+    - Librarian
     actions:
         on assignment:
         - run "Library Assign" instant
@@ -16,7 +16,7 @@
 "Library Assign":
     type: task
     script:
-    - teleport npc 'location:<anchor:mazemaster>'
+    - teleport npc location:<npc.anchor[mazemaster]>
     - trigger name:proximity toggle:true radius:3
     - flag server mazeclear:1
     - flag server maze-challenger-name:!
@@ -75,7 +75,7 @@
     type: task
     script:
     # Clear the maze
-    - teleport <npc[94]> 'location:<npc.anchor[maze-gen]>'
+    - teleport <npc[94]> location:<npc.anchor[maze-gen]]>
     - execute as_npc "cs maze bookshelf 25 25 4 e"
     - wait 1
 #    - execute as_npc "warp <player.name> library-paste"
@@ -87,7 +87,7 @@
 #    - execute as_op "region sel library-maze"
 #    - execute as_op "/replace glass air"
 #    - execute as_op "/sel"    
-    - teleport <npc[94]> 'location:<npc.anchor[mazemaster]>'
+    - teleport <npc[94]> location:<npc.anchor[mazemaster]]>
     
 "Librarian":
     type: interact
@@ -124,11 +124,11 @@
                     - flag server maze-challenger-name:<player.name>
                     - narrate "<yellow>The Librarian begins chanting a spell..."
                     #- run "Player Reset" instant
-                    - teleport <npc[94]> 'location:<npc.anchor[maze-gen]>'
+                    - teleport <npc[94]> location:<npc.anchor[maze-gen]]>
                     - execute as_npc "cs maze bookshelf 25 25 4 e"
                     - wait 1
                     - execute as_npc "warp <player.name> library-maze"
-                    - teleport <npc[94]> 'location:<npc.anchor[mazemaster]>'
+                    - teleport <npc[94]> location:<npc.anchor[mazemaster]]>
                     
                 - else:
                     - narrate "format:Librarian Format" "Sorry, it appears the maze is currently being challenged by <server.flag[maze-challenger-name]>. You will have to wait."
