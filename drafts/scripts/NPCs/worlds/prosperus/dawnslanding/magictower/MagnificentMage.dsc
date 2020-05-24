@@ -7,7 +7,7 @@ MagnificentMageAssignment:
     - MagnificentMageInteract
     actions:
         on assignment:
-        - teleport npc location:<npc.anchor[MagnificentMage>
+        - teleport npc location:<npc.anchor[MagnificentMage]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
 

@@ -18,7 +18,7 @@
 "Slingshot":
     type: task
     script:
-    - teleport npc location:<npc.anchor[sr1]]>
+    - teleport npc location:<npc.anchor[sr1]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3
 

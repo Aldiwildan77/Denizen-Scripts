@@ -19,7 +19,7 @@ UnlockFarm-CarrotsQuestDeliveryHandler:
             - stop
     - inject QuestItemDeliveryHandler
     - if <[InProgress]>:
-        - narrate format:SkilledSorcererFormat <proc[ItemDescriptionHandler].context[<[delivery_item]>]>
+        - narrate format:SkilledSorcererFormat <proc[ItemDescriptionHandler_Spells].context[<[delivery_item]>]>
 
 UnlockFarm-CarrotsQuestExperienceDeliveryHandler:
     type: task

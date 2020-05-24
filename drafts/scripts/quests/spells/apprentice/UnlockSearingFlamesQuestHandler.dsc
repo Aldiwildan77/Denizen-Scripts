@@ -21,7 +21,7 @@ UnlockSearingFlamesQuestDeliveryHandler:
             - stop
     - inject QuestItemDeliveryHandler
     - if <[InProgress]>:
-        - narrate format:MagnificentMageFormat <proc[ItemDescriptionHandler].context[<[delivery_item]>]>
+        - narrate format:MagnificentMageFormat <proc[ItemDescriptionHandler_Spells].context[<[delivery_item]>]>
 
 UnlockSearingFlamesQuestExperienceDeliveryHandler:
     type: task

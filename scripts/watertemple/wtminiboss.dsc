@@ -77,7 +77,7 @@
                     script:
                     - narrate "format:Water Servant Format" "You'll never make it to Ivese!"
                     
-# Preserve this section for if we ever get mob-type npc pathing working right.                    
+# Preserve this section for if we ever get mob-type npc pathing working right.
 #            Npcdeath Trigger:
 #                script:
 #                - narrate "format:Water Servant Format" "Master... I've failed you..."

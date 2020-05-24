@@ -23,7 +23,7 @@ DeathTowerOfferingNPCInteract:
                     - if <yaml[<[data]>].contains[quests.active.DailyJQ_DeathTower]>:
                         - narrate format:DeathTowerOfferingNPCFormat "Hey, do you want to go back to the jump quest course?"
                     - else if <yaml[<[data]>].contains[quests.active.DailyJQ_DeathTower].not> && <proc[QuestAvailabilityHandler].context[DailyJQ_DeathTower]>:
-                        - narrate format:DeathTowerOfferingNPCFormat "Looking for a jumping challenge? I can send you to a faraway land where you can test your parkour skills. Complete the course for a reward!
+                        - narrate format:DeathTowerOfferingNPCFormat "Looking for a jumping challenge? I can send you to a faraway land where you can test your parkour skills. Complete the course for a reward!"
             click trigger:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.DailyJQ_DeathTower].not> && <proc[QuestAvailabilityHandler].context[DailyJQ_DeathTower]>:

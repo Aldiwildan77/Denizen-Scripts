@@ -1,8 +1,8 @@
-    - if <[InProgress]>:
-        - narrate format:StoicSageFormat <proc[ItemDescriptionHandler].context[<[delivery_item]>]>
+#    - if <[InProgress]>:
+#        - narrate format:StoicSageFormat <proc[ItemDescriptionHandler_Spells].context[<[delivery_item]>]>
 
 
-ItemDescriptionHandler:
+ItemDescriptionHandler_Spells:
     debug: false
     type: procedure
     definitions: item
@@ -83,3 +83,15 @@ ItemDescriptionHandler:
         - case string:
             - random:
                 - determine "String can be used to do all sorts of interesting things with magic. Binding things up, bringing things together... really, it's about how clever you can be!"
+
+ItemDescriptionHandler_Gathering:
+    debug: false
+    type: procedure
+    definitions: item
+    script:
+    - choose <[item]>:
+        - case carrot:
+            - random:
+                - determine "Thank you!"
+                - determine "Carrots really are quite wonderful. I hear that eating them improves your vision! Really, I just like the crunch."
+                - determine "Keep up the good work, these will make great healthy snacks for the city's children!"

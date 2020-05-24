@@ -21,7 +21,7 @@ UnlockGustlaunchQuestDeliveryHandler:
             - stop
     - inject QuestItemDeliveryHandler
     - if <[InProgress]>:
-        - narrate format:SkilledSorcererFormat <proc[ItemDescriptionHandler].context[<[delivery_item]>]>
+        - narrate format:SkilledSorcererFormat <proc[ItemDescriptionHandler_Spells].context[<[delivery_item]>]>
 
 UnlockGustlaunchQuestExperienceDeliveryHandler:
     type: task

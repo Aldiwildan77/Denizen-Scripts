@@ -23,7 +23,7 @@ JQ2OfferingNPCInteract:
                     - if <yaml[<[data]>].contains[quests.active.DailyJQ2]>:
                         - narrate format:JQ2OfferingNPCFormat "Hey, do you want to go back to the jump quest course?"
                     - else if <yaml[<[data]>].contains[quests.active.DailyJQ2].not> && <proc[QuestAvailabilityHandler].context[DailyJQ2]>:
-                        - narrate format:JQ2OfferingNPCFormat "Looking for a jumping challenge? I can send you to a faraway land where you can test your parkour skills. Complete the course for a reward!
+                        - narrate format:JQ2OfferingNPCFormat "Looking for a jumping challenge? I can send you to a faraway land where you can test your parkour skills. Complete the course for a reward!"
             click trigger:
                 script:
                 - if <yaml[<[data]>].contains[quests.active.DailyJQ2].not> && <proc[QuestAvailabilityHandler].context[DailyJQ2]>:

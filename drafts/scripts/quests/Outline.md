@@ -265,12 +265,12 @@ TODO: Write task script for checking active quests when right clicking NPCs
 
 
 ## Daily Quests
-- [ ] Daily Fishing
-    - [ ] Dialogue written
-    - [ ] Script backend written
-- [ ] Daily Fishing Challenge
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Daily Fishing
+    - [x] Dialogue written
+    - [x] Script backend written
+- [x] Daily Fishing Challenge
+    - [x] Dialogue written
+    - [x] Script backend written
 - [ ] Gathering Carrots
     - [ ] Dialogue written
     - [ ] Script backend written
@@ -289,9 +289,9 @@ TODO: Write task script for checking active quests when right clicking NPCs
 - [ ] Gathering Wheat
     - [ ] Dialogue written
     - [ ] Script backend written
-- [ ] Death Tower
-    - [ ] Dialogue written
-    - [ ] Script backend written
+- [x] Death Tower
+    - [x] Dialogue written
+    - [x] Script backend written
 - [x] JQ1
     - [x] Dialogue written
     - [x] Script backend written

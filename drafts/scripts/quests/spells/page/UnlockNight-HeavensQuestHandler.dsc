@@ -15,7 +15,7 @@ UnlockNight-HeavensQuestDeliveryHandler:
             - stop
     - inject QuestItemDeliveryHandler
     - if <[InProgress]>:
-        - narrate format:StoicSageFormat <proc[ItemDescriptionHandler].context[<[delivery_item]>]>
+        - narrate format:StoicSageFormat <proc[ItemDescriptionHandler_Spells].context[<[delivery_item]>]>
         
 UnlockNight-HeavensCompletion:
     type: task

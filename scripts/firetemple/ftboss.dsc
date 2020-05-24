@@ -48,7 +48,7 @@
                     script:
                     - narrate "format:Boss Format" "You have chosen poorly, <player.name>. This is my kingdom, I am the Lord of Flame!"
                     - narrate "format:Boss Format" "I will engulf you!"
-                    - teleport npc location:<npc.anchor[ftboss2]>                    
+                    - teleport npc location:<npc.anchor[ftboss2]>
                     - listen kill script:Champion id:Miniboss type:entity target:Wither qty:2
                     - execute as_npc "warp <player.name> ftboss"
                     - execute as_npc "spawnmob wither 1 -13,127,-36"
@@ -63,7 +63,7 @@
                 script:
                 - narrate "format:Boss Format" "This is a debug message that you shouldn't be seeing!"
                     
-# Preserve this section for if we ever get mob-type npc pathing working right.                    
+# Preserve this section for if we ever get mob-type npc pathing working right.
 #            Npcdeath Trigger:
 #                script:
 #                - narrate "format:Boss Format" "Master... I've failed you..."
