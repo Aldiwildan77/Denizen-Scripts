@@ -44,60 +44,94 @@ alchemist_arcaena_format:
 
 DropRateBooster2xMenu:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,0,255;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Bottled Luck"
+    material: potion
+    display name: <&a>Bottled Luck
     lore_list:
-    - "<&f>This magic potion will give you a 2x chance to find rare items while hunting monsters!"
-    - "<&6>Ingredients"
-    - "<&f><s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter"
-    - "<&f><s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot"
+    - <&f>This magic potion will give you a 2x chance to find rare items while hunting monsters!
+    - <&6>Ingredients
+    - <&f><s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter
+    - <&f><s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
     enchantments:
     - MENDING:1
     purifieddarkmattercost: 32
     crystallizedexperienceingotcost: 1
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[0,0,255]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 DropRateBooster4xMenu:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,0,255;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Improved Bottled Luck"
+    material: potion
+    display name: <&a>Improved Bottled Luck
     lore_list:
-    - "<&f>This magic potion will give you a 4x chance to find rare items while hunting monsters!"
-    - "<&6>Ingredients"
-    - "<&f><s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter"
-    - "<&f><s@DropRateBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot"
+    - <&f>This magic potion will give you a 4x chance to find rare items while hunting monsters!
+    - <&6>Ingredients
+    - <&f><s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter
+    - <&f><s@DropRateBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
     enchantments:
     - MENDING:1
     purifieddarkmattercost: 96
     crystallizedexperienceingotcost: 3
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[0,0,255]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
 
 GoldBooster2xMenu:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,255,0;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Golden Brew"
+    material: potion
+    display name: <&a>Golden Brew
     lore_list:
-    - "<&f>This magic potion will give you a 2x chance to find extra gold from slain monsters!"
-    - "<&6>Ingredients"
-    - "<&f><s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter"
-    - "<&f><s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot"
+    - <&f>This magic potion will give you a 2x chance to find extra gold from slain monsters!
+    - <&6>Ingredients
+    - <&f><s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter
+    - <&f><s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
     enchantments:
     - MENDING:1
     purifieddarkmattercost: 32
     crystallizedexperienceingotcost: 1
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[255,255,0]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 GoldBooster4xMenu:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,255,0;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Improved Golden Brew"
+    material: potion
+    display name: <&a>Improved Golden Brew
     lore_list:
-    - "<&f>This magic potion will give you a 4x chance to find extra gold from slain monsters!"
-    - "<&6>Ingredients"
-    - "<&f><s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter"
-    - "<&f><s@GoldBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot"
+    - <&f>This magic potion will give you a 4x chance to find extra gold from slain monsters!
+    - <&6>Ingredients
+    - <&f><s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter
+    - <&f><s@GoldBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
     enchantments:
     - MENDING:1
     purifieddarkmattercost: 96
     crystallizedexperienceingotcost: 3
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[255,255,0]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
 
 
-"alchemist_arcaena_inventory_handler":
+alchemist_arcaena_inventory_handler:
     type: world
     events:
         on player clicks in alchemist_arcaena_inventory_menu:
@@ -107,60 +141,44 @@ GoldBooster4xMenu:
         on player clicks DropRateBooster2xMenu in alchemist_arcaena_inventory_menu:
         - inventory close d:in@alchemist_arcaena_inventory_menu
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>]>
-        {
+        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>]>:
             - take scriptname:SocketMaker quantity:<s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>
             - take scriptname:CrystallizedExperienceIngot quantity:<s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>
             - give DropRateBooster2x quantity:1 to:<player.inventory>
             - narrate "format:alchemist_arcaena_format" "Here you go, bottoms up!"
-        }
-        else
-        {
+        - else:
             - narrate "format:alchemist_arcaena_format" "Sorry, I need you to bring me the right ingredients for that!"
-        }
         - narrate "format:alchemist_arcaena_format" "Right click me again if you're looking for anything else!"
         on player clicks DropRateBooster4xMenu in alchemist_arcaena_inventory_menu:
         - inventory close d:in@alchemist_arcaena_inventory_menu
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@DropRateBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>]>
-        {
+        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@DropRateBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>]>:
             - take scriptname:SocketMaker quantity:<s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>
             - take scriptname:CrystallizedExperienceIngot quantity:<s@DropRateBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>
             - give DropRateBooster4x quantity:1 to:<player.inventory>
             - narrate "format:alchemist_arcaena_format" "Here you go, bottoms up!"
-        }
-        else
-        {
+        - else:
             - narrate "format:alchemist_arcaena_format" "Sorry, I need you to bring me the right ingredients for that!"
-        }
         - narrate "format:alchemist_arcaena_format" "Right click me again if you're looking for anything else!"
         on player clicks GoldBooster2xMenu in alchemist_arcaena_inventory_menu:
         - inventory close d:in@alchemist_arcaena_inventory_menu
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@GoldBooster2xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@GoldBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>]>
-        {
+        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@GoldBooster2xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@GoldBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>]>:
             - take scriptname:SocketMaker quantity:<s@GoldBooster2xMenu.yaml_key[purifieddarkmattercost]>
             - take scriptname:CrystallizedExperienceIngot quantity:<s@GoldBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>
             - give GoldBooster2x quantity:1 to:<player.inventory>
             - narrate "format:alchemist_arcaena_format" "Here you go, bottoms up!"
-        }
-        else
-        {
+        - else:
             - narrate "format:alchemist_arcaena_format" "Sorry, I need you to bring me the right ingredients for that!"
-        }
         - narrate "format:alchemist_arcaena_format" "Right click me again if you're looking for anything else!"
         on player clicks GoldBooster4xMenu in alchemist_arcaena_inventory_menu:
         - inventory close d:in@alchemist_arcaena_inventory_menu
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@GoldBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>]>
-        {
+        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@GoldBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>]>:
             - take scriptname:SocketMaker quantity:<s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>
             - take scriptname:CrystallizedExperienceIngot quantity:<s@GoldBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>
             - give GoldBooster4x quantity:1 to:<player.inventory>
             - narrate "format:alchemist_arcaena_format" "Here you go, bottoms up!"
-        }
-        else
-        {
+        - else:
             - narrate "format:alchemist_arcaena_format" "Sorry, I need you to bring me the right ingredients for that!"
-        }
         - narrate "format:alchemist_arcaena_format" "Right click me again if you're looking for anything else!"

@@ -2,28 +2,36 @@
 
 This folder contains various Denizen script files with items on Summa Crossroads. This readme is provided as a reference for style and functionality.
 
-Eventually, all of these items should be cross-compatible between Denizen and MythicMobs, pending the MythicMobs 4.6 update that adds NBT data to items, etc.
-
 A sample armor piece looks like this:
 
 ```yaml
 ImbuedChest_sealed_potential:
     type: item
     no_id: true
-    material: Diamond_Chestplate[nbt_attributes=li@generic.maxHealth/chest/0/8.0|generic.armorToughness/chest/0/2.0|generic.armor/chest/0/8.0;nbt=li@equipment_type/armor|item_tier/veteran|sealed_potential/true]
-    display name: "<&9>Imbued Diamond Chestplate"
-    lore:
-    - "<&9><&o>Veteran"
-    - "<&f>This chestplate has a mystic presence."
-    - "<&6>Sealed Potential"
+    material: Diamond_Chestplate
+    display name: <&9>Imbued Diamond Chestplate
+    lore_list:
+    - <&9><&o>Veteran
+    - <&f>This chestplate has a mystic presence.
+    - <&6>Sealed Potential
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_EXPLOSIONS:2
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        nbt_attributes:
+        - generic.maxHealth/chest/0/8.0
+        - generic.armorToughness/chest/0/2.0
+        - generic.armor/chest/0/8.0
+        nbt:
+        - equipment_type/armor
+        - item_tier/veteran
+        - sealed_potential/true
 ```
 
 Be sure to separate `nbt_attributes` and `nbt` appropriately. 
 * `nbt_attributes` uses the default Minecraft attributes (which must match exactly to be effective)
-* `nbt` is custom data written to the item for use with Denizen scripts (and maybe MM eventually? But mostly Denizen)
+* `nbt` is custom data written to the item for use with Denizen scripts
 
 ## Some reference NBT keys and valid values
 
@@ -40,10 +48,12 @@ NOTE: Magic multipliers are not yet implemented.
 
 The effect of each multiplier will vary per-spell; they could increase damage dealt, duration of CC, etc.
 
-* `fire_magic_multiplier` (FLOAT) | Fire magic strength will be multiplied by `1` plus the sum of the values of this NBT key on each of the player's equipped items that have it e.g. `0.25`
-* `water_magic_multiplier` (FLOAT) | Water magic strength will be multiplied by `1` plus the sum of the values of this NBT key on each of the player's equipped items that have it e.g. `0.25`
-* `light_magic_multiplier` (FLOAT) | Light magic strength will be multiplied by `1` plus the sum of the values of this NBT key on each of the player's equipped items that have it e.g. `0.25`
-* `nature_magic_multiplier` (FLOAT) | Nature magic strength will be multiplied by `1` plus the sum of the values of this NBT key on each of the player's equipped items that have it e.g. `0.25`
+* `fire_magic_power` (FLOAT) | Fire magic power, to be used as a variable for calculating the strength of spells.
+* `water_magic_power` (FLOAT) | Water magic power, to be used as a variable for calculating the strength of spells.
+* `light_magic_power` (FLOAT) | Light magic power, to be used as a variable for calculating the strength of spells.
+* `nature_magic_power` (FLOAT) | Nature magic power, to be used as a variable for calculating the strength of spells.
+
+Magic power serves as a more easily understandable concept than a raw multiplier and allows that power to be used as a coefficient for scaling per-spell.
 
 #### Sockets
 

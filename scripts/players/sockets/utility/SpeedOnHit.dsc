@@ -13,7 +13,7 @@ socket_gem_utility_speed_on_hit_handler:
 socket_gem_utility_speed_on_hit:
     debug: false
     type: item
-    material: emerald[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;nbt=li@uncraftable/true|gem_type/utility|gem_specific/socket_gem_utility_speed_on_hit]
+    material: emerald[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;nbt: uncraftable/true|gem_type/utility|gem_specific/socket_gem_utility_speed_on_hit]
     display name: "<&a>Gem of Speed on Hit"
     lore:
     - "<&6>Gem"

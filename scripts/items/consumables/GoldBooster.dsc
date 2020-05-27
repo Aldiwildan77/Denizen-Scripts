@@ -1,15 +1,37 @@
 GoldBooster2x:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,255,0;lore=<proc[lineWrap].context[<&6>There's gold in them there hills - or, rather, in the pockets of them there monsters! Drink this potion to improve gold drops from monsters you slay.|40]>]
-    display name: "<&a>Golden Brew"
+    material: potion
+    display name: <&a>Golden Brew
     enchantments:
     - MENDING:1
+    lore_list:
+    - <&6>There's gold in them there hills - or, rather, in the pockets of them there monsters! Drink this potion to improve gold drops from monsters you slay.
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[255,255,0]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 GoldBooster4x:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@255,255,0;lore=<proc[lineWrap].context[<&6>There's gold in them there hills - or, rather, in the pockets of them there monsters! Drink this potion to greatly improve gold drops from monsters you slay.|40]>]
-    display name: "<&a>Improved Golden Brew"
+    material: potion
+    display name: <&a>Improved Golden Brew
     enchantments:
     - MENDING:1
+    lore_list:
+    - <&6>There's gold in them there hills - or, rather, in the pockets of them there monsters! Drink this potion to greatly improve gold drops from monsters you slay.
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[255,255,0]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 gold_booster_handler:
     type: world
     debug: true

@@ -43,22 +43,32 @@
 VeteranBox:
     type: item
     debug: false
-    material: blue_shulker_box[flags=li@HIDE_ENCHANTS;nbt=li@BonusBox/Veteran]
-    display name: "<&9>Veteran Bonus Box"
+    material: blue_shulker_box
+    display name: <&9>Veteran Bonus Box
     lore:
-    - "<&6>A bonus box containing powerful gear!"
+    - <&6>A bonus box containing powerful gear!
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        - enchants
+        nbt:
+        - bonusbox/veteran
 
 EliteBox:
     type: item
     debug: false
-    material: pink_shulker_box[flags=li@HIDE_ENCHANTS;nbt=li@BonusBox/Elite]
-    display name: "<&d>Elite Bonus Box"
+    material: pink_shulker_box
+    display name: <&d>Elite Bonus Box
     lore:
-    - "<&6>A bonus box containing powerful gear!"
+    - <&6>A bonus box containing powerful gear!
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        - enchants
+        nbt:
+        - bonusbox/elite
 
 daily-login-spinner:
     type: task

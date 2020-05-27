@@ -1,15 +1,37 @@
 ExperienceBooster2x:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,255,0;lore=<proc[lineWrap].context[<&6>This magic potion was brewed by and elder wizard. Drinking it will improve your ability to extract experience from defeated monsters!|40]>]
-    display name: "<&a>Liquid Courage"
+    material: potion
+    display name: <&a>Liquid Courage
     enchantments:
     - MENDING:1
+    lore_list:
+    - <&6>This magic potion was brewed by and elder wizard. Drinking it will improve your ability to extract experience from defeated monsters!
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[0,255,0]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 ExperienceBooster4x:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,255,0;lore=<proc[lineWrap].context[<&6>This magic potion was brewed by and elder wizard. Drinking it will greatly improve your ability to extract experience from defeated monsters!|40]>]
-    display name: "<&a>Improved Liquid Courage"
+    material: potion
+    display name: <&a>Improved Liquid Courage
     enchantments:
     - MENDING:1
+    lore_list:
+    - <&6>This magic potion was brewed by and elder wizard. Drinking it will greatly improve your ability to extract experience from defeated monsters!
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[0,255,0]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 exp_booster_handler:
     type: world
     debug: true

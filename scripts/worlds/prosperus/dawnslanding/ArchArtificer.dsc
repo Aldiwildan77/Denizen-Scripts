@@ -17,50 +17,84 @@
 CrystallizedExperienceSliver:
     type: item
     debug: false
-    material: emerald[flags=li@HIDE_ENCHANTS;nbt=li@ExperienceCrystal/Sliver|uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Sliver of Crystallized Experience"
+    material: emerald
+    display name: <&a>Sliver of Crystallized Experience
     lore_list:
-    - "<&6>The Arch Artificer Created this by crystallizing a small number of levels."
+    - <&6>The Arch Artificer Created this by crystallizing a small number of levels.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        nbt:
+        - experiencecrystal/sliver
+        - uncraftable/true
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 CrystallizedExperienceChunk:
     type: item
     debug: false
-    material: emerald[flags=li@HIDE_ENCHANTS;nbt=li@ExperienceCrystal/Chunk|uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Chunk of Crystallized Experience"
+    material: emerald
+    display name: <&a>Chunk of Crystallized Experience
     lore_list:
-    - "<&6>The Arch Artificer Created this by crystallizing a fair number of levels."
+    - <&6>The Arch Artificer Created this by crystallizing a fair number of levels.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        nbt:
+        - experiencecrystal/chunk
+        - uncraftable/true
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 CrystallizedExperienceBillet:
     type: item
     debug: false
-    material: emerald[flags=li@HIDE_ENCHANTS;nbt=li@ExperienceCrystal/Billet|uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Billet of Crystallized Experience"
+    material: emerald
+    display name: <&a>Billet of Crystallized Experience
     lore_list:
-    - "<&6>The Arch Artificer Created this by crystallizing a sizable number of levels."
+    - <&6>The Arch Artificer Created this by crystallizing a sizable number of levels.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        nbt:
+        - experiencecrystal/billet
+        - uncraftable/true
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 CrystallizedExperienceBloom:
     type: item
     debug: false
-    material: emerald[flags=li@HIDE_ENCHANTS;nbt=li@ExperienceCrystal/Bloom|uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Bloom of Crystallized Experience"
+    material: emerald
+    display name: <&a>Bloom of Crystallized Experience
     lore_list:
-    - "<&6>The Arch Artificer Created this by crystallizing a large number of levels."
+    - <&6>The Arch Artificer Created this by crystallizing a large number of levels.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        nbt:
+        - experiencecrystal/bloom
+        - uncraftable/true
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 CrystallizedExperienceIngot:
     type: item
     debug: false
-    material: emerald[flags=li@HIDE_ENCHANTS;nbt=li@ExperienceCrystal/Ingot|uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&a>Ingot of Crystallized Experience"
+    material: emerald
+    display name: <&a>Ingot of Crystallized Experience
     lore_list:
-    - "<&6>The Arch Artificer Created this by crystallizing a tremendous number of levels."
+    - <&6>The Arch Artificer Created this by crystallizing a tremendous number of levels.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        nbt:
+        - experiencecrystal/ingot
+        - uncraftable/true
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
 
-"Artificing":
+Artificing:
     type: interact
     debug: false
     steps:
@@ -73,7 +107,7 @@ CrystallizedExperienceIngot:
                     script:
                     - narrate "format:Arch Artificer Format" "See you again, and good hunting!"
             chat trigger:
-                'Sliver':
+                Sliver:
                     trigger: "I need a /Sliver/ of Crystallized Experience, please."
                     script:
                     - if <player.xp.level> >= 30:
@@ -82,7 +116,7 @@ CrystallizedExperienceIngot:
                         - execute as_server "xp -30l <player.name>"
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 30."
-                'Chunk':
+                Chunk:
                     trigger: "I need a /Chunk/ of Crystallized Experience, please."
                     script:
                     - if <player.xp.level> >= 50:
@@ -91,7 +125,7 @@ CrystallizedExperienceIngot:
                         - execute as_server "xp -50l <player.name>"
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 50."
-                'Billet':
+                Billet:
                     trigger: "I need a /Billet/ of Crystallized Experience, please."
                     script:
                     - if <player.xp.level> >= 70:
@@ -100,7 +134,7 @@ CrystallizedExperienceIngot:
                         - execute as_server "xp -70l <player.name>"
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 70."
-                'Bloom':
+                Bloom:
                     trigger: "I need a /Bloom/ of Crystallized Experience, please."
                     script:
                     - if <player.xp.level> >= 90:
@@ -109,7 +143,7 @@ CrystallizedExperienceIngot:
                         - execute as_server "xp -90l <player.name>"
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 90."
-                'Ingot':
+                Ingot:
                     trigger: "I need an /Ingot/ of Crystallized Experience, please."
                     script:
                     - if <player.xp.level> >= 110:

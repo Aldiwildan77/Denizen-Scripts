@@ -32,7 +32,7 @@ nbt_craft_prevention:
 
 SocketMaker:
     type: item
-    material: nether_star[flags=li@HIDE_ENCHANTS;nbt=li@uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    material: nether_star[hides=li@HIDE_ENCHANTS;nbt: uncraftable/true;lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>]
     display name: "<&a>Purified Dark Matter"
     lore_list:
     - "<&6>This coalesced energy has been purged of the darkness inside. It now pulses and radiates in an unstoppable splendor."
@@ -42,7 +42,7 @@ SocketMaker:
 sockets_sword_max:
     type: item
     no_id: true
-    material: diamond_sword[nbt=li@equipment_type/weapon|item_tier/champion|sockets_current/5|sockets_max/5|sockets_can_add/false|sockets_open/true|socket1_type/attack|socket1_empty/true|socket2_type/attack|socket2_empty/true|socket3_type/utility|socket3_empty/true|socket4_type/defense|socket4_empty/true|socket5_type/utility|socket5_empty/true]
+    material: diamond_sword[nbt: equipment_type/weapon|item_tier/champion|sockets_current/5|sockets_max/5|sockets_can_add/false|sockets_open/true|socket1_type/attack|socket1_empty/true|socket2_type/attack|socket2_empty/true|socket3_type/utility|socket3_empty/true|socket4_type/defense|socket4_empty/true|socket5_type/utility|socket5_empty/true]
     display name: "<&a>Empty Socket Sword of Extreme Testing"
     lore:
     - "<&f>This sword is bonkers, lol."
@@ -58,7 +58,7 @@ sockets_sword_max:
 sockets_sword_locked:
     type: item
     no_id: true
-    material: diamond_sword[nbt=li@equipment_type/weapon|item_tier/champion|sockets_current/0|sockets_max/5|sockets_can_add/true]
+    material: diamond_sword[nbt: equipment_type/weapon|item_tier/champion|sockets_current/0|sockets_max/5|sockets_can_add/true]
     display name: "<&a>Locked Socket Sword of Extreme Testing"
     lore:
     - "<&f>This sword is bonkers, lol."
@@ -74,7 +74,7 @@ sockets_sword_locked:
 sockets_sword_sealed_potential:
     type: item
     no_id: true
-    material: diamond_sword[nbt=li@equipment_type/weapon|item_tier/champion|sealed_potential/true]
+    material: diamond_sword[nbt: equipment_type/weapon|item_tier/champion|sealed_potential/true]
     display name: "<&a>Sealed Socket Sword of Extreme Testing"
     lore:
     - "<&f>This sword is bonkers, lol."
@@ -125,7 +125,7 @@ sockets:
     - "[] [] [] [] [] [] [] [] []"
 socket_add:
     type: item
-    material: nether_star[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    material: nether_star[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>]
     display name: "<&a>Unlock a socket on an item"
     lore_list:
     - "<&f>Requires <server.flag[SocketAddCost]> Purified Dark Matter and 1 Ingot of Crystallized Experience."
@@ -133,7 +133,7 @@ socket_add:
     - MENDING:1
 gem_add:
     type: item
-    material: diamond[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
+    material: diamond[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
     display name: "<&a>Add a gem to a socket"
     lore:
     - "<&f>Requires an item with an open socket and a gem of the appropriate type."
@@ -141,7 +141,7 @@ gem_add:
     - MENDING:1
 socket_potential:
     type: item
-    material: gold_ingot[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
+    material: gold_ingot[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>]
     display name: "<&a>Unlock the <&6>Sealed Potential<&a> of an item"
     lore_list:
     - "<&f>Requires an item with <&6>Sealed Potential<&f>, <server.flag[SealedPotentialCost]> Purified Dark Matter, and 1 Ingot of Crystallized Experience."

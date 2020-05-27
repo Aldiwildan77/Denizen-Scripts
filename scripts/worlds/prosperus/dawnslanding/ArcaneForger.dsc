@@ -32,7 +32,8 @@
                 - narrate "format:Arcane Forger Format" "Okay, here's what I have to offer."
                 - wait 1s
                 - inventory open d:in@ArcaneForgerInventoryMenu
-"ArcaneForgerInventoryMenu":
+
+ArcaneForgerInventoryMenu:
     type: inventory
     debug: false
     title: Arcane Forging
@@ -55,52 +56,79 @@
 VeteranToken:
     type: item
     debug: true
-    material: bone[flags=li@HIDE_ENCHANTS;nbt=li@BadLuckToken/Veteran|uncraftable/true;lore=<proc[lore_builder].context[40|<script.yaml_key[lore_list].escaped>]>]
-    display name: "<&9>Phantasmal Bones"
+    material: bone
+    display name: <&9>Phantasmal Bones
     lore_list:
-    - "<&6>The bones of a powerful monster, slain by a hero. When held, you can still feel energy pouring out of them."
+    - <&6>The bones of a powerful monster, slain by a hero. When held, you can still feel energy pouring out of them.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        - enchants
+        nbt:
+        - badlucktoken/veteran
+        - uncraftable/true
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
 
-"VeteranToolForge":
+VeteranToolForge:
     type: item
     debug: false
-    material: diamond_pickaxe[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
-    display name: "<&9>Forge a Veteran Tool"
-    lore:
-    - "<&6>Requires <server.flag[VeteranToolForgeCost]> Phantasmal Bones and 1 Sliver of Crystallized Experience."
+    material: diamond_pickaxe[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
+    display name: <&9>Forge a Veteran Tool
+    lore_list:
+    - <&6>Requires <server.flag[VeteranToolForgeCost]> Phantasmal Bones and 1 Sliver of Crystallized Experience.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        - attributes
+        - enchants
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
 
-"VeteranWeaponForge":
+VeteranWeaponForge:
     type: item
     debug: false
-    material: diamond_sword[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
-    display name: "<&9>Forge a Veteran Armament"
+    material: diamond_sword
+    display name: <&9>Forge a Veteran Armament
     lore:
-    - "<&6>Requires <server.flag[VeteranWeaponForgeCost]> Phantasmal Bones and 1 Sliver of Crystallized Experience."
+    - <&6>Requires <server.flag[VeteranWeaponForgeCost]> Phantasmal Bones and 1 Sliver of Crystallized Experience.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        - attributes
+        - enchants
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
 
-"EliteToolForge":
+EliteToolForge:
     type: item
     debug: false
-    material: diamond_pickaxe[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
-    display name: "<&d>Forge an Elite Tool"
+    material: diamond_pickaxe
+    display name: <&d>Forge an Elite Tool
     lore:
-    - "<&6>Requires <server.flag[EliteToolForgeCost]> Phantasmal Bones and 1 Chunk of Crystallized Experience."
+    - <&6>Requires <server.flag[EliteToolForgeCost]> Phantasmal Bones and 1 Chunk of Crystallized Experience.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        - attributes
+        - enchants
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
 
-"EliteWeaponForge":
+EliteWeaponForge:
     type: item
     debug: false
-    material: diamond_sword[flags=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
-    display name: "<&d>Forge an Elite Armament"
-    lore:
-    - "<&6>Requires <server.flag[EliteWeaponForgeCost]> Phantasmal Bones and 1 Chunk of Crystallized Experience."
+    material: diamond_sword
+    display name: <&d>Forge an Elite Armament
+    lore_list:
+    - <&6>Requires <server.flag[EliteWeaponForgeCost]> Phantasmal Bones and 1 Chunk of Crystallized Experience.
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        - attributes
+        - enchants
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
 
 ArcaneForgerInventoryHandler:
     type: world

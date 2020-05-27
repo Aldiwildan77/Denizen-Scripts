@@ -1,15 +1,37 @@
 DropRateBooster2x:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,0,255;lore=<proc[lineWrap].context[<&6>Luck magic has been stopped inside this bottle. Release it to gain an aura improving your ability to find rare items from hunting monsters!|40]>]
-    display name: "<&a>Bottled Luck"
+    material: potion
+    display name: <&a>Bottled Luck
     enchantments:
     - MENDING:1
+    lore_list:
+    - <&6>Luck magic has been stopped inside this bottle. Release it to gain an aura improving your ability to find rare items from hunting monsters!
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[0,0,255]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 DropRateBooster4x:
     type: item
-    material: potion[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true;color=co@0,0,255;lore=<proc[lineWrap].context[<&6>Luck magic has been stopped inside this bottle. Release it to gain an aura greatly improving your ability to find rare items from hunting monsters!|40]>]
-    display name: "<&a>Improved Bottled Luck"
+    material: potion
+    display name: <&a>Improved Bottled Luck
     enchantments:
     - MENDING:1
+    lore_list:
+    - <&6>Luck magic has been stopped inside this bottle. Release it to gain an aura greatly improving your ability to find rare items from hunting monsters!
+    mechanisms:
+        hides:
+        - enchants
+        - potion_effects
+        nbt:
+        - uncraftable/true
+        color: <color[0,0,255]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+
 drop_rate_booster_handler:
     type: world
     debug: true

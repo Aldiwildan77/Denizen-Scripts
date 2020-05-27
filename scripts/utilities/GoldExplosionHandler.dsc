@@ -1,7 +1,7 @@
 5g_pouch:
     type: item
     debug: false
-    material: bowl[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true]
+    material: bowl[hides=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt: uncraftable/true]
     display name: "<&6>5g pouch"
     lore:
     - "<&f>You found a pouch with 5g inside!"
@@ -12,7 +12,7 @@
 10g_pouch:
     type: item
     debug: false
-    material: bowl[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true]
+    material: bowl[hides=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt: uncraftable/true]
     display name: "<&6>10g pouch"
     lore:
     - "<&f>You found a pouch with 10g inside!"
@@ -23,7 +23,7 @@
 25g_pouch:
     type: item
     debug: false
-    material: bowl[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true]
+    material: bowl[hides=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt: uncraftable/true]
     display name: "<&6>25g pouch"
     lore:
     - "<&f>You found a pouch with 25g inside!"
@@ -34,7 +34,7 @@
 50g_pouch:
     type: item
     debug: false
-    material: bowl[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true]
+    material: bowl[hides=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt: uncraftable/true]
     display name: "<&6>50g pouch"
     lore:
     - "<&f>You found a pouch with 50g inside!"
@@ -45,7 +45,7 @@
 100g_pouch:
     type: item
     debug: false
-    material: bowl[flags=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt=li@uncraftable/true]
+    material: bowl[hides=li@HIDE_ENCHANTS|HIDE_POTION_EFFECTS;nbt: uncraftable/true]
     display name: "<&6>100g pouch"
     lore:
     - "<&f>You found a pouch with 100g inside!"
