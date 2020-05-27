@@ -95,3 +95,16 @@ ItemDescriptionHandler_Gathering:
                 - determine "Thank you!"
                 - determine "Carrots really are quite wonderful. I hear that eating them improves your vision! Really, I just like the crunch."
                 - determine "Keep up the good work, these will make great healthy snacks for the city's children!"
+        - case potato:
+            - random:
+                - determine "Thank you!"
+                - determine "Potatoes are such a useful food! They can be made into all sorts of lovely dishes."
+                - determine "I think we'll use these to make a big batch of mashed potatoes!"
+        - case wheat:
+            - random:
+                - determine "Thank you!"
+                - determine "This sure will help us make a lot of bread!"
+                - determine "Have you tried your hand at baking yet? The results can be so scrumptious!"
+        - case pumpkin:
+            - random:
+                - determine "Thank you!"
