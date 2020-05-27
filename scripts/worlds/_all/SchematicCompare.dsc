@@ -35,28 +35,28 @@ schematic_check_evt:
         on player places block:
         - if <s@schematic_data.list_keys[triggers].contains[<context.material.name>]> {
             - foreach <s@schematic_data.yaml_key[triggers.<context.material.name>]> {
-                - if !<schematic[<def[value].before[/]>].exists> {
+                - if !<schematic[<[value].before[/]>].exists> {
                     - queue clear
                 }
-                - run schematic_checker def:<context.location>|<def[value].before[/]>|<def[value].after[/]>
+                - run schematic_checker def:<context.location>|<[value].before[/]>|<[value].after[/]>
                 - if <server.flag[schem_check]> {
-                    - note <schematic[<def[value].before[/]>].cuboid[<context.location>]> as:schematic_<context.location.simple.replace[l@]>_<def[value].before[/]>
+                    - note <schematic[<[value].before[/]>].cuboid[<context.location>]> as:schematic_<context.location.simple.replace[l@]>_<[value].before[/]>
                 }
                 - flag server schem_check:!
-                - if <def[value].split_by[/].size> >= 3 {
-                    - run <def[value].split_by[/].get[3]>
+                - if <[value].split_by[/].size> >= 3 {
+                    - run <[value].split_by[/].get[3]>
                 }
-                - if <def[value].split_by[/].size> == 4 {
-                    - flag server schem_deletion_scripts.schematic_<context.location.simple.replace[l@]>_<def[value].before[/]>:<def[value].after_last[/]>
+                - if <[value].split_by[/].size> == 4 {
+                    - flag server schem_deletion_scripts.schematic_<context.location.simple.replace[l@]>_<[value].before[/]>:<[value].after_last[/]>
                 }
             }
         }
         on player breaks block in notable cuboid:
         - foreach <context.location.cuboids.filter[notable_name.starts_with[schematic_]]> {
-            - note remove as:<def[value].notable_name>
-            - if <server.has_flag[schem_deletion_scripts.<def[value].notable_name>]> {
-                - run <server.flag[schem_deletion_scripts.<def[value].notable_name>]>
-                - flag server schem_deletion_scripts.<def[value].notable_name>:!
+            - note remove as:<[value].notable_name>
+            - if <server.has_flag[schem_deletion_scripts.<[value].notable_name>]> {
+                - run <server.flag[schem_deletion_scripts.<[value].notable_name>]>
+                - flag server schem_deletion_scripts.<[value].notable_name>:!
             }
         }
 
@@ -71,19 +71,19 @@ schematic_checker:
     definitions: location|schematic|ignore_air
     speed: 0
     script:
-    - define cuboid <schematic[<def[schematic]>].cuboid[<def[location]>]>
-    - define adjusted_location <def[location].sub[<schematic[<def[schematic]>].origin>]>
-    - inject locally <tern[<def[ignore_air]>]:ignore_air||with_air>
+    - define cuboid <schematic[<[schematic]>].cuboid[<[location]>]>
+    - define adjusted_location <[location].sub[<schematic[<[schematic]>].origin>]>
+    - inject locally <tern[<[ignore_air]>]:ignore_air||with_air>
     - flag server schem_check:true
     with_air:
-    - foreach <def[cuboid].blocks>:
-        - define schem_mat <schematic[<def[schematic]>].block[<def[value].sub[<def[adjusted_location]>]>].name>
-        - if <def[schem_mat]> != air && <def[schem_mat]> != <def[value].material.name> {
+    - foreach <[cuboid].blocks>:
+        - define schem_mat <schematic[<[schematic]>].block[<[value].sub[<[adjusted_location]>]>].name>
+        - if <[schem_mat]> != air && <[schem_mat]> != <[value].material.name> {
             - flag server schem_check:false
         }
     ignore_air:
-    - foreach <def[cuboid].blocks>:
-        - define schem_mat <schematic[<def[schematic]>].block[<def[value].sub[<def[adjusted_location]>]>].name>
-        - if <def[schem_mat]> != <def[value].material.name> {
+    - foreach <[cuboid].blocks>:
+        - define schem_mat <schematic[<[schematic]>].block[<[value].sub[<[adjusted_location]>]>].name>
+        - if <[schem_mat]> != <[value].material.name> {
             - flag server schem_check:false
         }

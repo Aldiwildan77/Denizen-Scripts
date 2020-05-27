@@ -42,7 +42,7 @@
     - flag player firetemplewins:++
     - flag player firetemplecomplete:0
     - flag npcid:89 npc firetempleclear:1
-    - queue <def[1]> resume
+    - queue <[1]> resume
 
 "Engulfed Helm":
     type: item

@@ -120,7 +120,7 @@ veteran_gold_explosion:
                 - define location <context.entity.location>
                 - narrate "<&6>The slain monster drops some pouches of gold!" targets:<context.killer>
                 - repeat <s@gold_rate_data.yaml_key[gold_amount_multiplier]>:
-                    - drop <s@veteran_gold_drop_list.yaml_key[list].random[1]> location:<cuboid[cu@<def[location].add[-2,-2,-2]>|<def[location].add[2,2,2]>].spawnable_blocks.random>
+                    - drop <s@veteran_gold_drop_list.yaml_key[list].random[1]> location:<cuboid[cu@<[location].add[-2,-2,-2]>|<[location].add[2,2,2]>].spawnable_blocks.random>
                     - wait 20t
 
 elite_gold_explosion:
@@ -135,5 +135,5 @@ elite_gold_explosion:
                 - define location <context.entity.location>
                 - narrate "<&6>The slain monster drops some pouches of gold!" targets:<context.killer>
                 - repeat <s@gold_rate_data.yaml_key[gold_amount_multiplier]>:
-                    - drop <s@elite_gold_drop_list.yaml_key[list].random[1]> location:<cuboid[cu@<def[location].add[-2,-2,-2]>|<def[location].add[2,2,2]>].spawnable_blocks.random>
+                    - drop <s@elite_gold_drop_list.yaml_key[list].random[1]> location:<cuboid[cu@<[location].add[-2,-2,-2]>|<[location].add[2,2,2]>].spawnable_blocks.random>
                     - wait 20t

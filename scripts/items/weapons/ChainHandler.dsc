@@ -24,6 +24,6 @@ chains_ready_check:
                 - flag player chains_cooldown:true duration:10s
                 - bossbar create chains_<player.uuid> players:<player> "title:Grapple Charging" progress:0 color:green style:solid
                 - ^repeat 200:
-                    - bossbar update chains_<player.uuid> players:<player> progress:<def[value].div[200]>
+                    - bossbar update chains_<player.uuid> players:<player> progress:<[value].div[200]>
                     - wait 1t
                 - bossbar remove chains_<player.uuid>

@@ -106,14 +106,14 @@ YAML_AntiFarm:
         
         on entity dies:
         - define entity <context.entity>
-        - if <def[entity].is_player>:
+        - if <[entity].is_player>:
             - queue clear
         
-        #- announce to_console <def[entity].uuid>
-        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<def[entity].uuid>]||null>:
+        #- announce to_console <[entity].uuid>
+        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<[entity].uuid>]||null>:
 #            - announce to_console "[DEBUG] Normal mobs YAML spawner"
             - determine NO_DROPS_OR_XP
-            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<def[entity].uuid>
+            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<[entity].uuid>
         
         
         

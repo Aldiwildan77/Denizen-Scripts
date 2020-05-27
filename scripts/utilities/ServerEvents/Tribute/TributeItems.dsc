@@ -43,22 +43,22 @@ TokenExpiration:
         on player opens inventory:
         - if <player.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]].size> > 0:
             - foreach <player.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]]>:
-                - take <def[value]> quantity:<def[value].quantity> from:<player.inventory>
+                - take <[value]> quantity:<[value].quantity> from:<player.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
         - else if <context.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]].size> == 0:
             - stop
         - else:
             - foreach <context.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]]>:
-                - take <def[value]> quantity:<def[value].quantity> from:<context.inventory>
+                - take <[value]> quantity:<[value].quantity> from:<context.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
         on player clicks in inventory:
         - if <player.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]].size> > 0:
             - foreach <player.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]]>:
-                - take <def[value]> quantity:<def[value].quantity> from:<player.inventory>
+                - take <[value]> quantity:<[value].quantity> from:<player.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
         - else if <context.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]].size> == 0:
             - stop
         - else:
             - foreach <context.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<util.date.time.duration.in_days.round_down>]]>:
-                - take <def[value]> quantity:<def[value].quantity> from:<context.inventory>
+                - take <[value]> quantity:<[value].quantity> from:<context.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."

@@ -3,7 +3,7 @@ enchantarrows-nature:
     debug: false
     definitions: player
     script:
-    - flag <def[player]> enchantarrows-nature:true duration:300s
+    - flag <[player]> enchantarrows-nature:true duration:300s
 enchantarrows-nature-handler:
     type: world
     debug: false

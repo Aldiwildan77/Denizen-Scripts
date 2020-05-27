@@ -56,35 +56,35 @@ tribute_npc_format:
                     - if <player.inventory.contains[GodsTribute].quantity[<context.message.replace[regex:\D+]>]>:
                         - define choice <player.flag[blessing_selection]>
                         - define progress <yaml[events].read[tribute.<player.flag[blessing_selection]>.progress]>
-                        - define rate <yaml[events].read[tribute.<def[choice]>.rate]>
-                        - define upgrade_amount <yaml[events].read[tribute.<def[choice]>.upgrades.<def[rate]>]>
-                        - if <def[rate]> == 3 && <def[progress].add[<def[offering_amount]>]> > <def[upgrade_amount]>:
-                                - take GodsTribute quantity:<def[offering_amount].sub[<def[offering_amount].add[<def[progress]>].sub[<def[upgrade_amount]>]>]>
-                                - define offering_amount <def[offering_amount].sub[<def[offering_amount].add[<def[progress]>].sub[<def[upgrade_amount]>]>]>
+                        - define rate <yaml[events].read[tribute.<[choice]>.rate]>
+                        - define upgrade_amount <yaml[events].read[tribute.<[choice]>.upgrades.<[rate]>]>
+                        - if <[rate]> == 3 && <[progress].add[<[offering_amount]>]> > <[upgrade_amount]>:
+                                - take GodsTribute quantity:<[offering_amount].sub[<[offering_amount].add[<[progress]>].sub[<[upgrade_amount]>]>]>
+                                - define offering_amount <[offering_amount].sub[<[offering_amount].add[<[progress]>].sub[<[upgrade_amount]>]>]>
                         - else:
-                            - take GodsTribute quantity:<def[offering_amount]> from:<player.inventory>
-                        - yaml id:events set tribute.<def[choice]>.progress:<def[progress].add[<def[offering_amount]>]>
-                        - define progress <def[progress].add[<def[offering_amount]>]>
+                            - take GodsTribute quantity:<[offering_amount]> from:<player.inventory>
+                        - yaml id:events set tribute.<[choice]>.progress:<[progress].add[<[offering_amount]>]>
+                        - define progress <[progress].add[<[offering_amount]>]>
                         - narrate format:tribute_npc_format "The Gods thank you for your offering."
-                        - if <def[progress]> >= <def[upgrade_amount]>:
-                            - yaml id:events set tribute.<def[choice]>.progress:<def[progress].sub[<def[upgrade_amount]>]>
-                            - yaml id:events set tribute.<def[choice]>.rate:++
-                            - if <def[choice]> == mcmmo:
-                                - yaml id:events set tribute.mcmmo.rate:<def[rate].add[1]>
-                                - execute as_server "xprate <def[rate].add[1]> true"
+                        - if <[progress]> >= <[upgrade_amount]>:
+                            - yaml id:events set tribute.<[choice]>.progress:<[progress].sub[<[upgrade_amount]>]>
+                            - yaml id:events set tribute.<[choice]>.rate:++
+                            - if <[choice]> == mcmmo:
+                                - yaml id:events set tribute.mcmmo.rate:<[rate].add[1]>
+                                - execute as_server "xprate <[rate].add[1]> true"
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Skillfulness to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Skillfulness."
                                 - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Skillfulness!**"
-                            - else if <def[choice]> == drops:
-                                - yaml id:events set tribute.drops.rate:<def[rate].add[1]>
-                                - yaml id:rates set drops.multiplier:<def[rate].add[1]>
+                            - else if <[choice]> == drops:
+                                - yaml id:events set tribute.drops.rate:<[rate].add[1]>
+                                - yaml id:rates set drops.multiplier:<[rate].add[1]>
                                 - yaml id:rates savefile:scriptdata/Rates.yml
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Luck to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Luck."
                                 - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Luck!**"
-                            - else if <def[choice]> == experience:
-                                - yaml id:events set tribute.experience.rate:<def[rate].add[1]>
-                                - yaml id:rates set experience.multiplier:<def[rate].add[1]>
+                            - else if <[choice]> == experience:
+                                - yaml id:events set tribute.experience.rate:<[rate].add[1]>
+                                - yaml id:rates set experience.multiplier:<[rate].add[1]>
                                 - yaml id:rates savefile:scriptdata/Rates.yml
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Wisdom to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Wisdom."

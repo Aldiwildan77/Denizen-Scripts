@@ -41,7 +41,7 @@
     - flag player watertemplecomplete:0
     - flag npcid:184 npc watertempleclear:1
     # now we just refer to the queue we want it to continue
-    - queue <def[1]> resume
+    - queue <[1]> resume
 
 "Drenched Helm":
     type: item

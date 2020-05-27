@@ -117,4 +117,4 @@ veteran_air_armor_set_bonuses:
         3: 0.5
         4: 1
     script:
-    - determine <script.yaml_key[scale.<def[set_piece_count].min[4].max[1].round>]>
+    - determine <script.yaml_key[scale.<[set_piece_count].min[4].max[1].round>]>

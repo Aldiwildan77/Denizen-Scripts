@@ -28,29 +28,29 @@ link_command:
                 - narrate '<&c>You cannot link an empty hotbar!'
                 - queue clear
             - foreach <player.inventory.list_contents.get[1].to[9].exclude[i@air]>:
-                - execute as_server 'tellraw @a ["",{"text":"<player.chat_prefix.parse_color> <player.name.display><&r> has linked their hotbar item<&co> "},{"text":"<&lb><def[value].display||<def[value].formatted.to_titlecase>><&r><&rb>","hoverEvent":{"action":"show_item","value":"{<def[value].json>}"}},{"text":"!"}]'
-                - run link_messagetodiscord 'def:<def[value]>|hotbar item'
+                - execute as_server 'tellraw @a ["",{"text":"<player.chat_prefix.parse_color> <player.name.display><&r> has linked their hotbar item<&co> "},{"text":"<&lb><[value].display||<[value].formatted.to_titlecase>><&r><&rb>","hoverEvent":{"action":"show_item","value":"{<[value].json>}"}},{"text":"!"}]'
+                - run link_messagetodiscord 'def:<[value]>|hotbar item'
         - case equipment:
             - if <player.equipment.exclude[i@air].is_empty>:
                 - narrate '<&c>You<&sq>re wearing nothing! You must be wearing equipment in order to link it.'
                 - queue clear
             - foreach <player.equipment>:
-                - if <def[value]> == i@air:
+                - if <[value]> == i@air:
                     - foreach next
-                - execute as_server 'tellraw @a ["",{"text":"<player.chat_prefix.parse_color> <player.name.display><&r> has linked their <li@boots|leggings|chestplate|helmet.get[<def[loop_index]>]><&co> "},{"text":"<&lb><def[value].display||<def[value].formatted.to_titlecase>><&r><&rb>","hoverEvent":{"action":"show_item","value":"{<def[value].json>}"}},{"text":"!"}]'
+                - execute as_server 'tellraw @a ["",{"text":"<player.chat_prefix.parse_color> <player.name.display><&r> has linked their <li@boots|leggings|chestplate|helmet.get[<[loop_index]>]><&co> "},{"text":"<&lb><[value].display||<[value].formatted.to_titlecase>><&r><&rb>","hoverEvent":{"action":"show_item","value":"{<[value].json>}"}},{"text":"!"}]'
             - foreach <player.equipment>:
-                - if <def[value]> == i@air:
+                - if <[value]> == i@air:
                     - foreach next
-                - run link_messagetodiscord def:<def[value]>|<li@boots|leggings|chestplate|helmet.get[<def[loop_index]>]>
+                - run link_messagetodiscord def:<[value]>|<li@boots|leggings|chestplate|helmet.get[<[loop_index]>]>
                 - wait 5t
         - case inventory:
             - define id <util.random.uuid>
-            - flag server link_cmd.<def[id]>.inventory:|:<player.inventory.list_contents.get[10].to[36].pad_right[27].with[i@air]||<li@.pad_right[27].with[i@air]>> duration:30m
-            - flag server link_cmd.<def[id]>.inventory:|:<player.inventory.list_contents.get[1].to[9].pad_right[9].with[i@air]||<li@.pad_right[9].with[i@air]>> duration:30m
-            - flag server link_cmd.<def[id]>.inventory:|:<player.equipment.reverse> duration:30m
-            - flag server link_cmd.<def[id]>.inventory:|:<player.item_in_offhand> duration:30m
-            - flag server link_cmd.<def[id]>.player:<player> duration:30m
-            - execute as_server 'tellraw @a ["",{"text":"<player.chat_prefix.parse_color> <player.name.display><&r> has linked their<&co> "},{"text":"<&b>inventory","clickEvent":{"action":"run_command","value":"/inventorysnapshot <def[id]>"},"hoverEvent":{"action":"show_text","value":"<&e>Click to view a snapshot of <player.name><&sq>s inventory!"}},{"text":"! The inventory snapshot will expire in 30 minutes!"}]'
+            - flag server link_cmd.<[id]>.inventory:|:<player.inventory.list_contents.get[10].to[36].pad_right[27].with[i@air]||<li@.pad_right[27].with[i@air]>> duration:30m
+            - flag server link_cmd.<[id]>.inventory:|:<player.inventory.list_contents.get[1].to[9].pad_right[9].with[i@air]||<li@.pad_right[9].with[i@air]>> duration:30m
+            - flag server link_cmd.<[id]>.inventory:|:<player.equipment.reverse> duration:30m
+            - flag server link_cmd.<[id]>.inventory:|:<player.item_in_offhand> duration:30m
+            - flag server link_cmd.<[id]>.player:<player> duration:30m
+            - execute as_server 'tellraw @a ["",{"text":"<player.chat_prefix.parse_color> <player.name.display><&r> has linked their<&co> "},{"text":"<&b>inventory","clickEvent":{"action":"run_command","value":"/inventorysnapshot <[id]>"},"hoverEvent":{"action":"show_text","value":"<&e>Click to view a snapshot of <player.name><&sq>s inventory!"}},{"text":"! The inventory snapshot will expire in 30 minutes!"}]'
             - discord id:sxr message channel:191040977652285450 "<player.name> linked a snapshot of their inventory in the in-game chat! The snapshot will expire in 30 minutes."
         - default:
             - if <player.item_in_hand> == i@air:
@@ -64,30 +64,30 @@ link_messagetodiscord:
     speed: 0
     definitions: item|type
     script:
-    - if <def[item]||i@air> == i@air:
+    - if <[item]||i@air> == i@air:
         - queue clear
-    - define item_info '<def[item].formatted.to_titlecase>'
-    - if <def[item].quantity> == 1:
-        - define item_info '<def[item_info].after[ ]>'
-    - if <def[type]||null> == null:
-        - discord id:sxr message channel:191040977652285450 '<player.name> is linking their **<def[item].display.strip_color||<def[item_info]>>** (<def[item].quantity>x<tern[<def[item].has_display>]: <def[item_info]>||>)!'
+    - define item_info '<[item].formatted.to_titlecase>'
+    - if <[item].quantity> == 1:
+        - define item_info '<[item_info].after[ ]>'
+    - if <[type]||null> == null:
+        - discord id:sxr message channel:191040977652285450 '<player.name> is linking their **<[item].display.strip_color||<[item_info]>>** (<[item].quantity>x<tern[<[item].has_display>]: <[item_info]>||>)!'
     - else:
-        - discord id:sxr message channel:191040977652285450 '<player.name> is linking their <def[type]> **<def[item].display.strip_color||<def[item_info]>>** (<def[item].quantity>x<tern[<def[item].has_display>]: <def[item_info]>||>)!'
-    - if !<def[item].flags.contains[HIDE_ENCHANTS]>:
+        - discord id:sxr message channel:191040977652285450 '<player.name> is linking their <[type]> **<[item].display.strip_color||<[item_info]>>** (<[item].quantity>x<tern[<[item].has_display>]: <[item_info]>||>)!'
+    - if !<[item].flags.contains[HIDE_ENCHANTS]>:
         - define ench_list li@
-        - foreach <def[item].enchantments.with_levels>:
-            - define ench_list '<def[ench_list].include[<s@translation_data.yaml_key[enchantments.<def[value].before[,]>]> <def[value].after[,]>]>'
-        - define disc_message_enchants '<&nl><&nl>__**Enchantments**__<&nl><def[ench_list].comma_separated>'
-    - if !<def[item].flags.contains[HIDE_ATTRIBUTES]>:
+        - foreach <[item].enchantments.with_levels>:
+            - define ench_list '<[ench_list].include[<s@translation_data.yaml_key[enchantments.<[value].before[,]>]> <[value].after[,]>]>'
+        - define disc_message_enchants '<&nl><&nl>__**Enchantments**__<&nl><[ench_list].comma_separated>'
+    - if !<[item].flags.contains[HIDE_ATTRIBUTES]>:
         - define attrb_list li@
-        - foreach <def[item].nbt_attributes>:
-            - define name '<def[value].before[/].replace[&dot].with[_]>'
-            - define slot '<def[value].after[/].before[/]>'
-            - define operation '<def[value].before_last[/].after_last[/]>'
-            - define atr_value '<def[value].after_last[/]>'
-            - define attrb_list '<def[attrb_list].include[<tern[<def[atr_value].is[OR_MORE].than[0]>]:+||-><def[atr_value]><tern[<def[operation].is[EQUALS].to[0]>]:||<&pc>> <s@translation_data.yaml_key[attribute.<def[name]>]> (<def[slot].to_titlecase>)]>'
-        - define disc_message_attributes '<&nl><&nl>__**Attributes**__<&nl><def[attrb_list].separated_by[<&nl>]>'
-    - discord id:sxr message channel:191040977652285450 '<def[disc_message_enchants]||><&nl><&nl>__**Description**__<&nl><def[item].lore.parse[strip_color].separated_by[<&nl>]><def[disc_message_attributes]||>'
+        - foreach <[item].nbt_attributes>:
+            - define name '<[value].before[/].replace[&dot].with[_]>'
+            - define slot '<[value].after[/].before[/]>'
+            - define operation '<[value].before_last[/].after_last[/]>'
+            - define atr_value '<[value].after_last[/]>'
+            - define attrb_list '<[attrb_list].include[<tern[<[atr_value].is[OR_MORE].than[0]>]:+||-><[atr_value]><tern[<[operation].is[EQUALS].to[0]>]:||<&pc>> <s@translation_data.yaml_key[attribute.<[name]>]> (<[slot].to_titlecase>)]>'
+        - define disc_message_attributes '<&nl><&nl>__**Attributes**__<&nl><[attrb_list].separated_by[<&nl>]>'
+    - discord id:sxr message channel:191040977652285450 '<[disc_message_enchants]||><&nl><&nl>__**Description**__<&nl><[item].lore.parse[strip_color].separated_by[<&nl>]><[disc_message_attributes]||>'
 
 translation_data:
     type: yaml data
@@ -168,15 +168,15 @@ link_inventory_events:
 #        - if !<context.message.contains_text[<&ss>^item_linkplayer]>:
 #            - queue clear
 #        - define message <context.raw_json.after[<&lb>].before_last[<&rb>]>
-#        - foreach <def[message].after[<&lc>].before_last[<&rc>].split_by[<&rc>,<&lc>].escape_contents>:
-#            - foreach <def[value].split_by[&quo,&quo]>:
-#                - define attr_name <def[value].before[&co]>
-#                - define attr_value <def[value].after[&co]>
-#                - if <def[attr_name]> != "&quotext&quo" || !<def[attr_value].starts_with[&quo&ss^item_linkplayer]>:
+#        - foreach <[message].after[<&lc>].before_last[<&rc>].split_by[<&rc>,<&lc>].escape_contents>:
+#            - foreach <[value].split_by[&quo,&quo]>:
+#                - define attr_name <[value].before[&co]>
+#                - define attr_value <[value].after[&co]>
+#                - if <[attr_name]> != "&quotext&quo" || !<[attr_value].starts_with[&quo&ss^item_linkplayer]>:
 #                    - foreach next
-#                - define player '<def[attr_value].after[&quo&ss^item_linkplayer].before[&quo].unescaped>'
-#                - if <def[player]> !matches PLAYER:
+#                - define player '<[attr_value].after[&quo&ss^item_linkplayer].before[&quo].unescaped>'
+#                - if <[player]> !matches PLAYER:
 #                    - foreach next
-#                - define text '"text":"<def[player].item_in_hand.display||<def[player].item_in_hand.formatted.to_titlecase>>","hoverEvent":{"action":"show_item","value":"{<def[player].item_in_hand.json>}"}'
-#                - define message <def[message].before[<def[value].unescaped>]><def[text]><def[message].after[<def[value].unescaped>]>
-#        - determine 'RAW_JSON:{"extra":[<def[message]>],"text":""}'
+#                - define text '"text":"<[player].item_in_hand.display||<[player].item_in_hand.formatted.to_titlecase>>","hoverEvent":{"action":"show_item","value":"{<[player].item_in_hand.json>}"}'
+#                - define message <[message].before[<[value].unescaped>]><[text]><[message].after[<[value].unescaped>]>
+#        - determine 'RAW_JSON:{"extra":[<[message]>],"text":""}'

@@ -7,4 +7,4 @@ SearingFlames_Power_Handler:
             - queue clear
         - else:
             - define fire_power <proc[Magic_Power_Handler].context[fire]>
-            - determine power:<def[fire_power].div[100].mul[1.1]>
+            - determine power:<[fire_power].div[100].mul[1.1]>

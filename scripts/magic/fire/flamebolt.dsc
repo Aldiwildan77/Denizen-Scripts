@@ -7,4 +7,4 @@ Flamebolt_Power_Handler:
             - queue clear
         - else:
             - define fire_power <proc[Magic_Power_Handler].context[fire]>
-            - determine power:<def[fire_power].div[100]>
+            - determine power:<[fire_power].div[100]>
