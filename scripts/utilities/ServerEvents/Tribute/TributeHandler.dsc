@@ -39,10 +39,10 @@ Tribute_Handler:
     events:
         on system time hourly:
         # - announce to_console "Tribute Handler system time event run"
-        - if <util.date.format[EEE]> != Fri && <util.date.format[EEE]> != Mon:
+        - if <util.time_now.format[EEE]> != Fri && <util.time_now.format[EEE]> != Mon:
             #- announce to_console "Date is not Friday or Monday, Tribute Handler stopping"
             - stop
-        - else if <util.date.format[EEE]> == Fri:
+        - else if <util.time_now.format[EEE]> == Fri:
             # - announce to_console "Date is Friday, Tribute Handler running"
             - if <yaml[events].read[tribute.active]>:
                 # - announce to_console "Tribute event already active, Tribute Handler stopping"
@@ -59,8 +59,8 @@ Tribute_Handler:
                 - announce to_console "Reloading scripts"
                 - discord id:sxr message channel:191040977652285450 "**Tribute is active! Seek the favor of the Gods and bring Tribute to the Oracle in Dawn's Landing!**"
                 - reload
-        - else if <util.date.format[EEE]> == Mon:
-            - if <yaml[events].read[tribute.active]> == false:
+        - else if <util.time_now.format[EEE]> == Mon:
+            - if !<yaml[events].read[tribute.active]>:
                 - stop
             - else:
                 - yaml set id:events tribute.active:false
@@ -98,7 +98,7 @@ Tribute_Power_Hour:
     debug: false
     events:
         on system time 19:00:
-        - if <util.date.format[EEE]> != Fri && <util.date.format[EEE]> != Sat && <util.date.format[EEE]> != Sun:
+        - if <util.time_now.format[EEE]> != Fri && <util.time_now.format[EEE]> != Sat && <util.time_now.format[EEE]> != Sun:
             - announce to_console "It's not the weekend, Tribute Power Hour stopping"
             - stop
         - if <server.has_flag[tribute_power_hour]>:
@@ -113,7 +113,7 @@ Tribute_DropTable_Veteran:
     debug: false
     events:
         on entity killed by player:
-        - if <yaml[events].read[tribute.active]> == false:
+        - if !<yaml[events].read[tribute.active]>:
             - stop
         - if !<context.entity.name.starts_with[<&9>]||null>:
             - stop
@@ -131,7 +131,7 @@ Tribute_DropTable_Elite:
     debug: false
     events:
         on entity killed by player:
-        - if <yaml[events].read[tribute.active]> == false:
+        - if !<yaml[events].read[tribute.active]>:
             - stop
         - if !<context.entity.name.starts_with[<&d>]||null>:
             - stop
@@ -148,7 +148,7 @@ Tribute_mcMMO_Drops:
     debug: false
     events:
         on mcmmo player gains xp for mining:
-        - if <yaml[events].read[tribute.active]> == false:
+        - if !<yaml[events].read[tribute.active]>:
             - stop
         - if <util.random.int[1].to[50]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining mining exp"
@@ -159,7 +159,7 @@ Tribute_mcMMO_Drops:
             - narrate "<&a>You found a Tribute to the Gods!"
 
         on mcmmo player gains xp for herbalism:
-        - if <yaml[events].read[tribute.active]> == false:
+        - if !<yaml[events].read[tribute.active]>:
             - stop
         - if <util.random.int[1].to[50]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining herbalism exp"
@@ -170,7 +170,7 @@ Tribute_mcMMO_Drops:
             - narrate "<&a>You found a Tribute to the Gods!"
 
         on mcmmo player gains xp for fishing:
-        - if <yaml[events].read[tribute.active]> == false:
+        - if !<yaml[events].read[tribute.active]>:
             - stop
         - if <util.random.int[1].to[15]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining fishing exp"
@@ -181,7 +181,7 @@ Tribute_mcMMO_Drops:
             - narrate "<&a>You found a Tribute to the Gods!"
 
         on mcmmo player gains xp for woodcutting:
-        - if <yaml[events].read[tribute.active]> == false:
+        - if !<yaml[events].read[tribute.active]>:
             - stop
         - if <util.random.int[1].to[50]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining woodcutting exp"
@@ -192,7 +192,7 @@ Tribute_mcMMO_Drops:
             - narrate "<&a>You found a Tribute to the Gods!"
 
         on mcmmo player gains xp for excavation:
-        - if <yaml[events].read[tribute.active]> == false:
+        - if !<yaml[events].read[tribute.active]>:
             - stop
         - if <util.random.int[1].to[50]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining excavation exp"

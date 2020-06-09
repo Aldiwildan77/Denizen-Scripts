@@ -1,4 +1,4 @@
-"Player Login Checker":
+Player_Login_Checker:
     type: world
     debug: false
     events:
@@ -24,7 +24,7 @@
         - announce "<&a>Daily server rewards have reset and will become available when you next log in!"
         - discord id:sxr message channel:343105813293826059 "<&lt><&at><&amp>223441207341219840<&gt>, daily login rewards have been reset!"
 
-"DailyLogin":
+DailyLogin:
     type: command
     name: dailylogin
     description: Receive your daily login reward, if available.
@@ -180,7 +180,7 @@ Veteran-Spinner:
     - define veteran-roll-list li@
     - define pick li@
     - flag player cannot_close_inv:1
-    - define itemlist li@i@EliteBox/20|<mythicitem@ImbuedSword.get_item>/20|<mythicitem@ImbuedBow.get_item>/20|<mythicitem@ImbuedShield.get_item>/20|<mythicitem@ImbuedHelm.get_item>/20|<mythicitem@ImbuedChest.get_item>/20|<mythicitem@ImbuedLegs.get_item>/20|<mythicitem@ImbuedBoots.get_item>/20|<mythicitem@ImbuedAxe.get_item>/20|<mythicitem@ImbuedPickaxe.get_item>/20|<mythicitem@ImbuedShovel.get_item>/20|<mythicitem@ImbuedHoe.get_item>/20|<mythicitem@ImbuedFishingRod.get_item>/20
+    - define itemlist li@i@EliteBox/20|<mythic_item[ImbuedSword]>/20|<mythic_item[ImbuedBow]>/20|<mythic_item[ImbuedShield]>/20|<mythic_item[ImbuedHelm]>/20|<mythic_item[ImbuedChest]>/20|<mythic_item[ImbuedLegs]>/20|<mythic_item[ImbuedBoots]>/20|<mythic_item[ImbuedAxe]>/20|<mythic_item[ImbuedPickaxe]>/20|<mythic_item[ImbuedShovel]>/20|<mythic_item[ImbuedHoe]>/20|<mythic_item[ImbuedFishingRod]>/20
     - foreach <[itemlist]>:
         - define veteran-display-list <[veteran-display-list].pad_left[<[veteran-display-list].size.add[<[value].after_last[/]>]>].with[<[value].before_last[/]>]>
     # Pick 60 random items from the weighted list
@@ -214,7 +214,7 @@ Elite-Spinner:
     - define elite-display-list li@
     - define elite-roll-list li@
     - define pick li@
-    - define itemlist li@<mythicitem@BurnishedSword.get_item>/20|<mythicitem@BurnishedBow.get_item>/20|<mythicitem@BurnishedShield.get_item>/20|<mythicitem@BountifulBlade.get_item>/20|<mythicitem@WitheringBlade.get_item>/20|<mythicitem@BurnishedHelm.get_item>/20|<mythicitem@BurnishedChest.get_item>/20|<mythicitem@BurnishedLegs.get_item>/20|<mythicitem@BurnishedBoots.get_item>/20|<mythicitem@BurnishedAxe.get_item>/20|<mythicitem@BurnishedPickaxe.get_item>/20|<mythicitem@BurnishedShovel.get_item>/20|<mythicitem@BurnishedHoe.get_item>/20|<mythicitem@BurnishedFishingRod.get_item>/20
+    - define itemlist li@<mythic_item[BurnishedSword]>/20|<mythic_item[BurnishedBow]>/20|<mythic_item[BurnishedShield]>/20|<mythic_item[BountifulBlade]>/20|<mythic_item[WitheringBlade]>/20|<mythic_item[BurnishedHelm]>/20|<mythic_item[BurnishedChest]>/20|<mythic_item[BurnishedLegs]>/20|<mythic_item[BurnishedBoots]>/20|<mythic_item[BurnishedAxe]>/20|<mythic_item[BurnishedPickaxe]>/20|<mythic_item[BurnishedShovel]>/20|<mythic_item[BurnishedHoe]>/20|<mythic_item[BurnishedFishingRod]>/20
     - foreach <[itemlist]>:
         - define elite-display-list <[elite-display-list].pad_left[<[elite-display-list].size.add[<[value].after_last[/]>]>].with[<[value].before_last[/]>]>
     # Pick 60 random items from the weighted list

@@ -40,7 +40,7 @@ tribute_npc_format:
                 script:
                 - narrate format:tribute_npc_format "Wonderful. Which blessing do you pray for?"
                 - wait 1s
-                - inventory open d:in@Tribute_Inventory
+                - inventory open d:<inventory[Tribute_Inventory]>
                 - zap General
             proximity trigger:
                 exit:
@@ -74,21 +74,21 @@ tribute_npc_format:
                                 - execute as_server "xprate <[rate].add[1]> true"
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Skillfulness to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Skillfulness."
-                                - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Skillfulness!**"
+                                - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, @here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Skillfulness!**"
                             - else if <[choice]> == drops:
                                 - yaml id:events set tribute.drops.rate:<[rate].add[1]>
                                 - yaml id:rates set drops.multiplier:<[rate].add[1]>
                                 - yaml id:rates savefile:scriptdata/Rates.yml
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Luck to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Luck."
-                                - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Luck!**"
+                                - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, @here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Luck!**"
                             - else if <[choice]> == experience:
                                 - yaml id:events set tribute.experience.rate:<[rate].add[1]>
                                 - yaml id:rates set experience.multiplier:<[rate].add[1]>
                                 - yaml id:rates savefile:scriptdata/Rates.yml
                                 - narrate format:tribute_npc_format "The Gods smile on us! Your offering brings the Blessing of Wisdom to us all!"
                                 - announce "<&c>The Gods speak<&f>: The Gods smile upon Prosperus. Thanks to the offerings by <player.name>, we offer a Blessing of Wisdom."
-                                - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, <&at>here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Wisdom!**"
+                                - discord id:sxr message channel:191040977652285450 "**Blessings upon us all, @here! <player.name> has brought the favor of the Gods to Prosperus. They bestow a Blessing of Wisdom!**"
                         - yaml id:events savefile:scriptdata/Events.yml
                         - flag player blessing_selection:!
                         - zap General
@@ -102,13 +102,14 @@ tribute_npc_format:
 
 Tribute_Inventory:
     type: inventory
+    inventory: chest
     debug: false
     title: Blessings
     size: 45
     slots:
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
-    - "[] [] [i@Tribute_mcMMO] [] [i@Tribute_DropRate] [] [i@Tribute_Experience] [] []"
+    - "[] [] [Tribute_mcMMO] [] [Tribute_DropRate] [] [Tribute_Experience] [] []"
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
 
@@ -123,14 +124,14 @@ Tribute_Inventory_Handler:
             - narrate format:tribute_npc_format "The Gods are already offering as much of this blessing as they deem this world worthy of."
             - wait 0.7s
             - narrate format:tribute_npc_format "Would you like to pray for a different blessing?"
-            - zap s@TributeNPC Blessing
-            - queue clear
+            - zap TributeNPC Blessing
+            - stop
         - else:
             - flag player blessing_selection:mcmmo
             - narrate format:tribute_npc_format "Ah, you pray for the Blessing of Skillfulness."
             - wait 0.7s
             - narrate format:tribute_npc_format "How much Tribute would you like to offer?"
-            - zap s@TributeNPC Offer
+            - zap TributeNPC Offer
 
         on player clicks Tribute_DropRate in Tribute_Inventory:
         - inventory close
@@ -138,14 +139,14 @@ Tribute_Inventory_Handler:
             - narrate format:tribute_npc_format "The Gods are already offering as much of this blessing as they deem this world worthy of."
             - wait 0.7s
             - narrate format:tribute_npc_format "Would you like to pray for a different blessing?"
-            - zap s@TributeNPC Blessing
-            - queue clear
+            - zap TributeNPC Blessing
+            - stop
         - else:
             - flag player blessing_selection:drops
             - narrate format:tribute_npc_format "Ah, you pray for the Blessing of Luck."
             - wait 0.7s
             - narrate format:tribute_npc_format "How much Tribute would you like to offer?"
-            - zap s@TributeNPC Offer
+            - zap TributeNPC Offer
 
         on player clicks Tribute_Experience in Tribute_Inventory:
         - inventory close
@@ -153,14 +154,14 @@ Tribute_Inventory_Handler:
             - narrate format:tribute_npc_format "The Gods are already offering as much of this blessing as they deem this world worthy of."
             - wait 0.7s
             - narrate format:tribute_npc_format "Would you like to pray for a different blessing?"
-            - zap s@TributeNPC Blessing
-            - queue clear
+            - zap TributeNPC Blessing
+            - stop
         - else:
             - flag player blessing_selection:experience
             - narrate format:tribute_npc_format "Ah, you pray for the Blessing of Wisdom."
             - wait 0.7s
             - narrate format:tribute_npc_format "How much Tribute would you like to offer?"
-            - zap s@TributeNPC Offer
+            - zap TributeNPC Offer
 
         on player drags in Tribute_Inventory:
         - determine cancelled
