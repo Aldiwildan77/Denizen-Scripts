@@ -4,9 +4,9 @@ Reinvigorate_Player_Target_Condition:
     type: world
     events:
         on mm denizen mechanic:
-        - if <context.skill> == "reinvigorate-targeter":
+        - if <context.skill> == reinvigorate-targeter:
             - define cost 100
-            - if <context.targettype> != "ENTITY":
+            - if <context.targettype> != ENTITY:
                 - determine false
             - if <context.target.is_player.not>:
                 - determine false
@@ -26,7 +26,7 @@ Reinvigorate_Player_Target_Condition:
                 - if <[reinvigorate-particle-count].mod[2]> == 0:
                     - wait 1t
                 - if <[reinvigorate-particle-count]> == 0:
-                    - mmcastplayer caster:<context.caster> target:<context.target> skill:Reinvigorate-Heal
+                    - heal 30 <context.target>
             - define reinvigorate-particle-count 0
             - repeat 160:
                 - playeffect <context.target.location.add[0,<[reinvigorate-particle-count].div[4]>,0]> effect:VILLAGER_HAPPY visibility:500 quantity:8 offset:0.8,0,0.8
