@@ -15,13 +15,13 @@ altar_created:
     type: task
     speed: 0
     script:
-    - narrate "Created!"
+    - narrate Created!
 
 alter_deleted:
     type: task
     speed: 0
     script:
-    - narrate "Deleted!"
+    - narrate Deleted!
 
 # Handles creation and removal of notable cuboids when a player places a schematic listed in 'schematic_data'.
 
@@ -33,32 +33,25 @@ schematic_check_evt:
     events:
         # Checks for a trigger block, then checks for a matching schamatic, and notes if found
         on player places block:
-        - if <s@schematic_data.list_keys[triggers].contains[<context.material.name>]> {
-            - foreach <s@schematic_data.yaml_key[triggers.<context.material.name>]> {
-                - if !<schematic[<[value].before[/]>].exists> {
-                    - queue clear
-                }
+        - if <script[schematic_data].list_keys[triggers].contains[<context.material.name>]>:
+            - foreach <script[schematic_data].yaml_key[triggers.<context.material.name>]>:
+                - if !<schematic[<[value].before[/]>].exists>:
+                    - stop
                 - run schematic_checker def:<context.location>|<[value].before[/]>|<[value].after[/]>
-                - if <server.flag[schem_check]> {
+                - if <server.flag[schem_check]>:
                     - note <schematic[<[value].before[/]>].cuboid[<context.location>]> as:schematic_<context.location.simple.replace[l@]>_<[value].before[/]>
-                }
                 - flag server schem_check:!
-                - if <[value].split_by[/].size> >= 3 {
+                - if <[value].split_by[/].size> >= 3:
                     - run <[value].split_by[/].get[3]>
-                }
-                - if <[value].split_by[/].size> == 4 {
+                - if <[value].split_by[/].size> == 4:
                     - flag server schem_deletion_scripts.schematic_<context.location.simple.replace[l@]>_<[value].before[/]>:<[value].after_last[/]>
-                }
-            }
-        }
+
         on player breaks block in notable cuboid:
-        - foreach <context.location.cuboids.filter[notable_name.starts_with[schematic_]]> {
+        - foreach <context.location.cuboids.filter[notable_name.starts_with[schematic_]]>:
             - note remove as:<[value].notable_name>
-            - if <server.has_flag[schem_deletion_scripts.<[value].notable_name>]> {
+            - if <server.has_flag[schem_deletion_scripts.<[value].notable_name>]>:
                 - run <server.flag[schem_deletion_scripts.<[value].notable_name>]>
                 - flag server schem_deletion_scripts.<[value].notable_name>:!
-            }
-        }
 
 # Checks if a schematic matches the placed blocks around a location
 # USAGE SAMPLE:
@@ -78,12 +71,10 @@ schematic_checker:
     with_air:
     - foreach <[cuboid].blocks>:
         - define schem_mat <schematic[<[schematic]>].block[<[value].sub[<[adjusted_location]>]>].name>
-        - if <[schem_mat]> != air && <[schem_mat]> != <[value].material.name> {
+        - if <[schem_mat]> != air && <[schem_mat]> != <[value].material.name>:
             - flag server schem_check:false
-        }
     ignore_air:
     - foreach <[cuboid].blocks>:
         - define schem_mat <schematic[<[schematic]>].block[<[value].sub[<[adjusted_location]>]>].name>
-        - if <[schem_mat]> != <[value].material.name> {
+        - if <[schem_mat]> != <[value].material.name>:
             - flag server schem_check:false
-        }
