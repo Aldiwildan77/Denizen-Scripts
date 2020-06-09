@@ -4,7 +4,7 @@ Overgrowth Cast:
     debug: false
     events:
         on mm denizen mechanic:
-        - if <context.skill> == "overgrowth-cast":
+        - if <context.skill> == overgrowth-cast:
             - define caster <context.caster>
             - define duration 20
             - define super-passive-spending 4
@@ -13,7 +13,7 @@ Overgrowth Cast:
             - define duration-calculated <[super-max-energy].div[<[duration]>].sub[<[super-passive-spending]>].div[20].mul[<[wait]>]>
             - if <[caster].as_player.has_flag[overgrowth-activated]>:
 #                - narrate "Caster already had the flag" targets:<[caster]>
-                - queue clear
+                - stop
             - flag <[caster]> max-health:<player.health.max>
             - flag <[caster]> overgrowth-activated:1
             - adjust <[caster]> max_health:<player.health.max.add[20]>
