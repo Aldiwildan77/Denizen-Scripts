@@ -4,12 +4,12 @@ Impact_Cast:
     debug: false
     events:
         on mm denizen mechanic:
-        - if <context.skill> == "impact-cast":
+        - if <context.skill> == impact-cast:
             - define caster <context.caster>
 #            - narrate "Impact cast" targets:<[caster]>
             - if <[caster].as_player.has_flag[impact-activated]>:
 #                - narrate "Caster already had the flag" targets:<[caster]>
-                - queue clear
+                - stop
 #            - define cost 125
 #            - yaml id:super-counter set energy.<context.caster.uuid>:<yaml[super-counter].read[energy.<context.caster.uuid>].sub[<[cost]>]>
             - adjust <[caster]> gravity:false
@@ -28,7 +28,7 @@ Impact_Swing:
     debug: false
     events:
         on mm denizen mechanic:
-        - if <context.skill> == "impact-swing":
+        - if <context.skill> == impact-swing:
             - define caster <context.caster>
 #            - define cost 200
             - if <[caster].as_player.has_flag[impact-activated]>:
