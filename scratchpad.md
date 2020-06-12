@@ -11,6 +11,11 @@ Stuff I come up with on lunch breaks.
   * Gold sinks somehow
     * Pay gold to improve supplies? Reduce prices?
   * Reduces the need for villager spawners
+  
+### Material storage
+
+* Store stacks of materials, up to some limit
+  * Obviates the need for sorters
 
 ## Combat
 
