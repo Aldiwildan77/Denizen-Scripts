@@ -32,7 +32,7 @@ nbt_craft_prevention:
 
 SocketMaker:
     type: item
-    material: nether_star[hides=li@HIDE_ENCHANTS;nbt: uncraftable/true;lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>]
+    material: nether_star[hides=li@HIDE_ENCHANTS;nbt: uncraftable/true;lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>]
     display name: "<&a>Purified Dark Matter"
     lore_list:
     - "<&6>This coalesced energy has been purged of the darkness inside. It now pulses and radiates in an unstoppable splendor."
@@ -125,7 +125,7 @@ sockets:
     - "[] [] [] [] [] [] [] [] []"
 socket_add:
     type: item
-    material: nether_star[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>]
+    material: nether_star[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>]
     display name: "<&a>Unlock a socket on an item"
     lore_list:
     - "<&f>Requires <server.flag[SocketAddCost]> Purified Dark Matter and 1 Ingot of Crystallized Experience."
@@ -141,7 +141,7 @@ gem_add:
     - MENDING:1
 socket_potential:
     type: item
-    material: gold_ingot[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>]
+    material: gold_ingot[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>]
     display name: "<&a>Unlock the <&6>Sealed Potential<&a> of an item"
     lore_list:
     - "<&f>Requires an item with <&6>Sealed Potential<&f>, <server.flag[SealedPotentialCost]> Purified Dark Matter, and 1 Ingot of Crystallized Experience."
@@ -274,7 +274,7 @@ prismatic_seer_socket_potential_handler:
             - stop
         - if <context.item.has_nbt[sealed_potential]>:
             - take <context.item> from:<player.inventory>
-            - define max_sockets <script.yaml_key[max_sockets.<context.item.nbt[item_tier]>]>
+            - define max_sockets <script.data_key[max_sockets.<context.item.nbt[item_tier]>]>
             - adjust <context.item> remove_nbt:sealed_potential save:edited
             - define item:<entry[edited].result>
             - foreach <[item].nbt_keys.filter[matches[socket[0-9]+_empty]].alphanumeric>:

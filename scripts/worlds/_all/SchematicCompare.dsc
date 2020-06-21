@@ -34,7 +34,7 @@ schematic_check_evt:
         # Checks for a trigger block, then checks for a matching schamatic, and notes if found
         on player places block:
         - if <script[schematic_data].list_keys[triggers].contains[<context.material.name>]>:
-            - foreach <script[schematic_data].yaml_key[triggers.<context.material.name>]>:
+            - foreach <script[schematic_data].data_key[triggers.<context.material.name>]>:
                 - if !<schematic[<[value].before[/]>].exists>:
                     - stop
                 - run schematic_checker def:<context.location>|<[value].before[/]>|<[value].after[/]>

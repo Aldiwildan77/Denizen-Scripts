@@ -12,31 +12,32 @@ alchemist_arcaena_format:
     type: format
     format: "<dark_green>Alchemist Arcaena<white><&co> <text>"
 
-"alchemist_arcaena_interact":
+alchemist_arcaena_interact:
     type: interact
     steps:
         "Player Seen*":
             proximity trigger:
                 entry:
                     script:
-                    - narrate "format:alchemist_arcaena_format" "Hello, adventurer! Come to peruse my magical brews? Bring me the right ingredients and I can craft you some enchanted cocktails."
-                    - narrate "format:alchemist_arcaena_format" "The various potions I can brew require different kinds of ingredients. Right click me to browse my offerings."
+                    - narrate format:alchemist_arcaena_format "Hello, adventurer! Come to peruse my magical brews? Bring me the right ingredients and I can craft you some enchanted cocktails."
+                    - narrate format:alchemist_arcaena_format "The various potions I can brew require different kinds of ingredients. Right click me to browse my offerings."
                 exit:
                     script:
-                    - narrate "format:alchemist_arcaena_format" "Good luck on your adventures! Visit me again when you need another magical drink."
+                    - narrate format:alchemist_arcaena_format "Good luck on your adventures! Visit me again when you need another magical drink."
             click trigger:
                 script:
-                - narrate "format:alchemist_arcaena_format" "Okay, here's what I have to offer."
+                - narrate format:alchemist_arcaena_format "Okay, here's what I have to offer."
                 - wait 1s
-                - inventory open d:in@alchemist_arcaena_inventory_menu
+                - inventory open d:alchemist_arcaena_inventory_menu
 
-"alchemist_arcaena_inventory_menu":
+alchemist_arcaena_inventory_menu:
     type: inventory
+    inventory: chest
     title: Enchanted Cocktails
     size: 45
     slots:
-    - "[i@DropRateBooster2xMenu] [] [i@GoldBooster2xMenu] [] [] [] [] [] []"
-    - "[i@DropRateBooster4xMenu] [] [i@GoldBooster4xMenu] [] [] [] [] [] []"
+    - "[DropRateBooster2xMenu] [] [GoldBooster2xMenu] [] [] [] [] [] []"
+    - "[DropRateBooster4xMenu] [] [GoldBooster4xMenu] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
@@ -49,8 +50,8 @@ DropRateBooster2xMenu:
     lore_list:
     - <&f>This magic potion will give you a 2x chance to find rare items while hunting monsters!
     - <&6>Ingredients
-    - <&f><s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter
-    - <&f><s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
+    - <&f><script.data_key[purifieddarkmattercost]>x Purified Dark Matter
+    - <&f><script.data_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
     enchantments:
     - MENDING:1
     purifieddarkmattercost: 32
@@ -62,7 +63,7 @@ DropRateBooster2xMenu:
         nbt:
         - uncraftable/true
         color: <color[0,0,255]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 DropRateBooster4xMenu:
     type: item
@@ -71,8 +72,8 @@ DropRateBooster4xMenu:
     lore_list:
     - <&f>This magic potion will give you a 4x chance to find rare items while hunting monsters!
     - <&6>Ingredients
-    - <&f><s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter
-    - <&f><s@DropRateBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
+    - <&f><script.data_key[purifieddarkmattercost]>x Purified Dark Matter
+    - <&f><script.data_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
     enchantments:
     - MENDING:1
     purifieddarkmattercost: 96
@@ -84,7 +85,7 @@ DropRateBooster4xMenu:
         nbt:
         - uncraftable/true
         color: <color[0,0,255]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 GoldBooster2xMenu:
     type: item
@@ -93,8 +94,8 @@ GoldBooster2xMenu:
     lore_list:
     - <&f>This magic potion will give you a 2x chance to find extra gold from slain monsters!
     - <&6>Ingredients
-    - <&f><s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter
-    - <&f><s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
+    - <&f><script.data_key[purifieddarkmattercost]>x Purified Dark Matter
+    - <&f><script.data_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
     enchantments:
     - MENDING:1
     purifieddarkmattercost: 32
@@ -106,7 +107,7 @@ GoldBooster2xMenu:
         nbt:
         - uncraftable/true
         color: <color[255,255,0]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 GoldBooster4xMenu:
     type: item
@@ -115,8 +116,8 @@ GoldBooster4xMenu:
     lore_list:
     - <&f>This magic potion will give you a 4x chance to find extra gold from slain monsters!
     - <&6>Ingredients
-    - <&f><s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>x Purified Dark Matter
-    - <&f><s@GoldBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
+    - <&f><script[GoldBooster4xMenu].data_key[purifieddarkmattercost]>x Purified Dark Matter
+    - <&f><script[GoldBooster4xMenu].data_key[crystallizedexperienceingotcost]>x Crystallized Experience Ingot
     enchantments:
     - MENDING:1
     purifieddarkmattercost: 96
@@ -128,7 +129,7 @@ GoldBooster4xMenu:
         nbt:
         - uncraftable/true
         color: <color[255,255,0]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 
 alchemist_arcaena_inventory_handler:
@@ -139,46 +140,46 @@ alchemist_arcaena_inventory_handler:
         on player drags in alchemist_arcaena_inventory_menu:
         - determine cancelled
         on player clicks DropRateBooster2xMenu in alchemist_arcaena_inventory_menu:
-        - inventory close d:in@alchemist_arcaena_inventory_menu
+        - inventory close
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>]>:
-            - take scriptname:SocketMaker quantity:<s@DropRateBooster2xMenu.yaml_key[purifieddarkmattercost]>
-            - take scriptname:CrystallizedExperienceIngot quantity:<s@DropRateBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>
+        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<script[DropRateBooster2xMenu].data_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<script[DropRateBooster2xMenu].data_key[crystallizedexperienceingotcost]>]>:
+            - take scriptname:SocketMaker quantity:<script[DropRateBooster2xMenu].data_key[purifieddarkmattercost]>
+            - take scriptname:CrystallizedExperienceIngot quantity:<script[DropRateBooster2xMenu].data_key[crystallizedexperienceingotcost]>
             - give DropRateBooster2x quantity:1 to:<player.inventory>
-            - narrate "format:alchemist_arcaena_format" "Here you go, bottoms up!"
+            - narrate format:alchemist_arcaena_format "Here you go, bottoms up!"
         - else:
-            - narrate "format:alchemist_arcaena_format" "Sorry, I need you to bring me the right ingredients for that!"
-        - narrate "format:alchemist_arcaena_format" "Right click me again if you're looking for anything else!"
+            - narrate format:alchemist_arcaena_format "Sorry, I need you to bring me the right ingredients for that!"
+        - narrate format:alchemist_arcaena_format "Right click me again if you're looking for anything else!"
         on player clicks DropRateBooster4xMenu in alchemist_arcaena_inventory_menu:
-        - inventory close d:in@alchemist_arcaena_inventory_menu
+        - inventory close
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@DropRateBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>]>:
-            - take scriptname:SocketMaker quantity:<s@DropRateBooster4xMenu.yaml_key[purifieddarkmattercost]>
-            - take scriptname:CrystallizedExperienceIngot quantity:<s@DropRateBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>
+        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<script[DropRateBooster4xMenu].data_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<script[DropRateBooster4xMenu].data_key[crystallizedexperienceingotcost]>]>:
+            - take scriptname:SocketMaker quantity:<script[DropRateBooster4xMenu].data_key[purifieddarkmattercost]>
+            - take scriptname:CrystallizedExperienceIngot quantity:<script[DropRateBooster4xMenu].data_key[crystallizedexperienceingotcost]>
             - give DropRateBooster4x quantity:1 to:<player.inventory>
-            - narrate "format:alchemist_arcaena_format" "Here you go, bottoms up!"
+            - narrate format:alchemist_arcaena_format "Here you go, bottoms up!"
         - else:
-            - narrate "format:alchemist_arcaena_format" "Sorry, I need you to bring me the right ingredients for that!"
-        - narrate "format:alchemist_arcaena_format" "Right click me again if you're looking for anything else!"
+            - narrate format:alchemist_arcaena_format "Sorry, I need you to bring me the right ingredients for that!"
+        - narrate format:alchemist_arcaena_format "Right click me again if you're looking for anything else!"
         on player clicks GoldBooster2xMenu in alchemist_arcaena_inventory_menu:
-        - inventory close d:in@alchemist_arcaena_inventory_menu
+        - inventory close
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@GoldBooster2xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@GoldBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>]>:
-            - take scriptname:SocketMaker quantity:<s@GoldBooster2xMenu.yaml_key[purifieddarkmattercost]>
-            - take scriptname:CrystallizedExperienceIngot quantity:<s@GoldBooster2xMenu.yaml_key[crystallizedexperienceingotcost]>
+        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<script[GoldBooster2xMenu].data_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<script[GoldBooster2xMenu].data_key[crystallizedexperienceingotcost]>]>:
+            - take scriptname:SocketMaker quantity:<script[GoldBooster2xMenu].data_key[purifieddarkmattercost]>
+            - take scriptname:CrystallizedExperienceIngot quantity:<script[GoldBooster2xMenu].data_key[crystallizedexperienceingotcost]>
             - give GoldBooster2x quantity:1 to:<player.inventory>
-            - narrate "format:alchemist_arcaena_format" "Here you go, bottoms up!"
+            - narrate format:alchemist_arcaena_format "Here you go, bottoms up!"
         - else:
-            - narrate "format:alchemist_arcaena_format" "Sorry, I need you to bring me the right ingredients for that!"
-        - narrate "format:alchemist_arcaena_format" "Right click me again if you're looking for anything else!"
+            - narrate format:alchemist_arcaena_format "Sorry, I need you to bring me the right ingredients for that!"
+        - narrate format:alchemist_arcaena_format "Right click me again if you're looking for anything else!"
         on player clicks GoldBooster4xMenu in alchemist_arcaena_inventory_menu:
-        - inventory close d:in@alchemist_arcaena_inventory_menu
+        - inventory close
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<s@GoldBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>]>:
-            - take scriptname:SocketMaker quantity:<s@GoldBooster4xMenu.yaml_key[purifieddarkmattercost]>
-            - take scriptname:CrystallizedExperienceIngot quantity:<s@GoldBooster4xMenu.yaml_key[crystallizedexperienceingotcost]>
+        - if <player.inventory.contains.scriptname[SocketMaker].quantity[<script[GoldBooster4xMenu].data_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<script[GoldBooster4xMenu].data_key[crystallizedexperienceingotcost]>]>:
+            - take scriptname:SocketMaker quantity:<script[GoldBooster4xMenu].data_key[purifieddarkmattercost]>
+            - take scriptname:CrystallizedExperienceIngot quantity:<script[GoldBooster4xMenu].data_key[crystallizedexperienceingotcost]>
             - give GoldBooster4x quantity:1 to:<player.inventory>
-            - narrate "format:alchemist_arcaena_format" "Here you go, bottoms up!"
+            - narrate format:alchemist_arcaena_format "Here you go, bottoms up!"
         - else:
-            - narrate "format:alchemist_arcaena_format" "Sorry, I need you to bring me the right ingredients for that!"
-        - narrate "format:alchemist_arcaena_format" "Right click me again if you're looking for anything else!"
+            - narrate format:alchemist_arcaena_format "Sorry, I need you to bring me the right ingredients for that!"
+        - narrate format:alchemist_arcaena_format "Right click me again if you're looking for anything else!"

@@ -9,7 +9,7 @@ GodsTribute:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         flags:
         - HIDE_ENCHANTS
         nbt:
@@ -28,7 +28,7 @@ GodsTributeOld:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         flags:
         - HIDE_ENCHANTS
         nbt:

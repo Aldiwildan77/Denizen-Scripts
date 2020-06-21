@@ -10,6 +10,6 @@ gold_rate_announcement:
     debug: false
     events:
         on player joins:
-        - if <s@gold_rate_data.yaml_key[gold_multiplier_active]>:
+        - if <s@gold_rate_data.data_key[gold_multiplier_active]>:
             - wait 4s
-            - narrate "<&6>A bonus gold rate event is active! Go monster hunting with a <s@gold_rate_data.yaml_key[gold_rate_multiplier]>x chance for monsters to drop bonus gold!"
+            - narrate "<&6>A bonus gold rate event is active! Go monster hunting with a <s@gold_rate_data.data_key[gold_rate_multiplier]>x chance for monsters to drop bonus gold!"

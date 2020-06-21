@@ -13,7 +13,7 @@ GoldBooster2x:
         nbt:
         - uncraftable/true
         color: <color[255,255,0]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 GoldBooster4x:
     type: item
@@ -30,7 +30,7 @@ GoldBooster4x:
         nbt:
         - uncraftable/true
         color: <color[255,255,0]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 gold_booster_handler:
     type: world

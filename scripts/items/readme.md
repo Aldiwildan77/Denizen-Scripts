@@ -18,7 +18,7 @@ ImbuedChest_sealed_potential:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_EXPLOSIONS:2
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/chest/0/8.0
         - generic.armorToughness/chest/0/2.0

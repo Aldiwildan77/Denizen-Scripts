@@ -13,7 +13,7 @@ RedstoneFinderBooster2x:
         nbt:
         - uncraftable/true
         color: <color[255,0,0]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 RedstoneFinderBooster4x:
     type: item
     material: potion
@@ -29,7 +29,7 @@ RedstoneFinderBooster4x:
         nbt:
         - uncraftable/true
         color: <color[255,0,0]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 redstone_finder_booster_handler:
     type: world

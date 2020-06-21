@@ -28,7 +28,7 @@ CrystallizedExperienceSliver:
         nbt:
         - experiencecrystal/sliver
         - uncraftable/true
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 CrystallizedExperienceChunk:
     type: item
@@ -44,7 +44,7 @@ CrystallizedExperienceChunk:
         nbt:
         - experiencecrystal/chunk
         - uncraftable/true
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 CrystallizedExperienceBillet:
     type: item
@@ -60,7 +60,7 @@ CrystallizedExperienceBillet:
         nbt:
         - experiencecrystal/billet
         - uncraftable/true
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 CrystallizedExperienceBloom:
     type: item
@@ -76,7 +76,7 @@ CrystallizedExperienceBloom:
         nbt:
         - experiencecrystal/bloom
         - uncraftable/true
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 CrystallizedExperienceIngot:
     type: item
@@ -92,7 +92,7 @@ CrystallizedExperienceIngot:
         nbt:
         - experiencecrystal/ingot
         - uncraftable/true
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 Artificing:
     type: interact

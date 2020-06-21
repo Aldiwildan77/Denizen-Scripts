@@ -188,7 +188,7 @@ Tribute_mcMMO:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         hides:
         - enchants
 
@@ -205,7 +205,7 @@ Tribute_DropRate:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         hides:
         - enchants
 
@@ -222,6 +222,6 @@ Tribute_Experience:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         hides:
         - enchants

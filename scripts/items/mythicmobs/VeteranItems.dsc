@@ -10,7 +10,7 @@ ImbuedSword_sealed_potential:
     enchantments:
     - DAMAGE_ALL:6
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.57
@@ -32,7 +32,7 @@ ImbuedHelm_sealed_potential:
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/head/0/4.0
         - generic.armorToughness/head/0/2.0
@@ -55,7 +55,7 @@ ImbuedChest_sealed_potential:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_EXPLOSIONS:2
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/chest/0/8.0
         - generic.armorToughness/chest/0/2.0
@@ -77,7 +77,7 @@ ImbuedLegs_sealed_potential:
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/legs/0/6.0
         - generic.armorToughness/legs/0/2.0
@@ -99,7 +99,7 @@ ImbuedBoots_sealed_potential:
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/feet/0/2.0
         - generic.armorToughness/feet/0/2.0
@@ -122,7 +122,7 @@ ImbuedBow_sealed_potential:
     - ARROW_DAMAGE:6
     - ARROW_KNOCKBACK:2
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt:
         - equipment_type/weapon
         - item_tier/veteran
@@ -140,7 +140,7 @@ ImbuedShield_sealed_potential:
     enchantments:
     - DURABILITY:3
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/offhand/0/4.0
         - generic.armorToughness/offhand/0/2.0
@@ -162,7 +162,7 @@ ImbuedAxe_sealed_potential:
     - DAMAGE_ALL:6
     - DIG_SPEED:6
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.attackSpeed/mainhand/1/-0.73
         - generic.attackDamage/mainhand/0/13.5
@@ -185,7 +185,7 @@ TestItem:
     - DAMAGE_ALL:11
     - DIG_SPEED:6
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.attackSpeed/mainhand/1/-0.73
         - generic.attackDamage/mainhand/0/13.5

@@ -13,7 +13,7 @@ ImbuedChains_sealed_potential:
     enchantments:
     - DAMAGE_ALL:6
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.47
@@ -39,7 +39,7 @@ BurnishedChains_sealed_potential:
     enchantments:
     - DAMAGE_ALL:7
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.44

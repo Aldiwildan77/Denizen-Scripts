@@ -13,7 +13,7 @@ ExperienceBooster2x:
         nbt:
         - uncraftable/true
         color: <color[0,255,0]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 ExperienceBooster4x:
     type: item
@@ -30,7 +30,7 @@ ExperienceBooster4x:
         nbt:
         - uncraftable/true
         color: <color[0,255,0]>
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 exp_booster_handler:
     type: world

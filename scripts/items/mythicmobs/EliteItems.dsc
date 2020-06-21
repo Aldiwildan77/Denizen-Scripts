@@ -10,7 +10,7 @@ BurnishedSword_sealed_potential:
     enchantments:
     - DAMAGE_ALL:7
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.54
@@ -36,7 +36,7 @@ SkeletalDarkKnightSword_sealed_potential:
     - LOOT_BONUS_MOBS:3
     - DURABILITY:2
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.attackSpeed/mainhand/1/-0.6
         - generic.attackDamage/mainhand/0/13.0
@@ -62,7 +62,7 @@ SkeletalDarkKnightHelm_sealed_potential:
     - PROTECTION_EXPLOSIONS:3
     - DURABILITY:2
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/head/0/4.0
         - generic.armorToughness/head/0/2.0
@@ -87,7 +87,7 @@ SharpshooterBow_sealed_potential:
     - LOOT_BONUS_MOBS:3
     - DURABILITY:2
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.01
         - generic.armor/mainhand/0/6.0
@@ -108,7 +108,7 @@ BountifulBlade_sealed_potential:
     enchantments:
     - LOOT_BONUS_MOBS:5
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.05
         - generic.attackSpeed/mainhand/1/-0.8
@@ -128,7 +128,7 @@ WitheringBlade_sealed_potential:
     - <&f>A shadowy presence emanates from this blade.
     - <&6>Sealed Potential
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.attackSpeed/mainhand/1/-0.9
         - generic.attackDamage/mainhand/0/4.0
@@ -149,7 +149,7 @@ BurnishedSword_sealed_potential:
     enchantments:
     - DAMAGE_ALL:7
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.54
@@ -172,7 +172,7 @@ BurnishedHelm_sealed_potential:
     enchantments:
     - PROTECTION_ENVIRONMENTAL:6
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/head/0/5.0
         - generic.armorToughness/head/0/2.0
@@ -195,7 +195,7 @@ BurnishedChest_sealed_potential:
     - PROTECTION_ENVIRONMENTAL:6
     - PROTECTION_EXPLOSIONS:4
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/chest/0/9.0
         - generic.armorToughness/chest/0/2.0
@@ -217,7 +217,7 @@ BurnishedLegs_sealed_potential:
     enchantments:
     - PROTECTION_ENVIRONMENTAL:6
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/legs/0/7.0
         - generic.armorToughness/legs/0/2.0
@@ -239,7 +239,7 @@ BurnishedBoots_sealed_potential:
     enchantments:
     - PROTECTION_ENVIRONMENTAL:6
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/feet/0/3.0
         - generic.armorToughness/feet/0/2.0
@@ -262,7 +262,7 @@ BurnishedBow_sealed_potential:
     - ARROW_DAMAGE:7
     - ARROW_KNOCKBACK:3
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt:
         - equipment_type/weapon
         - item_tier/elite
@@ -280,7 +280,7 @@ BurnishedShield_sealed_potential:
     enchantments:
     - DURABILITY:4
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/offhand/0/6.0
         - generic.armorToughness/offhand/0/3.0
@@ -302,7 +302,7 @@ BurnishedAxe_sealed_potential:
     - DAMAGE_ALL:7
     - DIG_SPEED:7
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.attackSpeed/mainhand/1/-0.7
         - generic.attackDamage/mainhand/0/14.0

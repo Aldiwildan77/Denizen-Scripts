@@ -88,13 +88,13 @@ MCL_Events:
   updateCheck:
     - ^if !<server.has_flag[MCL.Version.Repo]>:
 #      - ~webget "https://raw.githubusercontent.com/AnthonyAMC/Public-Denizen-Scripts/master/versions/MCL.txt" save:page
-      - ~webget "https://one.denizenscript.com/denizen/repo/version/<s@MSG_Version.yaml_key[id]>" save:page
+      - ~webget "https://one.denizenscript.com/denizen/repo/version/<s@MSG_Version.data_key[id]>" save:page
       - ^define result '<entry[page].result.trim||unknown>'
       - ^if !<[result].is[matches].to[number]>:
         - define result 'unknown'
       - ^flag server "MCL.Version.Repo:<[result]>" d:1h
     - ^define repoVersion '<server.flag[MCL.Version.Repo]||unknown>'
-    - ^define currentVersion '<s@MSG_Version.yaml_key[version]>'
+    - ^define currentVersion '<s@MSG_Version.data_key[version]>'
     - ^if '<[repoVersion]>' == 'unknown':
       - run s@msgPrefixed instantly 'def:MCL|<&7>Unable to check for update! <&7><&o><[currentVersion]><&7> is installed!'
     - else if '<[repoVersion]>' > '<[currentVersion]>':
@@ -301,14 +301,14 @@ msgBoxed:
       - narrate "<&5>|"
     - ^if <server.list_scripts> contains 's@<[script]>_Version':
       - define repoVersion '<server.flag[<[script]>.Version.Repo]||unknown>'
-      - define currentVersion '<s@<[script]>_Version.yaml_key[version]>'
+      - define currentVersion '<s@<[script]>_Version.data_key[version]>'
       - define vString '<&7>Version<&co> <&b><[currentVersion]>'
       - define vPad '<[pageWidth].sub[<[vString].strip_color.length>].add[1].mul[1.5].round>'
       - narrate "<&5>|<&f.pad_right[<[vPad]>]><[vString]>"
       - if '<[repoVersion]>' != '<[currentVersion]>':
         - define uString '<&c><&o>Repo Version<&co> <&b><[repoVersion]>'
         - define uPad '<[pageWidth].sub[<[uString].strip_color.length>].add[1].mul[1.5].round>'
-        - define url 'http://one.denizenscript.com/denizen/repo/entry/<s@<[script]>_Version.yaml_key[id]>'
+        - define url 'http://one.denizenscript.com/denizen/repo/entry/<s@<[script]>_Version.data_key[id]>'
         - narrate "<&5>|<&f.pad_right[<[uPad]>]><&c><&o>Repo Version<&co> <proc[msgUrl].context[<&a><[repoVersion]>|<[url]>|Click to go to repo!]>"
     - else:
       - narrate "<&5>|"
@@ -321,8 +321,8 @@ msgBoxed:
     - ^define spacer '"text":"  "'
     - ^define prefix '"text":"<&5>|  <&f>Authors<&co>  "'
     - ^foreach <[authors]>:
-      - define text '<[value].yaml_key[text_name].escaped>'
-      - define url '<[value].yaml_key[url].escaped>'
+      - define text '<[value].data_key[text_name].escaped>'
+      - define url '<[value].data_key[url].escaped>'
       - define entry '"text":"<&7><[text]>","clickEvent":{"action":"open_url","value":"<[url]>"},"hoverEvent":{"action":"show_item","value":"{<[value].name.as_item.json>}"}'
       - if <[loop_index]> == <[authors].size>:
         - define list '<[list].include[<&lc><[entry]><&rc>]>'
@@ -331,7 +331,7 @@ msgBoxed:
     - ^if <player.is_player||false>:
       - execute as_server 'tellraw <player.name> {"text":"","extra":[{<[prefix]>},<[list].separated_by[,].unescaped>]}'
     - else:
-      - announce to_console "<&5>|  <&f>Authors:  <&7><[authors].parse[.yaml_key[text_name]].split[<&sp><&sp><&7>]>"
+      - announce to_console "<&5>|  <&f>Authors:  <&7><[authors].parse[.data_key[text_name]].split[<&sp><&sp><&7>]>"
     - ^mark 'end'
     - ^define scroll '<&d>S<&5>-<&d>c<&5>-<&d>r<&5>-<&d>o<&5>-<&d>l<&5>-<&d>l<&5>---<&d>U<&5>-<&d>p<&5>'
     - ^define pad '<[pageWidth].sub[<[scroll].strip_color.length>].div[2].round_up>'

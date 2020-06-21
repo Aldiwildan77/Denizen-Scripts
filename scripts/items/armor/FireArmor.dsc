@@ -14,7 +14,7 @@ Veteran_Flame_Helm_sealed_potential:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_FIRE:3
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/head/0/4.0
         - generic.armorToughness/head/0/2.0
@@ -43,7 +43,7 @@ Veteran_Flame_Chest_sealed_potential:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_FIRE:5
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/chest/0/8.0
         - generic.armorToughness/chest/0/2.0
@@ -72,7 +72,7 @@ Veteran_Flame_Legs_sealed_potential:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_FIRE:3
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/legs/0/6.0
         - generic.armorToughness/legs/0/2.0
@@ -101,7 +101,7 @@ Veteran_Flame_Boots_sealed_potential:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_FIRE:3
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/feet/0/2.0
         - generic.armorToughness/feet/0/2.0
@@ -130,7 +130,7 @@ Veteran_Flame_Helm:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_FIRE:3
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/head/0/4.0
         - generic.armorToughness/head/0/2.0
@@ -157,7 +157,7 @@ Veteran_Flame_Chest:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_FIRE:5
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/chest/0/8.0
         - generic.armorToughness/chest/0/2.0
@@ -184,7 +184,7 @@ Veteran_Flame_Legs:
     - PROTECTION_ENVIRONMENTAL:5
     - PROTECTION_FIRE:3
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.maxHealth/legs/0/6.0
         - generic.armorToughness/legs/0/2.0
@@ -221,7 +221,7 @@ Veteran_Flame_Boots:
         - armor_set/veteran_flame
         - fire_magic_power/25
         - enable_mana/true
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 veteran_flame_armor_set_data:
     type: yaml data
@@ -238,4 +238,4 @@ veteran_flame_armor_set_bonuses:
         3: 50
         4: 100
     script:
-    - determine <script.yaml_key[scale.<[set_piece_count].min[4].max[1].round>]>
+    - determine <script.data_key[scale.<[set_piece_count].min[4].max[1].round>]>

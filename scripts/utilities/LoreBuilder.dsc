@@ -1,5 +1,5 @@
 # Usage:
-# lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+# lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 # Lore should be stored like normal Denizen lore, but in lore_list rather than lore
 lore_builder:
     type: procedure

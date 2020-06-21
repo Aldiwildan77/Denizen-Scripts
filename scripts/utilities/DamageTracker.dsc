@@ -26,7 +26,7 @@ Damage_Tracker_Handler_Flags:
 
         on player damaged:
         - if <context.damager||null> == null:
-            - define "name:<script.yaml_key[names.<context.cause||null>]||<context.cause.to_titlecase.replace[_].with[ ]>>"
+            - define "name:<script.data_key[names.<context.cause||null>]||<context.cause.to_titlecase.replace[_].with[ ]>>"
             - define cause:<context.cause>
         - else:
             - define cause:<context.damager>

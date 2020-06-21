@@ -69,7 +69,7 @@ VeteranToken:
         nbt:
         - badlucktoken/veteran
         - uncraftable/true
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 VeteranToolForge:
     type: item
@@ -84,7 +84,7 @@ VeteranToolForge:
         hides:
         - attributes
         - enchants
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 VeteranWeaponForge:
     type: item
@@ -99,7 +99,7 @@ VeteranWeaponForge:
         hides:
         - attributes
         - enchants
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 EliteToolForge:
     type: item
@@ -114,7 +114,7 @@ EliteToolForge:
         hides:
         - attributes
         - enchants
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 EliteWeaponForge:
     type: item
@@ -129,7 +129,7 @@ EliteWeaponForge:
         hides:
         - attributes
         - enchants
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 ArcaneForgerInventoryHandler:
     type: world

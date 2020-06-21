@@ -116,11 +116,11 @@ veteran_gold_explosion:
         - if !<context.entity.name.starts_with[<&9>]||null>:
             - queue clear
         else if <context.entity.name.starts_with[<&9>]||null>:
-            - if <util.random.int[1].to[250]> <= <tern[<s@gold_rate_data.yaml_key[gold_multiplier_active]>]:<el@1.mul[<s@gold_rate_data.yaml_key[gold_rate_multiplier]>].mul[<player.flag[player_gold_rate]||1>]||<el@1.mul[<player.flag[player_gold_rate]||1>]>>||1>:
+            - if <util.random.int[1].to[250]> <= <tern[<s@gold_rate_data.data_key[gold_multiplier_active]>]:<el@1.mul[<s@gold_rate_data.data_key[gold_rate_multiplier]>].mul[<player.flag[player_gold_rate]||1>]||<el@1.mul[<player.flag[player_gold_rate]||1>]>>||1>:
                 - define location <context.entity.location>
                 - narrate "<&6>The slain monster drops some pouches of gold!" targets:<context.killer>
-                - repeat <s@gold_rate_data.yaml_key[gold_amount_multiplier]>:
-                    - drop <s@veteran_gold_drop_list.yaml_key[list].random[1]> location:<cuboid[cu@<[location].add[-2,-2,-2]>|<[location].add[2,2,2]>].spawnable_blocks.random>
+                - repeat <s@gold_rate_data.data_key[gold_amount_multiplier]>:
+                    - drop <s@veteran_gold_drop_list.data_key[list].random[1]> location:<cuboid[cu@<[location].add[-2,-2,-2]>|<[location].add[2,2,2]>].spawnable_blocks.random>
                     - wait 20t
 
 elite_gold_explosion:
@@ -131,9 +131,9 @@ elite_gold_explosion:
         - if !<context.entity.name.starts_with[<&d>]||null>:
             - queue clear
         else if <context.entity.name.starts_with[<&d>]||null>:
-            - if <util.random.int[1].to[100]> <= <tern[<s@gold_rate_data.yaml_key[gold_multiplier_active]>]:<el@1.mul[<s@gold_rate_data.yaml_key[gold_rate_multiplier]>].mul[<player.flag[player_gold_rate]||1>]||<el@1.mul[<player.flag[player_gold_rate]||1>]>>||1>:
+            - if <util.random.int[1].to[100]> <= <tern[<s@gold_rate_data.data_key[gold_multiplier_active]>]:<el@1.mul[<s@gold_rate_data.data_key[gold_rate_multiplier]>].mul[<player.flag[player_gold_rate]||1>]||<el@1.mul[<player.flag[player_gold_rate]||1>]>>||1>:
                 - define location <context.entity.location>
                 - narrate "<&6>The slain monster drops some pouches of gold!" targets:<context.killer>
-                - repeat <s@gold_rate_data.yaml_key[gold_amount_multiplier]>:
-                    - drop <s@elite_gold_drop_list.yaml_key[list].random[1]> location:<cuboid[cu@<[location].add[-2,-2,-2]>|<[location].add[2,2,2]>].spawnable_blocks.random>
+                - repeat <s@gold_rate_data.data_key[gold_amount_multiplier]>:
+                    - drop <s@elite_gold_drop_list.data_key[list].random[1]> location:<cuboid[cu@<[location].add[-2,-2,-2]>|<[location].add[2,2,2]>].spawnable_blocks.random>
                     - wait 20t

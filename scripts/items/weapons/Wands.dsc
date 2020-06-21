@@ -13,7 +13,7 @@ ImbuedFlameboltWand_sealed_potential:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.77
@@ -40,7 +40,7 @@ BurnishedFlameboltWand_sealed_potential:
     enchantments:
     - MENDING:1
         mechanisms:
-            lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+            lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
             nbt_attributes:
             - generic.movementSpeed/mainhand/1/0.1
             - generic.attackSpeed/mainhand/1/-0.74
@@ -67,7 +67,7 @@ ImbuedFlameboltWand:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.77
@@ -92,7 +92,7 @@ BurnishedFlameboltWand:
     enchantments:
     - MENDING:1
         mechanisms:
-            lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+            lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
             nbt_attributes:
             - generic.movementSpeed/mainhand/1/0.1
             - generic.attackSpeed/mainhand/1/-0.74
@@ -119,7 +119,7 @@ ImbuedWindboltWand_sealed_potential:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.77
@@ -147,7 +147,7 @@ BurnishedWindboltWand_sealed_potential:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.74
@@ -175,7 +175,7 @@ ImbuedAquaboltWand_sealed_potential:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.77
@@ -203,7 +203,7 @@ BurnishedAquaboltWand_sealed_potential:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.74
@@ -231,7 +231,7 @@ ImbuedNatureboltWand_sealed_potential:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.77
@@ -259,7 +259,7 @@ BurnishedNatureboltWand_sealed_potential:
     enchantments:
     - MENDING:1
     mechanisms:
-        lore: <proc[lore_builder].context[<list[40].include_single[<script.yaml_key[lore_list]>]>]>
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
         - generic.movementSpeed/mainhand/1/0.1
         - generic.attackSpeed/mainhand/1/-0.74
