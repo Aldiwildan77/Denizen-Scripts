@@ -17,7 +17,7 @@ drop_rate_announcement:
     events:
         on player joins:
         - if <yaml[events].read[tribute.active]>:
-            - queue clear
+            - stop
         - if <yaml[rates].read[drops.active]>:
             - wait 4s
             - narrate "<&6>A bonus drop rate event is active! Go monster hunting with a <yaml[rates].read[drops.multiplier]>x chance for rare item drops!"

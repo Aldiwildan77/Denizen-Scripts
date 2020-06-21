@@ -10,9 +10,9 @@
     - Round 1
     actions:
         on assignment:
-        - runtask 'script:Summon the Whores' instant
+        - run SummonPlayersArena
 
-"Summon the Whores":
+SummonPlayersArena:
     type: task
     script:
     - teleport npc location:<npc.anchor[ma1]>
@@ -41,7 +41,7 @@
                 'Leave':
                     trigger: '/leave/'
                     script:
-                    - execute as_player "spawn"
+                    - execute as_player spawn
         'Game On':
             click trigger:
                 script:
