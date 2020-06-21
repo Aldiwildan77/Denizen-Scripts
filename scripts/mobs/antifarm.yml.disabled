@@ -16,7 +16,7 @@
       - determine drops:li@;money:0;exp:0
     }
     on player receives message:
-    - if <context.message> contains "dropped 0.0 gold" 
+    - if <context.message> contains "dropped 0.0 gold"
     {
       - determine CANCELLED
     }
@@ -26,7 +26,7 @@
     on entity spawns:
     - if <context.entity.is_player>
     {
-      - queue clear
+      - stop
     }
     - if '<context.reason>' == 'SPAWNER'
     {
@@ -36,7 +36,7 @@
     on entity dies:
     - if <context.entity.is_player>
     {
-      - queue clear
+      - stop
     }
     - if <context.entity.has_flag[is_spawned.spawner]>
     {

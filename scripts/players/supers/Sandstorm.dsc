@@ -15,7 +15,7 @@
             - if <[caster].as_player.has_flag[sandstorm-activated]>
             {
 #               - narrate "Caster already had the flag" targets:<[caster]>
-                - queue clear
+                - stop
             }
             - flag <[caster]> sandstorm-activated:1
             - define radius 10

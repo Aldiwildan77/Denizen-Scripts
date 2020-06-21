@@ -26,18 +26,18 @@
         Under: "I'm going to hit!"
         PlayerWin: "Looks like you win, <player.name>! Good job!"
         PlayerBlackjack: "Wow, blackjack! You win big!"
-        
+
 "Blackjack Format":
     type: format
     format: "<dark_green>Blackjack Dealer<white><&co> <text>"
-    
+
 "52 Pickup":
     type: task
     script:
     - teleport npc location:<npc.anchor[blackjack]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3
-    
+
 "Dealer":
     type: interact
     steps:
@@ -51,35 +51,5 @@
                     radius: 3
                     script:
                     - narrate "format:Blackjack Format" "Keep going!"
-                    - queue clear "Moan at <player.name>"
+                    - stop
                     - zap 'step:Cleared'
-                    
-            chat trigger:
-                'Cactus':
-                    trigger: 'Give me the /cactus/!'
-                    script:
-                    - narrate "format:Blackjack Format" "Cactus, you say? Cactus you shall have!"
-                    - execute as_server "warp <player.name> cactus"
-                'Hi':
-                    trigger: "/Hi/, who are you?"
-                    script:
-                    - narrate "format:Blackjack Format" "I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
-                    - narrate "format:Blackjack Format" "<green>Head outside so we can get started!"
-                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
-                    - queue clear "Moan at <player.name>"
-                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                             
-                'Hello':
-                    trigger: "/Hello/, who are you?"
-                    script:
-                    - narrate "format:Blackjack Format" "I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
-                    - narrate "format:Blackjack Format" "<green>Head outside so we can get started!"     
-                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
-                    - queue clear "Moan at <player.name>"
-                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                          
-        'Cleared':
-            chat trigger:
-                'Cactus':
-                    trigger: 'Give me the /cactus/!'
-                    script:
-                    - narrate "format:Blackjack Format" "Cactus, you say? Cactus you shall have!"
-                    - execute as_server "warp <player.name> cactus"

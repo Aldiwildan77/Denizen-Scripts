@@ -32,7 +32,7 @@
         on player dies:
         - if !<server.has_flag[watertemple-challenger]>
         {
-            - queue clear
+            - stop
         }
         - if <player.location.world.name> == 'ultimatus' && <server.has_flag[watertemple-challenger]> && <server.flag[watertemple-challenger]> == <player>
         {
@@ -52,7 +52,7 @@
         on player quits:
         - if !<server.has_flag[watertemple-challenger]>
         {
-            - queue clear
+            - stop
         }
         - if <server.has_flag[watertemple-challenger]> && <server.flag[watertemple-challenger]> == <player>
         {
@@ -67,7 +67,7 @@
         {
             - execute as_server "warp <player.name> spawn"
             - flag server "watertemple-abandoner:<-:<player>"
-            - narrate "<red>You disconnected while in the Water Temple and have been returned to spawn." 
+            - narrate "<red>You disconnected while in the Water Temple and have been returned to spawn."
         }
 "WaterTemple-Reset":
     type: task
@@ -83,7 +83,7 @@
     - switch state:off location:-11,31,299,ultimatus
     - switch state:off location:-33,43,229,ultimatus
     #Basement Ice
-    - switch state:off location:-7,77,146,ultimatus 
+    - switch state:off location:-7,77,146,ultimatus
     # Spawns boss at end of ice cave
     - execute as_server "npc spawn 185 --at -11,103,242,ultimatus"
     - execute as_server "npc select 185"
@@ -97,7 +97,7 @@
     - zap "script:Water Boss Fight" "step:Boss Battle"
     - zap "script:Water Savior" "step:Before Fight"
     - zap "script:Player Approaches" "step:Entry"
-    
+
 "Water Temple Challenger":
     type: interact
     steps:
@@ -139,7 +139,7 @@
                     - execute as_npc "warp <player.name> watertemple"
                     - announce "<red><player.name> is challenging the Water Temple."
                 }
-                else 
+                else
                 {
                     - narrate "format:Water Sage Format" "Sorry, it appears the temple is currently being challenged by <server.flag[watertemple-challenger-name]>. You will have to wait."
                 }

@@ -12,7 +12,7 @@
             - define duration-calculated <[super-max-energy].div[<[duration]>].sub[<[super-passive-spending]>].div[20].mul[<[wait]>]>
             - if <[caster].as_player.has_flag[hundredblades-activated]>:
 #                - narrate "Caster already had the flag" targets:<[caster]>
-                - queue clear
+                - stop
             - flag <[caster]> hundredblades-activated:1
             - while <yaml[super-counter].read[energy.<context.caster.uuid>].is[more].than[0]>:
                 - yaml id:super-counter set energy.<context.caster.uuid>:<yaml[super-counter].read[energy.<context.caster.uuid>].sub[<[duration-calculated]>]>

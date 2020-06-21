@@ -7,7 +7,7 @@ link_inventorysnapshot:
     usage: /inventorysnapshot <&lt>ID<&gt>
     script:
     - if <context.server>:
-        - queue clear
+        - stop
     - inventory open 'destination:in@generic[title=<el@link_cmd.to_itemscript_hash><&r><server.flag[link_cmd.<context.args.first||>.player].as_player.name><&sq>s Linked Inventory;size=45;contents=<server.flag[link_cmd.<context.args.first||>.inventory]>]'
 
 link_command:
@@ -21,19 +21,19 @@ link_command:
     - determine <li@hand_item|hotbar|equipment|inventory.filter[starts_with[<context.args.first||>]]>
     script:
     - if <context.server>:
-        - queue clear
+        - stop
     - choose <context.args.first||null>:
         - case hotbar:
             - if <player.inventory.list_contents.get[1].to[9].exclude[i@air].is_empty>:
                 - narrate '<&c>You cannot link an empty hotbar!'
-                - queue clear
+                - stop
             - foreach <player.inventory.list_contents.get[1].to[9].exclude[i@air]>:
                 - execute as_server 'tellraw @a ["",{"text":"<player.chat_prefix.parse_color> <player.name.display><&r> has linked their hotbar item<&co> "},{"text":"<&lb><[value].display||<[value].formatted.to_titlecase>><&r><&rb>","hoverEvent":{"action":"show_item","value":"{<[value].json>}"}},{"text":"!"}]'
                 - run link_messagetodiscord 'def:<[value]>|hotbar item'
         - case equipment:
             - if <player.equipment.exclude[i@air].is_empty>:
                 - narrate '<&c>You<&sq>re wearing nothing! You must be wearing equipment in order to link it.'
-                - queue clear
+                - stop
             - foreach <player.equipment>:
                 - if <[value]> == i@air:
                     - foreach next
@@ -55,7 +55,7 @@ link_command:
         - default:
             - if <player.item_in_hand> == i@air:
                 - narrate '<&c>You cannot link air! You must be holding an item.'
-                - queue clear
+                - stop
             - execute as_server 'tellraw @a ["",{"text":"<player.chat_prefix.parse_color> <player.name.display><&r> has linked their item<&co> "},{"text":"<&lb><player.item_in_hand.display||<player.item_in_hand.formatted.to_titlecase>><&r><&rb>","hoverEvent":{"action":"show_item","value":"{<player.item_in_hand.json>}"}},{"text":"!"}]'
             - run link_messagetodiscord def:<player.item_in_hand>
 
@@ -65,7 +65,7 @@ link_messagetodiscord:
     definitions: item|type
     script:
     - if <[item]||i@air> == i@air:
-        - queue clear
+        - stop
     - define item_info '<[item].formatted.to_titlecase>'
     - if <[item].quantity> == 1:
         - define item_info '<[item_info].after[ ]>'
@@ -145,7 +145,7 @@ link_inventory_events:
     events:
         on player clicks in inventory:
         - if !<context.inventory.title.starts_with[<el@link_cmd.to_itemscript_hash>]>:
-            - queue clear
+            - stop
         - determine passively cancelled
         - wait 1t
         - inventory update
@@ -159,14 +159,14 @@ link_inventory_events:
 #        on player chats:
 #        - if <player.item_in_hand> == i@air:
 #            - narrate '<&c>You cannot link air! You must be holding an item.'
-#            - queue clear
+#            - stop
 #        - if <player.has_permission[denizen.link]> && <context.message.contains_text[<&pc>item<&pc>]>:
 #            - run link_messagetodiscord def:<player.item_in_hand>
 #            - determine <context.message.replace[<&pc>item<&pc>].with[<&r><&ss>^item_linkplayer<player><&r>]>
 #
 #        on player receives message ignorecancelled:true:
 #        - if !<context.message.contains_text[<&ss>^item_linkplayer]>:
-#            - queue clear
+#            - stop
 #        - define message <context.raw_json.after[<&lb>].before_last[<&rb>]>
 #        - foreach <[message].after[<&lc>].before_last[<&rc>].split_by[<&rc>,<&lc>].escape_contents>:
 #            - foreach <[value].split_by[&quo,&quo]>:

@@ -72,7 +72,7 @@ MCL_Events:
   events:
     on system time hourly:
 #    - if !<yaml[MCL_config].read[config.stats.useStats]||true>:
-#      - queue clear
+#      - stop
 #
     - if <queue.list> !contains 'q@MCL_UpdateCheck':
       - run locally delay:1t updateCheck 'id:MCL_UpdateCheck'
@@ -219,7 +219,7 @@ msgBoxed:
         - announce to_console "<&5>|<&f><&sp><&sp><[value].unescaped>"
       - ^announce to_console "<&5>|"
       - ^inject locally msgsFooter
-      - ^queue clear
+      - ^stop
 
     - ^define finalHeading 'li@'
     - ^foreach '<[heading].split[ ]>':
@@ -353,7 +353,7 @@ msgParser:
   events:
     on player receives message:
     - if !<context.message.contains_text[<&ss>@<&ss><&chr[260f]>]>:
-      - queue clear
+      - stop
     - define message '<context.raw_json.after[<&lb>].before_last[<&rb>]>'
     - foreach '<[message].after[<&lc>].before_last[<&rc>].split[<&rc>,<&lc>].escape_contents>':
       - define element '<[value].unescaped>'

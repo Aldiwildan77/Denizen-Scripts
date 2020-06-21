@@ -34,7 +34,7 @@
     events:
         on player dies:
         - if !<server.has_flag[maze-challenger]>:
-                - queue clear
+                - stop
         - if <server.has_flag[maze-challenger]> && <player.location.world> == 'w@prosperus' && <player.uuid> == <server.flag[maze-challenger]>:
             - flag server mazeclear:1
             - announce "<red><player.name> has been conquered by The Grand Library. It is now clear."
@@ -86,9 +86,9 @@
 #    - execute as_op "cs maze bookshelf 25 25 4"
 #    - execute as_op "region sel library-maze"
 #    - execute as_op "/replace glass air"
-#    - execute as_op "/sel"    
+#    - execute as_op "/sel"
     - teleport <npc[94]> location:<npc.anchor[mazemaster]>
-    
+
 "Librarian":
     type: interact
     steps:
@@ -129,7 +129,7 @@
                     - wait 1
                     - execute as_npc "warp <player.name> library-maze"
                     - teleport <npc[94]> location:<npc.anchor[mazemaster]>
-                    
+
                 - else:
                     - narrate "format:Librarian Format" "Sorry, it appears the maze is currently being challenged by <server.flag[maze-challenger-name]>. You will have to wait."
 #                    - narrate "format:Librarian Format" "Debug <server.flag[mazeclear]>"

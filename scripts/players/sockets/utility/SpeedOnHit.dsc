@@ -7,7 +7,7 @@ socket_gem_utility_speed_on_hit_handler:
         - foreach <context.damager.equipment.include[<context.damager.item_in_hand>]>:
             - define gem_count <[gem_count].add[<[value].nbt.filter[matches[socket[0-9]+_gem/socket_gem_utility_speed_on_hit]].size||0>]>
         - if <[gem_count]> == 0:
-            - queue clear
+            - stop
         - cast speed duration:<[gem_count].mul[3]> p:1 <player>
 
 socket_gem_utility_speed_on_hit:

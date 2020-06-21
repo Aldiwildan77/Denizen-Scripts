@@ -34,14 +34,14 @@
         Question 6 Moan 3: "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
         Question 7 Moan 2: "Here's the question again - <green>last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?<&nl>"
         Question 7 Moan 3: "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
-    
+
 "Riddler":
     type: task
     script:
     - teleport npc location:<npc.anchor[wahrheit-test]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3 cooldown:0.1s
-    
+
 #"Nagging":
 #    type: task
 #    script:
@@ -52,7 +52,7 @@
 #    type: task
 #    script:
 #    - runtask "script:Nagging" delay:5 "queue:Moan at <player.name>"
-    
+
 "Final Countdown":
     type: interact
     steps:
@@ -69,7 +69,7 @@
 #                    radius: 3
 #                    script:
 #                    - narrate "format:Wahrheit Format" "Keep going!"
-                    
+
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
@@ -83,24 +83,24 @@
                     - narrate "format:Wahrheit Format" "Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
                     - zap 'step:Question 1'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 1 Moan 2><cons:Format><cons:Question 1 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                    
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
 #                'Hi':
 #                    trigger: "/Hi/, who are you?"
 #                    script:
 #                    - narrate "format:Wahrheit Format" "I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
 #                    - narrate "format:Wahrheit Format" "<green>Are you ready to take my test and accept your place as the chosen?"
 #                    - flag player "Current Moan:<cons:Test Start Moan <util.random.int[1].to[3]>>"
-##                    - queue clear "Moan at <player.name>"
-##                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                             
+##
+##                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
 #                'Hello':
 #                    trigger: "/Hello/, who are you?"
 #                    script:
 #                    - narrate "format:Wahrheit Format" "I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
-#                    - narrate "format:Wahrheit Format" "<green>Are you ready to take my test and accept your place as the chosen?"     
+#                    - narrate "format:Wahrheit Format" "<green>Are you ready to take my test and accept your place as the chosen?"
 #                    - flag player "Current Moan:<cons:Test Start Moan <util.random.int[1].to[3]>>"
-##                    - queue clear "Moan at <player.name>"
-##                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                          
+##
+##                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Yeah sure':
                     trigger: "/Sure/, I'll try the test."
                     script:
@@ -108,8 +108,8 @@
                     - narrate "format:Wahrheit Format" "Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
                     - zap 'step:Question 1'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 1 Moan 2><cons:Format><cons:Question 1 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Yup':
                     trigger: '/Yes/, I have come to claim my destiny!'
                     script:
@@ -117,17 +117,17 @@
                     - narrate "format:Wahrheit Format" "Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
                     - zap 'step:Question 1'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 1 Moan 2><cons:Format><cons:Question 1 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'What':
                     trigger: "/What/ do I have to do?"
                     script:
                     - narrate "format:Wahrheit Format" "It's not a terribly hard test. I have some rules for the world that I watch over. You just have to show me you understand them."
                     - narrate "format:Wahrheit Format" "Why don't you type <green>/rules<white> and read them so we can get started? <green>First question - should you ever grief for any reason?"
-                    - zap 'step:Question 1'                  
+                    - zap 'step:Question 1'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 1 Moan 2><cons:Format><cons:Question 1 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"              
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Ready':
                     trigger: "I'm /ready/ to take the test!"
                     script:
@@ -143,8 +143,8 @@
                     - narrate "format:Wahrheit Format" "<green>First question - should you ever grief for any reason?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint - if you do, you'll get <red>banned<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 1 Moan 2><cons:Format><cons:Question 1 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                    
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
             chat trigger:
                 'No Griefing':
                     trigger: '/No/, what a silly idea! Griefing is horrible.'
@@ -154,8 +154,8 @@
                     - narrate "format:Wahrheit Format" "<green>Next question, will admins ignore begging?"
                     - zap 'step:Question 2'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 2 Moan 2><cons:Format><cons:Question 2 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
@@ -163,26 +163,26 @@
                     - narrate "format:Wahrheit Format" "<green>First question - should you ever grief for any reason?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint - if you do, you'll get <red>banned<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 1 Moan 2><cons:Format><cons:Question 1 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Say It Again':
-                    trigger: "Can you help me out and say that /again/?"                
+                    trigger: "Can you help me out and say that /again/?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
                     - narrate "format:Wahrheit Format" "<green>First question - should you ever grief for any reason?"
-                    - narrate "format:Wahrheit Format" "I'll give you a hint - if you do, you'll get <red>banned<white>."     
+                    - narrate "format:Wahrheit Format" "I'll give you a hint - if you do, you'll get <red>banned<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 1 Moan 2><cons:Format><cons:Question 1 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
                     - narrate "format:Wahrheit Format" "That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "format:Wahrheit Format" "<green>First question - should you ever grief for any reason?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint - if you do, you'll get <red>banned<white>."               
+                    - narrate "format:Wahrheit Format" "<green>First question - should you ever grief for any reason?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint - if you do, you'll get <red>banned<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 1 Moan 2><cons:Format><cons:Question 1 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
         'Question 2':
             proximity trigger:
                 entry:
@@ -191,8 +191,8 @@
                     - narrate "format:Wahrheit Format" "<green>Second question, will admins ignore begging?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, we certainly <aqua>won't<white> answer it!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 2 Moan 2><cons:Format><cons:Question 2 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
@@ -208,45 +208,45 @@
                     - narrate "format:Wahrheit Format" "<green>Next question, is whining a good idea?"
                     - zap 'step:Question 3'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 3 Moan 2><cons:Format><cons:Question 3 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
                     - narrate "format:Wahrheit Format" "<green>Second question, will admins ignore begging?"
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, we certainly <aqua>won't<white> answer it!" 
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, we certainly <aqua>won't<white> answer it!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 2 Moan 2><cons:Format><cons:Question 2 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
                     - narrate "format:Wahrheit Format" "<green>Second question, will admins ignore begging?"
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, we certainly <aqua>won't<white> answer it!"     
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, we certainly <aqua>won't<white> answer it!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 2 Moan 2><cons:Format><cons:Question 2 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
                     - narrate "format:Wahrheit Format" "That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "format:Wahrheit Format" "<green>Second question, will admins ignore begging?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, we certainly <aqua>won't<white> answer it!"          
+                    - narrate "format:Wahrheit Format" "<green>Second question, will admins ignore begging?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, we certainly <aqua>won't<white> answer it!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 2 Moan 2><cons:Format><cons:Question 2 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
         'Question 3':
             proximity trigger:
                 entry:
                     radius: 16
                     script:
                     - narrate "format:Wahrheit Format" "<green>Third question, is whining a good idea?"
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, it's definitely a <red>bad<white> one." 
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, it's definitely a <red>bad<white> one."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 3 Moan 2><cons:Format><cons:Question 3 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                         
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
@@ -262,8 +262,8 @@
                     - narrate "format:Wahrheit Format" "<green>Next question, what should you do with other players?"
                     - zap 'step:Question 4'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 4 Moan 2><cons:Format><cons:Question 4 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                         
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
@@ -271,36 +271,36 @@
                     - narrate "format:Wahrheit Format" "<green>Third question, is whining a good idea?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, it's definitely a <red>bad<white> one."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 3 Moan 2><cons:Format><cons:Question 3 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                         
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
                     - narrate "format:Wahrheit Format" "<green>Third question, is whining a good idea?"
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, it's definitely a <red>bad<white> one."                    
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, it's definitely a <red>bad<white> one."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 3 Moan 2><cons:Format><cons:Question 3 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                         
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
                     - narrate "format:Wahrheit Format" "That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "format:Wahrheit Format" "<green>Third question, is whining a good idea?"                    
+                    - narrate "format:Wahrheit Format" "<green>Third question, is whining a good idea?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, it's definitely a <red>bad<white> one."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 3 Moan 2><cons:Format><cons:Question 3 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                         
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
         'Question 4':
             proximity trigger:
                 entry:
                     radius: 16
                     script:
-                    - narrate "format:Wahrheit Format" "<green>Fourth question, what should you do with other players?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"   
+                    - narrate "format:Wahrheit Format" "<green>Fourth question, what should you do with other players?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 4 Moan 2><cons:Format><cons:Question 4 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                      
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
@@ -316,45 +316,45 @@
                     - narrate "format:Wahrheit Format" "<green>Next question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"
                     - zap 'step:Question 5'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 5 Moan 2><cons:Format><cons:Question 5 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                      
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
-                    - narrate "format:Wahrheit Format" "<green>Fourth question, what should you do with other players?"                    
+                    - narrate "format:Wahrheit Format" "<green>Fourth question, what should you do with other players?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 4 Moan 2><cons:Format><cons:Question 4 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                      
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
-                    - narrate "format:Wahrheit Format" "<green>Fourth question, what should you do with other players?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"         
+                    - narrate "format:Wahrheit Format" "<green>Fourth question, what should you do with other players?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 4 Moan 2><cons:Format><cons:Question 4 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                      
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
                     - narrate "format:Wahrheit Format" "That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "format:Wahrheit Format" "<green>Fourth question, what should you do with other players?"                    
+                    - narrate "format:Wahrheit Format" "<green>Fourth question, what should you do with other players?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, being <aqua>friendly<white> is a great way to do well!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 4 Moan 2><cons:Format><cons:Question 4 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                      
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
         'Question 5':
             proximity trigger:
                 entry:
                     radius: 16
                     script:
-                    - narrate "format:Wahrheit Format" "<green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, you <blue>shouldn't<white> do it!"           
+                    - narrate "format:Wahrheit Format" "<green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, you <blue>shouldn't<white> do it!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 5 Moan 2><cons:Format><cons:Question 5 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                    
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
@@ -370,45 +370,45 @@
                     - narrate "format:Wahrheit Format" "<green>Next question, even though we're going to turn on PVP should you harass other players?"
                     - zap 'step:Question 6'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 6 Moan 2><cons:Format><cons:Question 6 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                    
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
-                    - narrate "format:Wahrheit Format" "<green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
+                    - narrate "format:Wahrheit Format" "<green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, you <blue>shouldn't<white> do it!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 5 Moan 2><cons:Format><cons:Question 5 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
+#
 #                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
-                    - narrate "format:Wahrheit Format" "<green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, you <blue>shouldn't<white> do it!"         
+                    - narrate "format:Wahrheit Format" "<green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, you <blue>shouldn't<white> do it!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 5 Moan 2><cons:Format><cons:Question 5 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                    
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
                     - narrate "format:Wahrheit Format" "That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "format:Wahrheit Format" "<green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"                    
+                    - narrate "format:Wahrheit Format" "<green>Fifth question, is hacking, exploiting, duping, flying, teleporting, modding, glitching, and general cheating a bad thing?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, you <blue>shouldn't<white> do it!"
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 5 Moan 2><cons:Format><cons:Question 5 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                    
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
         'Question 6':
             proximity trigger:
                 entry:
                     radius: 16
                     script:
-                    - narrate "format:Wahrheit Format" "<green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."    
+                    - narrate "format:Wahrheit Format" "<green>Sixth question, even though we're going to turn on PVP should you harass other players?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 6 Moan 2><cons:Format><cons:Question 6 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
@@ -424,45 +424,45 @@
                     - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"
                     - zap 'step:Question 7'
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
-                    - narrate "format:Wahrheit Format" "<green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
+                    - narrate "format:Wahrheit Format" "<green>Sixth question, even though we're going to turn on PVP should you harass other players?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 6 Moan 2><cons:Format><cons:Question 6 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
-                    - narrate "format:Wahrheit Format" "<green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."          
+                    - narrate "format:Wahrheit Format" "<green>Sixth question, even though we're going to turn on PVP should you harass other players?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 6 Moan 2><cons:Format><cons:Question 6 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
                     - narrate "format:Wahrheit Format" "That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "format:Wahrheit Format" "<green>Sixth question, even though we're going to turn on PVP should you harass other players?"                    
+                    - narrate "format:Wahrheit Format" "<green>Sixth question, even though we're going to turn on PVP should you harass other players?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, harassment <red>isn't<white> any good for anyone involved."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 6 Moan 2><cons:Format><cons:Question 6 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                     
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
         'Question 7':
             proximity trigger:
                 entry:
                     radius: 16
                     script:
-                    - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."      
+                    - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
             chat trigger:
                 'Cactus':
                     trigger: 'Give me the /cactus/!'
@@ -478,35 +478,35 @@
                     - execute as_server "warp <player.name> tut-win"
                     - zap 'step:A Winner Is You'
                     - flag player "Current Moan:<cons:Go Outside>"
-#                    - queue clear "Moan at <player.name>"
+#
 #                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'I Need Help':
                     trigger: "Can you /help/ me out and say that again?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
-                    - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
+                    - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Say It Again':
                     trigger: "Can you help me out and say that /again/?"
                     script:
                     - narrate "format:Wahrheit Format" "Sure thing!"
-                    - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
-                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."  
+                    - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"
+                    - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
                 'Wrong Answer':
                     trigger: '/REGEX:.+/'
                     script:
                     - narrate "format:Wahrheit Format" "That's not quite the answer I'm looking for, why don't you try again?"
-                    - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"                    
+                    - narrate "format:Wahrheit Format" "<green>Last question, I'm so excited! What is it considered if you use something to pillar up and see around but don't break it after?"
                     - narrate "format:Wahrheit Format" "I'll give you a hint, it rhymes with <blue>g<green>isual <green>v<blue>riefing<white>."
                     - flag player "Current Moan:<cons:Stuck><cons:Format><cons:Question 7 Moan 2><cons:Format><cons:Question 7 Moan 3>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                       
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
         'A Winner Is You':
             click trigger:
                 script:

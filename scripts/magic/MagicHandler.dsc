@@ -34,6 +34,6 @@ Spell_Loader:
 #    events:
 #        on magicspells player casts spell:
 #        - if <yaml[spells-elemental].read[<context.spell>.spell-magic-type]||null> == null:
-#            - queue clear
+#            - stop
 #        - else:
 #            - determine power:<proc[Magic_Power_Handler].context[<yaml[spells-elemental].read[<context.spell>.spell-magic-type]>]||1>

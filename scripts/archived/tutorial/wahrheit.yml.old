@@ -21,18 +21,18 @@
         Outside 1: "Why don't you go outside? I'll teach you a bit about our server."
         Outside 2: "It's a bit dark and gloomy in here - let's go outside!"
         Outside 3: "Don't you want to get started? Let's go outside!"
-        
+
 "Wahrheit Format":
     type: format
     format: "<gold>Tutorial Guide<white><&co> <text>"
-    
+
 "Break In Them Newbies":
     type: task
     script:
     - teleport npc location:<npc.anchor[tutwahrheit]>
     - trigger name:proximity toggle:true cooldown:0.1s radius:3
     - trigger name:chat toggle:true cooldown:0.1s radius:3
-    
+
 "Nagging":
     type: task
     script:
@@ -43,7 +43,7 @@
     type: task
     script:
     - runtask "script:Nagging" delay:5 "queue:Moan at <player.name>"
-    
+
 "Introductions":
     type: interact
     steps:
@@ -62,8 +62,8 @@
                     script:
                      - execute as_server "warp <player.name> newPlayerSpawn"
 #                    - narrate "format:Wahrheit Format" "Keep going!"
-#                    - queue clear "Moan at <player.name>"
-#                    - zap 'step:Cleared'                    
+#
+#                    - zap 'step:Cleared'
 #            chat trigger:
 #                'Cactus':
 #                    trigger: 'Give me the /cactus/!'
@@ -76,16 +76,16 @@
 #                    - narrate "format:Wahrheit Format" "I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
 #                    - narrate "format:Wahrheit Format" "<green>Head outside so we can get started!"
 #                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                             
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
 #                'Hello':
 #                    trigger: "/Hello/, who are you?"
 #                    script:
 #                    - narrate "format:Wahrheit Format" "I am Wahrheit, god of these realms and protector of all living things. I have summoned you to become a hero and achieve your true potential!"
-#                    - narrate "format:Wahrheit Format" "<green>Head outside so we can get started!"     
+#                    - narrate "format:Wahrheit Format" "<green>Head outside so we can get started!"
 #                    - flag player "Current Moan:<cons:Outside <util.random.int[1].to[3]>>"
-#                    - queue clear "Moan at <player.name>"
-#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"                          
+#
+#                    - runtask "script:Nagging" delay:30 "queue:Moan at <player.name>"
         'Cleared':
             proximity trigger:
                 entry:

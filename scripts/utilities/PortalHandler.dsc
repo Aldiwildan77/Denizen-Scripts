@@ -4,7 +4,7 @@
     events:
         on player right clicks quartz_block with flint_and_steel in prosperus:
         - if <context.location.add[0,1,0].material.name> != air:
-            - queue clear
+            - stop
         - if <context.location.add[1,0,0].material.name> == quartz_block && <context.location.add[-1,0,0].material.name> == quartz_block:
             - define axis-pos l@1,0,0
             - define axis-neg l@-1,0,0
@@ -14,7 +14,7 @@
             - define axis-neg l@0,0,-1
             - define axis-data 2
         - else
-            - queue clear
+            - stop
         - define origin <context.location.add[0,1,0]>
         - define node <[origin]>
         - define air-list li@
@@ -32,7 +32,7 @@
             - define y-min <[y-min].min[<[node].y>]>
             - define node <[node].add[0,1,0]>
         - if <[node].material.name> != quartz_block:
-            - queue clear
+            - stop
         - else:
             - foreach <[y-list]>:
                 - define node <[value]>
@@ -46,7 +46,7 @@
                         - define z-min <[z-min].min[<[node].z>]>
                     - define node <[node].add[<[axis-pos]>]>
                 - if <[node].material.name> != quartz_block:
-                    - queue clear
+                    - stop
                 - define node <[value]>
                 - while <[node].material.name.is[==].to[air]>:
                     - define air-list <[air-list].include[<[node]>]>
@@ -58,7 +58,7 @@
                         - define z-min <[z-min].min[<[node].z>]>
                     - define node <[node].add[<[axis-neg]>]>
                 - if <[node].material.name> != quartz_block:
-                    - queue clear
+                    - stop
         - modifyblock <[air-list]> m@end_gateway,<[axis-data]> no_physics
 #        - announce to_console "cu@<[x-min].add[<[axis-neg].x>]>,<[y-min].add[-1]>,<[z-min].add[<[axis-neg].z>]>,prosperus|<[x-max].add[<[axis-pos].x>]>,<[y-max].add[1]>,<[z-max].add[<[axis-pos].z>]>,prosperus as:heavens-portal-<util.random.duuid>"
         - note cu@<[x-min].add[<[axis-neg].x>]>,<[y-min].add[-1]>,<[z-min].add[<[axis-neg].z>]>,prosperus|<[x-max].add[<[axis-pos].x>]>,<[y-max].add[1]>,<[z-max].add[<[axis-pos].z>]>,prosperus as:heavens-portal-<util.random.duuid>
@@ -97,13 +97,13 @@
             - if <server.has_flag[<[portal-exit]>]>:
                 - wait 1t
                 - teleport <server.flag[<[portal-exit]>]>
-                - queue clear
+                - stop
             - if <server.has_flag[<[portal-unsafe-exit]>]>:
                 - wait 1t
                 - teleport <server.flag[<[portal-unsafe-exit]>]>
 #                - announce to_console "teleport <server.flag[<[portal-unsafe-exit]>]>"
                 - adjust <player> gliding:true
-                - queue clear
+                - stop
             - if <[target-material]> == air && <[target-location].add[0,-1,0].material.name> != air && <[target-location].add[0,1,0].material.name> == air:
                 - announce to_console "Initial block is safe"
                 - define teleport-location l@<context.from.x.div[2]>,<context.from.y>,<context.from.z.div[2]>,heavens
@@ -111,7 +111,7 @@
                 - teleport <[teleport-location]>
  #               - announce to_console "teleport <[teleport-location]>"
                 - flag server <[portal-exit]>:<[teleport-location]>
-                - queue clear
+                - stop
             - define size 10
             - if <[target-location].find.surface_blocks.within[<[size]>].size> >= 1:
                 - announce to_console "Finding safe spot"
@@ -121,7 +121,7 @@
                 - teleport <[safe-spot]>
 #                - announce to_console "teleport <[safe-spot]>"
                 - flag server <[portal-exit]>:<[safe-spot]>
-                - queue clear
+                - stop
             - else:
                 - announce to_console "No safe spot, let's glide!"
                 - flag server <[portal-unsafe-exit]>:l@<context.from.x.div[2]>,256,<context.from.z.div[2]>,heavens
@@ -130,7 +130,7 @@
                 - teleport <[teleport-location]>
 #                - announce to_console "teleport <[teleport-location]>"
                 - adjust <player> gliding:true
-                - queue clear
+                - stop
 #            - determine cancelled
         on player stops gliding in heavens:
         - if <player.has_flag[player-gliding-chestplate]>:
@@ -149,4 +149,3 @@
 #        - if <player.has_flag[portal-exiter]>:
 ##            - flag <player> portal-exiter:!
 #            - determine cancelled:false
-    

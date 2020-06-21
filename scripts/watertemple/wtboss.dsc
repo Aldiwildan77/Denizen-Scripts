@@ -11,7 +11,7 @@
     actions:
         on assignment:
         - run 'script:Ice and Corruption' instant
-        
+
 "Ice and Corruption":
     type: task
     script:
@@ -42,7 +42,7 @@
     events:
         on player kills guardian:
 #        - announce "Player kills guardian event activated"
-        - if !<player.has_flag[water_boss_fight]> queue clear
+        - if !<player.has_flag[water_boss_fight]> stop
 #        - announce "Player has boss fight flag"
         - if <context.entity.elder> {
 #          - announce "Elder trait detected"
@@ -57,7 +57,7 @@
           - flag player water_boss_fight:!
           - run "script:Water Champion"
           }
-   
+
 "Water Boss Fight":
     type: interact
     steps:
@@ -68,7 +68,7 @@
                     script:
                     - narrate "format:Water Boss Format" "You should not meddle in affairs that are above you, <player.name>. I am beyond your power."
                     - narrate "format:Water Boss Format" "Prepare to face your end!"
-                    - teleport npc location:<npc.anchor[wtboss2]>                    
+                    - teleport npc location:<npc.anchor[wtboss2]>
 #                    - listen kill "script:Water Champion" id:wtboss type:entity target:guardian qty:2
                     - execute as_npc "summon Guardian -11 132 226 {Elder:1}"
                     - execute as_npc "summon Guardian 4 132 248 {Elder:1}"
@@ -87,8 +87,8 @@
             click trigger:
                 script:
                 - narrate "format:Water Boss Format" "This is a debug message that you shouldn't be seeing!"
-                    
-# Preserve this section for if we ever get mob-type npc pathing working right.                    
+
+# Preserve this section for if we ever get mob-type npc pathing working right.
 #            Npcdeath Trigger:
 #                script:
 #                - narrate "format:Water Boss Format" "Master... I've failed you..."

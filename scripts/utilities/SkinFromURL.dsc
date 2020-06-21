@@ -7,9 +7,9 @@ skin_url_handler:
     events:
         on npc command:
             - if <c.args.get[1].to_lowercase||null> != skin:
-                - queue clear
+                - stop
             - if !<li@-u|--url.contains[<c.args.get[2].to_lowercase||null>]>:
-                - queue clear
+                - stop
             - determine passively fulfilled
 
             - define url <c.args.get[3]||null>
@@ -21,16 +21,16 @@ skin_url_handler:
 
             - if <[npc]> == null:
                 - narrate "<&a>You must have an NPC selected to execute that command."
-                - queue clear
+                - stop
             - if <[npc].entity_type> != PLAYER:
                 - narrate "<&a>You must have a player-type NPC selected."
-                - queue clear
+                - stop
             - if <[url]> == null:
                 - narrate "<&a>You must specify a valid skin URL."
-                - queue clear
+                - stop
             - if <[model]> != empty && <[model]> != slim:
                 - narrate "<&e><[model]><&a> is not a valid skin model. Must be <&e>slim<&a> or empty."
-                - queue clear
+                - stop
 
             - narrate "<&a>Retrieving the requested skin..."
             - define key <util.random.uuid>
@@ -41,17 +41,17 @@ skin_url_handler:
                 - if <[loop_index]> > 20:
                     - queue q@<[key]> clear
                     - narrate "<&a>The request timed out. Is the url valid?"
-                    - queue clear
+                    - stop
                 - wait 5t
 
             # Quick sanity check - ideally this should never be true
             - if !<server.has_flag[<[key]>]>:
-                - queue clear
+                - stop
 
             - if <server.flag[<[key]>]> == null:
                 - narrate "<&a>Failed to retrieve the skin from the provided link. Is the url valid?"
                 - flag server <[key]>:!
-                - queue clear
+                - stop
 
             - yaml loadtext:<server.flag[<[key]>]> id:response
 

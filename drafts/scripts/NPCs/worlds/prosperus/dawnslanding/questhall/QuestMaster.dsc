@@ -13,7 +13,7 @@ QuestMasterAssignment:
         - teleport npc location:<npc.anchor[questmaster]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
-    
+
 QuestMasterFormat:
     type: format
     debug: false
@@ -46,7 +46,7 @@ QuestMasterStepUpdater:
     events:
         on player joins:
         - if <s@newbie.step||null> == General-Dialogue:
-            - queue clear
+            - stop
         - else:
             - if <s@Newbie.step||null> != Greeting:
                 - zap script:Newbie step:General-Dialogue

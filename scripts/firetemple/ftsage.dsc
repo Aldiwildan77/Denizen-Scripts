@@ -32,7 +32,7 @@
         on player dies:
         - if !<server.has_flag[firetemple-challenger]>
         {
-            - queue clear
+            - stop
         }
         - if <player.location.world.name> == 'ultimatus' && <server.has_flag[firetemple-challenger]> && <server.flag[firetemple-challenger]> == <player>
         {
@@ -52,7 +52,7 @@
         on player quits:
         - if !<server.has_flag[firetemple-challenger]>
         {
-            - queue clear
+            - stop
         }
         - if <server.has_flag[firetemple-challenger]> && <server.flag[firetemple-challenger]> == <player>
         {
@@ -67,7 +67,7 @@
         {
             - execute as_server "warp <player.name> spawn"
             - flag server "firetemple-abandoner:<-:<player>"
-            - narrate "<red>You disconnected while in the Fire Temple and have been returned to spawn." 
+            - narrate "<red>You disconnected while in the Fire Temple and have been returned to spawn."
         }
 "FireTemple-Reset":
     type: task
@@ -81,7 +81,7 @@
     # West Key
     - switch state:off location:-1,74,4,ultimatus
     # East Key
-    - switch state:off location:1,74,4,ultimatus      
+    - switch state:off location:1,74,4,ultimatus
     # Spawns boss at entry point
     - execute as_server "npc spawn 88 --at 0,119,-30,ultimatus"
     - execute as_server "npc select 88"
@@ -95,7 +95,7 @@
     - zap "script:Flame Savior" "step:Before Fight"
     - zap "script:Player Approaches" "step:Entry"
     - remove <l@0,74,4,ultimatus.find.entities[wither].within[400]>
-    
+
 "Fire Temple Challenger":
     type: interact
     steps:

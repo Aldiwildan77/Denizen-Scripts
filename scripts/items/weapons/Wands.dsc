@@ -39,19 +39,19 @@ BurnishedFlameboltWand_sealed_potential:
     - <&6>Sealed Potential
     enchantments:
     - MENDING:1
-        mechanisms:
-            lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
-            nbt_attributes:
-            - generic.movementSpeed/mainhand/1/0.1
-            - generic.attackSpeed/mainhand/1/-0.74
-            - generic.attackDamage/mainhand/0/9.0
-            nbt:
-            - equipment_type/weapon
-            - weapon_type/wand
-            - spell/flamebolt
-            - spell_magic_type/fire
-            - item_tier/elite
-            - sealed_potential/true
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        nbt_attributes:
+        - generic.movementSpeed/mainhand/1/0.1
+        - generic.attackSpeed/mainhand/1/-0.74
+        - generic.attackDamage/mainhand/0/9.0
+        nbt:
+        - equipment_type/weapon
+        - weapon_type/wand
+        - spell/flamebolt
+        - spell_magic_type/fire
+        - item_tier/elite
+        - sealed_potential/true
 
 ImbuedFlameboltWand:
     type: item
@@ -91,18 +91,18 @@ BurnishedFlameboltWand:
     - <&c>Casts flamebolt when charged
     enchantments:
     - MENDING:1
-        mechanisms:
-            lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
-            nbt_attributes:
-            - generic.movementSpeed/mainhand/1/0.1
-            - generic.attackSpeed/mainhand/1/-0.74
-            - generic.attackDamage/mainhand/0/9.0
-            nbt:
-            - equipment_type/weapon
-            - weapon_type/wand
-            - spell/flamebolt
-            - spell_magic_type/fire
-            - item_tier/elite
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        nbt_attributes:
+        - generic.movementSpeed/mainhand/1/0.1
+        - generic.attackSpeed/mainhand/1/-0.74
+        - generic.attackDamage/mainhand/0/9.0
+        nbt:
+        - equipment_type/weapon
+        - weapon_type/wand
+        - spell/flamebolt
+        - spell_magic_type/fire
+        - item_tier/elite
 
 ImbuedWindboltWand_sealed_potential:
     type: item

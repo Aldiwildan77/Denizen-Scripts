@@ -4,7 +4,7 @@ Flamesurge_Power_Handler:
     events:
         on magicspells player casts spell:
         - if <context.spell_name> != flamesurge:
-            - queue clear
+            - stop
         - else:
             - define fire_power <proc[Magic_Power_Handler].context[fire]>
             - determine power:<[fire_power].div[100]>
