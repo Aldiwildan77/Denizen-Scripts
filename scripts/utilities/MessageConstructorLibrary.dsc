@@ -56,13 +56,6 @@
 #
 #  Handles Versioning Checks
 #
-MSG_Version:
-  type: version
-  author: Anthony
-  name: MessageConstructorLibrary
-  version: 0.5
-  description: A Library for Message Construction
-  id: 90
 #
 #---------------------------------------
 #

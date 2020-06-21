@@ -4,7 +4,7 @@
 # @last-updated April 26 2019
 # @last-change Add more text
 
-"Swabby":
+Swabby:
     type: assignment
     interact scripts:
     - Seafaring
@@ -12,12 +12,12 @@
         on assignment:
         - teleport npc location:<npc.anchor[shipSwabby]>
         - trigger name:proximity toggle:true
-        
+
 "Swabby Format":
     type: format
     format: "<dark_green>Swabby<white><&co> <text>"
 
-"Seafaring":
+Seafaring:
     type: interact
     steps:
         'First Timer*':

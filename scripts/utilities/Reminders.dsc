@@ -4,7 +4,7 @@
     events:
         on system time minutely:
         - if <context.minute.mod[20]> == 0:
-            - execute as_server "save-all"
+            - execute as_server save-all
             - random:
                 - repeat 1:
                     - announce "<&a>Support the server and get cosmetic perks by backing us on <&b>Patreon<&a>! <&a>Type <&b>/patreon<&a> for more information!"

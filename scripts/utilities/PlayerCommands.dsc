@@ -35,7 +35,7 @@ BoatRace1Command:
     script:
     - execute as_server "warp <player.name> boatrace-1"
     - wait 20t
-    - execute as_server "give <player.name> boat"
+    - give boat
     - narrate "<green>Welcome to the Suicune boat race!"
 BoatRace2Command:
     type: command
@@ -47,7 +47,7 @@ BoatRace2Command:
     script:
     - execute as_server "warp <player.name> boatrace-2"
     - wait 20t
-    - execute as_server "give <player.name> boat"
+    - give boat
     - narrate "<green>Welcome to the frozen caves boat race!"
 HelpCommand:
     type: command
@@ -162,4 +162,4 @@ GetNewPlayerBookCommand:
     description: View the New Player Guide.
     usage: /newplayerguide
     script:
-    - adjust <player> show_book:i@NewPlayerBook
+    - adjust <player> show_book:<item[NewPlayerBook]>

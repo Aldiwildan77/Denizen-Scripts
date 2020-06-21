@@ -20,8 +20,8 @@ FoundSomeDiamonds:
     type: task
     script:
     - narrate "<dark_green>Quest Master<white><&co> Not quite all the Treasure Hunters, but here's what you've earned!"
-    - give diamond "qty:<player.flag[npccount]>"
-    - give emerald "qty:<player.flag[npccount]>"
+    - give diamond quantity:<player.flag[npccount]>
+    - give emerald quantity:<player.flag[npccount]>
     - flag player npccount:0
 FoundAllDiamonds:
     type: task
@@ -33,17 +33,17 @@ FoundAllDiamonds:
     - give diamond_chestplate qty:1
     - give diamond_leggings qty:1
     - give diamond_boots qty:1
-    - flag npccount:0
+    - flag player npccount:0
 
 QuestMasterStepUpdater:
     type: world
     debug: false
     events:
         on player joins:
-        - if <s@newbie.step||null> == General-Dialogue:
+        - if <script[newbie].step||null> == General-Dialogue:
             - stop
         - else:
-            - if <s@Newbie.step||null> != Greeting:
+            - if <script[Newbie].step||null> != Greeting:
                 - zap script:Newbie step:General-Dialogue player:<player>
 
 "Newbie":
@@ -57,9 +57,9 @@ QuestMasterStepUpdater:
                     - wait 0.7s
                     - narrate "format:Quest Master Format" "I've got a series of quests, too, that will help ease you into your adventure. I'll even toss you a little coin for your efforts, as well as a few other surprise bonuses."
                     - if <player.flag[npccount]||0>  == 8:
-                        - run FoundAllDiamonds instantly
+                        - inject FoundAllDiamonds
                     - if <player.flag[npccount]||0> < 8 && <player.flag[npccount]||0> > 0:
-                        - run FoundSomeDiamonds instantly
+                        - inject FoundSomeDiamonds
                     - zap General-Dialogue
         General-Dialogue:
             proximity trigger:
@@ -124,7 +124,7 @@ QuestMasterStepUpdater:
                         - wait 0.7s
                         - narrate "format:Quest Master Format" "Lucky for you, I wrote a little book with directions."
                         - wait 0.7s
-                        - adjust <player> show_book:i@SkillTrainerBook
+                        - adjust <player> show_book:<item[SkillTrainerBook]>
                     - else if "<player.quests.completed_names.contains[Meet the Skill Trainers]>" && "<player.quests.active_names.contains[Meet the Postmaster].not>" && "<player.quests.completed_names.contains[Meet the Postmaster].not>":
                         - narrate "format:Quest Master Format" "Did you know we have a post office?"
                     - else if "<player.quests.active_names.contains[Meet the Postmaster]||null>":
