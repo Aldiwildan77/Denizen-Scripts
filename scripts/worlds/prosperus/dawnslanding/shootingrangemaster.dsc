@@ -1,3 +1,4 @@
+#Needs_Updating
 # This thing will manage the shooting range, sending carts and such.
 # @author Wahrheit
 # @version 1.2
@@ -9,13 +10,13 @@
     - Target Practice
     actions:
         on assignment:
-        - run 'script:Slingshot'
+        - run Slingshot
 
 "Range Master Format":
     type: format
     format: "<gray>Range Master<white><&co> <text>"
 
-"Slingshot":
+Slingshot:
     type: task
     script:
     - teleport npc location:<npc.anchor[sr1]>
@@ -27,33 +28,25 @@
     events:
         on player destroys minecart:
 #        - announce "Minecart was destroyed!"
-        - if "<global.flag[range-runs] || 0>" > 0
-            {
-            - if "<player.name>" == "<global.flag[active-player]>"
-                {
-                - flag global "minecarts-hit:++"
-                }
-            }
+        - if <server.flag[range-runs]||0> > 0:
+            - if <player.name> == <server.flag[active-player]>:
+                - flag server minecarts-hit:++
 
 "Roll Carts":
     type: task
     script:
-    - if "<global.flag[range-runs] || 0>" < 10 
-        {
-        - flag global range-runs:++
+    - if <server.flag[range-runs]||0> < 10:
+        - flag server range-runs:++
         - switch location:<npc.anchor[Minecart<util.random.int[1].to[5]><util.random.int[1].to[2]>]> state:on duration:0.5
         - run "script:Roll Carts" delay:6
-        }
-      else
-        {
-        - flag global range-runs:!
-        - flag global range-level:!
-        - flag global range-winnings:<m:<global.flag[minecarts-hit]>*3>
-        - narrate "format:Range Master Format" "Time's up! You won '<global.flag[range-winnings]>' gold!"
-        - give money qty:<global.flag[range-winnings]>
+    - else:
+        - flag server range-runs:!
+        - flag server range-level:!
+        - flag server range-winnings:<server.flag[minecarts-hit].mul[3]>
+        - narrate "format:Range Master Format" "Time's up! You won <server.flag[range-winnings]> gold!"
+        - give money quantity:<server.flag[range-winnings]>
         - execute as_server "warp <player.name> shootingrange"
         - zap "script:Target Practice" "step:In Range"
-        }
 
 "Target Practice":
     type: interact
@@ -73,14 +66,18 @@
                     - narrate "format:Range Master Format" "Thanks for visiting, come back soon."
             click trigger:
                 script:
-                - if <player.money> >= 10 narrate "format:Range Master Format" "Click me once more to get started. Make sure you have a bow and arrows!" else narrate "format:Range Master Format" "Sorry, you don't have 10 gold so you can't shoot!"
-                - if <player.money >= 10 zap 'step:Game Start'
+                - if <player.money> >= 10:
+                    - narrate "format:Range Master Format" "Click me once more to get started. Make sure you have a bow and arrows!"
+                    - zap 'step:Game Start'
+                - else:
+                    - narrate "format:Range Master Format" "Sorry, you don't have 10 gold so you can't shoot!"
+
         'Game Start':
             click trigger:
                 script:
-                - take money qty:10
+                - take money quantity:10
                 - narrate "format:Range Master Format" "Okay, you've got 1 minute! Good luck!"
                 - execute as_server "warp <player.name> shootingrange-1"
-                - flag global active-player:<player.name>
-                - flag global minecarts-hit:0
+                - flag server active-player:<player.name>
+                - flag server minecarts-hit:0
                 - run "script:Roll Carts"
