@@ -6,7 +6,6 @@ spear_ready_check:
         on player damages entity priority:-15:
         - if <player.item_in_hand.nbt[weapon_type]||null> == spear && <player.has_flag[attack_cooldown].not>:
             - flag player attack_cooldown:true duration:<player.attack_cooldown_max_duration>
-            # - define entity_list <player.eye_location.points_between[<player.eye_location.add[<player.location.direction.vector.mul[8]>]>].distance[1.0].parse[find.entities.within[1.0]].replace_text[li@].as_list.deduplicate.exclude[li@<context.damager>|<context.entity>]>
             - define entity_list <player.eye_location.points_between[<player.eye_location.forward[8]>].parse[find.entities.within[1]].combine.deduplicate.exclude[<context.damager>|<context.entity>]>
             - hurt <context.damage> <[entity_list]> source:<player> cause:entity_attack
             - playeffect effect:damage_indicator at:<[entity_list].parse[location]> visibility:500 quantity:3 offset:0.5
