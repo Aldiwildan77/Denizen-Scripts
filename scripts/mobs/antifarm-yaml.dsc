@@ -1,7 +1,7 @@
 AntiFarm_Proc:
     type: procedure
-    defintions: entity
-    usage: <proc[AntiFarm_Proc].context[<EntityTag>]>
+    definitions: entity
+    # usage: <proc[AntiFarm_Proc].context[<EntityTag>]>
     script:
     - if <yaml[antifarm-flags].read[expirations.<[entity].location.simple>].as_list.size||0> >= 3:
         - determine true
@@ -30,7 +30,7 @@ YAML_AntiFarm:
             - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.filter[in_seconds.is[more].than[<util.date.time.duration.in_seconds>]]>
 
         # Add a timer for this mob's death
-        - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<list[<util.date.time.duration.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>]||li@>]>
+        - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<list[<util.date.time.duration.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>]||<list[]>>]>
 
         # Check to see whether there are too many timers on this block
         - if <yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.size||0> >= 3:
@@ -66,9 +66,9 @@ YAML_AntiFarm:
         on mythicmobs lootdrop:
         - if <yaml[antifarm-flags].contains[expirations.<context.activemob.location.simple>]>:
             - yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.filter[in_seconds.is[more].than[<util.date.time.duration.in_seconds>]]>
-        - yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<list[<util.date.time.duration.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>]||li@>]>
+        - yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<list[<util.date.time.duration.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>]||<list[]>>]>
         - if <yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.size||0> >= 3:
-            - determine li@
+            - determine <list[]>
             - stop
 
         # Check for and cancel an empty gold message
@@ -128,5 +128,5 @@ YAML_AntiFarm:
         on mythicmobs lootdrop:
         - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.activemob.uuid||null>]||null>:
 #            - announce to_console "[DEBUG] MythicMobs YAML spawner"
-            - determine li@
+            - determine <list[]>
             - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.activemob.uuid>

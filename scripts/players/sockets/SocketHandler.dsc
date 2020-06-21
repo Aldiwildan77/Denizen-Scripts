@@ -32,55 +32,94 @@ nbt_craft_prevention:
 
 SocketMaker:
     type: item
-    material: nether_star[hides=li@HIDE_ENCHANTS;nbt: uncraftable/true;lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>]
-    display name: "<&a>Purified Dark Matter"
+    material: nether_star
+    display name: <&a>Purified Dark Matter
     lore_list:
-    - "<&6>This coalesced energy has been purged of the darkness inside. It now pulses and radiates in an unstoppable splendor."
+    - <&6>This coalesced energy has been purged of the darkness inside. It now pulses and radiates in an unstoppable splendor.
     enchantments:
     - MENDING:1
+    hides:
+    - enchants
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        nbt:
+        - uncraftable/true
 
 sockets_sword_max:
     type: item
     no_id: true
-    material: diamond_sword[nbt: equipment_type/weapon|item_tier/champion|sockets_current/5|sockets_max/5|sockets_can_add/false|sockets_open/true|socket1_type/attack|socket1_empty/true|socket2_type/attack|socket2_empty/true|socket3_type/utility|socket3_empty/true|socket4_type/defense|socket4_empty/true|socket5_type/utility|socket5_empty/true]
-    display name: "<&a>Empty Socket Sword of Extreme Testing"
+    material: diamond_sword
+    display name: <&a>Empty Socket Sword of Extreme Testing
     lore:
-    - "<&f>This sword is bonkers, lol."
-    - "<&6>Sockets"
-    - "<&c>EMPTY<&co> ATTACK"
-    - "<&c>EMPTY<&co> ATTACK"
-    - "<&a>EMPTY<&co> UTILITY"
-    - "<&9>EMPTY<&co> DEFENSE"
-    - "<&a>EMPTY<&co> UTILITY"
+    - <&f>It's a test sword!
+    - <&6>Sockets
+    - <&c>EMPTY<&co> ATTACK
+    - <&c>EMPTY<&co> ATTACK
+    - <&a>EMPTY<&co> UTILITY
+    - <&9>EMPTY<&co> DEFENSE
+    - <&a>EMPTY<&co> UTILITY
     enchantments:
     - MENDING:1
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        nbt:
+        - equipment_type/weapon
+        - item_tier/champion
+        - sockets_current/5
+        - sockets_max/5
+        - sockets_can_add/false
+        - sockets_open/true
+        - socket1_type/attack
+        - socket1_empty/true
+        - socket2_type/attack
+        - socket2_empty/true
+        - socket3_type/utility
+        - socket3_empty/true
+        - socket4_type/defense
+        - socket4_empty/true
+        - socket5_type/utility
+        - socket5_empty/true
 
 sockets_sword_locked:
     type: item
     no_id: true
-    material: diamond_sword[nbt: equipment_type/weapon|item_tier/champion|sockets_current/0|sockets_max/5|sockets_can_add/true]
-    display name: "<&a>Locked Socket Sword of Extreme Testing"
-    lore:
-    - "<&f>This sword is bonkers, lol."
-    - "<&6>Sockets"
-    - "<&8>LOCKED"
-    - "<&8>LOCKED"
-    - "<&8>LOCKED"
-    - "<&8>LOCKED"
-    - "<&8>LOCKED"
+    material: diamond_sword
+    display name: <&a>Locked Socket Sword of Extreme Testing
+    lore_list:
+    - <&f>It's a test sword!
+    - <&6>Sockets
+    - <&8>LOCKED
+    - <&8>LOCKED
+    - <&8>LOCKED
+    - <&8>LOCKED
+    - <&8>LOCKED
     enchantments:
     - MENDING:1
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        nbt:
+        - equipment_type/weapon
+        - item_tier/champion
+        - sockets_current/0
+        - sockets_max/5
+        - sockets_can_add/true
 
 sockets_sword_sealed_potential:
     type: item
     no_id: true
-    material: diamond_sword[nbt: equipment_type/weapon|item_tier/champion|sealed_potential/true]
-    display name: "<&a>Sealed Socket Sword of Extreme Testing"
-    lore:
-    - "<&f>This sword is bonkers, lol."
-    - "<&6>Sealed Potential"
+    material: diamond_sword
+    display name: <&a>Sealed Socket Sword of Extreme Testing
+    lore_list:
+    - <&f>It's a test sword!
+    - <&6>Sealed Potential
     enchantments:
     - MENDING:1
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        nbt:
+        - equipment_type/weapon
+        - item_tier/champion
+        - sealed_potential/true
 
 prismatic_seer:
     type: assignment
@@ -112,41 +151,57 @@ sockets:
                 script:
                 - narrate format:prismatic_seer_format "Okay, here's what I have to offer."
                 - wait 1s
-                - inventory open d:in@prismatic_seer_menu
-"prismatic_seer_menu":
+                - inventory open d:prismatic_seer_menu
+prismatic_seer_menu:
     type: inventory
+    inventory: chest
     title: Item Potential
     size: 45
     slots:
     - "[] [] [] [] [] [] [] [] []"
-    - "[] [] [] [] [i@socket_add] [] [] [] []"
-    - "[] [] [] [i@socket_potential] [] [] [] [] []"
-    - "[] [] [] [] [i@gem_add] [] [] [] []"
+    - "[] [] [] [] [socket_add] [] [] [] []"
+    - "[] [] [] [socket_potential] [] [] [] [] []"
+    - "[] [] [] [] [gem_add] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
 socket_add:
     type: item
-    material: nether_star[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>]
-    display name: "<&a>Unlock a socket on an item"
+    material: nether_star
+    display name: <&a>Unlock a socket on an item
     lore_list:
-    - "<&f>Requires <server.flag[SocketAddCost]> Purified Dark Matter and 1 Ingot of Crystallized Experience."
+    - <&f>Requires <server.flag[SocketAddCost]> Purified Dark Matter and 1 Ingot of Crystallized Experience.
     enchantments:
     - MENDING:1
+    hides:
+    - enchants
+    - attributes
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 gem_add:
     type: item
-    material: diamond[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS]
-    display name: "<&a>Add a gem to a socket"
-    lore:
-    - "<&f>Requires an item with an open socket and a gem of the appropriate type."
+    material: diamond
+    display name: <&a>Add a gem to a socket
+    lore_list:
+    - <&f>Requires an item with an open socket and a gem of the appropriate type.
     enchantments:
     - MENDING:1
+    hides:
+    - attributes
+    - enchants
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 socket_potential:
     type: item
-    material: gold_ingot[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>]
-    display name: "<&a>Unlock the <&6>Sealed Potential<&a> of an item"
+    material: gold_ingot
+    display name: <&a>Unlock the <&6>Sealed Potential<&a> of an item
     lore_list:
-    - "<&f>Requires an item with <&6>Sealed Potential<&f>, <server.flag[SealedPotentialCost]> Purified Dark Matter, and 1 Ingot of Crystallized Experience."
+    - <&f>Requires an item with <&6>Sealed Potential<&f>, <server.flag[SealedPotentialCost]> Purified Dark Matter, and 1 Ingot of Crystallized Experience.
     enchantments:
     - MENDING:1
+    hides:
+    - attributes
+    - enchants
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 prismatic_seer_inventory_handler:
     type: world
@@ -160,7 +215,7 @@ prismatic_seer_inventory_handler:
         on player drags in prismatic_seer_menu priority:100:
         - determine cancelled
         on player clicks socket_add in prismatic_seer_menu:
-        - inventory close d:in@prismatic_seer_menu
+        - inventory close
 #        - narrate format:prismatic_seer_format "You clicked the Add a socket option!"
         - announce to_console <player.inventory.list_contents>
         - if !<player.inventory.contains.scriptname[SocketMaker].quantity[<server.flag[SocketAddCost]>]> || !<player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[1]>:
@@ -169,14 +224,14 @@ prismatic_seer_inventory_handler:
             - stop
         - if <player.inventory.list_contents.filter[nbt[sockets_can_add]].size||null> >= 1:
             - narrate format:prismatic_seer_format "Okay, now select which of your valid items you'd like to add a socket to."
-            - note "in@generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sockets_can_add]]>]" as:sockets_can_add.<player.uuid>
-            - inventory open d:in@sockets_can_add.<player.uuid>
+            - note "<inventory[generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sockets_can_add]]>]>" as:sockets_can_add.<player.uuid>
+            - inventory open d:sockets_can_add.<player.uuid>
         - else:
             - narrate format:prismatic_seer_format "Sorry, it looks like you don't have any items I can add a socket to!"
         - narrate format:prismatic_seer_format "Right click me again if you'd like to choose another option!"
 
         on player clicks gem_add in prismatic_seer_menu:
-        - inventory close d:in@prismatic_seer_menu
+        - inventory close
         - announce to_console <player.inventory.list_contents>
         # Add a check to ensure that there is a gem matching the available sockets before opening the inventory?
         # We're not stopping them from closing it so it might just not matter
@@ -186,18 +241,18 @@ prismatic_seer_inventory_handler:
             - flag player sockets_gem_add_item_empty:!
             - flag player sockets_gem_add_item_types:!
             - flag player sockets_gem_add_item_slot_type_list:!
-            - note "in@generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sockets_open]]>]" as:sockets_open.<player.uuid>
-            - inventory open d:in@sockets_open.<player.uuid>
+            - note "<inventory[generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sockets_open]]>]>" as:sockets_open.<player.uuid>
+            - inventory open d:sockets_open.<player.uuid>
         - else:
             - inventory close
             - narrate format:prismatic_seer_format "Sorry, you don't have any items I can add a gem to!"
         on player clicks socket_potential in prismatic_seer_menu:
-        - inventory close d:in@prismatic_seer_menu
+        - inventory close
         - announce to_console <player.inventory.list_contents>
         - if <player.inventory.list_contents.filter[nbt[sealed_potential]].size||null> >= 1:
             - narrate format:prismatic_seer_format "Okay, now select which of your valid items you'd like to unlock the potential of."
-            - note "in@generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sealed_potential]]>]" as:sealed_potential.<player.uuid>
-            - inventory open d:in@sealed_potential.<player.uuid>
+            - note "<inventory[generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sealed_potential]]>]>" as:sealed_potential.<player.uuid>
+            - inventory open d:sealed_potential.<player.uuid>
         - else:
             - narrate format:prismatic_seer_format "Sorry, it looks like you don't have any items with <&6>Sealed Potential<&f>!"
 prismatic_seer_socket_add_handler:
@@ -247,14 +302,14 @@ prismatic_seer_socket_add_handler:
                 - define "socket_new_lore:<&9>EMPTY<&co> DEFENSE"
             - if <[item].nbt[socket<[socket_target]>_type]> == utility:
                 - define "socket_new_lore:<&a>EMPTY<&co> UTILITY"
-            - adjust <[item]> "lore:<[item].lore.set[<[socket_new_lore]>].at[<[locked_socket_line]>]>" save:edited
+            - adjust <[item]> lore:<[item].lore.set[<[socket_new_lore]>].at[<[locked_socket_line]>]> save:edited
             - define item:<entry[edited].result>
             # Finally, give the new item
             - give <[item]> to:<player.inventory>
-            - inventory close d:in@sockets_can_add.<player.uuid>
-            - note remove as:in@sockets_can_add.<player.uuid>
+            - inventory close
+            - note remove as:sockets_can_add.<player.uuid>
             - narrate format:prismatic_seer_format "Congratulations, a socket has been added to your <[item].display><&f>!"
-        - else if <context.item> == i@air:
+        - else if <context.item.material.name> == air:
             - determine cancelled
         - else:
             - narrate format:prismatic_seer_format "Something went wrong! It doesn't look like I can add a socket to that item."
@@ -296,13 +351,13 @@ prismatic_seer_socket_potential_handler:
             - define item:<entry[edited].result>
             - adjust <[item]> lore:<[item].lore.pad_right[<[item].nbt[sockets_max].add[<[potential_line]>]>].with[<&8>LOCKED]> save:edited
             - define item:<entry[edited].result>
-            - inventory close d:in@sealed_potential.<player.uuid>
-            - note remove as:in@sealed_potential<player.uuid>
+            - inventory close
+            - note remove as:sealed_potential.<player.uuid>
             - give <[item]>
             - take scriptname:SocketMaker quantity:<server.flag[SealedPotentialCost]>
             - take scriptname:CrystallizedExperienceIngot quantity:1
             - narrate format:prismatic_seer_format "Congratulations, your <[item].display><&r>'s potential has been unlocked!"
-        - else if <context.item> == i@air:
+        - else if <context.item.material.name> == air:
             - determine cancelled
         - else:
             - narrate format:prismatic_seer_format "Something went wrong! It doesn't look like I can unlock the <&6>Sealed Potential<&f> of that item."
@@ -314,13 +369,13 @@ prismatic_seer_gem_add_item_handler:
         on player clicks in notable:
         - if <context.inventory.notable_name||null> != sockets_open.<player.uuid>:
             - stop
-        - inventory close d:in@sockets_open.<player.uuid>
-        - note remove as:in@sockets_open.<player.uuid>
+        - inventory close d:sockets_open.<player.uuid>
+        - note remove as:sockets_open.<player.uuid>
         - if <context.item.has_nbt[sockets_open]>:
-            - define item_sockets_type_list li@
-            - define item_sockets_empty li@
-            - define valid_gems li@
-            - define item_sockets_types li@
+            - define item_sockets_type_list <list[]>
+            - define item_sockets_empty <list[]>
+            - define valid_gems <list[]>
+            - define item_sockets_types <list[]>
             - flag player sockets_gem_add_item:<context.item>
             # Should save a list of empty sockets e.g. "li@socket1_empty|socket2_empty" etc.
             - flag player sockets_gem_add_item_empty:!|:<context.item.nbt_keys.filter[matches[socket[0-9]+_empty]].alphanumeric>
@@ -337,11 +392,11 @@ prismatic_seer_gem_add_item_handler:
             - define valid_gems <[valid_gems].deduplicate>
             - if <[valid_gems].size> >= 1:
                 - narrate format:prismatic_seer_format "Okay, here are the gems you can add to that item."
-                - note "in@generic[title=Available Gems;size=45;contents=<[valid_gems]>]" as:sockets_gem_add.<player.uuid>
-                - inventory open d:in@sockets_gem_add.<player.uuid>
+                - note "<inventory[generic[title=Available Gems;size=45;contents=<[valid_gems]>]>" as:sockets_gem_add.<player.uuid>
+                - inventory open d:sockets_gem_add.<player.uuid>
             - else:
                 - narrate format:prismatic_seer_format "Sorry, you don't have any valid gems for that item."
-        - else if <context.item> == i@air:
+        - else if <context.item.material.name> == air:
             - determine cancelled
         - else:
             - narrate format:prismatic_seer_format "Something went wrong! It doesn't look like I can add a gem to that item."
@@ -366,8 +421,8 @@ prismatic_seer_gem_add_gem_handler:
                 - define value-empty <[value]>
                 - define value-type <[value].replace[empty].with[type]>
                 - if <[item].nbt[<[value-type]>]> == <context.item.nbt[gem_type]||null>:
-                    - inventory close d:in@sockets_gem_add.<player.uuid>
-                    - note remove as:in@sockets_gem_add.<player.uuid>
+                    - inventory close
+                    - note remove as:sockets_gem_add.<player.uuid>
                     # Take the item and gem
                     - take <[item]> from:<player.inventory>
                     - take <context.item> from:<player.inventory>
@@ -416,9 +471,9 @@ prismatic_seer_gem_add_gem_handler:
                     #    - give <context.item>
                     #    - give <[former_item]>
                     - foreach stop
-        - else if <context.item> == i@air:
+        - else if <context.item.material.name> == air:
             - determine cancelled
         - else:
-            - inventory close d:in@sockets_gem_add.<player.uuid>
-            - note remove as:in@sockets_gem_add.<player.uuid>
+            - inventory close
+            - note remove as:sockets_gem_add.<player.uuid>
             - narrate format:prismatic_seer_format "Sorry, I can't add that gem to that item!"
