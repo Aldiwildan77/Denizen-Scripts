@@ -113,7 +113,8 @@ Artificing:
                     - if <player.xp.level> >= 30:
                         - narrate "format:Arch Artificer Format" "Sure thing, here you go!"
                         - give CrystallizedExperienceSliver quantity:1
-                        - execute as_server "xp -30l <player.name>"
+                        #- execute as_server "xp -30l <player.name>"
+                        - experience take level 30
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 30."
                 Chunk:
@@ -122,7 +123,8 @@ Artificing:
                     - if <player.xp.level> >= 50:
                         - narrate "format:Arch Artificer Format" "Sure thing, here you go!"
                         - give CrystallizedExperienceChunk quantity:1
-                        - execute as_server "xp -50l <player.name>"
+                        #- execute as_server "xp -50l <player.name>"
+                        - experience take level 50
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 50."
                 Billet:
@@ -131,7 +133,8 @@ Artificing:
                     - if <player.xp.level> >= 70:
                         - narrate "format:Arch Artificer Format" "Sure thing, here you go!"
                         - give CrystallizedExperienceBillet quantity:1
-                        - execute as_server "xp -70l <player.name>"
+                        #- execute as_server "xp -70l <player.name>"
+                        - experience take level 70
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 70."
                 Bloom:
@@ -140,7 +143,8 @@ Artificing:
                     - if <player.xp.level> >= 90:
                         - narrate "format:Arch Artificer Format" "Sure thing, here you go!"
                         - give CrystallizedExperienceBloom quantity:1
-                        - execute as_server "xp -90l <player.name>"
+                        #- execute as_server "xp -90l <player.name>"
+                        - experience take level 90
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 90."
                 Ingot:
@@ -149,6 +153,7 @@ Artificing:
                     - if <player.xp.level> >= 110:
                         - narrate "format:Arch Artificer Format" "Sure thing, here you go!"
                         - give CrystallizedExperienceIngot quantity:1
-                        - execute as_server "xp -110l <player.name>"
+                        #- execute as_server "xp -110l <player.name>"
+                        - experience take level 110
                     - else:
                         - narrate "format:Arch Artificer Format" "Sorry, you don't seem to have enough levels! Come back when you've got at least 110."
