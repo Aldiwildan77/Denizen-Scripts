@@ -37,7 +37,7 @@ investment_tiers:
     cost: 85500
     discount_percentage: 0.45
   10:
-    cost: 10000
+    cost: 100000
     discount_percentage: 0.5
 
 villagers:
