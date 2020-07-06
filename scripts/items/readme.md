@@ -64,7 +64,7 @@ Magic power serves as a more easily understandable concept than a raw multiplier
 * `sockets_can_add` (BOOLEAN) | Whether it is possible to add any more sockets to the item, to be removed when sockets_current equals sockets_max e.g. `true`, `false`
 * `sockets_open` (BOOLEAN) | Whether an item has sockets that are empty e.g. `true`, `false`
 * `socket#_type` (VALUE) | The type of a socket, e.g. `socket1_type` `attack`, `defense`, `utility`
-* `socket#_gem` (VALUE) | The actual gem inserted into a socket e.g. `socket1_gem` `crit_chance`, `healt1h_on_hit`, `speed_on_hit`
+* `socket#_gem` (VALUE) | The actual gem inserted into a socket e.g. `socket1_gem` `crit_chance`, `health_on_hit`, `speed_on_hit`
 * `socket#_empty` (BOOLEAN) | Whether the numbered socket is empty, e.g. `socket1_empty` `true`
 
 ### Gem functions
