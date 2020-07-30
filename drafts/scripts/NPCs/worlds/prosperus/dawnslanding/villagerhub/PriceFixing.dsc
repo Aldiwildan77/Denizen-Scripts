@@ -9,6 +9,7 @@ Villager_Price_Calculator:
     type: task
     debug: false
     # Requires: <[VillagerID]> <[EnchTier]>
+    definitions: VillagerID|EnchTier
     script:
     - define current_tier <yaml[VillagerPrices].read[villagers.<[VillagerID]>.current_tier]>
     - define progress <yaml[VillagerPrices].read[villagers.<[VillagerID]>.progress]>
@@ -19,6 +20,7 @@ Villager_Price_Calculator:
 Upgrade_Check:
     type: task
     debug: false
+    definitions: VillagerID
     # Requires: <[VillagerID]>
     script:
     - define current_tier <yaml[VillagerPrices].read[investments.current_tier]>

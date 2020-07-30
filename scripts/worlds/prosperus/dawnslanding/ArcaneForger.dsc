@@ -91,7 +91,7 @@ VeteranWeaponForge:
     debug: false
     material: diamond_sword
     display name: <&9>Forge a Veteran Armament
-    lore:
+    lore_list:
     - <&6>Requires <server.flag[VeteranWeaponForgeCost]> Phantasmal Bones and 1 Sliver of Crystallized Experience.
     enchantments:
     - MENDING:1
@@ -106,7 +106,7 @@ EliteToolForge:
     debug: false
     material: diamond_pickaxe
     display name: <&d>Forge an Elite Tool
-    lore:
+    lore_list:
     - <&6>Requires <server.flag[EliteToolForgeCost]> Phantasmal Bones and 1 Chunk of Crystallized Experience.
     enchantments:
     - MENDING:1

@@ -17,7 +17,7 @@ Player_Login_Checker:
                 - flag server daily-login-count.<player.uuid>:1
         - if <player.has_flag[daily-spin-available]>:
             - wait 4s
-            - narrate "<&a>Your daily login reward is available, <proc[msgcommand].context[<&b>click here or type /dailylogin|dailylogin|<&a>/dailylogin]><&a> to get it!" targets:<player>
+            - narrate "<&a>Your daily login reward is available, <&click[/dailylogin]><&b>click here or type /dailylogin<&end_click><&a> to get it!" targets:<player>
         on system time 19:00:
         - announce to_console "Daily rewards should be resetting"
         - flag server daily-login:!
@@ -29,6 +29,7 @@ DailyLogin:
     name: dailylogin
     description: Receive your daily login reward, if available.
     usage: /dailylogin
+    debug: false
     script:
     - if <player.has_flag[daily-spin-available]>:
         - flag player daily-spin-available:!
@@ -70,9 +71,44 @@ EliteBox:
         nbt:
         - bonusbox/elite
 
+daily_spinner_inventory:
+    type: inventory
+    inventory: chest
+    debug: false
+    title: <&6><&l>Daily Login Reward
+    size: 27
+    slots:
+    - [air] [air] [air] [air] [emerald] [air] [air] [air] [air]
+    - [] [] [] [] [] [] [] [] []
+    - [air] [air] [air] [air] [emerald] [air] [air] [air] [air]
+
+veteran_spinner_inventory:
+    type: inventory
+    inventory: chest
+    debug: false
+    title: <&6><&l>Veteran BONUS ROUND
+    size: 27
+    slots:
+    - [air] [air] [air] [air] [emerald] [air] [air] [air] [air]
+    - [] [] [] [] [] [] [] [] []
+    - [air] [air] [air] [air] [emerald] [air] [air] [air] [air]
+
+elite_spinner_inventory:
+    type: inventory
+    inventory: chest
+    debug: false
+    title: <&6><&l>Elite BONUS ROUND
+    size: 27
+    slots:
+    - [air] [air] [air] [air] [emerald] [air] [air] [air] [air]
+    - [] [] [] [] [] [] [] [] []
+    - [air] [air] [air] [air] [emerald] [air] [air] [air] [air]
+
+
+
 daily-login-spinner:
     type: task
-    debug: true
+    debug: false
     speed: 0
     script:
     # Create some cleared lists to work with
@@ -143,7 +179,7 @@ daily-login-spinner:
     # Pick 60 random items from the weighted list
     - define roll-size 60
     - define daily-roll-list <[daily-display-list].random[60]>
-    - note "<inventory[generic[title=<&6><&l>Daily Login Reward;size=27;contents=<list[air|air|air|air|emerald|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|emerald]>]>" as:daily-spinner.<player.uuid>
+    - note <inventory[daily_spinner_inventory]> as:daily-spinner.<player.uuid>
     - inventory open d:daily-spinner.<player.uuid>
     # Roll
     - repeat 50:
@@ -172,7 +208,7 @@ daily-login-spinner:
 
 Veteran-Spinner:
     type: task
-    debug: true
+    debug: false
     speed: 0
     script:
     # Create some cleared lists to work with
@@ -186,7 +222,7 @@ Veteran-Spinner:
     # Pick 60 random items from the weighted list
     - define roll-size 60
     - define veteran-roll-list <[veteran-display-list].random[60]>
-    - note "<inventory[generic[title=<&6><&l>Veteran BONUS ROUND!;size=27;contents=<list[air|air|air|air|emerald|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|emerald]>]>" as:veteran-spinner.<player.uuid>
+    - note <inventory[veteran_spinner_inventory]> as:veteran-spinner.<player.uuid>
     - inventory open d:veteran-spinner.<player.uuid>
     # Roll
     - repeat 50:
@@ -198,8 +234,8 @@ Veteran-Spinner:
         - run Elite-Spinner
     - else:
         - wait 1s
-        - narrate "<&a>You got <&f><[veteran-roll-list].get[54].display||<[veteran-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
-        - announce to_console "<player.name> got <[veteran-roll-list].get[54].display||<[veteran-roll-list].get[54].as_item.formatted.to_titlecase>>"
+        - narrate "<&a>You got <&f><[veteran-roll-list].get[54]as_item.display||<[veteran-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
+        - announce to_console "<player.name> got <[veteran-roll-list].get[54].as_item.display||<[veteran-roll-list].get[54].as_item.formatted.to_titlecase>>"
         - give <[veteran-roll-list].get[54]>
         - flag player cannot_close_inv:!
         - note remove as:veteran-spinner.<player.uuid>
@@ -207,7 +243,7 @@ Veteran-Spinner:
 
 Elite-Spinner:
     type: task
-    debug: true
+    debug: false
     speed: 0
     script:
     # Create some cleared lists to work with
@@ -220,7 +256,7 @@ Elite-Spinner:
     # Pick 60 random items from the weighted list
     - define roll-size 60
     - define elite-roll-list <[elite-display-list].random[60]>
-    - note "<inventory[generic[title=<&6><&l>Elite BONUS ROUND!;size=27;contents=<list[air|air|air|air|emerald|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|air|emerald]>]>" as:elite-spinner.<player.uuid>
+    - note <inventory[elite_spinner_inventory]> as:elite-spinner.<player.uuid>
     - inventory open d:elite-spinner.<player.uuid>
     - flag player cannot_close_inv:1
     # Roll
@@ -229,8 +265,8 @@ Elite-Spinner:
         - wait <util.e.power[<[value].mul[0.125].sub[3]>].round_up>t
 
     - wait 1s
-    - narrate "<&a>You got <&f><[elite-roll-list].get[54].display||<[elite-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
-    - announce to_console "<player.name> got <[elite-roll-list].get[54].display||<[elite-roll-list].get[54].as_item.formatted.to_titlecase>>"
+    - narrate "<&a>You got <&f><[elite-roll-list].get[54].as_item.display||<[elite-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
+    - announce to_console "<player.name> got <[elite-roll-list].get[54].as_item.display||<[elite-roll-list].get[54].as_item.formatted.to_titlecase>>"
     - give <[elite-roll-list].get[54]>
     - flag player cannot_close_inv:!
     - note remove as:elite-spinner.<player.uuid>

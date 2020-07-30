@@ -38,12 +38,12 @@ SocketMaker:
     - <&6>This coalesced energy has been purged of the darkness inside. It now pulses and radiates in an unstoppable splendor.
     enchantments:
     - MENDING:1
-    hides:
-    - enchants
     mechanisms:
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt:
         - uncraftable/true
+        hides:
+        - enchants
 
 sockets_sword_max:
     type: item
@@ -176,6 +176,9 @@ socket_add:
     - attributes
     mechanisms:
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        hides:
+        - enchants
+        - attributes
 gem_add:
     type: item
     material: diamond
@@ -184,11 +187,11 @@ gem_add:
     - <&f>Requires an item with an open socket and a gem of the appropriate type.
     enchantments:
     - MENDING:1
-    hides:
-    - attributes
-    - enchants
     mechanisms:
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        hides:
+        - enchants
+        - attributes
 socket_potential:
     type: item
     material: gold_ingot
@@ -197,11 +200,11 @@ socket_potential:
     - <&f>Requires an item with <&6>Sealed Potential<&f>, <server.flag[SealedPotentialCost]> Purified Dark Matter, and 1 Ingot of Crystallized Experience.
     enchantments:
     - MENDING:1
-    hides:
-    - attributes
-    - enchants
     mechanisms:
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        hides:
+        - attributes
+        - enchants
 
 prismatic_seer_inventory_handler:
     type: world
