@@ -24,7 +24,7 @@
 
 nbt_craft_prevention:
     type: world
-    debug: true
+    debug: false
     events:
         on player crafts item:
         - if <context.recipe.filter[nbt[uncraftable]].size> >= 1:
@@ -33,6 +33,7 @@ nbt_craft_prevention:
 SocketMaker:
     type: item
     material: nether_star
+    debug: false
     display name: <&a>Purified Dark Matter
     lore_list:
     - <&6>This coalesced energy has been purged of the darkness inside. It now pulses and radiates in an unstoppable splendor.
@@ -208,6 +209,7 @@ socket_potential:
 
 prismatic_seer_inventory_handler:
     type: world
+    debug: false
     events:
         on server start:
         - wait 30s
@@ -260,8 +262,9 @@ prismatic_seer_inventory_handler:
             - narrate format:prismatic_seer_format "Sorry, it looks like you don't have any items with <&6>Sealed Potential<&f>!"
 prismatic_seer_socket_add_handler:
     type: world
+    debug: false
     events:
-        on player clicks in notable:
+        on player clicks in inventory:
         - if <context.inventory.notable_name||null> != sockets_can_add.<player.uuid>:
             - stop
         # Checks if item has locked sockets that can be opened
@@ -318,12 +321,13 @@ prismatic_seer_socket_add_handler:
             - narrate format:prismatic_seer_format "Something went wrong! It doesn't look like I can add a socket to that item."
 prismatic_seer_socket_potential_handler:
     type: world
+    debug: false
     max_sockets:
         veteran: 3
         elite: 4
         champion: 5
     events:
-        on player clicks in notable:
+        on player clicks in inventory:
         - if <context.inventory.notable_name||null> != sealed_potential.<player.uuid>:
             - stop
         - if !<player.inventory.contains.scriptname[SocketMaker].quantity[<server.flag[SealedPotentialCost]>]> || !<player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[1]>:
@@ -367,9 +371,10 @@ prismatic_seer_socket_potential_handler:
         - narrate format:prismatic_seer_format "Right click me again if you'd like to choose another option!"
 prismatic_seer_gem_add_item_handler:
     type: world
+    debug: false
     events:
         # Inventory manager for list of items with open sockets to add a gem to
-        on player clicks in notable:
+        on player clicks in inventory:
         - if <context.inventory.notable_name||null> != sockets_open.<player.uuid>:
             - stop
         - inventory close d:sockets_open.<player.uuid>
@@ -406,9 +411,10 @@ prismatic_seer_gem_add_item_handler:
 
 prismatic_seer_gem_add_gem_handler:
     type: world
+    debug: false
     events:
         # Inventory manager for list of gems that can be added to the item in question
-        on player clicks in notable:
+        on player clicks in inventory:
         - if <context.inventory.notable_name||null> != sockets_gem_add.<player.uuid>:
             - stop
         - if <player.flag[sockets_gem_add_item_types].contains[<context.item.nbt[gem_type]||null>]>:

@@ -58,7 +58,7 @@ NewCommand:
     permission message: You dare try to wield the powers of the Gods?
     script:
     - inventory clear
-    - give wood_axe
+    - give wooden_axe
     - give compass
 PulpFictionBan1Command:
     type: command

@@ -13,11 +13,19 @@ socket_gem_utility_speed_on_hit_handler:
 socket_gem_utility_speed_on_hit:
     debug: false
     type: item
-    material: emerald[hides=li@HIDE_ATTRIBUTES|HIDE_ENCHANTS;nbt: uncraftable/true|gem_type/utility|gem_specific/socket_gem_utility_speed_on_hit]
-    display name: "<&a>Gem of Speed on Hit"
+    material: emerald
+    display name: <&a>Gem of Speed on Hit
     lore:
-    - "<&6>Gem"
-    - "<&a>Utility"
-    - "<&f>+3s Speed level 1 on hit"
+    - <&6>Gem
+    - <&a>Utility
+    - <&f>+3s Speed level 1 on hit
     enchantments:
     - MENDING:1
+    mechanisms:
+        hides:
+        - attributes
+        - enchants
+        nbt:
+        - uncraftable/true
+        - gem_type/utility
+        - gem_specific/socket_gem_utility_speed_on_hit

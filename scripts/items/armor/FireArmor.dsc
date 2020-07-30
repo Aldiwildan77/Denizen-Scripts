@@ -26,13 +26,13 @@ Veteran_Flame_Helm_sealed_potential:
         - armor_set/veteran_flame
         - fire_magic_power/25
         - enable_mana/true
-        
+
 Veteran_Flame_Chest_sealed_potential:
     type: item
     debug: false
     no_id: true
     material: Leather_Chestplate
-    display name: "<&9>Smoldering Leather Chestplate
+    display name: <&9>Smoldering Leather Chestplate
     lore_list:
     - <&9><&o>Veteran
     - <&f>This chestplate is warm to the touch, radiating the energy of fire magic.
@@ -55,7 +55,7 @@ Veteran_Flame_Chest_sealed_potential:
         - armor_set/veteran_flame
         - fire_magic_power/60
         - enable_mana/true
-    
+
 Veteran_Flame_Legs_sealed_potential:
     type: item
     debug: false
@@ -84,7 +84,7 @@ Veteran_Flame_Legs_sealed_potential:
         - armor_set/veteran_flame
         - fire_magic_power/4
         - enable_mana/true
-        
+
 Veteran_Flame_Boots_sealed_potential:
     type: item
     debug: false
@@ -113,7 +113,7 @@ Veteran_Flame_Boots_sealed_potential:
         - armor_set/veteran_flame
         - fire_magic_power/25
         - enable_mana/true
-        
+
 
 Veteran_Flame_Helm:
     type: item
@@ -141,7 +141,7 @@ Veteran_Flame_Helm:
         - armor_set/veteran_flame
         - fire_magic_power/25
         - enable_mana/true
-        
+
 Veteran_Flame_Chest:
     type: item
     debug: false
@@ -168,7 +168,7 @@ Veteran_Flame_Chest:
         - armor_set/veteran_flame
         - fire_magic_power/60
         - enable_mana/true
-        
+
 Veteran_Flame_Legs:
     type: item
     debug: false
@@ -195,7 +195,7 @@ Veteran_Flame_Legs:
         - armor_set/veteran_flame
         - fire_magic_power/40
         - enable_mana/true
-        
+
 Veteran_Flame_Boots:
     type: item
     debug: false
@@ -224,7 +224,7 @@ Veteran_Flame_Boots:
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 veteran_flame_armor_set_data:
-    type: yaml data
+    type: data
     debug: false
     set_name: veteran_flame
     set_variable: fire_magic_power
