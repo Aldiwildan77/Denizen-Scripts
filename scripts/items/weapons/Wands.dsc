@@ -2,7 +2,7 @@ ImbuedFlameboltWand_sealed_potential:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&9>Imbued Wand of Embers
     lore_list:
     - <&9><&o>Veteran
@@ -30,7 +30,7 @@ BurnishedFlameboltWand_sealed_potential:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&d>Burnished Wand of Embers
     lore_list:
     - <&d><&o>Elite
@@ -57,7 +57,7 @@ ImbuedFlameboltWand:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&9>Imbued Wand of Embers
     lore_list:
     - <&9><&o>Veteran
@@ -83,7 +83,7 @@ BurnishedFlameboltWand:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&d>Burnished Wand of Embers
     lore_list:
     - <&d><&o>Elite
@@ -108,7 +108,7 @@ ImbuedWindboltWand_sealed_potential:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&9>Imbued Wand of Breezes
     lore_list:
     - <&9><&o>Veteran
@@ -136,7 +136,7 @@ BurnishedWindboltWand_sealed_potential:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&d>Burnished Wand of Breezes
     lore_list:
     - <&d><&o>Elite
@@ -164,7 +164,7 @@ ImbuedAquaboltWand_sealed_potential:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&9>Imbued Wand of Streams
     lore_list:
     - <&9><&o>Veteran
@@ -192,7 +192,7 @@ BurnishedAquaboltWand_sealed_potential:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&d>Burnished Wand of Streams
     lore_list:
     - <&d><&o>Elite
@@ -220,7 +220,7 @@ ImbuedNatureboltWand_sealed_potential:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&9>Imbued Wand of Sprouting
     lore_list:
     - <&9><&o>Veteran
@@ -248,7 +248,7 @@ BurnishedNatureboltWand_sealed_potential:
     type: item
     debug: false
     no_id: true
-    material: wood_sword
+    material: wooden_hoe
     display name: <&d>Burnished Wand of Sprouting
     lore_list:
     - <&d><&o>Elite

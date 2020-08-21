@@ -1,12 +1,17 @@
 # Use with PAPI placeholders of the relevant magic type e.g. %denizen_<proc[Magic_Power_Handler].context[fire]>%
 Magic_Power_Handler:
     type: procedure
-    debug: false
+    debug: true
     definitions: magic_type
     script:
-    - define power <player.equipment.parse[nbt[<[magic_type]>_magic_power]].sum.add[<player.flag[<[magic_type]>_magic_power]||0>].add[100]>
-    - define set_list <player.equipment.parse[nbt[armor_set]].deduplicated||li@>
-    - foreach <[set_list]>:
+    - define set_list <player.equipment.parse[nbt[armor_set]||null].deduplicate>
+    - if <[set_list]> == <list[null]>:
+        - define set_list <list[]>
+    - if <[set_list].is_empty> && !<player.has_flag[<[magic_type]>_magic_power]>:
+        - define power <player.equipment.parse[nbt[<[magic_type]>_magic_power]||0].sum.add[100]>
+    - else:
+        - define power <player.equipment.parse[nbt[<[magic_type]>_magic_power]||0].sum.add[<player.flag[<[magic_type]>_magic_power]||0>].add[100]>
+    - if !<[set_list].is_empty>:
         - define power <[power].add[<proc[<[value]>_armor_set_bonuses].context[<player.equipment.parse[nbt[armor_set]].filter[matches[<[value]>]].size>]>]>
     - determine <[power]>
 

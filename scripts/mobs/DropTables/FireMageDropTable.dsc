@@ -7,7 +7,7 @@ fire_mage_drop:
             - stop
         - if <context.entity.location.is_within[arena_avenfeld]>:
             - stop
-        - else if <proc[AntiFarm_Proc].context[<context.entity>]>:
+        - else if <proc[AntiFarm_Proc].context[<context.entity>]||null>:
             - stop
         - else if "<context.entity.name.starts_with[<&d>Cultist Fire Mage]||null>":
             - define multiplier:<proc[DropMultiplierHandler]>

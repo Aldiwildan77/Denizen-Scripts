@@ -46,14 +46,6 @@ ArcaneForgerInventoryMenu:
     - "[] [] [] [EliteToolForge] [] [EliteWeaponForge] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
 
-"Veteran Token Placeholder":
-    type: world
-    debug: false
-    events:
-        on mm denizen mechanic:
-        - if <context.skill> == CreateVeteranToken:
-            - give VeteranToken quantity:1 to:<context.caster.inventory>
-
 VeteranToken:
     type: item
     debug: true
@@ -148,7 +140,7 @@ ArcaneForgerInventoryHandler:
         - inventory close
 #        - narrate "format:Arcane Forger Format" "You clicked the Veteran Tool Forge option!"
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[VeteranToken].quantity[<server.flag[VeteranToolForgeCost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceSliver].quantity[1]>:
+        - if <player.inventory.contains[VeteranToken].quantity[<server.flag[VeteranToolForgeCost]>]> && <player.inventory.contains[CrystallizedExperienceSliver].quantity[1]>:
 #            - narrate "format:Arcane Forger Format" "You have enough bones for a special magic doodad!"
             - take scriptname:VeteranToken quantity:<server.flag[VeteranToolForgeCost]>
             - take scriptname:CrystallizedExperienceSliver quantity:1
@@ -180,7 +172,7 @@ ArcaneForgerInventoryHandler:
         - inventory close
 #        - narrate "format:Arcane Forger Format" "You clicked the Veteran Weapon Forge option!"
         - announce to_console <player.inventory.list_contents>
-        - if <player.inventory.contains.scriptname[VeteranToken].quantity[<server.flag[VeteranWeaponForgeCost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceSliver].quantity[1]>:
+        - if <player.inventory.contains[VeteranToken].quantity[<server.flag[VeteranWeaponForgeCost]>]> && <player.inventory.contains[CrystallizedExperienceSliver].quantity[1]>:
 #            - narrate "format:Arcane Forger Format" "You have enough bones for a special magic doodad!"
             - take scriptname:VeteranToken quantity:<server.flag[VeteranWeaponForgeCost]>
             - take scriptname:CrystallizedExperienceSliver quantity:1
@@ -219,7 +211,7 @@ ArcaneForgerInventoryHandler:
         on player clicks EliteToolForge in ArcaneForgerInventoryMenu:
         - inventory close
 #        - narrate "format:Arcane Forger Format" "You clicked the Elite Tool Forge option!"
-        - if <player.inventory.contains.scriptname[VeteranToken].quantity[<server.flag[EliteToolForgeCost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceChunk].quantity[1]>:
+        - if <player.inventory.contains[VeteranToken].quantity[<server.flag[EliteToolForgeCost]>]> && <player.inventory.contains[CrystallizedExperienceChunk].quantity[1]>:
 #            - narrate "format:Arcane Forger Format" "You have enough bones for a special magic doodad!"
             - take scriptname:VeteranToken quantity:<server.flag[EliteToolForgeCost]>
             - take scriptname:CrystallizedExperienceChunk quantity:1
@@ -250,7 +242,7 @@ ArcaneForgerInventoryHandler:
         on player clicks EliteWeaponForge in ArcaneForgerInventoryMenu:
         - inventory close
 #        - narrate "format:Arcane Forger Format" "You clicked the Elite Weapon Forge option!"
-        - if <player.inventory.contains.scriptname[VeteranToken].quantity[<server.flag[EliteWeaponForgeCost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceChunk].quantity[1]>:
+        - if <player.inventory.contains[VeteranToken].quantity[<server.flag[EliteWeaponForgeCost]>]> && <player.inventory.contains[CrystallizedExperienceChunk].quantity[1]>:
 #            - narrate "format:Arcane Forger Format" "You have enough bones for a special magic doodad!"
             - take scriptname:VeteranToken quantity:<server.flag[EliteWeaponForgeCost]>
             - take scriptname:CrystallizedExperienceChunk quantity:1
