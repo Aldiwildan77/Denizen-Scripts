@@ -7,7 +7,7 @@ DailyFishingChallenge_gui_item:
     - MENDING:1
     lore_list:
     - <yaml[<script.data_key[quest_name]>].read[player_data.<script.data_key[quest_name]>.description]>
-    - <&6>Rewards:
+    - <&6>Rewards<&co>
     - <yaml[<script.data_key[quest_name]>].read[config.rewards.money]> gold
     - <yaml[<script.data_key[quest_name]>].read[config.rewards.quest_points]> quest points
     mechanisms:

@@ -5,7 +5,7 @@ DailyGathering_Wheat_gui_item:
     display name: <&a><yaml[<script.data_key[quest_name]>].read[player_data.<script.data_key[quest_name]>.name]>
     lore_list:
     - <yaml[<script.data_key[quest_name]>].read[player_data.<script.data_key[quest_name]>.description]>
-    - <&6>Rewards:
+    - <&6>Rewards<&co>
     - <yaml[<script.data_key[quest_name]>].read[config.rewards.money]> gold
     - <yaml[<script.data_key[quest_name]>].read[config.rewards.quest_points]> quest points
     mechanisms:
