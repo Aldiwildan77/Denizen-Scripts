@@ -93,13 +93,24 @@ wormwood:
 pina:
     type: item
     debug: false
-    display name: Pina
+    display name: Piña
     material: fern
     mechanisms:
         nbt:
         - craftingtype/mixology
         hides:
         - item_data
+roasted_pina:
+    type: item
+    debug: false
+    display name: Roasted piña
+    material: fern
+    mechanisms:
+        nbt:
+        - craftingtype/mixology
+        hides:
+        - item_data
+
 
 # Cocktail components
 
