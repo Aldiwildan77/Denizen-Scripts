@@ -1,8 +1,8 @@
-<[quest_internalname]>Completion:
+StoneToolsCompletion:
     type: task
     debug: false
     script:
-    - zap LeatherArmorOffer s@QuestMasterInteract
+    - zap LeatherArmorOffer QuestMasterInteract
 
 StoneToolsQuestCraftingHandler:
     type: world
@@ -49,6 +49,7 @@ StoneToolsQuestCraftingHandler:
 StoneToolsQuestDeliveryHandler:
     type: task
     debug: false
+    definitions: data
     script:
     - define stage:2
     - define quest_internalname:StoneTools

@@ -32,11 +32,11 @@ UnlockAvenfeldSpellCastHandler:
     type: world
     debug: false
     events:
-        on magicspells player completes spell:
+        on magicspells entity completes spell:
         - if <context.spell_name> != realmwarp-avenfeld:
             - stop
         - define data <player.uuid>_quest_data
-        - define quest_internalname:UnlockAvenfeld
+        - define quest_internalname UnlockAvenfeld
         - if !<yaml[<[data]>].contains[quests.active.<[quest_internalname]>]>:
             - stop
         - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]> == 2:
@@ -47,4 +47,4 @@ UnlockAvenfeldCompletion:
     type: task
     debug: false
     script:
-    - zap FindFireTempleOffer s@RoyalGeographerInteract
+    - zap FindFireTempleOffer RoyalGeographerInteract

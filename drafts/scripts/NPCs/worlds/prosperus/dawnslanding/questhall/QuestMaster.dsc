@@ -24,31 +24,31 @@ FoundSomeDiamonds:
     debug: false
     script:
     - narrate "<dark_green>Quest Master<white><&co> Not quite all the Treasure Hunters, but here's what you've earned!"
-    - give diamond "qty:<player.flag[npccount]>"
-    - give emerald "qty:<player.flag[npccount]>"
+    - give diamond quantity:<player.flag[npccount]>
+    - give emerald quantity:<player.flag[npccount]>
     - flag player npccount:0
 FoundAllDiamonds:
     type: task
     debug: false
     script:
     - narrate "<dark_green>Quest Master<white><&co> Oh, I see you found all the Treasure Hunters! Here are your rewards!"
-    - give diamond qty:8
-    - give emerald qty:8
-    - give diamond_helmet qty:1
-    - give diamond_chestplate qty:1
-    - give diamond_leggings qty:1
-    - give diamond_boots qty:1
-    - flag npccount:0
+    - give diamond quantity:8
+    - give emerald quantity:8
+    - give diamond_helmet
+    - give diamond_chestplate
+    - give diamond_leggings
+    - give diamond_boots
+    - flag player npccount:0
 
 QuestMasterStepUpdater:
     type: world
     debug: false
     events:
         on player joins:
-        - if <s@newbie.step||null> == General-Dialogue:
+        - if <script[newbie].step||null> == General-Dialogue:
             - stop
         - else:
-            - if <s@Newbie.step||null> != Greeting:
+            - if <script[Newbie].step||null> != Greeting:
                 - zap script:Newbie step:General-Dialogue
 
 QuestMasterInteract:
@@ -164,7 +164,7 @@ QuestMasterInteract:
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "Lucky for you, I wrote a little book with directions."
                         - wait 0.7s
-                        - adjust <player> show_book:i@SkillTrainerBook
+                        - adjust <player> show_book:SkillTrainerBook
                         - zap MeetSkillTrainersActive
                     # Meet Postmaster offer
                     - else if <yaml[<[data]>].contains[quests.completed.MeetSkillTrainers]> && <yaml[<[data]>].contains[quests.active.MeetPostmaster].not> && <yaml[<[data]>].contains[quests.completed.MeetPostmaster].not>:
@@ -241,7 +241,7 @@ QuestMasterInteract:
                     trigger: /*/
                     hide trigger message: true
                     script:
-                    - narrate format:PlayerChatFormat "<context.message>"
+                    - narrate format:PlayerChatFormat <context.message>
                     - narrate format:QuestMasterFormat "I'm not sure what you mean, sorry! If you're ready for your first adventure, just let me know."
                     - narrate "<gray>Say <green>yes <gray> if you're ready to accept the quest, or right-click the Quest Master to hear about it again."
         ChooseFirstQuest:
@@ -271,7 +271,7 @@ QuestMasterInteract:
                         - run QuestAcceptHandler def:SetHome
                         - zap SetHomeActive
                     - else:
-                        - announce format:PlayerChatFormat "<context.message>"
+                        - announce format:PlayerChatFormat <context.message>
         WoodToolsOffer:
             proximity trigger:
                 entry:
@@ -287,6 +287,7 @@ QuestMasterInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready!"
+                    - define data <player.uuid>_quest_data
                     - run QuestAcceptHandler def:WoodTools
                     - if <yaml[<[data]>].contains[quests.active.SetHome]>:
                         - zap WoodToolsSetHomeActive
@@ -314,7 +315,7 @@ QuestMasterInteract:
                         - run QuestAcceptHandler def:SetHome
                         - zap WoodToolsSethomeActive
                     - else:
-                        - announce format:PlayerChatFormat "<context.message>"
+                        - announce format:PlayerChatFormat <context.message>
             click trigger:
                 script:
                 - define data <player.uuid>_quest_data
@@ -359,7 +360,7 @@ QuestMasterInteract:
                         - run QuestAcceptHandler def:WoodTools
                         - zap WoodToolsSethomeActive
                     - else:
-                        - announce format:PlayerChatFormat "<context.message>"
+                        - announce format:PlayerChatFormat <context.message>
             click trigger:
                 script:
                 - define data <player.uuid>_quest_data
@@ -533,7 +534,7 @@ QuestMasterInteract:
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "Lucky for you, I wrote a little book with directions."
                     - wait 0.7s
-                    - adjust <player> show_book:i@SkillTrainerBook
+                    - adjust <player> show_book:SkillTrainerBook
                     - run QuestProgressHandler def:MeetSkillTrainers
         MeetPostmasterOffer:
             proximity trigger:

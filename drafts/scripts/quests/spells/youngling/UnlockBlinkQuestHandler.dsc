@@ -35,5 +35,5 @@ UnlockBlinkCompletion:
     type: task
     debug: false
     script:
-    - zap BlinkUnlocked s@WiseWizardInteract
+    - zap BlinkUnlocked WiseWizardInteract
     - execute as_server "cast teach <player.name> Blink"
