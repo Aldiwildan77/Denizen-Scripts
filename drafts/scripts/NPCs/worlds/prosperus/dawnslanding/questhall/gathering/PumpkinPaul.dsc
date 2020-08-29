@@ -7,7 +7,7 @@ PumpkinPaulAssignment:
         - teleport npc location:<npc.anchor[PumpkinPaul]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
-    
+
 PumpkinPaulFormat:
     type: format
     format: "<gray>Pumpkin Paul<white><&co> <text>"
@@ -27,6 +27,7 @@ PumpkinPaulInteract:
                         - narrate format:PumpkinPaulFormat "Hey <player.name>, we need some pumpkins to feed the people of Dawn's Landing. Can you help out?"
             click trigger:
                 script:
+                - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Pumpkins].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Pumpkins]>:
                     - run QuestAcceptHandler def:DailyGathering_Pumpkins
             chat trigger:
@@ -34,6 +35,7 @@ PumpkinPaulInteract:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.DailyGathering_Pumpkins].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Pumpkins]>:
                         - run QuestAcceptHandler def:DailyGathering_Pumpkins
         PumpkinQuestDelivery:

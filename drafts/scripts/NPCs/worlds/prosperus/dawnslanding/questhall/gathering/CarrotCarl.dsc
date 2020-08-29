@@ -7,7 +7,7 @@ CarrotCarlAssignment:
         - teleport npc location:<npc.anchor[CarrotCarl]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
-    
+
 CarrotCarlFormat:
     type: format
     format: "<gray>Carrot Carl<white><&co> <text>"
@@ -27,6 +27,7 @@ CarrotCarlInteract:
                         - narrate format:CarrotCarlFormat "Hey <player.name>, we need some carrots to feed the people of Dawn's Landing. Can you help out?"
             click trigger:
                 script:
+                - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Carrots]>:
                     - run QuestAcceptHandler def:DailyGathering_Carrots
             chat trigger:
@@ -34,6 +35,7 @@ CarrotCarlInteract:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Carrots]>:
                         - run QuestAcceptHandler def:DailyGathering_Carrots
         CarrotQuestDelivery:

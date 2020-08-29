@@ -7,7 +7,7 @@ PotatoPatrickAssignment:
         - teleport npc location:<npc.anchor[PotatoPatrick]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
-    
+
 PotatoPatrickFormat:
     type: format
     format: "<gray>Potato Patrick<white><&co> <text>"
@@ -27,6 +27,7 @@ PotatoPatrickInteract:
                         - narrate format:PotatoPatrickFormat "Hey <player.name>, we need some potatoes to feed the people of Dawn's Landing. Can you help out?"
             click trigger:
                 script:
+                - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Potatoes].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Potatoes]>:
                     - run QuestAcceptHandler def:DailyGathering_Potatoes
             chat trigger:
@@ -34,6 +35,7 @@ PotatoPatrickInteract:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.DailyGathering_Potatoes].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Potatoes]>:
                         - run QuestAcceptHandler def:DailyGathering_Potatoes
         PotatoQuestDelivery:

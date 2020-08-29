@@ -7,7 +7,7 @@ JQ1OfferingNPCAssignment:
         - teleport npc location:<npc.anchor[JQ1OfferingNPC]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
-    
+
 JQ1OfferingNPCFormat:
     type: format
     format: "<gray>He Jumps Once<white><&co> <text>"
@@ -26,6 +26,7 @@ JQ1OfferingNPCInteract:
                         - narrate format:JQ1OfferingNPCFormat "Looking for a jumping challenge? I can send you to a faraway land where you can test your parkour skills. Complete the course for a reward!"
             click trigger:
                 script:
+                - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyJQ1].not> && <proc[QuestAvailabilityHandler].context[DailyJQ1]>:
                     - run QuestAcceptHandler def:DailyJQ1
                     - teleport <player> <location[-83.42172384982014,107,43.51846056790148,5.937170028686523,89.94125366210938,infinitus]>
@@ -34,6 +35,7 @@ JQ1OfferingNPCInteract:
                     trigger: /yes|sure|okay|great/
                     hide trigger message: true
                     script:
+                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.DailyJQ1].not> && <proc[QuestAvailabilityHandler].context[DailyJQ1]>:
                         - run QuestAcceptHandler def:DailyJQ1
                         - teleport <player> <location[-83.42172384982014,107,43.51846056790148,5.937170028686523,89.94125366210938,infinitus]>
