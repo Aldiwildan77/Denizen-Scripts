@@ -2,7 +2,7 @@ SkeletalRogueHuntCompletion:
     type: task
     debug: false
     script:
-    - zap VeteranHuntOffer s@WarmasterReinwaldInteract
+    - zap VeteranHuntOffer WarmasterReinwaldInteract
 
 SkeletalRogueHuntHandler:
     type: world

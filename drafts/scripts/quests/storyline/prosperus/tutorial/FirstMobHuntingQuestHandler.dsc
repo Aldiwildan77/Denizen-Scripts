@@ -2,7 +2,7 @@ FirstMobHuntingCompletion:
     type: task
     debug: false
     script:
-    - zap SkeletalRogueHuntOffer s@WarmasterReinwaldInteract
+    - zap SkeletalRogueHuntOffer WarmasterReinwaldInteract
 
 FirstMobHuntingHandler:
     type: world

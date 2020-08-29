@@ -2,7 +2,7 @@ VeteranHuntCompletion:
     type: task
     debug: false
     script:
-    - zap LichHuntOffer s@WarmasterReinwaldInteract
+    - zap LichHuntOffer WarmasterReinwaldInteract
 
 VeteranHuntHandler:
     type: world

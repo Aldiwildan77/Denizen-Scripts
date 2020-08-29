@@ -2,7 +2,7 @@ LichHuntCompletion:
     type: task
     debug: false
     script:
-    - zap EliteHuntOffer s@WarmasterReinwaldInteract
+    - zap EliteHuntOffer WarmasterReinwaldInteract
 
 LichHuntHandler:
     type: world

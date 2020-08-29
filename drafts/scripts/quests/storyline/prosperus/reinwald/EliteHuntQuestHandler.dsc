@@ -2,7 +2,7 @@ EliteHuntCompletion:
     type: task
     debug: false
     script:
-    - zap EliteHuntComplete s@WarmasterReinwaldInteract
+    - zap EliteHuntComplete WarmasterReinwaldInteract
 
 EliteHuntHandler:
     type: world

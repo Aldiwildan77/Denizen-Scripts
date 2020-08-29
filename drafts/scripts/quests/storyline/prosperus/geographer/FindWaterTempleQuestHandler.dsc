@@ -2,4 +2,4 @@ FindWaterTempleCompletion:
     type: task
     debug: false
     script:
-    - zap NoRoyalGeographerStorylineQuests s@RoyalGeographerInteract
+    - zap NoRoyalGeographerStorylineQuests RoyalGeographerInteract

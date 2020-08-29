@@ -1,13 +1,14 @@
 WoodToolsCompletion:
     type: task
     debug: false
+    definitions: data
     script:
     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
-        - zap WoodToolsOffer s@QuestMasterInteract
+        - zap WoodToolsOffer QuestMasterInteract
     - else if <yaml[<[data]>].contains[quests.active.WoodTools]>:
-        - zap WoodToolsActiveOnly s@QuestMasterInteract
+        - zap WoodToolsActiveOnly QuestMasterInteract
     - else if <yaml[<[data]>].contains[quests.completed.WoodTools]>:
-        - zap StoneToolsOffer s@QuestMasterInteract
+        - zap StoneToolsOffer QuestMasterInteract
 
 WoodToolsQuestCraftingHandler:
     type: world
@@ -54,6 +55,7 @@ WoodToolsQuestCraftingHandler:
 WoodToolsQuestDeliveryHandler:
     type: task
     debug: false
+    definitions: data
     script:
     - define quest_internalname:WoodTools
     - define stage:2

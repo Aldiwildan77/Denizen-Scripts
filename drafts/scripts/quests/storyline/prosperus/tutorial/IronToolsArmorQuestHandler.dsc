@@ -2,7 +2,7 @@ IronToolsArmorCompletion:
     type: task
     debug: false
     script:
-    - zap FindFishingNewbieOffer s@QuestMasterInteract
+    - zap FindFishingNewbieOffer QuestMasterInteract
 
 IronToolsArmorQuestCraftingHandler:
     type: world
@@ -63,6 +63,7 @@ IronToolsArmorQuestCraftingHandler:
 IronToolsArmorQuestDeliveryHandler:
     type: task
     debug: false
+    definitions: data|quest_internalname
     script:
     - define stage:2
     - choose <player.item_in_hand.material.name>:

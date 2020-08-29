@@ -2,7 +2,7 @@ LeatherArmorCompletion:
     type: task
     debug: false
     script:
-    - zap FindReinwaldOffer s@QuestMasterInteract
+    - zap FindReinwaldOffer QuestMasterInteract
 
 LeatherArmorQuestCraftingHandler:
     type: world
@@ -43,6 +43,7 @@ LeatherArmorQuestCraftingHandler:
 LeatherArmorQuestDeliveryHandler:
     type: task
     debug: false
+    definitions: data
     script:
     - define stage:2
     - define quest_internalname:LeatherArmor
