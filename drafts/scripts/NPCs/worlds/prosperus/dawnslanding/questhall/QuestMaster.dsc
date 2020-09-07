@@ -478,11 +478,11 @@ QuestMasterInteract:
             proximity trigger:
                 entry:
                     script:
-                    - narrate format:QuestMasterFormat "how's that hunt for iron going?"
+                    - narrate format:QuestMasterFormat "How's that hunt for iron going?"
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "If you're having a rough time finding it just outside the valley, try going further out."
                     - wait 0.7s
-                    - narrate format:QuestMasterFormat "Many adventurers have been through these parts! Not so many are brave enough to cross the oceans to otehr continents, though. I reckon you've got what it takes."
+                    - narrate format:QuestMasterFormat "Many adventurers have been through these parts! Not so many are brave enough to cross the oceans to other continents, though. I reckon you've got what it takes."
                     - run QuestProgressHandler def:IronToolsArmor
         FindFishingNewbieOffer:
             proximity trigger:
