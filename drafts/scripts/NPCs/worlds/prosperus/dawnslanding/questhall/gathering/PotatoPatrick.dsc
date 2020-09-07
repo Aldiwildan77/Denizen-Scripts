@@ -30,6 +30,8 @@ PotatoPatrickInteract:
                 - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Potatoes].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Potatoes]>:
                     - run QuestAcceptHandler def:DailyGathering_Potatoes
+                - else if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
             chat trigger:
                 DailyGathering_PotatoesAccept:
                     trigger: /yes|sure|okay|great/
@@ -47,6 +49,11 @@ PotatoPatrickInteract:
                         - narrate format:PotatoPatrickFormat "Hey <player.name>, got those potatoes for me?"
                     - else:
                         - zap PotatoQuestOffer
+            click trigger:
+                script:
+                - define data <player.uuid>_quest_data
+                - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
 
 DailyGathering_PotatoesQuestDeliveryHandler:
     type: task

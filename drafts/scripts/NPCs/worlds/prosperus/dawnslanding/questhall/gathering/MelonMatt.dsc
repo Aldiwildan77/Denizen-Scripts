@@ -30,6 +30,8 @@ MelonMattInteract:
                 - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Melons].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Melons]>:
                     - run QuestAcceptHandler def:DailyGathering_Melons
+                - else if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
             chat trigger:
                 DailyGathering_MelonsAccept:
                     trigger: /yes|sure|okay|great/
@@ -47,6 +49,11 @@ MelonMattInteract:
                         - narrate format:MelonMattFormat "Hey <player.name>, got those melons for me?"
                     - else:
                         - zap MelonQuestOffer
+            click trigger:
+                script:
+                - define data <player.uuid>_quest_data
+                - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
 
 DailyGathering_MelonsQuestDeliveryHandler:
     type: task

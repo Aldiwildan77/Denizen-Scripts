@@ -12,6 +12,10 @@ Well, dumbass, you wrote a handler for that, and if you're reading this, you for
 
 - if <proc[QuestAvailabilityHandler].context[QuestName]>:
 
+# To-do
+
+- [x] Quest quit messages and functions e.g. zap commands
+
 ## Tutorial Quests
 
 - [x] Deliver Swabby's package
@@ -34,7 +38,7 @@ Well, dumbass, you wrote a handler for that, and if you're reading this, you for
     - [x] Script backend written
 - [x] Craft iron tools and armor
     - [x] Dialogue written
-    - [x] Script backend written 
+    - [x] Script backend written
 - [x] Find the Fishing Newbie
     - [x] Dialogue written
     - [x] Script backend written

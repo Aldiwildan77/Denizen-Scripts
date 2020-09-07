@@ -30,6 +30,8 @@ WilWheatonInteract:
                 - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Wheat].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Wheat]>:
                     - run QuestAcceptHandler def:DailyGathering_Wheat
+                - else if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
             chat trigger:
                 DailyGathering_WheatAccept:
                     trigger: /yes|sure|okay|great/
@@ -47,6 +49,11 @@ WilWheatonInteract:
                         - narrate format:WilWheatonFormat "Hey <player.name>, got that wheat for me?"
                     - else:
                         - zap WheatQuestOffer
+            click trigger:
+                script:
+                - define data <player.uuid>_quest_data
+                - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
 
 DailyGathering_WheatQuestDeliveryHandler:
     type: task

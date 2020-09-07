@@ -30,6 +30,8 @@ CarrotCarlInteract:
                 - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Carrots]>:
                     - run QuestAcceptHandler def:DailyGathering_Carrots
+                - else if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
             chat trigger:
                 DailyGathering_CarrotsAccept:
                     trigger: /yes|sure|okay|great/
@@ -38,6 +40,7 @@ CarrotCarlInteract:
                     - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Carrots]>:
                         - run QuestAcceptHandler def:DailyGathering_Carrots
+
         CarrotQuestDelivery:
             proximity trigger:
                 entry:
@@ -47,6 +50,11 @@ CarrotCarlInteract:
                         - narrate format:CarrotCarlFormat "Hey <player.name>, got those carrots for me?"
                     - else:
                         - zap CarrotQuestOffer
+            click trigger:
+                script:
+                - define data <player.uuid>_quest_data
+                - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
 
 DailyGathering_CarrotsQuestDeliveryHandler:
     type: task

@@ -30,6 +30,8 @@ CocoaCalvinInteract:
                 - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Cocoa].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Cocoa]>:
                     - run QuestAcceptHandler def:DailyGathering_Cocoa
+                - else if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
             chat trigger:
                 DailyGathering_CocoaAccept:
                     trigger: /yes|sure|okay|great/
@@ -47,6 +49,11 @@ CocoaCalvinInteract:
                         - narrate format:CocoaCalvinFormat "Hey <player.name>, got those cocoa beans for me?"
                     - else:
                         - zap CocoaQuestOffer
+            click trigger:
+                script:
+                - define data <player.uuid>_quest_data
+                - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
 
 DailyGathering_CocoaQuestDeliveryHandler:
     type: task

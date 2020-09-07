@@ -30,6 +30,8 @@ PumpkinPaulInteract:
                 - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyGathering_Pumpkins].not> && <proc[QuestAvailabilityHandler].context[DailyGathering_Pumpkins]>:
                     - run QuestAcceptHandler def:DailyGathering_Pumpkins
+                - else if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
             chat trigger:
                 DailyGathering_PumpkinsAccept:
                     trigger: /yes|sure|okay|great/
@@ -47,6 +49,11 @@ PumpkinPaulInteract:
                         - narrate format:PumpkinPaulFormat "Hey <player.name>, got those pumpkins for me?"
                     - else:
                         - zap PumpkinQuestOffer
+            click trigger:
+                script:
+                - define data <player.uuid>_quest_data
+                - if <yaml[<[data]>].contains[quests.active.DailyGathering_Carrots]>:
+                    - inject DailyGathering_CarrotsQuestDeliveryHandler
 
 DailyGathering_PumpkinsQuestDeliveryHandler:
     type: task
