@@ -16,6 +16,7 @@ GodsTribute:
         - event_item/gods_tribute
         - uncraftable/true
         - expiration/<duration[<util.time_now.epoch_millis.div[1000]>].in_days.round_down.sub[<util.time_now.day_of_week>d].add[8d]>
+        # This is probably broken because Saturday or Sunday is 0
 
 GodsTributeOld:
     type: item

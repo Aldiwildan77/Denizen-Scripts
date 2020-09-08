@@ -21,6 +21,7 @@ QuestDataHandler:
             - ~yaml id:<[data]> savefile:playerdata/<player.uuid>/quest_data.yml
         - yaml set id:<[data]> set player_last_known_name:<player.name>
         on player quits:
+        - define data <player.uuid>_quest_data
         - ~yaml id:<[data]> savefile:playerdata/<player.uuid>/quest_data.yml
 
 QuestRequirementsHandler:
@@ -54,9 +55,9 @@ QuestAcceptHandler:
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.current_stage:1
     - run QuestResetTimeHandler def:<[quest_internalname]>
     - define current_stage 1
-    - narrate "<yaml[<[quest_internalname]>].read[messages.offer]>"
-    - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
-    - narrate format:QuestDescriptionFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>"
+    - narrate <yaml[<[quest_internalname]>].read[messages.offer]>
+    - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
+    - narrate format:QuestDescriptionFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
     - narrate "<green>Stage <[current_stage]>: <&r><yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.description]>"
     - foreach <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives]>:
         - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.total]>"
@@ -84,15 +85,17 @@ QuestStageProgressHandler:
     # Display remaining objectives
     ## TODO: Replace with a foreach and conditional formatting for completed objectives
     - else if <[objective]||null>:
-        - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
+        - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
         - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.total]>"
 
 QuestItemDeliveryHandler:
     debug: false
     type: task
+    definitions: objective|quest_internalname|stage
     # Manages players delivering items to NPCs
     # Requires: <[objective]> AND <[quest_internalname]> AND <[stage]>
     script:
+    - define data <player.uuid>_quest_data
     - define progress:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]>
     - define total:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.total]>
     - define delivery_quantity:<player.item_in_hand.quantity>
@@ -116,7 +119,7 @@ QuestItemDeliveryHandler:
         - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:<[total]>
         # Advance a stage
         - inject QuestStageProgressHandler
-        
+
 
 QuestProgressHandler:
     debug: false
@@ -127,9 +130,9 @@ QuestProgressHandler:
     - define data <player.uuid>_quest_data
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
     # Show the quest name
-    - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
+    - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
     # Show the quest description
-    - narrate format:QuestDescriptionFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>"
+    - narrate format:QuestDescriptionFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
     # Show the current stage
     - narrate "<green>Stage <[current_stage]>: <&r><yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.description]>"
     # Show the current objectives
@@ -144,12 +147,12 @@ QuestStageAdvanceHandler:
     script:
     - define data <player.uuid>_quest_data
     # Add one to the current stage
-    - yaml id:<[data]> set quests.active.<[quest-quest_internalname]>.current_stage:++
+    - yaml id:<[data]> set quests.active.<[quest_internalname]>.current_stage:++
     - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
     # Narrate the quest name
-    - narrate format:QuestNameFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
+    - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
     # Narrate the quest description
-    - narrate format:QuestDescriptionFormat "<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>"
+    - narrate format:QuestDescriptionFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
     # Narrate the new current stage
     - narrate "<green>Stage <[current_stage]>: <&r><yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.description]>"
     # Narrate the new objectives
@@ -164,6 +167,7 @@ QuestQuitHandler:
     script:
     - define data <player.uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
+    - zap * <yaml[<[quest_internalname]>].read[npc_name]>Interact
     - narrate "<red>QUEST QUIT: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
 
 QuestCompletionHandler:
@@ -175,43 +179,47 @@ QuestCompletionHandler:
     - define data <player.uuid>_quest_data
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.completion_count:++
-    - yaml id:<[data]> set quests.completed.<[quest_internalname]>.last_completed:<util.date.time.duration>
+    - yaml id:<[data]> set quests.completed.<[quest_internalname]>.last_completed:<util.time_now>
     - narrate "<gold>QUEST COMPLETE: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
-    - narrate "<yaml[<[quest_internalname]>].read[messages.completion]>"
-    - narrate "<green>Rewards:"
+    - narrate <yaml[<[quest_internalname]>].read[messages.completion]>
+    - narrate <green>Rewards:
     - run QuestRewardHandler def:<[quest_internalname]>
 
 QuestRepeatableHandler:
     debug: false
     type: procedure
     definitions: quest_internalname
-    # Checks whether a quest is repeatable
+    # Checks whether a quest is repeatable after a previous completion
     script:
     - define data <player.uuid>_quest_data
-    - define current_week:<util.date.time.duration.in_weeks.round_to[0]>
-    - define current_day:<util.date.time.duration.in_days.round_to[0]>
-    - define last_completed:<yaml[<[data]>].read[quests.completed.<[quest_internalname]>.last_completed].as_duration>
+    - define reset_time <yaml[<[data]>].read[quests.completed.<[quest_internalname]>.reset_time]>
     - choose <yaml[<[quest_internalname]>].read[config.reset.period]>:
-        - case 7d:
-            - if <[current_week]> > <[last_completed].in_weeks>:
-                - determine true
-            - else if <[current_week]> == <[last_completed].in_weeks> && <util.date.time.day_of_week> > 6:
-                - determine true
-            - else if <util.date.time.day_of_week> == 6 && <util.date.time.hour> >= 19:
-                - determine true
-            - else:
-                - determine false
-        - case 1d:
-            - if <[current_day].sub[1]> > <[last_completed].in_days>:
-                - determine true
-            - else if <[current_day].sub[1]> == <[last_completed].in_days> && <[last_completed].time.hour> < 19:
-                - determine true
-            - else if <[last_completed].time.hour> >= 19:
-                - determine false
-            - else if <[current_day]> == <[last_completed].in_days> && <util.date.time.hour> >= 19 && <[last_completed].time.hour> < 19:
-                - determine true
-            - else:
-                - determine false
+        - if <util.time_now> >= <[reset_time]>:
+            - determine true
+        - if <util.time_now> < <[reset_time]>:
+            - determine false
+        - else:
+            - announce to_console "Something is terribly broken with the repeatable handler!"
+        #- case 7d:
+        #    - if <[current_week]> > <[reset_time]>:
+        #        - determine true
+        #    - else if <[current_week]> == <[last_completed].in_weeks> && <util.time_now.#day_of_week> > 6:
+        #        - determine true
+        #    - else if <util.time_now.day_of_week> == 6 && <util.time_now.hour> >= 19:
+        #        - determine true
+        #    - else:
+        #        - determine false
+        #- case 1d:
+        #    - if <[current_day].sub[1]> > <[last_completed].in_days>:
+        #        - determine true
+        #    - else if <[current_day].sub[1]> == <[last_completed].in_days> && <#[last_completed].time.hour> < 19:
+        #        - determine true
+        #    - else if <[last_completed].time.hour> >= 19:
+        #        - determine false
+        #    - else if <[current_day]> == <[last_completed].in_days> && <util.time_now.hour> #>= 19 && <[last_completed].time.hour> < 19:
+        #        - determine true
+        #    - else:
+        #        - determine false
 
 QuestRewardHandler:
     debug: false
@@ -245,9 +253,9 @@ QuestLoginResetHandler:
     events:
         on player joins:
         - define data <player.uuid>_quest_data
-        - foreach <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>:
+        - foreach <yaml[<[data]>].read[quests.active]> as:quest_internalname:
             - define reset_time:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.reset_time]>
-            - if <util.date.time.duration> >= <[reset_time]>:
+            - if <util.time_now> >= <[reset_time]>:
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
                 - narrate "<red>QUEST EXPIRED: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
 
@@ -257,11 +265,11 @@ QuestDailyResetHandler:
     # Handles daily quest resets
     events:
         on system time 19:00:
-        - foreach <server.list_online_players> as:player:
+        - foreach <server.online_players> as:player:
             - define data:<[player].uuid>_quest_data
             - foreach <yaml[<[data]>].read[quests.active]> as:quest_internalname:
                 - define reset_time:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.reset_time]>
-                - if <util.date.time.duration> >= <[reset_time]>:
+                - if <util.time_now> >= <[reset_time]>:
                     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
                     - narrate "<red>QUEST EXPIRED: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
 
@@ -272,21 +280,17 @@ QuestResetTimeHandler:
     # Handles quest reset times
     script:
     - define data <player.uuid>_quest_data
-    - define current_week:<util.date.time.duration.in_weeks.round_to[0]>
-    - define current_day:<util.date.time.duration.in_days.round_to[0]>
     - choose <yaml[<[quest_internalname]>].read[config.reset.period]>:
         - case 7d:
-            - if <util.date.time.day_of_week> > 6:
-                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].add[1w].sub[5m]>
-            - else if <util.date.time.day_of_week> == 6 && <util.date.time.hour> >= 19:
-                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].add[1w].sub[5m]>
+            - if <util.time_now.day_of_week> == 5 && <util.time_now.hour> >= 19:
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.next_day_of_week[Friday].add[7d].add[19h].sub[5m]>
             - else:
-                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.day_of_week>d].sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].add[6d].sub[5m]>
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.next_day_of_week[Friday].add[19h].sub[5m]>
         - case 1d:
-            - if <util.date.time.hour> >= 19:
-                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[1d].add[19h].sub[5m]>
+            - if <util.time_now.hour> >= 19:
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.time_now.start_of_day.add[1d].add[19h].sub[5m]>
             - else:
-                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.date.time.duration.sub[<util.date.time.hour>h].sub[<util.date.time.minute>m].sub[<util.date.time.second>s].add[19h].sub[5m]>
+                - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.time_now.start_of_day.add[19h].sub[5m]>
 
 QuestAvailabilityHandler:
     debug: false
@@ -295,7 +299,7 @@ QuestAvailabilityHandler:
     # Checks whether a quest is available
     script:
     - define data <player.uuid>_quest_data
-    - if <yaml[<[data]>].read[quests.completed.<[quest_internalname]>].reset_time||null> > <util.date.time.duration>:
+    - if <yaml[<[data]>].read[quests.completed.<[quest_internalname]>.reset_time]||null> > <util.time_now>:
         - determine false
     - else:
         - determine true
@@ -308,7 +312,7 @@ QuestsAvailableHandler:
     script:
     - define data <player.uuid>_quest_data
     - define quest_list:<yaml[quest_npc_list].read[<[npc_name]>]>
-    - define inventory_list:li@
+    - define inventory_list:<list[]>
     - foreach <[quest_list]>:
         - if <proc[QuestAvailabilityHandler].context[<[value]>]> && <yaml[<[data]>].contains[quests.active.<[value]>].not>:
             - determine true
@@ -323,13 +327,13 @@ QuestInventoryGUIHandler:
     script:
     - define data <player.uuid>_quest_data
     - define quest_list:<yaml[quest_npc_list].read[<[npc_name]>]>
-    - define inventory_list:li@
+    - define inventory_list:<list[]>
     - foreach <[quest_list]>:
         - if <proc[QuestAvailabilityHandler].context[<[value]>]> && <yaml[<[data]>].contains[quests.active.<[value]>].not>:
             - define inventory_list:<[inventory_list].include[<proc[QuestGUIItemBuilder].context[<[value]>]>]>
     - if <[inventory_list].size> > 0:
-        - note "in@generic[title=<&6><&l>Quests;size=27;contents=<[inventory_list]>]" as:available_quest_inventory.<[npc_name]>.<player.uuid>
-        - inventory open d:in@available_quest_inventory.<[npc_name]>.<player.uuid>
+        - note <inventory[generic[title=<&6><&l>Quests;size=27;contents=<[inventory_list]>]> as:available_quest_inventory.<[npc_name]>.<player.uuid>
+        - inventory open d:available_quest_inventory.<[npc_name]>.<player.uuid>
     - else:
         - narrate "<red>No quests available!"
 
@@ -354,7 +358,7 @@ QuestGUIItemBuilder:
     # Constructs the item entries in an inventory GUI
     script:
     - define quest_name:<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
-    - define item_lore:li@<[quest_name]>
+    - define item_lore:<list[<[quest_name]>]>
     - define quest_description:<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
     - define item_lore:<[item_lore].include[<[quest_description]>]>
     - define item_lore:<[item_lore].include[<&6>Rewards:]>
@@ -362,15 +366,15 @@ QuestGUIItemBuilder:
         - define lore_money:"<yaml[<[quest_internalname]>].read[config.rewards.money]> gold"
         - define item_lore:<[item_lore].include[<[lore_money]>]>
     - if <yaml[<[quest_internalname]>].read[config.rewards.quest_points]||null> != null:
-        - define lore_quest_points:"<yaml[<[quest_internalname]>].read[config.rewards.quest_points]> quest points"
+        - define "lore_quest_points:<yaml[<[quest_internalname]>].read[config.rewards.quest_points]> quest points"
         - define item_lore:<[item_lore].include[<[lore_quest_points]>]>
     # Line wrapping time!
     - define item_lore:<proc[lore_builder].context[40|<[item_lore].escaped>]>
     - if <item[<[quest_internalname]>_gui_item]||null> != null:
         - define base_item:<item[<[quest_internalname]>_gui_item]>
         - if <[base_item].is_enchanted>:
-            - define item_enchantments:<[base_item.enchantments.with_levels]>
-            - determine "i@<[base_item].material_name>[display_name=<[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>;flags=HIDE_ENCHANTS;nbt=quest_internalname/<[quest_internalname]>]"
+            - define item_enchantments:<[base_item].enchantments.with_levels>
+            - determine <item[<[base_item]>.material_name.with[display_name=<[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>;flags=HIDE_ENCHANTS;nbt=quest_internalname/<[quest_internalname]>]]>
     - else:
         - define item_material:<yaml[<[quest_internalname]>].read[config.material]>
-        - determine i@<[item_material]>[display_name=<[quest_name]>;lore=<[item_lore]>;nbt=quest_internalname/<[quest_internalname]>]
+        - determine <item[<[item_material]>[display_name=<[quest_name]>;lore=<[item_lore]>;nbt=quest_internalname/<[quest_internalname]>]]>
