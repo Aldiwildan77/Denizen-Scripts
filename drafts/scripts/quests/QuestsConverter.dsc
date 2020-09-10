@@ -44,9 +44,6 @@ QuestsDataConverterTask:
     type: task
     debug: true
     script:
-        type: task
-    debug: true
-    script:
     - define data <player.uuid>_quest_data
     - define olddata <player.uuid>_quest_data_old
     - if <server.has_file[../Quests/data/<player.uuid>.yml]> && !<player.has_flag[old_quests_data_converted]>:
