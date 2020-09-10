@@ -6,40 +6,24 @@ QuestsCommand:
     usage: /quests [page number]
     script:
     - define data <player.uuid>_quest_data
-    - foreach <yaml[<[data]>].read[quests.active]> as:quest_internalname:
-        - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
-        - flag player questdetail_<[quest_internalname]>_uuid:<util.random.uuid> duration:1h
-        - narrate format:QuestNameFormat "<element[<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>].on_click[/questdetail <[quest_internalname]> <player.flag[questdetail_<[quest_internalname]>_uuid]>]>"
-        - narrate format:QuestDescriptionFormat "<element[<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>].on_click[/questdetail <[quest_internalname]> <player.flag[questdetail_<[quest_internalname]>_uuid]>]>"
+    - foreach <yaml[<[data]>].read[quests.active]> as:quest:
+        - clickable questdetail save:quest_detail for:<player> def:<[quest]>
+        - narrate format:QuestNameFormat <[quest].get[name].on_click[<entry[quest_detail].command>]>
+        - narrate format:QuestDescriptionFormat <[quest].get[description].on_click[<entry[quest_detail].command>]>
 
-QuestDetailCommand:
-    debug: false
-    type: command
-    name: questdetail
-    description: Show the details of a selected quest (run via quest list)
-    usage: /questdetail [quest] [uuid]
-    permissions: quests.questdetail
-    script:
-    - narrate "This text should never display."
-
-QuestDetailCommandEvent:
-    type: world
+QuestDetail:
+    type: task
     debug: true
-    events:
-        on questdetail command:
-        # Check if UUID matches
-        - define quest_internalname <context.args.get[1]||null>
-        - if <context.args.get[2]||null> == <player.flag[questdetail_<[quest_internalname]>_uuid]||null2>:
-            - define data <player.uuid>_quest_data
-            - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
-            - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
-            - narrate format:QuestDescriptionFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
-            - narrate "<green>Stage <[current_stage]>: <&r><yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.description]>"
-            - foreach <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives]>:
-                - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.total]>"
-        - else:
-            # No UUID match
-            - determine fulfilled
+    definitions: quest
+    script:
+    - define data <player.uuid>_quest_data
+    - define current_stage <[quest].get[current_stage]>
+    - narrate format:QuestNameFormat <[quest].get[name]>
+    - narrate format:QuestDescriptionFormat <[quest].get[description]>
+    - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages.<[current_stage]>.description]>"
+    - foreach <[quest].get[stages.<[current_stage]>.objectives]>:
+        - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
+
 
 QuestQuitCommand:
     debug: false
@@ -49,36 +33,23 @@ QuestQuitCommand:
     usage: /questquit [quest]
     script:
     - define data <player.uuid>_quest_data
-    - foreach <yaml[<[data]>].read[quests.active]>:
-        - if <yaml[<[data]>].read[quests.active.<[value]>.name].contains_text[<context.args.get[1]>]>:
-            - define match_list:->:<[value]>
+    - foreach <yaml[<[data]>].read[quests.active]> as:quest:
+        - if <[quest].get[name].contains_text[<context.args.get[1]>]>:
+            - define match_list:->:<[key]>
     - if <[match_list].size> > 1:
         - narrate "Please select a quest to quit:"
         - foreach <[match_list]> as:match:
-            - define quest_internalname <[match]>
-            - narrate format:QuestNameFormat "<element[<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>].on_click[/questquitdetail <[quest_internalname]> <player.flag[questdetail_<[quest_internalname]>_uuid]>]>"
+            - define quest <yaml[<[data]>].read[quests.active].get[match]>
+            - clickable questquitdetail save:quest_quit_detail for:<player> def:<[quest]>|<[match]>
+            - narrate format:QuestNameFormat <[quest].get[name].on_click[<entry[quest_quit_detail]>]>
     - else:
-        - define quest_internalname <[match_list].get[1]>
-    - inject QuestQuitHandler
+        - define match <[match_list].get[1]>
+        - define quest <yaml[<[data]>].read[quests.active].get[match]>
+        - inject QuestQuitHandler
 
-QuestQuitDetailCommand:
-    debug: false
-    type: command
-    name: questquitdetail
-    description: Quit the specified quest (run via questquit)
-    usage: /questquitdetail [quest] [uuid]
-    permissions: quests.questquitdetail
-    script:
-    - narrate "This text should never display."
-
-QuestQuitDetailCommandEvent:
-    type: world
+QuestQuitDetail:
+    type: task
     debug: true
-    events:
-        on questquitdetail command:
-        - define quest_internalname <context.args.get[1]||null>
-        - if <context.args.get[2]||null> == <player.flag[questquitdetail_<[quest_internalname]>_uuid]||null2>:
-            - inject QuestQuitHandler
-            - determine fulfilled
-        - else:
-            - determine fulfilled
+    definitions: quest|match
+    script:
+    - inject QuestQuitHandler
