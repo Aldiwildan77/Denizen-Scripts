@@ -265,7 +265,7 @@ prismatic_seer_socket_add_handler:
     debug: false
     events:
         on player clicks in inventory:
-        - if <context.inventory.notable_name||null> != sockets_can_add.<player.uuid>:
+        - if <context.inventory.note_name||null> != sockets_can_add.<player.uuid>:
             - stop
         # Checks if item has locked sockets that can be opened
         - if <context.item.has_nbt[sockets_can_add]>:
@@ -328,7 +328,7 @@ prismatic_seer_socket_potential_handler:
         champion: 5
     events:
         on player clicks in inventory:
-        - if <context.inventory.notable_name||null> != sealed_potential.<player.uuid>:
+        - if <context.inventory.note_name||null> != sealed_potential.<player.uuid>:
             - stop
         - if !<player.inventory.contains.scriptname[SocketMaker].quantity[<server.flag[SealedPotentialCost]>]> || !<player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[1]>:
             - inventory close
@@ -375,7 +375,7 @@ prismatic_seer_gem_add_item_handler:
     events:
         # Inventory manager for list of items with open sockets to add a gem to
         on player clicks in inventory:
-        - if <context.inventory.notable_name||null> != sockets_open.<player.uuid>:
+        - if <context.inventory.note_name||null> != sockets_open.<player.uuid>:
             - stop
         - inventory close d:sockets_open.<player.uuid>
         - note remove as:sockets_open.<player.uuid>
@@ -415,7 +415,7 @@ prismatic_seer_gem_add_gem_handler:
     events:
         # Inventory manager for list of gems that can be added to the item in question
         on player clicks in inventory:
-        - if <context.inventory.notable_name||null> != sockets_gem_add.<player.uuid>:
+        - if <context.inventory.note_name||null> != sockets_gem_add.<player.uuid>:
             - stop
         - if <player.flag[sockets_gem_add_item_types].contains[<context.item.nbt[gem_type]||null>]>:
             # Returns "li@socket1_empty|socket2_empty" etc

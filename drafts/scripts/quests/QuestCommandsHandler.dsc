@@ -35,7 +35,7 @@ QuestQuitCommand:
     - define data <player.uuid>_quest_data
     - foreach <yaml[<[data]>].read[quests.active]> as:quest:
         - if <[quest].get[name].contains_text[<context.args.get[1]>]>:
-            - define match_list:->:<[key]>
+            - define match_list:->:<[quest]>
     - if <[match_list].size> > 1:
         - narrate "Please select a quest to quit:"
         - foreach <[match_list]> as:match:
