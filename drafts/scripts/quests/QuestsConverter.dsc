@@ -1,5 +1,5 @@
 QuestDataConverter:
-    debug: false
+    debug: true
     type: world
     events:
         on player joins:
@@ -58,3 +58,10 @@ QuestsDataConverterTask:
             - define cqinternalname <yaml[QuestsConversionMap].read[<[CurrentQuest]>]>
             - yaml id:<[cqinternalname]> copykey:player_data.<[cqinternalname]> quests.active.<[cqinternalname]> to_id:<[data]>
         - flag player old_quests_data_converted:true
+
+Converter_Flag_Clear:
+    type: task
+    debug: true
+    script:
+    - foreach <server.players_flagged[old_quests_data_converted]>:
+        - flag <[value]> old_quests_data_converted:!
