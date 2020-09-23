@@ -252,7 +252,7 @@ QuestLoginResetHandler:
     events:
         on player joins:
         - define data <player.uuid>_quest_data
-        - if <yaml[<[data]>].read[quests.active].size> == 0:
+        - if <yaml[<[data]>].read[quests.active].size||0> == 0:
             - stop
         - foreach <yaml[<[data]>].read[quests.active]> as:quest_internalname:
             - define reset_time:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.reset_time]>
