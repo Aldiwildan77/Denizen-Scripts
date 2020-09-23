@@ -120,7 +120,6 @@ QuestItemDeliveryHandler:
         # Advance a stage
         - inject QuestStageProgressHandler
 
-
 QuestProgressHandler:
     debug: false
     type: task

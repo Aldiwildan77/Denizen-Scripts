@@ -6,6 +6,8 @@ QuestsCommand:
     usage: /quests [page number]
     script:
     - define data <player.uuid>_quest_data
+    - if <yaml[<[data]>].read[quests.active].size> == 0:
+        - stop
     - foreach <yaml[<[data]>].read[quests.active]> as:quest:
         - clickable questdetail save:quest_detail for:<player> def:<[quest]>
         - narrate format:QuestNameFormat <[quest].get[name].on_click[<entry[quest_detail].command>]>
