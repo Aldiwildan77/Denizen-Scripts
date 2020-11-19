@@ -35,6 +35,13 @@ RankupCommand:
     - else:
         - narrate "<&a>Congratulations, you're already at the highest rank currently achievable!"
 
+Login_Upgrade:
+    type: world
+    debug: false
+    event:
+        on player logs in:
+        - inject Rank_Upgrade_Check
+
 Rank_Upgrade_Check:
     type: task
     debug: false
