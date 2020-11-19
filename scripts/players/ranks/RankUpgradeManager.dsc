@@ -39,7 +39,8 @@ Login_Upgrade:
     type: world
     debug: false
     events:
-        on player logs in:
+        on player joins:
+        - wait 5s
         - inject Rank_Upgrade_Check
 
 Rank_Upgrade_Check:
@@ -50,6 +51,8 @@ Rank_Upgrade_Check:
         - if <player.money> >= 100000 && <player.xp_level> >= 500 && <player.mcmmo.level> >= 5000:
             - take money quantity:100000
             - experience take level 500
+            - group remove Apprentice
+            - group add Knight
             - narrate "<&a>You have given a sacrifice to the Gods of 500 levels and 100,000 gold."
             - narrate "<&a>They honor your sacrifice and recognize your glory and triumph."
             - narrate "<&a>Your personal growth is recognized. You are now a <&b>Knight<&a>!"
@@ -59,7 +62,9 @@ Rank_Upgrade_Check:
         - if <player.money> >= 50000 && <player.xp_level> >= 250 && <player.mcmmo.level> >= 1500:
             - take money quantity:50000
             - experience take level 250
-            - narrate "<&a>You have given a sacrifice to the Gods of 500 levels and 50,000 gold."
+            - group remove Squire
+            - group add Apprentice
+            - narrate "<&a>You have given a sacrifice to the Gods of 250 levels and 50,000 gold."
             - narrate "<&a>They honor your sacrifice and recognize your glory and triumph."
             - narrate "<&a>Your personal growth is recognized. You are now an <&b>Apprentice<&a>!"
             - announce "<&a><player.name> has been recognized by the Gods and is now an <&b>Apprentice<&a>!"
@@ -68,7 +73,9 @@ Rank_Upgrade_Check:
         - if <player.money> >= 1000 && <player.xp_level> >= 100 && <player.mcmmo.level> >= 500:
             - take money quantity:1000
             - experience take level 100
-            - narrate "<&a>You have given a sacrifice to the Gods of 500 levels and 100,000 gold."
+            - group remove Page
+            - group add Squire
+            - narrate "<&a>You have given a sacrifice to the Gods of 100 levels and 1000 gold."
             - narrate "<&a>They honor your sacrifice and recognize your glory and triumph."
             - narrate "<&a>Your personal growth is recognized. You are now a <&b>Squire<&a>!"
             - announce "<&a><player.name> has been recognized by the Gods and is now a <&b>Squire<&a>!"
@@ -77,7 +84,9 @@ Rank_Upgrade_Check:
         - if <player.money> >= 500 && <player.xp_level> >= 30 && <player.mcmmo.level> >= 200:
             - take money quantity:500
             - experience take level 30
-            - narrate "<&a>You have given a sacrifice to the Gods of 500 levels and 100,000 gold."
+            - group remove Youngling
+            - group add Page
+            - narrate "<&a>You have given a sacrifice to the Gods of 30 levels and 500 gold."
             - narrate "<&a>They honor your sacrifice and recognize your glory and triumph."
             - narrate "<&a>Your personal growth is recognized. You are now a <&b>Page<&a>!"
             - announce "<&a><player.name> has been recognized by the Gods and is now a <&b>Page<&a>!"
