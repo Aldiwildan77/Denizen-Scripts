@@ -38,7 +38,7 @@ RankupCommand:
 Login_Upgrade:
     type: world
     debug: false
-    event:
+    events:
         on player logs in:
         - inject Rank_Upgrade_Check
 
