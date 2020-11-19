@@ -32,6 +32,8 @@ RankupCommand:
         - narrate "<&f>• 30 levels of experience"
         - narrate "<&f>• A sacrifice to the Gods of 500 gold"
         - narrate "<&f>• Combined skill level of 200"
+    - else:
+        - narrate "<&a>Congratulations, you're already at the highest rank currently achievable!"
 
 Rank_Upgrade_Check:
     type: task
