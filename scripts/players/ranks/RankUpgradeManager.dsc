@@ -47,27 +47,31 @@ Rank_Upgrade_Check:
             - narrate "<&a>They honor your sacrifice and recognize your glory and triumph."
             - narrate "<&a>Your personal growth is recognized. You are now a <&b>Knight<&a>!"
             - announce "<&a><player.name> has been recognized by the Gods and is now a <&b>Knight<&a>!"
+            - discord id:sxr message channel:191040977652285450 "**THE GODS SPEAK: Rejoice! <player.name> has been recognized by the Gods and has earned the rank of Knight!**"
     - else if <player.in_group[Squire]>:
         - if <player.money> >= 50000 && <player.xp_level> >= 250 && <player.mcmmo.level> >= 1500:
             - take money quantity:50000
             - experience take level 250
             - narrate "<&a>You have given a sacrifice to the Gods of 500 levels and 50,000 gold."
             - narrate "<&a>They honor your sacrifice and recognize your glory and triumph."
-            - narrate "<&a>Your personal growth is recognized. You are now a <&b>Knight<&a>!"
-            - announce "<&a><player.name> has been recognized by the Gods and is now a <&b>Knight<&a>!"
+            - narrate "<&a>Your personal growth is recognized. You are now an <&b>Apprentice<&a>!"
+            - announce "<&a><player.name> has been recognized by the Gods and is now an <&b>Apprentice<&a>!"
+            - discord id:sxr message channel:191040977652285450 "**THE GODS SPEAK: Rejoice! <player.name> has been recognized by the Gods and has earned the rank of Apprentice!**"
     - else if <player.in_group[Page]>:
         - if <player.money> >= 1000 && <player.xp_level> >= 100 && <player.mcmmo.level> >= 500:
             - take money quantity:1000
             - experience take level 100
             - narrate "<&a>You have given a sacrifice to the Gods of 500 levels and 100,000 gold."
             - narrate "<&a>They honor your sacrifice and recognize your glory and triumph."
-            - narrate "<&a>Your personal growth is recognized. You are now a <&b>Knight<&a>!"
-            - announce "<&a><player.name> has been recognized by the Gods and is now a <&b>Knight<&a>!"
+            - narrate "<&a>Your personal growth is recognized. You are now a <&b>Squire<&a>!"
+            - announce "<&a><player.name> has been recognized by the Gods and is now a <&b>Squire<&a>!"
+            - discord id:sxr message channel:191040977652285450 "**THE GODS SPEAK: Rejoice! <player.name> has been recognized by the Gods and has earned the rank of Squire!**"
     - else if <player.in_group[Youngling]>:
         - if <player.money> >= 500 && <player.xp_level> >= 30 && <player.mcmmo.level> >= 200:
             - take money quantity:500
             - experience take level 30
             - narrate "<&a>You have given a sacrifice to the Gods of 500 levels and 100,000 gold."
             - narrate "<&a>They honor your sacrifice and recognize your glory and triumph."
-            - narrate "<&a>Your personal growth is recognized. You are now a <&b>Knight<&a>!"
-            - announce "<&a><player.name> has been recognized by the Gods and is now a <&b>Knight<&a>!"
+            - narrate "<&a>Your personal growth is recognized. You are now a <&b>Page<&a>!"
+            - announce "<&a><player.name> has been recognized by the Gods and is now a <&b>Page<&a>!"
+            - discord id:sxr message channel:191040977652285450 "**THE GODS SPEAK: Rejoice! <player.name> has been recognized by the Gods and has earned the rank of Page!**"
