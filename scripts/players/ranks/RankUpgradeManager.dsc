@@ -11,27 +11,27 @@ RankupCommand:
         - stop
     - else if <player.in_group[Apprentice]>:
         - narrate "<&a>You're currently an <&b>Apprentice<&a>! Here are the requirements to level up to <&b>Knight<&a>:"
-        - narrate "<&f>• A sacrifice to the Gods of 500 levels of experience: <tern[<player.xp_level.is[or_more].to[500]>].pass[&aReady].fail[&cNot Ready]>"
-        - narrate "<&f>• A sacrifice to the Gods of 100,000 gold: <tern[<player.money.is[or_more].to[100000]>].pass[&aReady].fail[&cNot Ready]>"
-        - narrate "<&f>• Combined skill level of 5000: <tern[<player.mcmmo.level.is[or_more].to[5000]>].pass[&aReady].fail[&cNot Ready]>"
+        - narrate "<&f>• A sacrifice to the Gods of 500 levels of experience: <tern[<player.xp_level.is[or_more].to[500]>].pass[<green>Ready].fail[<red>Not Ready]>"
+        - narrate "<&f>• A sacrifice to the Gods of 100,000 gold: <tern[<player.money.is[or_more].to[100000]>].pass[<green>Ready].fail[<red>Not Ready]>"
+        - narrate "<&f>• Combined skill level of 5000: <tern[<player.mcmmo.level.is[or_more].to[5000]>].pass[<green>Ready].fail[<red>Not Ready]>"
 
     - else if <player.in_group[Squire]>:
         - narrate "<&a>You're currently a <&b>Squire<&a>! Here are the requirements to level up to <&b>Apprentice<&a>:"
-        - narrate "<&f>• A sacrifice to the Gods of 250 levels of experience: <tern[<player.xp_level.is[or_more].to[250]>].pass[&aReady].fail[&cNot Ready]>"
-        - narrate "<&f>• A sacrifice to the Gods of 50,000 gold: <tern[<player.money.is[or_more].to[50000]>].pass[&aReady].fail[&cNot Ready]>"
-        - narrate "<&f>• Combined skill level of 1500: <tern[<player.mcmmo.level.is[or_more].to[1500]>].pass[&aReady].fail[&cNot Ready]>"
+        - narrate "<&f>• A sacrifice to the Gods of 250 levels of experience: <tern[<player.xp_level.is[or_more].to[250]>].pass[<green>Ready].fail[<red>Not Ready]>"
+        - narrate "<&f>• A sacrifice to the Gods of 50,000 gold: <tern[<player.money.is[or_more].to[50000]>].pass[<green>Ready].fail[<red>Not Ready]>"
+        - narrate "<&f>• Combined skill level of 1500: <tern[<player.mcmmo.level.is[or_more].to[1500]>].pass[<green>Ready].fail[<red>Not Ready]>"
 
     - else if <player.in_group[Page]>:
         - narrate "<&a>You're currently a <&b>Page<&a>! Here are the requirements to level up to <&b>Squire<&a>:"
-        - narrate "<&f>• A sacrifice to the Gods of 100 levels of experience: <tern[<player.xp_level.is[or_more].to[100]>].pass[&aReady].fail[&cNot Ready]>"
-        - narrate "<&f>• A sacrifice to the Gods of 1,000 gold: <tern[<player.money.is[or_more].to[1000]>].pass[&aReady].fail[&cNot Ready]>"
-        - narrate "<&f>• Combined skill level of 500: <tern[<player.mcmmo.level.is[or_more].to[500]>].pass[&aReady].fail[&cNot Ready]>"
+        - narrate "<&f>• A sacrifice to the Gods of 100 levels of experience: <tern[<player.xp_level.is[or_more].to[100]>].pass[<green>Ready].fail[<red>Not Ready]>"
+        - narrate "<&f>• A sacrifice to the Gods of 1,000 gold: <tern[<player.money.is[or_more].to[1000]>].pass[<green>Ready].fail[<red>Not Ready]>"
+        - narrate "<&f>• Combined skill level of 500: <tern[<player.mcmmo.level.is[or_more].to[500]>].pass[<green>Ready].fail[<red>Not Ready]>"
 
     - else if <player.in_group[Youngling]>:
         - narrate "<&a>You're currently a <&b>Youngling<&a>! Here are the requirements to level up to <&b>Page<&a>:"
-        - narrate "<&f>• A sacrifice to the Gods of 30 levels of experience: <tern[<player.xp_level.is[or_more].to[30]>].pass[&aReady].fail[&cNot Ready]>"
-        - narrate "<&f>• A sacrifice to the Gods of 500 gold: <tern[<player.money.is[or_more].to[500]>].pass[&aReady].fail[&cNot Ready]>"
-        - narrate "<&f>• Combined skill level of 200: <tern[<player.mcmmo.level.is[or_more].to[200]>].pass[&aReady].fail[&cNot Ready]>"
+        - narrate "<&f>• A sacrifice to the Gods of 30 levels of experience: <tern[<player.xp_level.is[or_more].to[30]>].pass[<green>Ready].fail[<red>Not Ready]>"
+        - narrate "<&f>• A sacrifice to the Gods of 500 gold: <tern[<player.money.is[or_more].to[500]>].pass[<green>Ready].fail[<red>Not Ready]>"
+        - narrate "<&f>• Combined skill level of 200: <tern[<player.mcmmo.level.is[or_more].to[200]>].pass[<green>Ready].fail[<red>Not Ready]>"
     - else:
         - narrate "<&a>Congratulations, you're already at the highest rank currently achievable!"
 
