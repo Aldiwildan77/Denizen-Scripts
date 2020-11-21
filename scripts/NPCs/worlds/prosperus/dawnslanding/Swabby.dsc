@@ -22,7 +22,7 @@ WelcomeToProsperus:
                     - wait 0.7s
                     - narrate format:SwabbyFormat "You came here to build a new life for yourself, right?"
                     - zap step:AdventurePrompt
-                    - if !<server.current_bossbars.contains[<player.uuid>_swabby]>:
+                    - if <server.current_bossbars.contains[<player.uuid>_swabby]>:
                         - bossbar update <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
                     - else:
                         - bossbar create <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
@@ -31,7 +31,7 @@ WelcomeToProsperus:
                 entry:
                     script:
                     - narrate format:SwabbyFormat "Hey again, <player.name>. You came here to build a new life for yourself, right?"
-                    - if !<server.current_bossbars.contains[<player.uuid>_swabby]>:
+                    - if <server.current_bossbars.contains[<player.uuid>_swabby]>:
                         - bossbar update <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
                     - else:
                         - bossbar create <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
@@ -103,7 +103,7 @@ WelcomeToProsperus:
                     - narrate format:SwabbyFormat "If you've got some time before you go, mind stopping by the Quest Master for me? I'll make it worth your while."
                     - wait 0.7s
                     - narrate format:SwabbyFormat "He's not very far, just over there in the Questing Hall. You can see it on the right when you stand on the ship's plank. Just past the inn."
-                    - if !<server.current_bossbars.contains[<player.uuid>_swabby]>:
+                    - if <server.current_bossbars.contains[<player.uuid>_swabby]>:
                         - bossbar update <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
                     - else:
                         - bossbar create <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
