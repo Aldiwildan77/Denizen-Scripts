@@ -8,7 +8,7 @@ Swabby:
         - trigger name:proximity state:true
         - trigger name:chat state:true
 
-"SwabbyFormat":
+SwabbyFormat:
     type: format
     format: "<dark_green>Swabby<white><&co> <text>"
 
@@ -39,9 +39,32 @@ WelcomeToProsperus:
                 exit:
                     script:
                     - bossbar remove <player.uuid>_swabby
+                chat trigger:
+                    Yes:
+                        trigger: /yes|sure|okay|great/
+                        hide trigger message: true
+                        script:
+                        - narrate format:PlayerChatFormat "Yeah, I came here for adventure!"
+                        - wait 0.1s
+                        - narrate format:SwabbyFormat "I can't think of a better place to do it."
+                        - wait 0.7s
+                        - narrate format:SwabbyFormat "We call these lands Prosperus. As the name implies, every day is full and bright."
+                        - wait 0.7s
+                        - narrate format:SwabbyFormat "You've got a heck of an adventure ahead of you."
+                        - wait 0.7s
+                        - narrate format:SwabbyFormat "If you want to get out of town and start your adventure right away, there are boats over on that dock."
+                        - wait 0.7s
+                        - narrate format:SwabbyFormat "There are all kinds of ways out of the valley, but the river is the quickest, and a boat will take you damn near anywhere."
+                        - wait 0.7s
+                        - narrate format:SwabbyFormat "If you've got some time before you go, mind stopping by the Quest Master for me? I'll make it worth your while."
+                        - wait 0.7s
+                        - narrate format:SwabbyFormat "He's not very far, just over there in the Questing Hall. You can see it on the right when you stand on the ship's plank. Just past the inn. <green>Think you can make some time for me?"
+                        - zap SwabbyDeliveryOffer
 
             click trigger:
                 script:
+                - narrate format:PlayerChatFormat "Yeah, I came here for adventure!"
+                - wait 0.1s
                 - narrate format:SwabbyFormat "I can't think of a better place to do it."
                 - wait 0.7s
                 - narrate format:SwabbyFormat "We call these lands Prosperus. As the name implies, every day is full and bright."
