@@ -5,8 +5,8 @@ MelonMattAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[MelonMatt]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 MelonMattFormat:
     type: format

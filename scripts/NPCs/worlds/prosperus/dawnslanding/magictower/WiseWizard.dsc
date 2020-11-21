@@ -8,8 +8,8 @@ WiseWizardAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[WiseWizard]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 WiseWizardFormat:
     type: format

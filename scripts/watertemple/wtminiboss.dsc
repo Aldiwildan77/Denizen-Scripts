@@ -15,7 +15,7 @@
     type: task
     script:
     - teleport npc location:<npc.anchor[wtminiboss]>
-    - trigger name:proximity toggle:true radius:6
+    - trigger name:proximity state:true radius:6
 "Water Servant Format":
     type: format
     format: "<yellow>Lieutenant Iqueo<white><&co> <text>"

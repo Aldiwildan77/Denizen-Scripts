@@ -5,8 +5,8 @@ CocoaCalvinAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[CocoaCalvin]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 CocoaCalvinFormat:
     type: format

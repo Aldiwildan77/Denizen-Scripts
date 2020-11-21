@@ -16,7 +16,7 @@
     type: task
     script:
     - teleport npc location:<npc.anchor[wtboss1]>
-    - trigger name:proximity toggle:true radius:3
+    - trigger name:proximity state:true radius:3
 "Water Boss Format":
     type: format
     format: "<red>Emira Ivese<white><&co> <text>"

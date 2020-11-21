@@ -8,8 +8,8 @@ MagnificentMageAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[MagnificentMage]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 MagnificentMageFormat:
     type: format

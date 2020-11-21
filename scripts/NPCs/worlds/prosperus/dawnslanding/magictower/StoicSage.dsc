@@ -8,8 +8,8 @@ StoicSageAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[StoicSage]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 StoicSageFormat:
     type: format

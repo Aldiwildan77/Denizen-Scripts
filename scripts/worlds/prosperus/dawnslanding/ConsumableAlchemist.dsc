@@ -5,8 +5,8 @@ alchemist_arcaena:
     actions:
         on assignment:
         - teleport npc <npc.anchor[alchemist_arcaena]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 alchemist_arcaena_format:
     type: format

@@ -6,8 +6,8 @@ SageOfFireAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[SageOfFire]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 SageOfFireFormat:
     type: format

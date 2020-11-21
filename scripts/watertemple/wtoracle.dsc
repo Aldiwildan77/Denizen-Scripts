@@ -11,7 +11,7 @@
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[wtoracle]>
-        - trigger name:proximity toggle:true
+        - trigger name:proximity state:true
     
 "Water Oracle Format":
     type: format

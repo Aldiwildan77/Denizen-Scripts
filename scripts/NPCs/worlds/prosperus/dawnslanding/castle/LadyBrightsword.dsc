@@ -6,8 +6,8 @@ LadyBrightswordAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[LadyBrightsword]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 LadyBrightswordFormat:
     type: format

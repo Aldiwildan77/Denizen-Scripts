@@ -18,7 +18,7 @@
     type: task
     script:
     - teleport npc location:<npc.anchor[bookkeeper]>
-    - trigger name:proximity toggle:true radius:3
+    - trigger name:proximity state:true radius:3
 "Library Win":
     type: task
     script:

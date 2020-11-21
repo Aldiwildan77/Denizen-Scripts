@@ -5,8 +5,8 @@ JQ1CompletionNPCAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[JQ1CompletionNPC]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
     
 JQ1CompletionNPCFormat:
     type: format

@@ -5,8 +5,8 @@ JQ2OfferingNPCAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[JQ2OfferingNPC]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
     
 JQ2OfferingNPCFormat:
     type: format

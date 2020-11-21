@@ -5,8 +5,8 @@ CarrotCarlAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[CarrotCarl]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 CarrotCarlFormat:
     type: format

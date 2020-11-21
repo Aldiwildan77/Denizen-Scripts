@@ -5,8 +5,8 @@
     actions:
         on assignment:
         - teleport npc <npc.anchor[miningmaster]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
     
 MiningMasterFormat:
     type: format

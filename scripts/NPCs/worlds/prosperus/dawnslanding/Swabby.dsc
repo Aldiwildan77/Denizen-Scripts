@@ -5,7 +5,8 @@ Swabby:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[shipSwabby]>
-        - trigger name:proximity toggle:true
+        - trigger name:proximity state:true
+        - trigger name:chat state:true
 
 "SwabbyFormat":
     type: format

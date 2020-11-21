@@ -5,8 +5,8 @@ DeathTowerFinishingNPCAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[DeathTowerOfferingNPC]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 DeathTowerFinishingNPCFormat:
     type: format

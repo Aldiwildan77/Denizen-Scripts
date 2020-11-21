@@ -129,8 +129,8 @@ prismatic_seer:
     actions:
         on assignment:
         - teleport npc <npc.anchor[prismaticseer]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 prismatic_seer_format:
     type: format

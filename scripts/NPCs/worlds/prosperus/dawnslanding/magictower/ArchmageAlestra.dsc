@@ -8,8 +8,8 @@ ArchmageAlestraAssignment:
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[ArchmageAlestra]>
-        - trigger name:proximity toggle:true
-        - trigger name:chat toggle:true
+        - trigger name:proximity state:true
+        - trigger state:true
 
 ArchmageAlestraFormat:
     type: format
