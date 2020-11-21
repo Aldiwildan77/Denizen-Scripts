@@ -46,7 +46,7 @@ FishingNewbieInteract:
                 - zap TeachFishingNewbieActive
             chat trigger:
                 TeachFishingNewbieOffer:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure, I can help you out."
@@ -76,7 +76,7 @@ FishingNewbieInteract:
                         - zap DailiesAvailable
             chat trigger:
                 FishingQuestAccept:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - if <player.has_flag[FishingNewbieQuest]>:
@@ -107,7 +107,7 @@ FishingNewbieDailyQuestsCheck:
 #                - narrate format:FishingNewbieFormat "Howdy, <player.name>! Ready to catch some more fish?"
 #            chat trigger:
 #                DailyFishingOffer:
-#                    trigger: /yes|sure|okay|great/
+#                    trigger: /yes|sure|okay|great|yeah/
 #                    hide trigger message: true
 #                    script:
 #                    - narrate format:PlayerChatFormat "Sure am!"
@@ -123,7 +123,7 @@ FishingNewbieDailyQuestsCheck:
 #                - narrate format:FishingNewbieFormat "Your fishing skills are pretty swell. But I've got a challenge for you - are you up for it?"
 #            chat trigger:
 #                DailyFishingChallengeOffer:
-#                    trigger: /yes|sure|okay|great/
+#                    trigger: /yes|sure|okay|great|yeah/
 #                    hide trigger message: true
 #                    script:
 #                    - narrate format:PlayerChatFormat "Sure, I'm in!"

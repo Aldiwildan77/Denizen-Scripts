@@ -31,7 +31,7 @@ DeathTowerOfferingNPCInteract:
                     - teleport <player> <location[-68.45822017098273,115.5,-76.65867088499863,-9.83225154876709,-178.91549682617188,infinitus]>
             chat trigger:
                 DeathTowerQuestAccept:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - if <yaml[<[data]>].contains[quests.active.DailyJQ_DeathTower].not> && <proc[QuestAvailabilityHandler].context[DailyJQ_DeathTower]>:

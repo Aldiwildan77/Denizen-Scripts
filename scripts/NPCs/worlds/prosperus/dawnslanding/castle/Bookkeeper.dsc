@@ -32,7 +32,7 @@ BookkeeperInteract:
                     - run QuestAcceptHandler def:DailyLibrary
             chat trigger:
                 DailyLibraryAccept:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - define data <player.uuid>_quest_data

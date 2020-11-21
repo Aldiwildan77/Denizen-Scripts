@@ -34,7 +34,7 @@ CarrotCarlInteract:
                     - inject DailyGathering_CarrotsQuestDeliveryHandler
             chat trigger:
                 DailyGathering_CarrotsAccept:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - define data <player.uuid>_quest_data

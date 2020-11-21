@@ -231,7 +231,7 @@ QuestMasterInteract:
                     - zap ChooseFirstQuest
             chat trigger:
                 Confirm:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready for my first adventure!"
@@ -283,7 +283,7 @@ QuestMasterInteract:
                 - run QuestAcceptHandler def:WoodTools
             chat trigger:
                 WoodToolsAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready!"
@@ -306,7 +306,7 @@ QuestMasterInteract:
                         - narrate format:QuestMasterFormat "I can also teach you how to set your home, if you want. It's a useful skill!"
             chat trigger:
                 HomeYes:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - define data <player.uuid>_quest_data
@@ -333,7 +333,7 @@ QuestMasterInteract:
                 - zap SetHomeActiveOnly
             chat trigger:
                 SetHomeAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "That sounds useful, please teach me!"
@@ -351,7 +351,7 @@ QuestMasterInteract:
                     - run QuestProgressHandler def:SetHome
             chat trigger:
                 SetHomeActiveWoodToolsAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - define data <player.uuid>_quest_data
@@ -392,7 +392,7 @@ QuestMasterInteract:
                 - zap StoneToolsActive
             chat trigger:
                 StoneToolsAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I'm ready!"
@@ -416,7 +416,7 @@ QuestMasterInteract:
                 - zap LeatherArmorActive
             chat trigger:
                 LeatherArmorAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I'm ready!"
@@ -444,7 +444,7 @@ QuestMasterInteract:
                 - zap FindReinwaldActive
             chat trigger:
                 FindReinwaldAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure, who should I go meet?"
@@ -469,7 +469,7 @@ QuestMasterInteract:
                 - run QuestAcceptHandler def:IronToolsArmor
             chat trigger:
                 IronToolsArmorAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure am!"
@@ -496,7 +496,7 @@ QuestMasterInteract:
                 - zap FindFishingNewbieActive
             chat trigger:
                 FindFishingNewbieAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure, that sounds nice."
@@ -520,7 +520,7 @@ QuestMasterInteract:
                 - zap MeetSkillTrainersActive
             chat trigger:
                 MeetSkillTrainersAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Okay, that sounds interesting!"
@@ -548,7 +548,7 @@ QuestMasterInteract:
                 - zap MeetPostmasterActive
             chat trigger:
                 MeetPostmasterAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sounds easy enough."

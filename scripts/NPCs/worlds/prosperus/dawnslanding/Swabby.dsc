@@ -41,7 +41,7 @@ WelcomeToProsperus:
                     - bossbar remove <player.uuid>_swabby
                 chat trigger:
                     Yes:
-                        trigger: /yes|sure|okay|great/
+                        trigger: /yes|sure|okay|great|yeah/
                         hide trigger message: true
                         script:
                         - narrate format:PlayerChatFormat "Yeah, I came here for adventure!"
@@ -100,7 +100,7 @@ WelcomeToProsperus:
                 - zap SwabbyDeliveryActive
             chat trigger:
                 StoneToolsAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "<green>Sure, I'll deliver your package to the Quest Master."

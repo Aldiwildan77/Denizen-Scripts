@@ -31,7 +31,7 @@ JQ2OfferingNPCInteract:
                     - teleport <player> <location[72.58323675043975,106,-64.10703844964986,3.2370898723602295,180.99081420898438,infinitus]>
             chat trigger:
                 JQ2QuestAccept:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - if <yaml[<[data]>].contains[quests.active.DailyJQ2].not> && <proc[QuestAvailabilityHandler].context[DailyJQ2]>:

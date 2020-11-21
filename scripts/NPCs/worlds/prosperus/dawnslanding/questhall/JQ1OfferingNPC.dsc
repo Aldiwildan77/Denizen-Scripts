@@ -32,7 +32,7 @@ JQ1OfferingNPCInteract:
                     - teleport <player> <location[-83.42172384982014,107,43.51846056790148,5.937170028686523,89.94125366210938,infinitus]>
             chat trigger:
                 JQ1QuestAccept:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - define data <player.uuid>_quest_data

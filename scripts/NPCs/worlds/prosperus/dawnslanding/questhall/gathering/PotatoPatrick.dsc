@@ -34,7 +34,7 @@ PotatoPatrickInteract:
                     - inject DailyGathering_CarrotsQuestDeliveryHandler
             chat trigger:
                 DailyGathering_PotatoesAccept:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - define data <player.uuid>_quest_data

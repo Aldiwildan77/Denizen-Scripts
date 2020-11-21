@@ -92,7 +92,7 @@ WarmasterReinwaldInteract:
                 - zap FirstMobHuntingActive
             chat trigger:
                 FirstMobHuntingAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Absolutely, I'm ready to fight back!"
@@ -122,7 +122,7 @@ WarmasterReinwaldInteract:
                 - zap SkeletalRogueHuntActive
             chat trigger:
                 SkeletalRogueHuntAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I'm not afraid - I'm ready to hunt those Skeletal Rogues!"
@@ -150,7 +150,7 @@ WarmasterReinwaldInteract:
                 - zap VeteranHuntActive
             chat trigger:
                 SkeletalRogueHuntAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Those Veterans won't know what's coming!"
@@ -180,7 +180,7 @@ WarmasterReinwaldInteract:
                 - zap LichHuntActive
             chat trigger:
                 LichHuntAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "What's one more zombie on the pile? I'm in!"
@@ -208,7 +208,7 @@ WarmasterReinwaldInteract:
                 - zap EliteHuntActive
             chat trigger:
                 EliteHuntAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I've come so far - I know I can do this!"

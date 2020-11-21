@@ -56,7 +56,7 @@ RoyalGeographerInteract:
                 - zap UnlockAvenfeldActive
             chat trigger:
                 UnlockAvenfeldAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm up for anything!"
@@ -95,7 +95,7 @@ RoyalGeographerInteract:
                 - zap FindFireTempleActive
             chat trigger:
                 FindFireTempleAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "You can count on me - I'll go check on the Sage of Flame!"
@@ -130,7 +130,7 @@ RoyalGeographerInteract:
                 - zap FindWaterTempleActive
             chat trigger:
                 FindWaterTempleAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "You can count on me - I'll go check on the Sage of Water!"

@@ -42,7 +42,7 @@ WiseWizardInteract:
                 - run QuestAcceptHandler def:UnlockBlink
             chat trigger:
                 UnlockBlinkAcceptance:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Magic? Sounds awesome, I'm in!"

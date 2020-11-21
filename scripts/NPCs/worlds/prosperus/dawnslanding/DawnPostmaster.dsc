@@ -55,7 +55,7 @@ DawnPostmasterInteract:
                 - zap TeachDawnPostmasterActive
             chat trigger:
                 TeachDawnPostmasterOffer:
-                    trigger: /yes|sure|okay|great/
+                    trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Sure, I can help you out."
