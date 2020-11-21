@@ -1,4 +1,4 @@
-DeathTowerOfferingNPCAssignment:
+DeathTowerFinishingNPCAssignment:
     type: assignment
     interact scripts:
     - DeathTowerOfferingNPCInteract
@@ -7,12 +7,12 @@ DeathTowerOfferingNPCAssignment:
         - teleport npc location:<npc.anchor[DeathTowerOfferingNPC]>
         - trigger name:proximity toggle:true
         - trigger name:chat toggle:true
-    
-DeathTowerOfferingNPCFormat:
+
+DeathTowerFinishingNPCFormat:
     type: format
     format: "<gray>He Jumped Death<white><&co> <text>"
 
-DeathTowerOfferingNPCInteract:
+DeathTowerFinishingNPCInteract:
     type: interact
     steps:
         JQ1Quest*:
@@ -24,5 +24,6 @@ DeathTowerOfferingNPCInteract:
                         - narrate format:DeathTowerOfferingNPCFormat "Hey there, <player.name>! Right click me to complete the course!"
             click trigger:
                 script:
+                - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.DailyJQ_DeathTower]>:
                     - run QuestCompletionHandler def:DailyJQ_DeathTower
