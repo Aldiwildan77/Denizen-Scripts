@@ -7,11 +7,15 @@ QuestsCommand:
     script:
     - define data <player.uuid>_quest_data
     - if <yaml[<[data]>].read[quests.active].size||0> == 0:
+        - narrate "<red>You have no active quests!"
         - stop
     - foreach <yaml[<[data]>].read[quests.active]> as:quest:
         - clickable questdetail save:quest_detail for:<player> def:<[quest]>
-        - narrate format:QuestNameFormat <[quest].get[name].on_click[<entry[quest_detail].command>]>
-        - narrate format:QuestDescriptionFormat <[quest].get[description].on_click[<entry[quest_detail].command>]>
+        - narrate " "
+        - narrate "<green><bold><underline>Active Quests<r> <italic><grey>(Click quest name for details)"
+        - narrate " "
+        - narrate "• <gold><[quest].get[name].on_click[<entry[quest_detail].command>]>"
+        #- narrate format:QuestDescriptionFormat <[quest].get[description].on_click[<entry[quest_detail].command>]>
 
 QuestDetail:
     type: task
@@ -20,10 +24,13 @@ QuestDetail:
     script:
     - define data <player.uuid>_quest_data
     - define current_stage <[quest].get[current_stage]>
+    - narrate " "
+    - narrate "<green><bold><underline>Quest Details"
+    - narrate " "
     - narrate format:QuestNameFormat <[quest].get[name]>
     - narrate format:QuestDescriptionFormat <[quest].get[description]>
-    - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages.<[current_stage]>.description]>"
-    - foreach <[quest].get[stages.<[current_stage]>.objectives]>:
+    - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
+    - foreach <[quest].get[stages].get[<[current_stage]>].get[objectives]>:
         - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
 
 
