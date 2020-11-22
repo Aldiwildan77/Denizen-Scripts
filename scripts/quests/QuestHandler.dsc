@@ -56,7 +56,7 @@ QuestAcceptHandler:
     - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     - run QuestResetTimeHandler def:<[quest_internalname]>
     - define current_stage 1
-    - narrate <yaml[<[quest_internalname]>].read[messages.offer]>
+    - narrate <yaml[<[quest_internalname]>].parsed_key[messages.offer]>
     - narrate format:QuestNameFormat <[quest].get[name]>
     - narrate format:QuestDescriptionFormat <[quest].get[description]>
     - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
@@ -175,8 +175,8 @@ QuestQuitHandler:
     script:
     - define data <player.uuid>_quest_data
     - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
-    - yaml id:<[data]> set quests.active.<[quest]>:!
-    - zap * <yaml[<[quest]>].read[npc_name]>Interact
+    - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
+    - zap <yaml[<[quest_internalname]>].read[npc_name]>Interact <yaml[<[quest_internalname]>].read[quit_step]>
     - narrate "<red>QUEST QUIT: <[quest].get[name]>"
 
 QuestCompletionHandler:

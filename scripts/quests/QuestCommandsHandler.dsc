@@ -35,13 +35,16 @@ QuestDetail:
 
 
 QuestQuitCommand:
-    debug: false
+    debug: true
     type: command
     name: questquit
     description: Quit a specified quest
     usage: /questquit [quest]
     script:
     - define data <player.uuid>_quest_data
+    - if <yaml[<[data]>].read[quests.active].size||0> == 0:
+        - narrate "<red>You have no active quests!"
+        - stop
     - if <yaml[<[data]>].read[quests.active].size> == 1:
         - define quest_internalname <yaml[<[data]>].read[quests.active].keys.first>
         - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>

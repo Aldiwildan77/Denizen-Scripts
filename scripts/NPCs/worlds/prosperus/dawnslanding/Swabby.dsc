@@ -1,7 +1,7 @@
 SwabbyAssignment:
     type: assignment
     interact scripts:
-    - WelcomeToProsperus
+    - SwabbyInteract
     actions:
         on assignment:
         - teleport npc location:<npc.anchor[shipSwabby]>
