@@ -53,14 +53,15 @@ QuestAcceptHandler:
     - define data <player.uuid>_quest_data
     - yaml id:<[quest_internalname]> copykey:player_data.<[quest_internalname]> quests.active.<[quest_internalname]> to_id:<[data]>
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.current_stage:1
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     - run QuestResetTimeHandler def:<[quest_internalname]>
     - define current_stage 1
     - narrate <yaml[<[quest_internalname]>].read[messages.offer]>
-    - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
-    - narrate format:QuestDescriptionFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
-    - narrate "<green>Stage <[current_stage]>: <&r><yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.description]>"
-    - foreach <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives]>:
-        - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.total]>"
+    - narrate format:QuestNameFormat <[quest].get[name]>
+    - narrate format:QuestDescriptionFormat <[quest].get[description]>
+    - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
+    - foreach <[quest].get[stages].get[<[current_stage]>].get[objectives]>:
+        - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
 
 QuestStageProgressHandler:
     debug: false
@@ -69,12 +70,15 @@ QuestStageProgressHandler:
     ## This script will add 1 to the stage progress and should only be run when an objective is completed
     script:
     - define data <player.uuid>_quest_data
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     # Set current stage definition
-    - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
+    - define current_stage <[quest].get[current_stage]>
+    - define stage_progress <[quest].get[stages].get[current_stage].get[progress]>
+    - define stage_total <[quest].get[stages].get[current_stage].get[total]>
     # Advance the current stage progress by 1
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress:++
     # If the current stage progress is equal to or greater than the total for that stage,
-    - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress]> >= <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[current_stage]>.total]>:
+    - if <[stage_progress]> >= <[stage_total]>:
         # Check whether there is another stage
         - if <yaml[<[data]>].contains[quests.active.<[quest_internalname]>.stages.<[current_stage].add[1]>]>:
             # If yes, advance to the next stage
@@ -85,8 +89,8 @@ QuestStageProgressHandler:
     # Display remaining objectives
     ## TODO: Replace with a foreach and conditional formatting for completed objectives
     - else if <[objective]||null>:
-        - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
-        - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.total]>"
+        - narrate format:QuestNameFormat <[quest].get[name]>
+        - narrate "• <[quest].get[stages].get[<[current_stage]>].get[objectives].get[<[objective]>].get[name]>: <[quest].get[stages].get[<[current_stage]>].get[objectives].get[<[objective]>].get[progress]>/<[quest].get[stages].get[<[current_stage]>].get[objectives].get[<[objective]>].get[total]>"
 
 QuestItemDeliveryHandler:
     debug: false
@@ -96,13 +100,16 @@ QuestItemDeliveryHandler:
     # Requires: <[objective]> AND <[quest_internalname]> AND <[stage]>
     script:
     - define data <player.uuid>_quest_data
-    - define progress:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]>
-    - define total:<yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.total]>
-    - define delivery_quantity:<player.item_in_hand.quantity>
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
+    #- define progress <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]>
+    - define progress <[quest].get[stages].get[<[current_stage]>].get[objectives].get[<[objective]>].get[progress]>
+    #- define total <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.total]>
+    - define total <[quest].get[stages].get[<[current_stage]>].get[objectives].get[<[objective]>].get[total]>
+    - define delivery_quantity <player.item_in_hand.quantity>
     #- define delivery_item:<player.item_in_hand.scriptname||<player.item_in_hand.material.name>>
     # We only want to take items if items need to be taken
     - if <[progress]> < <[total]>:
-        - define remainder:<[total].sub[<[progress]>]>
+        - define remainder <[total].sub[<[progress]>]>
         - if <[delivery_quantity]> >= <[remainder]>:
             - take iteminhand quantity:<[delivery_quantity].sub[<[remainder]>]>
             - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:<[total]>
@@ -121,22 +128,23 @@ QuestItemDeliveryHandler:
         - inject QuestStageProgressHandler
 
 QuestProgressHandler:
-    debug: false
+    debug: true
     type: task
     definitions: quest_internalname
     # Shows the player their progress for the designated quest
     script:
     - define data <player.uuid>_quest_data
-    - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
+    - define current_stage <[quest].get[current_stage]>
     # Show the quest name
-    - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
+    - narrate format:QuestNameFormat <[quest].get[name]>
     # Show the quest description
-    - narrate format:QuestDescriptionFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
+    - narrate format:QuestDescriptionFormat <[quest].get[description]>
     # Show the current stage
-    - narrate "<green>Stage <[current_stage]>: <&r><yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.description]>"
+    - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
     # Show the current objectives
-    - foreach <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives]>:
-        - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.total]>"
+    - foreach <[quest].get[stages].get[<[current_stage]>].get[objectives]>:
+        - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
 
 QuestStageAdvanceHandler:
     debug: false
@@ -145,18 +153,19 @@ QuestStageAdvanceHandler:
     # Advances the quest stage by one and narrates information about the new stage
     script:
     - define data <player.uuid>_quest_data
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     # Add one to the current stage
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.current_stage:++
-    - define current_stage <yaml[<[data]>].read[quests.active.<[quest_internalname]>.current_stage]>
+    - define current_stage <[quest].get[current_stage]>
     # Narrate the quest name
-    - narrate format:QuestNameFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
+    - narrate format:QuestNameFormat <[quest].get[name]>
     # Narrate the quest description
-    - narrate format:QuestDescriptionFormat <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
+    - narrate format:QuestDescriptionFormat <[quest].get[description]>
     # Narrate the new current stage
-    - narrate "<green>Stage <[current_stage]>: <&r><yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.description]>"
+    - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
     # Narrate the new objectives
-    - foreach <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives]>:
-        - narrate "• <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.name]>: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.progress]>/<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[value]>.total]>"
+    - foreach <[quest].get[stages].get[<[current_stage]>].get[objectives]>:
+        - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
 
 QuestQuitHandler:
     debug: false
