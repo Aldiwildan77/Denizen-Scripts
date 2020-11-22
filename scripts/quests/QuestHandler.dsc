@@ -170,10 +170,11 @@ QuestStageAdvanceHandler:
 QuestQuitHandler:
     debug: false
     type: task
-    definitions: quest
+    definitions: quest|quest_internalname
     # Handles everything related to quitting a quest
     script:
     - define data <player.uuid>_quest_data
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     - yaml id:<[data]> set quests.active.<[quest]>:!
     - zap * <yaml[<[quest]>].read[npc_name]>Interact
     - narrate "<red>QUEST QUIT: <[quest].get[name]>"

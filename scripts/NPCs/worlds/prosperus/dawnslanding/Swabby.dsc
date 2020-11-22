@@ -1,4 +1,4 @@
-Swabby:
+SwabbyAssignment:
     type: assignment
     interact scripts:
     - WelcomeToProsperus
@@ -12,7 +12,7 @@ SwabbyFormat:
     type: format
     format: "<dark_green>Swabby<white><&co> <text>"
 
-WelcomeToProsperus:
+SwabbyInteract:
     type: interact
     steps:
         WakingUp*:
@@ -99,7 +99,7 @@ WelcomeToProsperus:
                 - run QuestAcceptHandler def:SwabbyDelivery
                 - zap SwabbyDeliveryActive
             chat trigger:
-                StoneToolsAcceptance:
+                SwabbyAcceptance:
                     trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:

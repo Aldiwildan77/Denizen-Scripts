@@ -12,7 +12,7 @@ QuestsCommand:
     - foreach <yaml[<[data]>].read[quests.active]> as:quest:
         - clickable questdetail save:quest_detail for:<player> def:<[quest]>
         - narrate " "
-        - narrate "<green><bold><underline>Active Quests<r> <italic><grey>(Click quest name for details)"
+        - narrate "<green><bold><underline>Active Quests<&r> <italic><gray>(Click quest name for details)"
         - narrate " "
         - narrate "• <gold><[quest].get[name].on_click[<entry[quest_detail].command>]>"
         #- narrate format:QuestDescriptionFormat <[quest].get[description].on_click[<entry[quest_detail].command>]>
@@ -42,19 +42,24 @@ QuestQuitCommand:
     usage: /questquit [quest]
     script:
     - define data <player.uuid>_quest_data
-    - foreach <yaml[<[data]>].read[quests.active]> as:quest:
-        - if <[quest].get[name].contains_text[<context.args.get[1]>]>:
-            - define match_list:->:<[quest]>
-    - if <[match_list].size> > 1:
-        - narrate "Please select a quest to quit:"
-        - foreach <[match_list]> as:match:
-            - define quest <yaml[<[data]>].read[quests.active].get[match]>
-            - clickable questquitdetail save:quest_quit_detail for:<player> def:<[quest]>|<[match]>
-            - narrate format:QuestNameFormat <[quest].get[name].on_click[<entry[quest_quit_detail]>]>
-    - else:
-        - define match <[match_list].get[1]>
-        - define quest <yaml[<[data]>].read[quests.active].get[match]>
+    - if <yaml[<[data]>].read[quests.active].size> == 1:
+        - define quest_internalname <yaml[<[data]>].read[quests.active].keys.first>
+        - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
         - inject QuestQuitHandler
+    - else:
+        - foreach <yaml[<[data]>].read[quests.active]> as:quest:
+            - if <[quest].get[name].contains_text[<context.args.get[1]>]>:
+                - define match_list:->:<[quest]>
+        - if <[match_list].size> > 1:
+            - narrate "Please select a quest to quit:"
+            - foreach <[match_list]> as:match:
+                - define quest <yaml[<[data]>].read[quests.active].get[match]>
+                - clickable questquitdetail save:quest_quit_detail for:<player> def:<[quest]>|<[match]>
+                - narrate format:QuestNameFormat <[quest].get[name].on_click[<entry[quest_quit_detail]>]>
+        - else:
+            - define match <[match_list].get[1]>
+            - define quest <yaml[<[data]>].read[quests.active].get[match]>
+            - inject QuestQuitHandler
 
 QuestQuitDetail:
     type: task

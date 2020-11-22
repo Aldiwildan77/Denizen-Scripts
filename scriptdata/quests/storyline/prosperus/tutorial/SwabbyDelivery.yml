@@ -1,3 +1,4 @@
+npc_name: Swabby
 config:
     availability:
         offering_npc: 79
