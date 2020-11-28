@@ -19,7 +19,7 @@ ImbuedSword_sealed_potential:
         - equipment_type/weapon
         - item_tier/veteran
         - sealed_potential/true
-        
+
 ImbuedHelm_sealed_potential:
     type: item
     no_id: true
@@ -41,7 +41,7 @@ ImbuedHelm_sealed_potential:
         - equipment_type/armor
         - item_tier/veteran
         - sealed_potential/true
-        
+
 ImbuedChest_sealed_potential:
     type: item
     no_id: true
@@ -64,7 +64,7 @@ ImbuedChest_sealed_potential:
         - equipment_type/armor
         - item_tier/veteran
         - sealed_potential/true
-        
+
 ImbuedLegs_sealed_potential:
     type: item
     no_id: true
@@ -86,7 +86,7 @@ ImbuedLegs_sealed_potential:
         - equipment_type/armor
         - item_tier/veteran
         - sealed_potential/true
-        
+
 ImbuedBoots_sealed_potential:
     type: item
     no_id: true
@@ -108,7 +108,7 @@ ImbuedBoots_sealed_potential:
         - equipment_type/armor
         - item_tier/veteran
         - sealed_potential/true
-        
+
 ImbuedBow_sealed_potential:
     type: item
     no_id: true
@@ -148,7 +148,7 @@ ImbuedShield_sealed_potential:
         - equipment_type/armor
         - item_tier/veteran
         - sealed_potential/true
-        
+
 ImbuedAxe_sealed_potential:
     type: item
     no_id: true
@@ -171,7 +171,7 @@ ImbuedAxe_sealed_potential:
         - equipment_type/weapon
         - item_tier/veteran
         - sealed_potential/true
-        
+
 TestItem:
     type: item
     no_id: true

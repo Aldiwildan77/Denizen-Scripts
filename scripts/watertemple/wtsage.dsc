@@ -17,7 +17,7 @@
     type: task
     script:
     - teleport npc location:<npc.anchor[wtsage]>
-    - trigger name:proximity state:true radius:3
+    - trigger name:proximity toggle:true radius:3
     - flag server watertempleclear:true
     - flag server watertemple-challenger:!
     - flag server watertemple-challenger-name:!

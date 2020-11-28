@@ -20,7 +20,8 @@ YAML_AntiFarm:
 
         on entity dies:
         # Check to see if entity was a player
-        - if <context.entity.is_player>:
+        - define entity <context.entity>
+        - if <[entity].is_player>:
             # If so, cancel all below checks
             - stop
 
@@ -42,43 +43,14 @@ YAML_AntiFarm:
             - determine NO_DROPS_OR_XP
             - stop
 
-        on mythicmob mob dies:
-
-        # Check to see if any timers exist on this block
-        - if <yaml[antifarm-flags].contains[expirations.<context.entity.location.simple>]>:
-        # If yes, clear any old timers
-            - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.filter[is[more].than[<util.time_now>]]>
-
-        # Add a timer for this mob's death
-        - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<list[<util.time_now.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>]||<list[]>>]>
-
-        # Check to see whether there are too many timers on this block
-        - if <yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.size||0> >= 3:
-            # Debug messages
-#            - announce to_console "[DEBUG] MythicMobs YAML same location: <context.entity.location.simple>"
-#            - announce to_console "[DEBUG] MythicMobs YAML same location size: <yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.size>"
-
-            # Cancel drops and experience
-            - determine passively xp:0
-            - determine passively currency:0
-            - determine passively <list[]>
-
-        #on mythicmobs lootdrop:
-        #- if <yaml[antifarm-flags].contains[expirations.<context.activemob.location.simple>]>:
-        #    - yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.filter[in_seconds.is[more].than[<util.date.time.duration.in_seconds>]]>
-        #- yaml id:antifarm-flags set expirations.<context.activemob.location.simple>:<list[<util.date.time.duration.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>]||<list[]>>]>
-        #- if <yaml[antifarm-flags].read[expirations.<context.activemob.location.simple>].as_list.size||0> >= 3:
-        #    - determine <list[]>
-        #    - stop
-
         # Check for and cancel an empty gold message
         on player receives message:
         - if <context.message.contains_text> "dropped 0.0 gold":
             - determine CANCELLED
 
-"YAML Anti-Spawner Script":
+Anti_Spawner_YAML:
     type: world
-    debug: false
+    debug: true
     events:
         on server start:
         - wait 5s
@@ -114,16 +86,6 @@ YAML_AntiFarm:
 #            - announce to_console "[DEBUG] Normal mobs YAML spawner"
             - determine NO_DROPS_OR_XP
             - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<[entity].uuid>
-
-
-
-        on mythicmob mob dies:
-        - if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.entity.uuid||null>]||null>:
-#            - announce to_console "[DEBUG] MythicMobs YAML spawner"
-            - determine passively xp:0
-            - determine passively currency:0
-            - determine passively <list[]>
-            - yaml id:antispawner-flags set entities.spawned-by-spawner:<-:<context.entity.uuid>
 
         #on mythicmobs lootdrop:
         #- if <yaml[antispawner-flags].read[entities.spawned-by-spawner].contains[<context.activemob.uuid||null>]||null>:

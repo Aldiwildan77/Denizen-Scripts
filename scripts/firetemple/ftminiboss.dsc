@@ -16,7 +16,7 @@
     type: task
     script:
     - teleport npc location:<npc.anchor[ftminiboss]>
-    - trigger name:proximity state:true radius:25
+    - trigger name:proximity toggle:true radius:25
 "Servant Format":
     type: format
     format: "<red>Servant of Flame<white><&co> <text>"

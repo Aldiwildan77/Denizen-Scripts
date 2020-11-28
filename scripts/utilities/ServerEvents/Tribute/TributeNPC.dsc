@@ -6,8 +6,8 @@ TributeAssignment:
     actions:
         on assignment:
         - teleport npc <npc.anchor[tributenpc]>
-        - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:proximity toggle:true
+        - trigger name:chat toggle:true
 
 tribute_npc_format:
     type: format

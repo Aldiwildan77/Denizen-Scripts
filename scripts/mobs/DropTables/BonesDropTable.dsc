@@ -1,7 +1,7 @@
 
 veteran_bones_drop:
     type: world
-    debug: true
+    debug: false
     events:
         on entity killed by player:
         - if !<context.entity.name.starts_with[<&9>]||null>:
@@ -16,7 +16,7 @@ veteran_bones_drop:
 
 elite_bones_drop:
     type: world
-    debug: true
+    debug: false
     events:
         on entity killed by player:
         - if !<context.entity.name.starts_with[<&d>]||null>:

@@ -6,8 +6,8 @@
     actions:
         on assignment:
         - teleport npc <npc.anchor[badlucknpc]>
-        - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:proximity toggle:true
+        - trigger name:chat toggle:true
 
 "Arcane Forger Format":
     type: format

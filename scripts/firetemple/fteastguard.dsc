@@ -16,7 +16,7 @@
     type: task
     script:
     - teleport npc location:<npc.anchor[fteast]>
-    - trigger name:proximity state:true cooldown:0.1s radius:3
+    - trigger name:proximity toggle:true cooldown:0.1s radius:3
 
 "Fire Guard Format":
     type: format

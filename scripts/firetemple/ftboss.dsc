@@ -16,7 +16,7 @@
     type: task
     script:
     - teleport npc location:<npc.anchor[ftboss1]>
-    - trigger name:proximity state:true radius:3
+    - trigger name:proximity toggle:true radius:3
 "Boss Format":
     type: format
     format: "<red>Lord Emfyrius<white><&co> <text>"

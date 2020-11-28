@@ -17,7 +17,7 @@
     type: task
     script:
     - teleport npc location:<npc.anchor[mazemaster]>
-    - trigger name:proximity state:true radius:3
+    - trigger name:proximity toggle:true radius:3
     - flag server mazeclear:1
     - flag server maze-challenger-name:!
     - flag server maze-challenger:!
