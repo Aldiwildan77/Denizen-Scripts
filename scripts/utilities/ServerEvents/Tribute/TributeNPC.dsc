@@ -16,7 +16,7 @@ tribute_npc_format:
 
 "TributeNPC":
     type: interact
-    debug: false
+    debug: true
     steps:
         General*:
             proximity trigger:
@@ -107,16 +107,16 @@ Tribute_Inventory:
     title: Blessings
     size: 45
     slots:
-    - "[] [] [] [] [] [] [] [] []"
-    - "[] [] [] [] [] [] [] [] []"
-    - "[] [] [Tribute_DropRate] [] [] [] [Tribute_Experience] [] []"
-    - "[] [] [] [] [] [] [] [] []"
-    - "[] [] [] [] [] [] [] [] []"
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [Tribute_DropRate] [] [] [] [Tribute_Experience] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
 
 
 Tribute_Inventory_Handler:
     type: world
-    debug: false
+    debug: true
     events:
         on player clicks Tribute_mcMMO in Tribute_Inventory:
         - inventory close
@@ -168,6 +168,7 @@ Tribute_Inventory_Handler:
 
 Tribute_Cap_Procedure:
     type: procedure
+    debug: false
     definitions: upgrade_type
     script:
     - if <yaml[events].read[tribute.<[upgrade_type]>.rate]> == <yaml[events].read[tribute.<[upgrade_type]>.cap]>:
@@ -212,7 +213,7 @@ Tribute_DropRate:
 Tribute_Experience:
     type: item
     debug: false
-    material: exp_bottle
+    material: experience_bottle
     display name: <&6>Blessing of Wisdom
     lore_list:
     - <&f>Pray for the Gods to bless your ability to gain experience from slain monsters.
