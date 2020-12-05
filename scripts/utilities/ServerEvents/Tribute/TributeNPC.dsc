@@ -59,10 +59,10 @@ tribute_npc_format:
                         - define rate <yaml[events].read[tribute.<[choice]>.rate]>
                         - define upgrade_amount <yaml[events].read[tribute.<[choice]>.upgrades.<[rate]>]>
                         - if <[rate]> == 3 && <[progress].add[<[offering_amount]>]> > <[upgrade_amount]>:
-                                - take GodsTribute quantity:<[offering_amount].sub[<[offering_amount].add[<[progress]>].sub[<[upgrade_amount]>]>]>
+                                - take scriptname:GodsTribute quantity:<[offering_amount].sub[<[offering_amount].add[<[progress]>].sub[<[upgrade_amount]>]>]>
                                 - define offering_amount <[offering_amount].sub[<[offering_amount].add[<[progress]>].sub[<[upgrade_amount]>]>]>
                         - else:
-                            - take GodsTribute quantity:<[offering_amount]> from:<player.inventory>
+                            - take scriptname:GodsTribute quantity:<[offering_amount]> from:<player.inventory>
                         - yaml id:events set tribute.<[choice]>.progress:<[progress].add[<[offering_amount]>]>
                         - define progress <[progress].add[<[offering_amount]>]>
                         - narrate format:tribute_npc_format "The Gods thank you for your offering."
@@ -109,7 +109,7 @@ Tribute_Inventory:
     slots:
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
-    - "[] [] [Tribute_mcMMO] [] [Tribute_DropRate] [] [Tribute_Experience] [] []"
+    - "[] [] [Tribute_DropRate] [] [] [] [Tribute_Experience] [] []"
     - "[] [] [] [] [] [] [] [] []"
     - "[] [] [] [] [] [] [] [] []"
 

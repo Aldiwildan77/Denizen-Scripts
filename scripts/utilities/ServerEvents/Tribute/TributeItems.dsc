@@ -15,8 +15,7 @@ GodsTribute:
         nbt:
         - event_item/gods_tribute
         - uncraftable/true
-        - expiration/<duration[<util.time_now.epoch_millis.div[1000]>].in_days.round_down.sub[<util.time_now.day_of_week>d].add[8d]>
-        # This is probably broken because Saturday or Sunday is 0
+        - expiration/<util.time_now.next_day_of_week[monday]>
 
 GodsTributeOld:
     type: item
@@ -35,33 +34,33 @@ GodsTributeOld:
         nbt:
         - event_item/gods_tribute
         - uncraftable/true
-        - expiration/<duration[<util.time_now.epoch_millis.div[1000]>].in_days.round_down.sub[<util.time_now.day_of_week>d].add[1d]>
+        - expiration/<util.time_now.next_day_of_week[monday].sub[7d]>
 
 TokenExpiration:
     type: world
     debug: false
     events:
         on player opens inventory:
-        - define day <duration[<util.time_now.epoch_millis.div[1000]>].in_days.round_down>
+        - define day <util.time_now>
         - if <player.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<[day]>]].size> > 0:
             - foreach <player.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<[day]>]]>:
-                - take <[value]> quantity:<[value].quantity> from:<player.inventory>
+                - take scriptname:<[value]> quantity:<[value].quantity> from:<player.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
         - else if <context.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<[day]>]].size> == 0:
             - stop
         - else:
             - foreach <context.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<[day]>]]>:
-                - take <[value]> quantity:<[value].quantity> from:<context.inventory>
+                - take scriptname:<[value]> quantity:<[value].quantity> from:<context.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
         on player clicks in inventory:
-        - define day <duration[<util.time_now.epoch_millis.div[1000]>].in_days.round_down>
+        - define day <util.time_now>
         - if <player.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<[day]>]].size> > 0:
             - foreach <player.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<[day]>]]>:
-                - take <[value]> quantity:<[value].quantity> from:<player.inventory>
+                - take scriptname:<[value]> quantity:<[value].quantity> from:<player.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
         - else if <context.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<[day]>]].size> == 0:
             - stop
         - else:
             - foreach <context.inventory.list_contents.filter[nbt[expiration].is[or_less].than[<[day]>]]>:
-                - take <[value]> quantity:<[value].quantity> from:<context.inventory>
+                - take scriptname:<[value]> quantity:<[value].quantity> from:<context.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
