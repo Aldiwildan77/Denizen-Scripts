@@ -143,12 +143,14 @@ Tribute_DropTable_Elite:
             - else:
                 - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[5]>
 
-Tribute_mcMMO_Drops:
+Tribute_Drops_Mining:
     type: world
     debug: false
     events:
-        on mcmmo player gains xp for mining:
+        on player breaks block with:*_pickaxe:
         - if !<yaml[events].read[tribute.active]>:
+            - stop
+        - if !<yaml[mining].read[materials].contains[<context.material.name>]>:
             - stop
         - if <util.random.int[1].to[50]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining mining exp"
@@ -158,18 +160,47 @@ Tribute_mcMMO_Drops:
                 - give GodsTribute
             - narrate "<&a>You found a Tribute to the Gods!"
 
-        on mcmmo player gains xp for herbalism:
+Tribute_Drops_Harvesting:
+    type: world
+    debug: false
+    events:
+        on player breaks block:
         - if !<yaml[events].read[tribute.active]>:
             - stop
+        - if !<yaml[harvesting].read[materials].contains[<context.material.name>]>:
+            - stop
         - if <util.random.int[1].to[50]> <= 1:
-            - announce to_console "Tribute drop for <player.name> caused by gaining herbalism exp"
+            - announce to_console "Tribute drop for <player.name> caused by gaining harvesting exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
             - else:
                 - give GodsTribute
             - narrate "<&a>You found a Tribute to the Gods!"
 
-        on mcmmo player gains xp for fishing:
+Tribute_Drops_Foraging:
+    type: world
+    debug: false
+    events:
+        on player breaks block:
+        - if !<yaml[events].read[tribute.active]>:
+            - stop
+        - if !<yaml[foraging].read[materials].contains[<context.material.name>]>:
+            - stop
+        - if <context.material.age||0> != <context.material.maximum_age||null>:
+            - stop
+        - if <util.random.int[1].to[50]> <= 1:
+            - announce to_console "Tribute drop for <player.name> caused by gaining foraging exp"
+            - if <server.has_flag[tribute_power_hour]>:
+                - give GodsTribute quantity:2
+            - else:
+                - give GodsTribute
+            - narrate "<&a>You found a Tribute to the Gods!"
+
+Tribute_Drops_Fishing:
+    type: world
+    debug: false
+    events:
+        on player fishes while caught_fish:
         - if !<yaml[events].read[tribute.active]>:
             - stop
         - if <util.random.int[1].to[15]> <= 1:
@@ -180,8 +211,14 @@ Tribute_mcMMO_Drops:
                 - give GodsTribute
             - narrate "<&a>You found a Tribute to the Gods!"
 
-        on mcmmo player gains xp for woodcutting:
+Tribute_Drops_Lumberjacking:
+    type: world
+    debug: false
+    events:
+        on player breaks block with:*_axe:
         - if !<yaml[events].read[tribute.active]>:
+            - stop
+        - if !<yaml[lumberjacking].read[materials].contains[<context.material.name>]>:
             - stop
         - if <util.random.int[1].to[50]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining woodcutting exp"
@@ -191,11 +228,17 @@ Tribute_mcMMO_Drops:
                 - give GodsTribute
             - narrate "<&a>You found a Tribute to the Gods!"
 
-        on mcmmo player gains xp for excavation:
+Tribute_Drops_Digging:
+    type: world
+    debug: false
+    events:
+        on player breaks block with:*_shovel:
         - if !<yaml[events].read[tribute.active]>:
             - stop
+        - if !<yaml[digging].read[materials].contains[<context.material.name>]>:
+            - stop
         - if <util.random.int[1].to[50]> <= 1:
-            - announce to_console "Tribute drop for <player.name> caused by gaining excavation exp"
+            - announce to_console "Tribute drop for <player.name> caused by gaining digging exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
             - else:

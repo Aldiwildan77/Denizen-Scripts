@@ -176,7 +176,7 @@ QuestQuitHandler:
     - define data <player.uuid>_quest_data
     - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
-    - zap <yaml[<[quest_internalname]>].read[npc_name]>Interact <yaml[<[quest_internalname]>].read[quit_step]>
+    - zap <yaml[<[quest_internalname]>].read[config.availability.offering_npc]>Interact <yaml[<[quest_internalname]>].read[config.quit_step]>
     - narrate "<red>QUEST QUIT: <[quest].get[name]>"
 
 QuestCompletionHandler:

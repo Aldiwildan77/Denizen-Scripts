@@ -79,19 +79,6 @@ SwabbyInteract:
                 - wait 0.7s
                 - narrate format:SwabbyFormat "He's not very far, just over there in the Questing Hall. You can see it on the right when you stand on the ship's plank. Just past the inn. <green>Think you can make some time for me?"
                 - zap SwabbyDeliveryOffer
-
-        SwabbyDeliveryCompleted:
-            proximity trigger:
-                entry:
-                    script:
-                    - narrate format:SwabbyFormat "Hey, nice to see you <player.name>! How's that adventure going?"
-                    - wait 0.7s
-                    - narrate format:SwabbyFormat "You met the Quest Master, right? Done all those quests? Bet you can find some more to do."
-                    - wait 0.7s
-                    - narrate format:SwabbyFormat "If you need some inspiration, why not ask your fellow adventurers?"
-                exit:
-                    script:
-                    - narrate format:SwabbyFormat "Happy travels!"
         SwabbyDeliveryOffer:
             click trigger:
                 script:
@@ -135,4 +122,16 @@ SwabbyInteract:
                 exit:
                     script:
                     - bossbar remove <player.uuid>_swabby
+                    - narrate format:SwabbyFormat "Happy travels!"
+        SwabbyDeliveryCompleted:
+            proximity trigger:
+                entry:
+                    script:
+                    - narrate format:SwabbyFormat "Hey, nice to see you <player.name>! How's that adventure going?"
+                    - wait 0.7s
+                    - narrate format:SwabbyFormat "You met the Quest Master, right? Done all those quests? Bet you can find some more to do."
+                    - wait 0.7s
+                    - narrate format:SwabbyFormat "If you need some inspiration, why not ask your fellow adventurers?"
+                exit:
+                    script:
                     - narrate format:SwabbyFormat "Happy travels!"
