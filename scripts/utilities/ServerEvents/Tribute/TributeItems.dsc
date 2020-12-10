@@ -42,25 +42,25 @@ TokenExpiration:
     events:
         on player opens inventory:
         - define day <util.time_now>
-        - if <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<time[<[filter_value].nbt[expiration]>].is_before[<[day]>]>].size> > 0:
-            - foreach <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<time[<[filter_value].nbt[expiration]>].is_before[<[day]>]>]>:
-                - take scriptname:<[value]> quantity:<[value].quantity> from:<player.inventory>
+        - if <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>].size> > 0:
+            - foreach <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>]>:
+                - take scriptname:<[value]> quantity:<[value].quantity> from:<context.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
-        - else if <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<time[<[filter_value].nbt[expiration]>].is_before[<[day]>]>].size> == 0:
+        - else if <player.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>].size> == 0:
             - stop
         - else:
-            - foreach <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<time[<[filter_value].nbt[expiration]>].is_before[<[day]>]>]>:
-                - take scriptname:<[value]> quantity:<[value].quantity> from:<context.inventory>
+            - foreach <player.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>]>:
+                - take scriptname:<[value]> quantity:<[value].quantity> from:<player.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
         on player clicks in inventory:
         - define day <util.time_now>
-        - if <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<time[<[filter_value].nbt[expiration]>].is_before[<[day]>]>].size> > 0:
-            - foreach <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<time[<[filter_value].nbt[expiration]>].is_before[<[day]>]>]>:
-                - take scriptname:<[value]> quantity:<[value].quantity> from:<player.inventory>
+        - if <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>].size> > 0:
+            - foreach <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>]>:
+                - take scriptname:<[value]> quantity:<[value].quantity> from:<context.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
-        - else if <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<time[<[filter_value].nbt[expiration]>].is_before[<[day]>]>].size> == 0:
+        - else if <player.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>].size> == 0:
             - stop
         - else:
-            - foreach <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<time[<[filter_value].nbt[expiration]>].is_before[<[day]>]>]>:
-                - take scriptname:<[value]> quantity:<[value].quantity> from:<context.inventory>
+            - foreach <player.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>]>:
+                - take scriptname:<[value]> quantity:<[value].quantity> from:<player.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
