@@ -27,6 +27,12 @@ SwabbyInteract:
                         - bossbar update <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
                     - else:
                         - bossbar create <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
+            chat trigger:
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat <context.message>
         AdventurePrompt:
             proximity trigger:
                 entry:
@@ -60,7 +66,11 @@ SwabbyInteract:
                     - wait 0.7s
                     - narrate format:SwabbyFormat "He's not very far, just over there in the Questing Hall. You can see it on the right when you stand on the ship's plank. Just past the inn. <green>Think you can make some time for me?"
                     - zap SwabbyDeliveryOffer
-
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat <context.message>
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "Yeah, I came here for adventure!"
@@ -93,6 +103,11 @@ SwabbyInteract:
                     - narrate format:PlayerChatFormat "<green>Sure, I'll deliver your package to the Quest Master."
                     - run QuestAcceptHandler def:SwabbyDelivery
                     - zap SwabbyDeliveryActive
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat <context.message>
         SwabbyDeliveryActive:
             proximity trigger:
                 entry:
@@ -105,6 +120,12 @@ SwabbyInteract:
                     script:
                     - bossbar remove <player.uuid>_swabby
                     - narrate format:SwabbyFormat "Happy travels!"
+            chat trigger:
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat <context.message>
         VisitedButNoQuest:
             proximity trigger:
                 entry:
@@ -123,6 +144,12 @@ SwabbyInteract:
                     script:
                     - bossbar remove <player.uuid>_swabby
                     - narrate format:SwabbyFormat "Happy travels!"
+            chat trigger:
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat <context.message>
         SwabbyDeliveryCompleted:
             proximity trigger:
                 entry:
@@ -135,3 +162,9 @@ SwabbyInteract:
                 exit:
                     script:
                     - narrate format:SwabbyFormat "Happy travels!"
+            chat trigger:
+                Fallback:
+                    trigger: /*/
+                    hide trigger message: true
+                    script:
+                    - announce format:PlayerChatFormat <context.message>
