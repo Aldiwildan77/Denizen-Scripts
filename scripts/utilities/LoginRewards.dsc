@@ -147,7 +147,7 @@ daily-login-spinner:
 
         # Assemble a usable list to take from.
         - foreach <[itemlist]>:
-            - define daily-display-list <[daily-display-list].pad_left[<[daily-display-list].size.add[<[value].after_last[/]>]>].with[<[value].before_last[/]>]>:
+            - define daily-display-list <[daily-display-list].pad_left[<[daily-display-list].size.add[<[value].after_last[/]>]>].with[<[value].before_last[/]>]>
     - else if <server.flag[daily-login-count.<player.uuid>]> >= 15 && <server.flag[daily-login-count.<player.uuid>]> <= 20:
         # A list of items, with their respective weights.
         - define itemlist <list[<item[VeteranBox]>/12|<item[VeteranToken].with[quantity=32]>/140|<item[VeteranToken].with[quantity=64]>/60|<item[diamond].with[quantity=48]>/60|<item[diamond].with[quantity=24]>/40|<item[emerald_block].with[quantity=24]>/20|<item[emerald].with[quantity=48]>/40]>
