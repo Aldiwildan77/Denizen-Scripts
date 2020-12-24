@@ -38,7 +38,7 @@ GodsTributeOld:
 
 TokenExpiration:
     type: world
-    debug: true
+    debug: false
     events:
         on player opens inventory:
         - define day <util.time_now>
