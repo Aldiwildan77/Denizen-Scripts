@@ -234,7 +234,7 @@ Veteran-Spinner:
         - run Elite-Spinner
     - else:
         - wait 1s
-        - narrate "<&a>You got <&f><[veteran-roll-list].get[54]as_item.display||<[veteran-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
+        - narrate "<&a>You got <&f><[veteran-roll-list].get[54].as_item.display||<[veteran-roll-list].get[54].as_item.formatted.to_titlecase>><&a>!"
         - announce to_console "<player.name> got <[veteran-roll-list].get[54].as_item.display||<[veteran-roll-list].get[54].as_item.formatted.to_titlecase>>"
         - give <[veteran-roll-list].get[54]>
         - flag player cannot_close_inv:!
