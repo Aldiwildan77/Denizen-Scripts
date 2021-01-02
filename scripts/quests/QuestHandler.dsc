@@ -64,7 +64,7 @@ QuestAcceptHandler:
         - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
 
 QuestStageProgressHandler:
-    debug: false
+    debug: true
     type: task
     definitions: quest_internalname|objective
     ## This script will add 1 to the stage progress and should only be run when an objective is completed
@@ -73,8 +73,8 @@ QuestStageProgressHandler:
     - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     # Set current stage definition
     - define current_stage <[quest].get[current_stage]>
-    - define stage_progress <[quest].get[stages].get[current_stage].get[progress]>
-    - define stage_total <[quest].get[stages].get[current_stage].get[total]>
+    - define stage_progress <[quest].get[stages].get[<[current_stage]>].get[progress]>
+    - define stage_total <[quest].get[stages].get[<[current_stage]>].get[total]>
     # Advance the current stage progress by 1
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress:++
     # If the current stage progress is equal to or greater than the total for that stage,
