@@ -12,8 +12,8 @@ config:
         quest_points: 3
     material: wheat
 messages:
-    offer: "<darkgreen>Skilled Sorcerer<white>: The Farm-Wheat spell allows you to channel nature magic to grow a large amount of wheat around you. When you're ready to learn it, bring me what I need so that I can teach you."
-    completion: "<darkgreen>Skilled Sorcerer<white>: Congratulations, you're ready to learn Farm-Wheat! Give it a try with <&dq>/cast farm-wheat.<&dq>"
+    offer: "<dark_green>Skilled Sorcerer<white>: The Farm-Wheat spell allows you to channel nature magic to grow a large amount of wheat around you. When you're ready to learn it, bring me what I need so that I can teach you."
+    completion: "<dark_green>Skilled Sorcerer<white>: Congratulations, you're ready to learn Farm-Wheat! Give it a try with <&dq>/cast farm-wheat.<&dq>"
 player_data:
     UnlockFarm-Wheat:
         name: Learn the Farm-Wheat spell

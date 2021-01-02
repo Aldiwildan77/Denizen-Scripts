@@ -10,8 +10,8 @@ config:
         quest_points: 3
     material: iron_sword
 messages:
-    offer: "<darkgreen>Lady Brightsword<white>: We need assistance fighting the endermen attack, take out 350 for us!"
-    completion: "<darkgreen>Lady Brightsword<white>: Well done citizen, your contributions are invaluable."
+    offer: "<dark_green>Lady Brightsword<white>: We need assistance fighting the endermen attack, take out 350 for us!"
+    completion: "<dark_green>Lady Brightsword<white>: Well done citizen, your contributions are invaluable."
 player_data:
     WeeklyEndermen:
         name: Eliminate the endermen (Weekly)

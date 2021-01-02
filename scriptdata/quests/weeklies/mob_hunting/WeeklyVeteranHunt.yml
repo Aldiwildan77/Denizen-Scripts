@@ -19,8 +19,8 @@ config:
         - "mm i give -s <player> QuestVeteranRangedDrops 10"
     material: diamond_sword
 messages:
-    offer: "<darkgreen>Warmaster Reinwald<white>: Veteran monsters continue to pose a threat. If you get out there and take them down, we'll give you some rewards from our supply cache."
-    completion: "<darkgreen>Warmaster Reinwald<white>: Excellent work."
+    offer: "<dark_green>Warmaster Reinwald<white>: Veteran monsters continue to pose a threat. If you get out there and take them down, we'll give you some rewards from our supply cache."
+    completion: "<dark_green>Warmaster Reinwald<white>: Excellent work."
 player_data:
     WeeklyVeteranHunt:
         name: Vanquish Veterans (Weekly)

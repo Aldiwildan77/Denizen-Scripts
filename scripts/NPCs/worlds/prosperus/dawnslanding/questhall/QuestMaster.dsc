@@ -5,12 +5,11 @@
 
 QuestMasterAssignment:
     type: assignment
-    debug: false
+    debug: true
     interact scripts:
     - QuestMasterInteract
     actions:
         on assignment:
-        - teleport npc location:<npc.anchor[questmaster]>
         - trigger name:proximity state:true
         - trigger name:chat state:true
 
@@ -53,7 +52,7 @@ QuestMasterStepUpdater:
 
 QuestMasterInteract:
     type: interact
-    debug: false
+    debug: true
     steps:
         Greeting*:
             proximity trigger:

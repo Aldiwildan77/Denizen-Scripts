@@ -9,8 +9,8 @@ config:
         quest_points: 3
     material: compass
 messages:
-    offer: "<darkgreen>Royal Geographer<white>: The Altar of Water is a sacred location, and the Sage is an important bastion against the darkness. Please, find the Altar and ensure the Sage is safe."
-    completion: "<darkgreen>Royal Geographer<white>: Thank you so much for checking on the Sage of Water!"
+    offer: "<dark_green>Royal Geographer<white>: The Altar of Water is a sacred location, and the Sage is an important bastion against the darkness. Please, find the Altar and ensure the Sage is safe."
+    completion: "<dark_green>Royal Geographer<white>: Thank you so much for checking on the Sage of Water!"
 player_data:
     FindWaterTemple:
         name: Find the Altar of Water

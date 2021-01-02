@@ -10,7 +10,7 @@ DawnPostmasterAssignment:
     
 DawnPostmasterFormat:
     type: format
-    format: "<darkgreen>Dawn Postmaster<white><&co> <text>"
+    format: "<dark_green>Dawn Postmaster<white><&co> <text>"
 
 DawnPostmasterInteract:
     type: interact
