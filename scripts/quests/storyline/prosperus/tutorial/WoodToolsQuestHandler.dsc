@@ -54,7 +54,7 @@ WoodToolsQuestCraftingHandler:
 
 WoodToolsQuestDeliveryHandler:
     type: task
-    debug: false
+    debug: true
     definitions: data
     script:
     - define quest_internalname:WoodTools
@@ -63,35 +63,35 @@ WoodToolsQuestDeliveryHandler:
         - case wooden_axe:
             - define objective:1
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take wooden_axe
+                - take material:wooden_axe
                 - narrate format:QuestMasterFormat "A wooden axe! Axes make it easier to chop down trees."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case wooden_pickaxe:
             - define objective:2
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take wooden_pickaxe
+                - take material:wooden_pickaxe
                 - narrate format:QuestMasterFormat "A wooden pickaxe! You use one of these to mine stone."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case wooden_shovel:
             - define objective:3
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take wooden_shovel
+                - take material:wooden_shovel
                 - narrate format:QuestMasterFormat "A wooden shovel! This will make it easier for you to dig up dirt, grass, gravel, and sand."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case wooden_sword:
             - define objective:4
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take wooden_sword
+                - take material:wooden_sword
                 - narrate format:QuestMasterFormat "A wooden sword! It's a bit better than just punching monsters with your hands."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case wooden_hoe:
             - define objective:5
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take wooden_hoe
+                - take material:wooden_hoe
                 - narrate format:QuestMasterFormat "A wooden hoe! Farming is a great way to build a life for yourself out there."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
