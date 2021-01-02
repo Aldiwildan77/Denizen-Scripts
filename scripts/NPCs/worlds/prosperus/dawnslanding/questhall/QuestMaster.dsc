@@ -12,7 +12,7 @@ QuestMasterAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[questmaster]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 QuestMasterFormat:
     type: format
