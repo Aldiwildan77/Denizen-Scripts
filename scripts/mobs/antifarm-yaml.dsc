@@ -1,6 +1,7 @@
 AntiFarm_Proc:
     type: procedure
     definitions: entity
+    debug: false
     # usage: <proc[AntiFarm_Proc].context[<EntityTag>]>
     script:
     - if <yaml[antifarm-flags].read[expirations.<[entity].location.simple>].as_list.size||0> >= 3:
@@ -50,7 +51,7 @@ YAML_AntiFarm:
 
 Anti_Spawner_YAML:
     type: world
-    debug: true
+    debug: false
     events:
         on server start:
         - wait 5s

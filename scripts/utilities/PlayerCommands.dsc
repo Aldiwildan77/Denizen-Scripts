@@ -10,6 +10,7 @@ TowerOfTheGodsCommand:
     permission message: "Sorry, you can't warp to the Tower of the Gods!"
     script:
     - execute as_server "warp <player.name> godstower"
+    - inventory clear
     - narrate "<green>Welcome to the Tower of the Gods! You can get back to the main world with the <&click[/spawn]><aqua>/spawn<&end_click><green> command."
 DeathTowerCommand:
     type: command
@@ -22,6 +23,7 @@ DeathTowerCommand:
     permission message: "Sorry, you can't warp to the Death Tower!"
     script:
     - execute as_server "warp <player.name> deathtower"
+    - inventory clear
     - narrate "<green>Welcome to the Death Tower! You can get back to the main world with the <&click[/spawn]><aqua>/spawn<&end_click><green> command."
 BoatRace1Command:
     type: command
@@ -35,7 +37,7 @@ BoatRace1Command:
     script:
     - execute as_server "warp <player.name> boatrace-1"
     - wait 20t
-    - give boat
+    - give oak_boat
     - narrate "<green>Welcome to the Suicune boat race!"
 BoatRace2Command:
     type: command
@@ -47,7 +49,7 @@ BoatRace2Command:
     script:
     - execute as_server "warp <player.name> boatrace-2"
     - wait 20t
-    - give boat
+    - give oak_boat
     - narrate "<green>Welcome to the frozen caves boat race!"
 HelpCommand:
     type: command
