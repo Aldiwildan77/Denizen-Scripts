@@ -296,10 +296,14 @@ QuestMasterInteract:
             proximity trigger:
                 entry:
                     script:
+                    - define data <player.uuid>_quest_data
+                    - if <yaml[<[data]>].contains[quests.active.WoodTools].not>:
+                        - zap WoodToolsOffer
+                        - narrate format:QuestMasterFormat "Are you ready for your first real adventure?"
+                        - stop
                     - narrate format:QuestMasterFormat "How's it going with getting those wood tools?"
                     - wait 0.7s
                     - narrate format:QuestMasterFormat "Don't forget, you can get boats from the docks and sail down the river to get out of Dawn's Landing quickly."
-                    - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "I can also teach you how to set your home, if you want. It's a useful skill!"

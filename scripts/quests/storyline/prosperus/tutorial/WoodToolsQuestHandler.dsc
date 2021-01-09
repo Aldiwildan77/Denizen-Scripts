@@ -12,7 +12,7 @@ WoodToolsCompletion:
 
 WoodToolsQuestCraftingHandler:
     type: world
-    debug: false
+    debug: true
     events:
         on player crafts wooden_*:
         - define data <player.uuid>_quest_data

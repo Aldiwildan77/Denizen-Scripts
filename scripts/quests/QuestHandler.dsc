@@ -45,7 +45,7 @@ QuestRequirementsHandler:
     - determine true
 
 QuestAcceptHandler:
-    debug: false
+    debug: true
     type: task
     definitions: quest_internalname
     # Handles accepting a quest
@@ -88,7 +88,7 @@ QuestStageProgressHandler:
             - run QuestCompletionHandler def:<[quest_internalname]>
     # Display remaining objectives
     ## TODO: Replace with a foreach and conditional formatting for completed objectives
-    - else if <[objective]||null>:
+    - else if <[objective]||null> > 0:
         - narrate format:QuestNameFormat <[quest].get[name]>
         - narrate "• <[quest].get[stages].get[<[current_stage]>].get[objectives].get[<[objective]>].get[name]>: <[quest].get[stages].get[<[current_stage]>].get[objectives].get[<[objective]>].get[progress]>/<[quest].get[stages].get[<[current_stage]>].get[objectives].get[<[objective]>].get[total]>"
 
@@ -191,7 +191,7 @@ QuestCompletionHandler:
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.last_completed:<util.time_now>
     - narrate "<gold>QUEST COMPLETE: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
     - narrate <yaml[<[quest_internalname]>].read[messages.completion]>
-    - narrate <green>Rewards:
+    - narrate <green>Rewards<&co>
     - run QuestRewardHandler def:<[quest_internalname]>
 
 QuestRepeatableHandler:
@@ -291,7 +291,7 @@ QuestResetTimeHandler:
     # Handles quest reset times
     script:
     - define data <player.uuid>_quest_data
-    - choose <yaml[<[quest_internalname]>].read[config.reset.period]>:
+    - choose <yaml[<[quest_internalname]>].read[config.reset.period]||null>:
         - case 7d:
             - if <util.time_now.day_of_week> == 5 && <util.time_now.hour> >= 19:
                 - yaml id:<[data]> set quests.completed.<[quest_internalname]>.reset_time:<util.next_day_of_week[Friday].add[7d].add[19h].sub[5m]>
