@@ -6,7 +6,7 @@
         on assignment:
         - teleport npc <npc.anchor[excavationmaster]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
     
 ExcavationMasterFormat:
     type: format

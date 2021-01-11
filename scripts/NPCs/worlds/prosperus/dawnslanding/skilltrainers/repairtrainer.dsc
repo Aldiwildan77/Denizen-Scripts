@@ -6,7 +6,7 @@
         on assignment:
         - teleport npc <npc.anchor[repairmaster]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
     
 RepairMasterFormat:
     type: format

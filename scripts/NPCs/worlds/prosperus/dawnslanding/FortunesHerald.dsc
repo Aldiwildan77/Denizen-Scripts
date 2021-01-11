@@ -7,7 +7,7 @@ FortunesHeraldAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[FortunesHerald]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 FortunesHeraldformat:
     type: format

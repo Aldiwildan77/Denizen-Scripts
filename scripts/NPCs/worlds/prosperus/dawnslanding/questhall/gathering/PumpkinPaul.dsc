@@ -6,7 +6,7 @@ PumpkinPaulAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[PumpkinPaul]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 PumpkinPaulFormat:
     type: format

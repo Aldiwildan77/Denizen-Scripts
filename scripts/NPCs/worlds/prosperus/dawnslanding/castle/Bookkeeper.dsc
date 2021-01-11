@@ -6,7 +6,7 @@ BookkeeperAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[Bookkeeper]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 BookkeeperFormat:
     type: format

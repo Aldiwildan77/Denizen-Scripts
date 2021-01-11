@@ -6,7 +6,7 @@ PotatoPatrickAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[PotatoPatrick]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 PotatoPatrickFormat:
     type: format

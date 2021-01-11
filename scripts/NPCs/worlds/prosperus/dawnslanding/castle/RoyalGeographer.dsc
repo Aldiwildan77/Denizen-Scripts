@@ -7,7 +7,7 @@ RoyalGeographerAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[RoyalGeographer]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 RoyalGeographerFormat:
     type: format

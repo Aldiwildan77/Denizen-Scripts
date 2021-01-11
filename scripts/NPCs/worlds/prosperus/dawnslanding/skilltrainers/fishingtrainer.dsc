@@ -6,7 +6,7 @@
         on assignment:
         - teleport npc <npc.anchor[fishingmaster]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 FishingMasterFormat:
     type: format

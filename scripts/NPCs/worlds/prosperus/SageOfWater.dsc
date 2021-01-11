@@ -7,7 +7,7 @@ SageOfWaterAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[SageOfWater]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 SageOfWaterFormat:
     type: format

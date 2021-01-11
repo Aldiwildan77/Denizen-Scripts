@@ -6,7 +6,7 @@ DawnPostmasterAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[dawnpostmaster]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
     
 DawnPostmasterFormat:
     type: format

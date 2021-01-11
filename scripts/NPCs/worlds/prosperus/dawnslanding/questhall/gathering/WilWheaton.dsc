@@ -6,7 +6,7 @@ WilWheatonAssignment:
         on assignment:
         - teleport npc location:<npc.anchor[WilWheaton]>
         - trigger name:proximity state:true
-        - trigger state:true
+        - trigger name:chat state:true
 
 WilWheatonFormat:
     type: format
