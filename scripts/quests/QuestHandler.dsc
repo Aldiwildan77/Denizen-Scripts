@@ -176,7 +176,8 @@ QuestQuitHandler:
     - define data <player.uuid>_quest_data
     - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
-    - zap <yaml[<[quest_internalname]>].read[config.availability.offering_npc]>Interact <yaml[<[quest_internalname]>].read[config.quit_step]>
+    - if <yaml[<[quest_internalname]>].read[config.availability.offering_npc]||null>:
+        - zap <yaml[<[quest_internalname]>].read[config.availability.offering_npc]>Interact <yaml[<[quest_internalname]>].read[config.quit_step]>
     - narrate "<red>QUEST QUIT: <[quest].get[name]>"
 
 QuestCompletionHandler:
@@ -201,14 +202,13 @@ QuestRepeatableHandler:
     # Checks whether a quest is repeatable after a previous completion
     script:
     - define data <player.uuid>_quest_data
-    - define reset_time <yaml[<[data]>].read[quests.completed.<[quest_internalname]>.reset_time]>
-    - choose <yaml[<[quest_internalname]>].read[config.reset.period]>:
-        - if <util.time_now> >= <[reset_time]>:
-            - determine true
-        - if <util.time_now> < <[reset_time]>:
-            - determine false
-        - else:
-            - announce to_console "Something is terribly broken with the repeatable handler!"
+    - define reset_time <yaml[<[data]>].read[quests.completed.<[quest_internalname]>.reset_time]||null>
+    - if <util.time_now> >= <[reset_time]>:
+        - determine true
+    - if <util.time_now> < <[reset_time]>:
+        - determine false
+    - else:
+        - announce to_console "Something is terribly broken with the repeatable handler!"
         #- case 7d:
         #    - if <[current_week]> > <[reset_time]>:
         #        - determine true
