@@ -47,7 +47,7 @@ QuestRequirementsHandler:
 QuestAcceptHandler:
     debug: true
     type: task
-    definitions: quest_internalname
+    definitions: quest_internalname|quest
     # Handles accepting a quest
     script:
     - define data <player.uuid>_quest_data
@@ -60,7 +60,7 @@ QuestAcceptHandler:
     - narrate format:QuestNameFormat <[quest].get[name]>
     - narrate format:QuestDescriptionFormat <[quest].get[description]>
     - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
-    - foreach <[quest].get[stages].get[<[current_stage]>].get[objectives]>:
+    - foreach <[quest].get_deep[stages.<[current_stage]>.objectives]>:
         - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
 
 QuestStageProgressHandler:
@@ -389,3 +389,4 @@ QuestGUIItemBuilder:
     - else:
         - define item_material:<yaml[<[quest_internalname]>].read[config.material]>
         - determine <item[<[item_material]>[display_name=<[quest_name]>;lore=<[item_lore]>;nbt=quest_internalname/<[quest_internalname]>]]>
+

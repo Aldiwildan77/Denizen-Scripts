@@ -29,7 +29,7 @@ YAML_AntiFarm:
         # Check to see if any timers exist on this block
         - if <yaml[antifarm-flags].contains[expirations.<context.entity.location.simple>]>:
         # If yes, clear any old timers
-            - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.filter[is[more].than[<util.time_now>]]>
+            - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>].as_list.filter[is_before[<util.time_now>]]>
 
         # Add a timer for this mob's death
         - yaml id:antifarm-flags set expirations.<context.entity.location.simple>:<list[<util.time_now.add[30m]>].include[<yaml[antifarm-flags].read[expirations.<context.entity.location.simple>]||<list[]>>]>
