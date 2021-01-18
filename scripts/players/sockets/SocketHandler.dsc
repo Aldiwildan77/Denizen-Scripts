@@ -337,27 +337,22 @@ prismatic_seer_socket_potential_handler:
         - if <context.item.has_nbt[sealed_potential]>:
             - take <context.item> from:<player.inventory>
             - define max_sockets <script.data_key[max_sockets.<context.item.nbt[item_tier]>]>
-            - adjust <context.item> remove_nbt:sealed_potential save:edited
+            - define item <[item].with[remove_nbt=sealed_potential]> save:edited
             - define item:<entry[edited].result>
             - foreach <[item].nbt_keys.filter[matches[socket[0-9]+_empty]].alphanumeric>:
-                - adjust <[item]> remove_nbt:<[value]> save:edited
-                - define item:<entry[edited].result>
+                - define item <[item].with[remove_nbt=<[value]>]>
             - foreach <[item].nbt_keys.filter[matches[socket[0-9]+_type]].alphanumeric>:
-                - adjust <[item]> remove_nbt:<[value]> save:edited
-                - define item:<entry[edited].result>
+                - define item <[item].with[remove_nbt=<[value]>]>
             - foreach <[item].nbt_keys.filter[matches[socket[0-9]+_gem]].alphanumeric>:
-                - adjust <[item]> remove_nbt:<[value]> save:edited
-                - define item:<entry[edited].result>
+                - define item <[item].with[remove_nbt=<[value]>]>
             - adjust <[item]> remove_nbt:sockets_open save:edited
             - define item:<entry[edited].result>
             - define item:<[item].with[nbt=sockets_can_add/true]>
             - define item:<[item].with[nbt=sockets_current/0]>
             - define item:<[item].with[nbt=sockets_max/<util.random.int[1].to[<[max_sockets]>]>]>
             - define "potential_line:<[item].lore.find[<&6>Sealed Potential]>"
-            - adjust <[item]> lore:<[item].lore.set[<&6>Sockets].at[<[potential_line]>]> save:edited
-            - define item:<entry[edited].result>
-            - adjust <[item]> lore:<[item].lore.pad_right[<[item].nbt[sockets_max].add[<[potential_line]>]>].with[<&8>LOCKED]> save:edited
-            - define item:<entry[edited].result>
+            - define item <[item].with[lore=<[item].lore.set[<&6>Sockets].at[<[potential_line]>]>]>
+            - define item <[item].with[lore=<[item].lore.pad_right[<[item].nbt[sockets_max].add[<[potential_line]>]>].with[<&8>LOCKED]>]>
             - inventory close
             - note remove as:sealed_potential.<player.uuid>
             - give <[item]>
@@ -437,10 +432,9 @@ prismatic_seer_gem_add_gem_handler:
                     - take <context.item> from:<player.inventory>
                     ## Adjust the NBT data
                     # Delete the NBT for the empty socket being filled
-                    - adjust <[item]> remove_nbt:<[value]> save:edited
-                    - define item:<entry[edited].result>
+                    - define item <[item].with[remove_nbt=<[value]>]>
                     # Add NBT to indicate the gem being added
-                    - define item:<entry[edited].result.with[nbt=<[value].replace[empty].with[gem]>/<context.item.nbt[gem_specific]>]>
+                    - define item <[item].with[nbt=<[value].replace[empty].with[gem]>/<context.item.nbt[gem_specific]>]>
                     ## Handle any NBT attributes, if they exist
                     - define nbt_attributes_list:<context.item.nbt_keys.filter[matches[gem_attribute[0-9]+]].alphanumeric>
                     - foreach <[nbt_attributes_list]>:
