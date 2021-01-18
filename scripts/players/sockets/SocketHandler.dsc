@@ -229,7 +229,7 @@ prismatic_seer_inventory_handler:
             - stop
         - if <player.inventory.list_contents.filter[nbt[sockets_can_add]].size||null> >= 1:
             - narrate format:prismatic_seer_format "Okay, now select which of your valid items you'd like to add a socket to."
-            - note "<inventory[generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sockets_can_add]]>]>" as:sockets_can_add.<player.uuid>
+            - note <inventory[sockets_can_add_inventory]> as:sockets_can_add.<player.uuid>
             - inventory open d:sockets_can_add.<player.uuid>
         - else:
             - narrate format:prismatic_seer_format "Sorry, it looks like you don't have any items I can add a socket to!"
@@ -246,7 +246,7 @@ prismatic_seer_inventory_handler:
             - flag player sockets_gem_add_item_empty:!
             - flag player sockets_gem_add_item_types:!
             - flag player sockets_gem_add_item_slot_type_list:!
-            - note "<inventory[generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sockets_open]]>]>" as:sockets_open.<player.uuid>
+            - note <inventory[sockets_open_inventory]> as:sockets_open.<player.uuid>
             - inventory open d:sockets_open.<player.uuid>
         - else:
             - inventory close
@@ -256,10 +256,35 @@ prismatic_seer_inventory_handler:
         - announce to_console <player.inventory.list_contents>
         - if <player.inventory.list_contents.filter[nbt[sealed_potential]].size||null> >= 1:
             - narrate format:prismatic_seer_format "Okay, now select which of your valid items you'd like to unlock the potential of."
-            - note "<inventory[generic[title=Available Items;size=45;contents=<player.inventory.list_contents.filter[nbt[sealed_potential]]>]>" as:sealed_potential.<player.uuid>
+            - note <inventory[potential_inventory]> as:sealed_potential.<player.uuid>
             - inventory open d:sealed_potential.<player.uuid>
         - else:
             - narrate format:prismatic_seer_format "Sorry, it looks like you don't have any items with <&6>Sealed Potential<&f>!"
+
+sockets_can_add_inventory:
+    type: inventory
+    inventory: chest
+    title: Available Items
+    size: 27
+    procedural items:
+    - determine <player.inventory.list_contents.filter[nbt[sockets_can_add]]>
+
+sockets_open_inventory:
+    type: inventory
+    inventory: chest
+    title: Available Items
+    size: 27
+    procedural items:
+    - determine <player.inventory.list_contents.filter[nbt[sockets_open]]||air>
+
+potential_inventory:
+    type: inventory
+    inventory: chest
+    title: Available Items
+    size: 27
+    procedural items:
+    - determine <player.inventory.list_contents.filter[nbt[sealed_potential]]||air>
+
 prismatic_seer_socket_add_handler:
     type: world
     debug: false
@@ -300,7 +325,7 @@ prismatic_seer_socket_add_handler:
                 - define item:<entry[edited].result>
             ## Let's do the lore now y'all
             # Find the locked socket line
-            - define locked_socket_line <[item].lore.find[<&8>LOCKED]>
+            - define locked_socket_line <[item].lore.find_partial[LOCKED]>
             # Define the appropriate line based on socket type
             - if <[item].nbt[socket<[socket_target]>_type]> == attack:
                 - define "socket_new_lore:<&c>EMPTY<&co> ATTACK"
@@ -321,7 +346,7 @@ prismatic_seer_socket_add_handler:
             - narrate format:prismatic_seer_format "Something went wrong! It doesn't look like I can add a socket to that item."
 prismatic_seer_socket_potential_handler:
     type: world
-    debug: false
+    debug: true
     max_sockets:
         veteran: 3
         elite: 4
@@ -335,10 +360,10 @@ prismatic_seer_socket_potential_handler:
             - narrate format:prismatic_seer_format "Sorry, you don't have enough materials for that!"
             - stop
         - if <context.item.has_nbt[sealed_potential]>:
+            - define item <context.item>
             - take <context.item> from:<player.inventory>
             - define max_sockets <script.data_key[max_sockets.<context.item.nbt[item_tier]>]>
-            - define item <[item].with[remove_nbt=sealed_potential]> save:edited
-            - define item:<entry[edited].result>
+            - define item <[item].with[remove_nbt=sealed_potential]>
             - foreach <[item].nbt_keys.filter[matches[socket[0-9]+_empty]].alphanumeric>:
                 - define item <[item].with[remove_nbt=<[value]>]>
             - foreach <[item].nbt_keys.filter[matches[socket[0-9]+_type]].alphanumeric>:
@@ -350,7 +375,7 @@ prismatic_seer_socket_potential_handler:
             - define item:<[item].with[nbt=sockets_can_add/true]>
             - define item:<[item].with[nbt=sockets_current/0]>
             - define item:<[item].with[nbt=sockets_max/<util.random.int[1].to[<[max_sockets]>]>]>
-            - define "potential_line:<[item].lore.find[<&6>Sealed Potential]>"
+            - define potential_line "<[item].lore.find_partial[Sealed Potential]>"
             - define item <[item].with[lore=<[item].lore.set[<&6>Sockets].at[<[potential_line]>]>]>
             - define item <[item].with[lore=<[item].lore.pad_right[<[item].nbt[sockets_max].add[<[potential_line]>]>].with[<&8>LOCKED]>]>
             - inventory close
@@ -395,7 +420,7 @@ prismatic_seer_gem_add_item_handler:
             - define valid_gems <[valid_gems].deduplicate>
             - if <[valid_gems].size> >= 1:
                 - narrate format:prismatic_seer_format "Okay, here are the gems you can add to that item."
-                - note "<inventory[generic[title=Available Gems;size=45;contents=<[valid_gems]>]>" as:sockets_gem_add.<player.uuid>
+                - note <inventory[sockets_gem_add_inventory].include[<[valid_gems]>]> as:sockets_gem_add.<player.uuid>
                 - inventory open d:sockets_gem_add.<player.uuid>
             - else:
                 - narrate format:prismatic_seer_format "Sorry, you don't have any valid gems for that item."
@@ -403,6 +428,12 @@ prismatic_seer_gem_add_item_handler:
             - determine cancelled
         - else:
             - narrate format:prismatic_seer_format "Something went wrong! It doesn't look like I can add a gem to that item."
+
+sockets_gem_add_inventory:
+    type: inventory
+    inventory: chest
+    title: Available Items
+    size: 27
 
 prismatic_seer_gem_add_gem_handler:
     type: world
@@ -448,7 +479,7 @@ prismatic_seer_gem_add_gem_handler:
                             - define item:<entry[edited].result>
                     ## Adjust the lore
                     # First line after "<&6>Sockets"
-                    - define first_socket_line <[item].lore.find[<&6>Sockets]>
+                    - define first_socket_line <[item].lore.find_partial[Sockets]>
                     # Line where our targeted socket is
                     - define socket_target <[value-empty].replace[regex:socket([0-9]+)_empty].with[$1].add[<[first_socket_line]>]>
                     # Set up the lore line for the socket
