@@ -9,7 +9,7 @@ Item_Tier_Fixer:
     type: task
     debug: true
     script:
-    - foreach <player.inventory.list_contents.filter_tag[<[filter_value].lore.contains_any_text[Veteran|Elite|Champion]>].filter_tag[<[filter_value].has_nbt[item_tier].not>]>:
+    - foreach <player.inventory.list_contents.filter_tag[<[filter_value].lore.contains_any_text[Veteran|Elite|Champion]||null>].filter_tag[<[filter_value].has_nbt[item_tier].not>]>:
         - if <[value].lore.contains_text[Veteran]>:
             - if <[value].nbt||null>:
                 - inventory adjust slot:<player.inventory.find[<[value]>]> nbt:<[value].nbt.include[item_tier/Veteran]>
