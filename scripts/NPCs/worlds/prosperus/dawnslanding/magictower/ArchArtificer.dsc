@@ -102,7 +102,7 @@ ArtificingInventory:
     type: inventory
     inventory: chest
     debug: false
-    title: Arcane Forging
+    title: Artificing
     size: 45
     slots:
     - [] [] [] [] [] [] [] [] []
