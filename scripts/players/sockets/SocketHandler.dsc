@@ -22,13 +22,7 @@
 # gem_attribute# (VALUE) | NBT attributes to be applied to item upon socketing
 
 
-nbt_craft_prevention:
-    type: world
-    debug: false
-    events:
-        on player crafts item:
-        - if <context.recipe.filter[nbt[uncraftable]].size> >= 1:
-            - determine cancelled
+
 
 SocketMaker:
     type: item
