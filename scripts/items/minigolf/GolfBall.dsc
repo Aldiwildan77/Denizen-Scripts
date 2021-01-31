@@ -12,6 +12,7 @@ GolfBall:
 
 GolfBall_Toss_Only:
     type: world
+    debug: false
     events:
         on player right clicks block with:golfball*:
         - if <context.item.flag[expiration].is_before[<util.time_now>]||false>:
@@ -27,6 +28,7 @@ GolfBall_Toss_Only:
 
 GolfBall_Go_Poof:
     type: world
+    debug: false
     events:
         on player opens inventory:
         - if !<player.inventory.contains.flagged[expiration]>:
