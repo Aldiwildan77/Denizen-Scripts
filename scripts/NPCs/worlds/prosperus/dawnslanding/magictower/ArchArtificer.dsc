@@ -113,20 +113,20 @@ ArtificingInventory:
 
 ArtificingSliver:
     type: item
-    debug: false
+    debug: true
     material: emerald
     display name: <&a>Sliver of Crystallized Experience
     lore_list:
     - <&6>Craft a <&a>Sliver of Crystallized Experience
-    - <&6>Requires 30 levels
+    - <&6>Costs 30 levels
     enchantments:
     - MENDING:1
+    flags:
+        experiencecrystal: sliver
+        uncraftable: true
     mechanisms:
         hides:
         - enchants
-        flags:
-            experiencecrystal: sliver
-            uncraftable: true
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
 ArtificingChunk:
@@ -136,15 +136,15 @@ ArtificingChunk:
     display name: <&a>Chunk of Crystallized Experience
     lore_list:
     - <&6>Craft a <&a>Chunk of Crystallized Experience
-    - <&6>Requires 50 levels
+    - <&6>Costs 50 levels
     enchantments:
     - MENDING:1
+    flags:
+        experiencecrystal: chunk
+        uncraftable: true
     mechanisms:
         hides:
         - enchants
-        flags:
-            experiencecrystal: chunk
-            uncraftable: true
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 ArtificingBillet:
     type: item
@@ -153,15 +153,15 @@ ArtificingBillet:
     display name: <&a>Billet of Crystallized Experience
     lore_list:
     - <&6>Craft a <&a>Billet of Crystallized Experience
-    - <&6>Requires 70 levels
+    - <&6>Costs 70 levels
     enchantments:
     - MENDING:1
+    flags:
+        experiencecrystal: billet
+        uncraftable: true
     mechanisms:
         hides:
         - enchants
-        flags:
-            experiencecrystal: billet
-            uncraftable: true
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 ArtificingBloom:
     type: item
@@ -170,15 +170,15 @@ ArtificingBloom:
     display name: <&a>Bloom of Crystallized Experience
     lore_list:
     - <&6>Craft a <&a>Bloom of Crystallized Experience
-    - <&6>Requires 90 levels
+    - <&6>Costs 90 levels
     enchantments:
     - MENDING:1
+    flags:
+        experiencecrystal: bloom
+        uncraftable: true
     mechanisms:
         hides:
         - enchants
-        flags:
-            experiencecrystal: bloom
-            uncraftable: true
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 ArtificingIngot:
     type: item
@@ -186,16 +186,16 @@ ArtificingIngot:
     material: emerald
     display name: <&a>Ingot of Crystallized Experience
     lore_list:
-    - <&6>Craft a <&a>Ingot of Crystallized Experience
-    - <&6>Requires 110 levels
+    - <&6>Craft an <&a>Ingot of Crystallized Experience
+    - <&6>Costs 110 levels
     enchantments:
     - MENDING:1
+    flags:
+        experiencecrystal: ingot
+        uncraftable: true
     mechanisms:
         hides:
         - enchants
-        flags:
-            experiencecrystal: ingot
-            uncraftable: true
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 ArtificingInventoryHandler:
     type: world
@@ -211,6 +211,7 @@ ArtificingInventoryHandler:
             - give CrystallizedExperienceSliver quantity:1
             #- execute as_server "xp -30l <player.name>"
             - experience take level 30
+            - inventory close
         - else:
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 30."
         on player clicks ArtificingChunk in ArtificingInventory:
@@ -219,6 +220,7 @@ ArtificingInventoryHandler:
             - give CrystallizedExperienceChunk quantity:1
             #- execute as_server "xp -50l <player.name>"
             - experience take level 50
+            - inventory close
         - else:
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 50."
         on player clicks ArtificingBillet in ArtificingInventory:
@@ -227,6 +229,7 @@ ArtificingInventoryHandler:
             - give CrystallizedExperienceBillet quantity:1
             #- execute as_server "xp -70l <player.name>"
             - experience take level 70
+            - inventory close
         - else:
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 70."
         on player clicks ArtificingBloom in ArtificingInventory:
@@ -235,6 +238,7 @@ ArtificingInventoryHandler:
             - give CrystallizedExperienceBloom quantity:1
             #- execute as_server "xp -90l <player.name>"
             - experience take level 90
+            - inventory close
         - else:
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 90."
         on player clicks ArtificingIngot in ArtificingInventory:
@@ -243,7 +247,9 @@ ArtificingInventoryHandler:
             - give CrystallizedExperienceIngot quantity:1
             #- execute as_server "xp -110l <player.name>"
             - experience take level 110
+            - inventory close
         - else:
+            - inventory close
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 110."
 Artificing:
     type: interact
@@ -259,6 +265,6 @@ Artificing:
                 exit:
                     script:
                     - narrate format:ArchArtificerFormat "See you again, and good hunting!"
-                click:
-                    script:
-                    - inventory open ArtificingInventory
+            click trigger:
+                script:
+                - inventory open d:ArtificingInventory
