@@ -340,7 +340,7 @@ prismatic_seer_socket_add_handler:
             - narrate format:prismatic_seer_format "Something went wrong! It doesn't look like I can add a socket to that item."
 prismatic_seer_socket_potential_handler:
     type: world
-    debug: true
+    debug: false
     max_sockets:
         veteran: 3
         elite: 4
