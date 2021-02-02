@@ -68,12 +68,35 @@ GolfBallInventory_Base:
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] [Patron_GolfBall_Inventory_Ball]
 
+GolfballInventory_Patron:
+    type: inventory
+    inventory: chest
+    debug: false
+    title: Mini-Golf Balls
+    size: 45
+    slots:
+    - [GolfBall_Baseball] [GolfBall_Basketball] [GolfBall_Soccerball] [GolfBall_Football] [GolfBall_TennisBall] [GolfBall_BilliardBall_8] [GolfBall_BilliardBall_9] [GolfBall_BeachBall] [GolfBall_BowlingBall_Black]
+    - [GolfBall_Burger] [GolfBall_Taco] [GolfBall_HotDog] [GolfBall_Pizza] [GolfBall_BentoBox] [GolfBall_Cake] [GolfBall_PumpkinPie] [GolfBall_Melon] [GolfBall_GoldenApple]
+    - [GolfBall_SmashBall] [GolfBall_MushroomPowerup] [GolfBall_Yoshi_Egg] [GolfBall_Lil_Sparky] [GolfBall_Kirby] [GolfBall_Pokeball] [GolfBall_Navi] [GolfBall_PacMan] [GolfBall_CompanionCube]
+    - [GolfBall_R2D2] [GolfBall_Eye_Of_Sauron] [GolfBall_Pride] [GolfBall_TransPride] [GolfBall_USA] [GolfBall_UK] [GolfBall_CA] [GolfBall_AU] [GolfBall_Earth]
+    - [] [] [] [] [] [] [] [] [Base_GolfBall_Inventory_Ball]
+
 Patron_GolfBall_Inventory_ball:
     type: item
     material: GolfBall_base
     debug: false
     lore_list:
-    - <&6>Coming soon to a Golf Pro near you - exclusive golf ball skins for Patrons! Become a patron via <&b>/patreon
+    - <&6>Click to view the golf ball skins exclusive to Patrons! Become a Patron via <&b>/patreon<&6>!
+    - <&c>Only Patrons can obtain these skins!
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+
+Base_GolfBall_Inventory_Ball:
+    type: item
+    material: GolfBall_base
+    debug: false
+    lore_list:
+    - <&6>Click to return to the base menu of colored golf balls!
     mechanisms:
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
 
@@ -83,10 +106,19 @@ GolfBallInventoryHandler:
     events:
         on player clicks GolfBall_* in GolfBallInventory*:
         - inventory close
+        - if <context.inventory.script.name.contains_any_text[patron]> && !<player.has_permission[group.patron]>:
+            - narrate "<&c>You can't select that ball because you are not a Patron!"
+            - inventory open d:GolfBallInventory_Base
+            - stop
         - if <player.money> >= 25:
             - take money quantity:25
-            - give <context.item>
+            - give "<context.item.with[display=<&a>Mini-golf ball (<player.name>)]>"
+            - narrate "<gray>You pay 25 gold for your golf ball."
             - narrate format:GolfProFormat "Happy golfing!"
+        on player clicks Patron_GolfBall_Inventory_Ball in GolfBallInventory*:
+        - inventory open d:GolfballInventory_Patron
+        on player clicks Base_GolfBall_Inventory_Ball in GolfBallInventory*:
+        - inventory open d:GolfBallInventory_Base
         on player clicks in GolfBallInventory* priority:100:
         - determine cancelled
         on player drags in GolfBallInventory* priority:100:
