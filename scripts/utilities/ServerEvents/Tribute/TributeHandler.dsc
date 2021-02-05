@@ -152,7 +152,7 @@ Tribute_Drops_Mining:
             - stop
         - if !<yaml[mining].read[materials].contains[<context.material.name>]>:
             - stop
-        - if <util.random.int[1].to[50]> <= 1:
+        - if <util.random.int[1].to[200]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining mining exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
@@ -237,7 +237,7 @@ Tribute_Drops_Digging:
             - stop
         - if !<yaml[digging].read[materials].contains[<context.material.name>]>:
             - stop
-        - if <util.random.int[1].to[50]> <= 1:
+        - if <util.random.int[1].to[200]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining digging exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
