@@ -214,6 +214,8 @@ prismatic_seer_inventory_handler:
         on player drags in prismatic_seer_menu priority:100:
         - determine cancelled
         on player clicks socket_add in prismatic_seer_menu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
 #        - narrate format:prismatic_seer_format "You clicked the Add a socket option!"
         - announce to_console <player.inventory.list_contents>
@@ -230,6 +232,8 @@ prismatic_seer_inventory_handler:
         - narrate format:prismatic_seer_format "Right click me again if you'd like to choose another option!"
 
         on player clicks gem_add in prismatic_seer_menu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - announce to_console <player.inventory.list_contents>
         # Add a check to ensure that there is a gem matching the available sockets before opening the inventory?
@@ -246,6 +250,8 @@ prismatic_seer_inventory_handler:
             - inventory close
             - narrate format:prismatic_seer_format "Sorry, you don't have any items I can add a gem to!"
         on player clicks socket_potential in prismatic_seer_menu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - announce to_console <player.inventory.list_contents>
         - if <player.inventory.list_contents.filter[nbt[sealed_potential]].size||null> >= 1:

@@ -105,6 +105,8 @@ GolfBallInventoryHandler:
     debug: false
     events:
         on player clicks GolfBall_* in GolfBallInventory*:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - if <context.inventory.script.name.contains_any_text[patron]> && !<player.has_permission[group.patron]>:
             - narrate "<&c>You can't select that ball because you are not a Patron!"
@@ -116,8 +118,12 @@ GolfBallInventoryHandler:
             - narrate "<gray>You pay 25 gold for your golf ball."
             - narrate format:GolfProFormat "Happy golfing!"
         on player clicks Patron_GolfBall_Inventory_Ball in GolfBallInventory*:
+        - determine passively cancelled
+        - wait 1t
         - inventory open d:GolfballInventory_Patron
         on player clicks Base_GolfBall_Inventory_Ball in GolfBallInventory*:
+        - determine passively cancelled
+        - wait 1t
         - inventory open d:GolfBallInventory_Base
         on player clicks in GolfBallInventory* priority:100:
         - determine cancelled

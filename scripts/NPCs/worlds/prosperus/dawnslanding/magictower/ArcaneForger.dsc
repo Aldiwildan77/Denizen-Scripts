@@ -212,6 +212,8 @@ ArcaneForgerInventoryHandler:
             - narrate format:ArcaneForgerFormat "Sorry, you don't have enough for that!"
         - narrate format:ArcaneForgerFormat "Right click me again if you'd like to choose another option!"
         on player clicks EliteToolForge in ArcaneForgerInventoryMenu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
 #        - narrate format:ArcaneForgerFormat "You clicked the Elite Tool Forge option!"
         - if <player.inventory.contains.scriptname[VeteranToken].quantity[<server.flag[EliteToolForgeCost]>]> && <player.inventory.contains[CrystallizedExperienceChunk].quantity[1]>:
@@ -243,6 +245,8 @@ ArcaneForgerInventoryHandler:
             - narrate format:ArcaneForgerFormat "Sorry, you don't have enough for that!"
         - narrate format:ArcaneForgerFormat "Right click me again if you'd like to choose another option!"
         on player clicks EliteWeaponForge in ArcaneForgerInventoryMenu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
 #        - narrate format:ArcaneForgerFormat "You clicked the Elite Weapon Forge option!"
         - if <player.inventory.contains.scriptname[VeteranToken].quantity[<server.flag[EliteWeaponForgeCost]>]> && <player.inventory.contains[CrystallizedExperienceChunk].quantity[1]>:
