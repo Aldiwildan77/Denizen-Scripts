@@ -119,6 +119,8 @@ Tribute_Inventory_Handler:
     debug: true
     events:
         on player clicks Tribute_mcMMO in Tribute_Inventory:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - if <yaml[events].read[tribute.<player.flag[blessing_selection]||null>.rate]||null> == 4:
             - narrate format:tribute_npc_format "The Gods are already offering as much of this blessing as they deem this world worthy of."
@@ -134,6 +136,8 @@ Tribute_Inventory_Handler:
             - zap TributeNPC Offer
 
         on player clicks Tribute_DropRate in Tribute_Inventory:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - if <yaml[events].read[tribute.<player.flag[blessing_selection]||null>.rate]||null> == 4:
             - narrate format:tribute_npc_format "The Gods are already offering as much of this blessing as they deem this world worthy of."
@@ -149,6 +153,8 @@ Tribute_Inventory_Handler:
             - zap TributeNPC Offer
 
         on player clicks Tribute_Experience in Tribute_Inventory:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - if <yaml[events].read[tribute.<player.flag[blessing_selection]||null>.rate]||null> == 4:
             - narrate format:tribute_npc_format "The Gods are already offering as much of this blessing as they deem this world worthy of."

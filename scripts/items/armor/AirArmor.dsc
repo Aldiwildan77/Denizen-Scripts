@@ -8,6 +8,13 @@ Veteran_Air_Helm_sealed_potential:
     - <&f>This helm is flowing with air magic, almost floating when held.
     - <&b>+0.25x Air Magic Effectiveness
     - <&6>Sealed Potential
+    flags:
+        equipment_type: armor
+        item_tier: veteran
+        sealed_potential: true
+        armor_set: veteran_air
+        air_magic_multiplier: 0.25
+        enable_mana: true
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
     mechanisms:
@@ -34,6 +41,13 @@ Veteran_Air_Chest_sealed_potential:
     - <&f>This chestplate is flowing with air magic, almost floating when held.
     - <&b>+0.6x Air Magic Effectiveness
     - <&6>Sealed Potential
+    flags:
+        equipment_type: armor
+        item_tier: veteran
+        sealed_potential: true
+        armor_set: veteran_air
+        air_magic_multiplier: 0.6
+        enable_mana: true
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
     mechanisms:
@@ -49,7 +63,7 @@ Veteran_Air_Chest_sealed_potential:
         - armor_set/veteran_air
         - air_magic_multiplier/0.6
         - enable_mana/true
-        
+
 Veteran_Air_Legs_sealed_potential:
     type: item
     no_id: true
@@ -62,6 +76,13 @@ Veteran_Air_Legs_sealed_potential:
     - <&6>Sealed Potential
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
+    flags:
+        equipment_type: armor
+        item_tier: veteran
+        sealed_potential: true
+        armor_set: veteran_air
+        air_magic_multiplier: 0.4
+        enable_mana: true
     mechanisms:
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
@@ -75,7 +96,7 @@ Veteran_Air_Legs_sealed_potential:
         - armor_set/veteran_air
         - air_magic_multiplier/0.4
         - enable_mana/true
-        
+
 Veteran_Air_Boots_sealed_potential:
     type: item
     no_id: true
@@ -88,6 +109,13 @@ Veteran_Air_Boots_sealed_potential:
     - <&6>Sealed Potential
     enchantments:
     - PROTECTION_ENVIRONMENTAL:5
+    flags:
+        equipment_type: armor
+        item_tier: veteran
+        sealed_potential: true
+        armor_set: veteran_air
+        air_magic_multiplier: 0.25
+        enable_mana: true
     mechanisms:
         lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
         nbt_attributes:
@@ -102,8 +130,26 @@ Veteran_Air_Boots_sealed_potential:
         - air_magic_multiplier/0.25
         - enable_mana/true
 
+elite_windmage_elytra:
+    type: item
+    material: elytra
+    display name: <&d>Cultist Wind Mage's Elytra
+    lore_list:
+    - <&d><&o>Elite
+    - <&f>A cultist wind mage once owned this elytra.
+    mechanisms:
+        lore: <proc[lore_builder].context[<list[40].include_single[<script.data_key[lore_list]>]>]>
+        nbt_attributes:
+        - generic.maxHealth/chest/0/4.0
+        - generic.armor/chest/0/4.0
+        - generic.armorToughness/chest/0/2.0
+    flags:
+        equipment_type: armor
+        item_tier: elite
+        sealed_potential: false
+
 veteran_air_armor_set_data:
-    type: yaml data
+    type: data
     debug: false
     set_name: veteran_air
     set_variable: air_magic_multiplier

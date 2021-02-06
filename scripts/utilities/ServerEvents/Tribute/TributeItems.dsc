@@ -52,7 +52,7 @@ TokenExpiration:
             - foreach <player.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>]>:
                 - take scriptname:<[value]> quantity:<[value].quantity> from:<player.inventory>
             - narrate "<&7><&o>The Tribute to the Gods fades away before your eyes..."
-        on player clicks in inventory:
+        after player clicks in inventory:
         - define day <util.time_now>
         - if <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>].size> > 0:
             - foreach <context.inventory.list_contents.filter[has_nbt[expiration]].filter_tag[<[day].is_after[<time[<[filter_value].nbt[expiration]>]>]>]>:

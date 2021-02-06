@@ -136,6 +136,8 @@ ArcaneForgerInventoryHandler:
         on player drags in ArcaneForgerInventoryMenu priority:100:
         - determine cancelled
         on player clicks VeteranToolForge in ArcaneForgerInventoryMenu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
 #        - narrate format:ArcaneForgerFormat "You clicked the Veteran Tool Forge option!"
         - announce to_console <player.inventory.list_contents>
@@ -168,6 +170,8 @@ ArcaneForgerInventoryHandler:
             - narrate format:ArcaneForgerFormat "Sorry, you don't have enough for that!"
         - narrate format:ArcaneForgerFormat "Right click me again if you'd like to choose another option!"
         on player clicks VeteranWeaponForge in ArcaneForgerInventoryMenu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
 #        - narrate format:ArcaneForgerFormat "You clicked the Veteran Weapon Forge option!"
         - announce to_console <player.inventory.list_contents>

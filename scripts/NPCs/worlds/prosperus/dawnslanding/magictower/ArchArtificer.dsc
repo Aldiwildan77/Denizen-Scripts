@@ -206,6 +206,8 @@ ArtificingInventoryHandler:
         on player drags in ArtifciingInventory priority:100:
         - determine cancelled
         on player clicks ArtificingSliver in ArtificingInventory:
+        - determine passively cancelled
+        - wait 1t
         - if <player.xp.level> >= 30:
             - narrate format:ArchArtificerFormat "Sure thing, here you go!"
             - give CrystallizedExperienceSliver quantity:1
@@ -215,6 +217,8 @@ ArtificingInventoryHandler:
         - else:
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 30."
         on player clicks ArtificingChunk in ArtificingInventory:
+        - determine passively cancelled
+        - wait 1t
         - if <player.xp.level> >= 50:
             - narrate format:ArchArtificerFormat "Sure thing, here you go!"
             - give CrystallizedExperienceChunk quantity:1
@@ -224,6 +228,8 @@ ArtificingInventoryHandler:
         - else:
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 50."
         on player clicks ArtificingBillet in ArtificingInventory:
+        - determine passively cancelled
+        - wait 1t
         - if <player.xp.level> >= 70:
             - narrate format:ArchArtificerFormat "Sure thing, here you go!"
             - give CrystallizedExperienceBillet quantity:1
@@ -233,6 +239,8 @@ ArtificingInventoryHandler:
         - else:
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 70."
         on player clicks ArtificingBloom in ArtificingInventory:
+        - determine passively cancelled
+        - wait 1t
         - if <player.xp.level> >= 90:
             - narrate format:ArchArtificerFormat "Sure thing, here you go!"
             - give CrystallizedExperienceBloom quantity:1
@@ -242,6 +250,8 @@ ArtificingInventoryHandler:
         - else:
             - narrate format:ArchArtificerFormat "Sorry, you don't seem to have enough levels! Come back when you've got at least 90."
         on player clicks ArtificingIngot in ArtificingInventory:
+        - determine passively cancelled
+        - wait 1t
         - if <player.xp.level> >= 110:
             - narrate format:ArchArtificerFormat "Sure thing, here you go!"
             - give CrystallizedExperienceIngot quantity:1

@@ -50,6 +50,22 @@ fire_mage_weapon_drop_list:
 - ImbuedFlameboltWand_sealed_potential
 - BurnishedFlameboltWand
 - BurnishedFlameboltWand_sealed_potential
+wind_mage_armor_drop_list_sealed_potential:
+- Veteran_Air_Helm_sealed_potential
+- Veteran_Air_Chest_sealed_potential
+- Veteran_Air_Legs_sealed_potential
+- Veteran_Air_Boots_sealed_potential
+wind_mage_armor_drop_list:
+- Veteran_air_Helm
+- Veteran_air_Chest
+- Veteran_air_Legs
+- Veteran_air_Boots
+- elite_windmage_elytra
+wind_mage_weapon_drop_list:
+- ImbuedWindboltWand
+- ImbuedWindboltWand_sealed_potential
+- BurnishedWindboltWand
+- BurnishedWindboltWand_sealed_potential
 consumable_drop_list:
 - DropRateBooster2x
 - GoldBooster2x

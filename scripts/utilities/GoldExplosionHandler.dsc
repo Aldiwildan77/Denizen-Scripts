@@ -88,23 +88,33 @@ gold_pouch_opener:
     debug: false
     events:
         on player clicks block with:5g_pouch:
-        - take 5g_pouch
+        - determine passively cancelled
+        - wait 1t
+        - take scriptname:5g_pouch
         - narrate "<&6>You open the pouch and take the 5 gold inside!"
         - give money quantity:5
         on player clicks block with:10g_pouch:
-        - take 10g_pouch
+        - determine passively cancelled
+        - wait 1t
+        - take scriptname:10g_pouch
         - narrate "<&6>You open the pouch and take the 10 gold inside!"
         - give money quantity:10
         on player clicks block with:25g_pouch:
-        - take 25g_pouch
+        - determine passively cancelled
+        - wait 1t
+        - take scriptname:25g_pouch
         - narrate "<&6>You open the pouch and take the 25 gold inside!"
         - give money quantity:25
         on player clicks block with:50g_pouch:
-        - take 50g_pouch
+        - determine passively cancelled
+        - wait 1t
+        - take scriptname:50g_pouch
         - narrate "<&6>You open the pouch and take the 50 gold inside!"
         - give money quantity:50
         on player clicks block with:100g_pouch:
-        - take 100g_pouch
+        - determine passively cancelled
+        - wait 1t
+        - take scriptname:100g_pouch
         - narrate "<&6>You open the pouch and take the 100 gold inside!"
         - give money quantity:100
 

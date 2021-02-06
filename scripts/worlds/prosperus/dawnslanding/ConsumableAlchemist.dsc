@@ -140,6 +140,8 @@ alchemist_arcaena_inventory_handler:
         on player drags in alchemist_arcaena_inventory_menu:
         - determine cancelled
         on player clicks DropRateBooster2xMenu in alchemist_arcaena_inventory_menu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - announce to_console <player.inventory.list_contents>
         - if <player.inventory.contains.scriptname[SocketMaker].quantity[<script[DropRateBooster2xMenu].data_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<script[DropRateBooster2xMenu].data_key[crystallizedexperienceingotcost]>]>:
@@ -151,6 +153,8 @@ alchemist_arcaena_inventory_handler:
             - narrate format:alchemist_arcaena_format "Sorry, I need you to bring me the right ingredients for that!"
         - narrate format:alchemist_arcaena_format "Right click me again if you're looking for anything else!"
         on player clicks DropRateBooster4xMenu in alchemist_arcaena_inventory_menu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - announce to_console <player.inventory.list_contents>
         - if <player.inventory.contains.scriptname[SocketMaker].quantity[<script[DropRateBooster4xMenu].data_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<script[DropRateBooster4xMenu].data_key[crystallizedexperienceingotcost]>]>:
@@ -162,6 +166,8 @@ alchemist_arcaena_inventory_handler:
             - narrate format:alchemist_arcaena_format "Sorry, I need you to bring me the right ingredients for that!"
         - narrate format:alchemist_arcaena_format "Right click me again if you're looking for anything else!"
         on player clicks GoldBooster2xMenu in alchemist_arcaena_inventory_menu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - announce to_console <player.inventory.list_contents>
         - if <player.inventory.contains.scriptname[SocketMaker].quantity[<script[GoldBooster2xMenu].data_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<script[GoldBooster2xMenu].data_key[crystallizedexperienceingotcost]>]>:
@@ -173,6 +179,8 @@ alchemist_arcaena_inventory_handler:
             - narrate format:alchemist_arcaena_format "Sorry, I need you to bring me the right ingredients for that!"
         - narrate format:alchemist_arcaena_format "Right click me again if you're looking for anything else!"
         on player clicks GoldBooster4xMenu in alchemist_arcaena_inventory_menu:
+        - determine passively cancelled
+        - wait 1t
         - inventory close
         - announce to_console <player.inventory.list_contents>
         - if <player.inventory.contains.scriptname[SocketMaker].quantity[<script[GoldBooster4xMenu].data_key[purifieddarkmattercost]>]> && <player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[<script[GoldBooster4xMenu].data_key[crystallizedexperienceingotcost]>]>:

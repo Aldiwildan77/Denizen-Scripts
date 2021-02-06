@@ -354,11 +354,11 @@ QuestInventorySelectionHandler:
     # Handles a player choosing a quest from an inventory GUI
     events:
         on player clicks in available_quest_inventory*:
+        - determine passively cancelled
+        - wait 1t
         - if <context.item.has_nbt[quest_internalname]>:
             - inventory close
             - run QuestAcceptHandler def:<context.item.nbt[quest_internalname]>
-        - else:
-            - determine cancelled
         on player drags in available_quest_inventory*:
         - determine cancelled
 

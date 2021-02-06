@@ -286,6 +286,8 @@ prismatic_seer_socket_add_handler:
         on player clicks in inventory:
         - if <context.inventory.note_name||null> != sockets_can_add.<player.uuid>:
             - stop
+        - determine passively cancelled
+        - wait 1t
         # Checks if item has locked sockets that can be opened
         - if <context.item.has_nbt[sockets_can_add]>:
             - define item <context.item>
@@ -349,6 +351,8 @@ prismatic_seer_socket_potential_handler:
         on player clicks in inventory:
         - if <context.inventory.note_name||null> != sealed_potential.<player.uuid>:
             - stop
+        - wait 1t
+        - determine passively cancelled
         - if !<player.inventory.contains.scriptname[SocketMaker].quantity[<server.flag[SealedPotentialCost]>]> || !<player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[1]>:
             - inventory close
             - narrate format:prismatic_seer_format "Sorry, you don't have enough materials for that!"
@@ -391,6 +395,8 @@ prismatic_seer_gem_add_item_handler:
         on player clicks in inventory:
         - if <context.inventory.note_name||null> != sockets_open.<player.uuid>:
             - stop
+        - determine passively cancelled
+        - wait 1t
         - inventory close d:sockets_open.<player.uuid>
         - note remove as:sockets_open.<player.uuid>
         - if <context.item.has_nbt[sockets_open]>:
@@ -437,6 +443,8 @@ prismatic_seer_gem_add_gem_handler:
         on player clicks in inventory:
         - if <context.inventory.note_name||null> != sockets_gem_add.<player.uuid>:
             - stop
+        - determine passively cancelled
+        - wait 1t
         - if <player.flag[sockets_gem_add_item_types].contains[<context.item.nbt[gem_type]||null>]>:
             # Returns "li@socket1_empty|socket2_empty" etc
             - define former_item:<player.flag[sockets_gem_add_item].as_item>
