@@ -1,3 +1,9 @@
+QuestMaster:
+- WoodTools
+- StoneTools
+- SetHome
+- FindFishingNewbie
+- FindReinwald
 FishingNewbie:
 - DailyFishing
 - DailyFishingChallenge

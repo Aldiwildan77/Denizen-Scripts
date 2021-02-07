@@ -47,6 +47,7 @@ QuestRequirementsHandler:
 QuestAcceptHandler:
     debug: true
     type: task
+    speed: 0
     definitions: quest_internalname|quest
     # Handles accepting a quest
     script:
@@ -60,12 +61,13 @@ QuestAcceptHandler:
     - narrate format:QuestNameFormat <[quest].get[name]>
     - narrate format:QuestDescriptionFormat <[quest].get[description]>
     - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
-    - foreach <[quest].get_deep[stages.<[current_stage]>.objectives]>:
+    - foreach <[quest].deep_get[stages.<[current_stage]>.objectives]>:
         - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
 
 QuestStageProgressHandler:
     debug: true
     type: task
+    speed: 0
     definitions: quest_internalname|objective
     ## This script will add 1 to the stage progress and should only be run when an objective is completed
     script:
@@ -73,12 +75,12 @@ QuestStageProgressHandler:
     - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     # Set current stage definition
     - define current_stage <[quest].get[current_stage]>
-    - define stage_progress <[quest].get[stages].get[<[current_stage]>].get[progress]>
-    - define stage_total <[quest].get[stages].get[<[current_stage]>].get[total]>
+    - define stage_progress <[quest].deep_get[stages.<[current_stage]>.progress]>
+    - define stage_total <[quest].deep_get[stages.<[current_stage]>.total]>
     # Advance the current stage progress by 1
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[current_stage]>.progress:++
     # If the current stage progress is equal to or greater than the total for that stage,
-    - if <[stage_progress]> >= <[stage_total]>:
+    - if <[stage_progress].add[1]> >= <[stage_total]>:
         # Check whether there is another stage
         - if <yaml[<[data]>].contains[quests.active.<[quest_internalname]>.stages.<[current_stage].add[1]>]>:
             # If yes, advance to the next stage
@@ -95,6 +97,7 @@ QuestStageProgressHandler:
 QuestItemDeliveryHandler:
     debug: false
     type: task
+    speed: 0
     definitions: objective|quest_internalname|stage
     # Manages players delivering items to NPCs
     # Requires: <[objective]> AND <[quest_internalname]> AND <[stage]>
@@ -130,6 +133,7 @@ QuestItemDeliveryHandler:
 QuestProgressHandler:
     debug: true
     type: task
+    speed: 0
     definitions: quest_internalname
     # Shows the player their progress for the designated quest
     script:
@@ -147,8 +151,9 @@ QuestProgressHandler:
         - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
 
 QuestStageAdvanceHandler:
-    debug: false
+    debug: true
     type: task
+    speed: 0
     definitions: quest_internalname
     # Advances the quest stage by one and narrates information about the new stage
     script:
@@ -156,6 +161,7 @@ QuestStageAdvanceHandler:
     - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     # Add one to the current stage
     - yaml id:<[data]> set quests.active.<[quest_internalname]>.current_stage:++
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     - define current_stage <[quest].get[current_stage]>
     # Narrate the quest name
     - narrate format:QuestNameFormat <[quest].get[name]>
@@ -170,6 +176,7 @@ QuestStageAdvanceHandler:
 QuestQuitHandler:
     debug: false
     type: task
+    speed: 0
     definitions: quest|quest_internalname
     # Handles everything related to quitting a quest
     script:
@@ -183,6 +190,7 @@ QuestQuitHandler:
 QuestCompletionHandler:
     debug: false
     type: task
+    speed: 0
     definitions: quest_internalname
     # Handles everything related to completing a quest
     script:
@@ -191,9 +199,9 @@ QuestCompletionHandler:
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.completion_count:++
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.last_completed:<util.time_now>
     - narrate "<gold>QUEST COMPLETE: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
-    - narrate <yaml[<[quest_internalname]>].read[messages.completion]>
+    - narrate <yaml[<[quest_internalname]>].parsed_key[messages.completion]>
     - narrate <green>Rewards<&co>
-    - run QuestRewardHandler def:<[quest_internalname]>
+    - run QuestRewardHandler def:<[quest_internalname]> instantly
 
 QuestRepeatableHandler:
     debug: false
@@ -231,28 +239,30 @@ QuestRepeatableHandler:
         #        - determine false
 
 QuestRewardHandler:
-    debug: false
+    debug: true
     type: task
+    speed: 0
     definitions: quest_internalname
     # Handles quest reward distribution
     script:
     - define data <player.uuid>_quest_data
-    - if <yaml[<[quest_internalname]>].contains[rewards.money]>:
-        - money give quantity:<yaml[<[quest_internalname]>].read[rewards.money]> players:<player>
-        - narrate "<gold><yaml[<[quest_internalname]>].read[rewards.money]> gold"
-    - if <yaml[<[quest_internalname]>].contains[rewards.items]>:
-        - foreach <yaml[<[quest_internalname]>].read[rewards.items]>:
+    - if <yaml[<[quest_internalname]>].contains[config.rewards.money]>:
+        - money give quantity:<yaml[<[quest_internalname]>].read[config.rewards.money]> players:<player>
+        - narrate "<gold>• <yaml[<[quest_internalname]>].read[config.rewards.money]> gold"
+    - if <yaml[<[quest_internalname]>].contains[config.rewards.items]>:
+        - foreach <yaml[<[quest_internalname]>].read[config.rewards.items]>:
             - give <[value]>
-            - narrate "<[value].quantity>x <[value].display>"
-    - if <yaml[<[quest_internalname]>].contains[rewards.quest_points]>:
-        - yaml id:<[data]> set career.quest_points:+:<yaml[<[quest_internalname]>].read[rewards.quest_points]>
-    - if <yaml[<[quest_internalname]>].contains[rewards.scripts]>:
-        - foreach <yaml[<[quest_internalname]>].read[rewards.scripts]>:
+            - narrate "<gold>• <[value].quantity>x <[value].display>"
+    - if <yaml[<[quest_internalname]>].contains[config.rewards.quest_points]>:
+        - yaml id:<[data]> set career.quest_points:+:<yaml[<[quest_internalname]>].read[config.rewards.quest_points]>
+        - narrate "<gold>• <yaml[<[quest_internalname]>].read[config.rewards.quest_points]> quest points"
+    - if <yaml[<[quest_internalname]>].contains[config.rewards.scripts]>:
+        - foreach <yaml[<[quest_internalname]>].read[config.rewards.scripts]>:
             - run <[value]> def:<[quest_internalname]>
-    - if <yaml[<[quest_internalname]>].contains[rewards.commands]>:
-        - foreach <yaml[<[quest_internalname]>].read[rewards.commands]>:
+    - if <yaml[<[quest_internalname]>].contains[config.rewards.commands]>:
+        - foreach <yaml[<[quest_internalname]>].read[config.rewards.commands]>:
             - execute as_server <[value]>
-        - foreach <yaml[<[quest_internalname]>].read[rewards.command_text]>:
+        - foreach <yaml[<[quest_internalname]>].parsed_key[config.rewards.command_text]>:
             - narrate <[value]>
 
 QuestLoginResetHandler:
@@ -287,6 +297,7 @@ QuestDailyResetHandler:
 QuestResetTimeHandler:
     debug: false
     type: task
+    speed: 0
     definitions: quest_internalname
     # Handles quest reset times
     script:
@@ -333,6 +344,7 @@ QuestsAvailableHandler:
 QuestInventoryGUIHandler:
     debug: false
     type: task
+    speed: 0
     definitions: npc_name
     # Opens an inventory GUI with available quests
     script:
@@ -384,9 +396,24 @@ QuestGUIItemBuilder:
     - if <item[<[quest_internalname]>_gui_item]||null> != null:
         - define base_item:<item[<[quest_internalname]>_gui_item]>
         - if <[base_item].is_enchanted>:
-            - define item_enchantments:<[base_item].enchantments.with_levels>
+            - define item_enchantments:<[base_item].enchantment_map>
             - determine <item[<[base_item]>.material_name.with[display_name=<[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>;flags=HIDE_ENCHANTS;nbt=quest_internalname/<[quest_internalname]>]]>
     - else:
         - define item_material:<yaml[<[quest_internalname]>].read[config.material]>
         - determine <item[<[item_material]>[display_name=<[quest_name]>;lore=<[item_lore]>;nbt=quest_internalname/<[quest_internalname]>]]>
 
+ResetQuestInteract:
+    type: command
+    name: questinteractreset
+    description: Resets the interact script for the given NPC and player. Defaults to the current player if no player is specified.
+    usage: /questinteractreset [NPC] [player]
+    permission: quest.volatile
+    tab completion:
+        1: <yaml[quest_npc_list].list_keys[]>
+        2: <server.online_players.parse[name]>
+    script:
+    - define interact <context.args.get[1]>Interact
+    - define player <server.match_player[<context.args.get[2]||null>]||<player>>
+    - define data <[player].uuid>_quest_data
+    - zap script:<[interact]> step:<script[<[interact]>].default_step> player:<[player]>
+    - narrate "Interact step for <[player].name> reset."

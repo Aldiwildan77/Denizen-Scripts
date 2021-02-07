@@ -9,17 +9,18 @@ QuestsCommand:
     - if <yaml[<[data]>].read[quests.active].size||0> == 0:
         - narrate "<red>You have no active quests!"
         - stop
+    - narrate " "
+    - narrate "<green><bold><underline>Active Quests<&r> <italic><gray>(Click quest name for details)"
+    - narrate " "
     - foreach <yaml[<[data]>].read[quests.active]> as:quest:
         - clickable questdetail save:quest_detail for:<player> def:<[quest]>
-        - narrate " "
-        - narrate "<green><bold><underline>Active Quests<&r> <italic><gray>(Click quest name for details)"
-        - narrate " "
         - narrate "• <gold><[quest].get[name].on_click[<entry[quest_detail].command>]>"
         #- narrate format:QuestDescriptionFormat <[quest].get[description].on_click[<entry[quest_detail].command>]>
 
 QuestDetail:
     type: task
     debug: true
+    speed: 0
     definitions: quest
     script:
     - define data <player.uuid>_quest_data
@@ -49,7 +50,7 @@ QuestQuitCommand:
         - define quest_internalname <yaml[<[data]>].read[quests.active].keys.first>
         - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
         - inject QuestQuitHandler
-    - else:
+    - else if <context.args.get[1]||null>:
         - foreach <yaml[<[data]>].read[quests.active]> as:quest:
             - if <[quest].get[name].contains_text[<context.args.get[1]>]>:
                 - define match_list:->:<[quest]>
@@ -63,10 +64,20 @@ QuestQuitCommand:
             - define match <[match_list].get[1]>
             - define quest <yaml[<[data]>].read[quests.active].get[match]>
             - inject QuestQuitHandler
+    - else:
+        - narrate " "
+        - narrate "<green><bold><underline>Active Quests<&r> <italic><gray>(Click quest name to quit)"
+        - narrate " "
+        - foreach <yaml[<[data]>].read[quests.active]> key:quest_internalname as:quest:
+            - clickable quest_quit_detail save:quest_quit_detail for:<player> def:<[quest_internalname]>
+            - narrate "• <gold><[quest].get[name].on_click[<entry[quest_quit_detail].command>]>"
 
-QuestQuitDetail:
+Quest_Quit_Detail:
     type: task
     debug: true
-    definitions: quest|match
+    speed: 0
+    definitions: quest_internalname|quest
     script:
+    - define data <player.uuid>_quest_data
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     - inject QuestQuitHandler

@@ -69,8 +69,10 @@ SwabbyInteract:
                 Fallback:
                     trigger: /*/
                     hide trigger message: true
+                    show as normal chat: true
                     script:
-                    - announce format:PlayerChatFormat <context.message>
+                    - narrate format:SwabbyFormat "Hmm... I thought you were here for an adventure, but maybe not."
+                    - narrate "<gray>Right-click Swabby or say <&dq>yes<&dq> while looking at him to show him you've come to Prosperus for adventure!"
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "Yeah, I came here for adventure!"
@@ -88,12 +90,13 @@ SwabbyInteract:
                 - narrate format:SwabbyFormat "If you've got some time before you go, mind stopping by the Quest Master for me? I'll make it worth your while."
                 - wait 0.7s
                 - narrate format:SwabbyFormat "He's not very far, just over there in the Questing Hall. You can see it on the right when you stand on the ship's plank. Just past the inn. <green>Think you can make some time for me?"
+                - narrate "<gray>Right-click Swabby or say <&dq>yes<&dq> while looking at him to accept his quest!"
                 - zap SwabbyDeliveryOffer
         SwabbyDeliveryOffer:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "<green>Sure, I'll deliver your package to the Quest Master."
-                - run QuestAcceptHandler def:SwabbyDelivery
+                - run QuestAcceptHandler def:SwabbyDelivery instantly
                 - zap SwabbyDeliveryActive
             chat trigger:
                 SwabbyAcceptance:
@@ -101,31 +104,43 @@ SwabbyInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "<green>Sure, I'll deliver your package to the Quest Master."
-                    - run QuestAcceptHandler def:SwabbyDelivery
+                    - run QuestAcceptHandler def:SwabbyDelivery instantly
                     - zap SwabbyDeliveryActive
                 Fallback:
                     trigger: /*/
                     hide trigger message: true
+                    show as normal chat: true
                     script:
-                    - announce format:PlayerChatFormat <context.message>
+                    - narrate format:SwabbyFormat "Hmm... I thought you were here for an adventure, but maybe not."
+                    - narrate "<gray>Right-click Swabby or say <&dq>yes<&dq> while looking at him to accept his quest!"
+            proximity trigger:
+                exit:
+                    script:
+                    - zap AdventurePrompt
         SwabbyDeliveryActive:
             proximity trigger:
                 entry:
                     script:
+                    - define data <player.uuid>_quest_data
+                    - if !<yaml[<[data]>].contains[quests.active.SwabbyDelivery]>:
+                    # | Inject interact script?
+                        - zap AdventurePrompt
+                        ## Begin possibly unnecessary code duplication
+                        - narrate format:SwabbyFormat "Hey again, <player.name>. You came here to build a new life for yourself, right?"
+                        - if <server.current_bossbars.contains[<player.uuid>_swabby]>:
+                            - bossbar update <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
+                        - else:
+                            - bossbar create <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
+                        ## End possibly unnecessary code duplication
+                        - stop
                     - narrate format:SwabbyFormat "Ahoy, <player.name>!"
                     - wait 0.7s
                     - narrate format:SwabbyFormat "Having trouble finding the Quest Master? He's just over in the Questing Hall, a bit east of the inn."
-                    - run QuestProgressHandler def:SwabbyDelivery
+                    - run QuestProgressHandler def:SwabbyDelivery instantly
                 exit:
                     script:
                     - bossbar remove <player.uuid>_swabby
                     - narrate format:SwabbyFormat "Happy travels!"
-            chat trigger:
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat <context.message>
         VisitedButNoQuest:
             proximity trigger:
                 entry:
@@ -144,12 +159,6 @@ SwabbyInteract:
                     script:
                     - bossbar remove <player.uuid>_swabby
                     - narrate format:SwabbyFormat "Happy travels!"
-            chat trigger:
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat <context.message>
         SwabbyDeliveryCompleted:
             proximity trigger:
                 entry:
@@ -162,9 +171,3 @@ SwabbyInteract:
                 exit:
                     script:
                     - narrate format:SwabbyFormat "Happy travels!"
-            chat trigger:
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat <context.message>

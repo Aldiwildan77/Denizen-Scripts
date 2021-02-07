@@ -37,13 +37,6 @@ GolfBall_Go_Poof:
             - take slot:<player.inventory.list_contents.find[<[value]>]> quantity:<[value].quantity>
             - narrate "<gray>Your mini-golf ball flies off into the distance..."
 
-
-golfball_smashball:
-    type: item
-    material: GolfBall_Base
-    mechanisms:
-        skull_skin: fd351f7c-74a1-4b0f-b0c1-7af10d4004a6|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjBjYzkzMmQ4YzQ5MTZlN2ZhNTYzNDRiZTU4MDI5ZWFjMGYwM2UzNWU4YTBkMGQ3YThjNWExYzM2YTQ5NmNmZiJ9fX0=
-
 GolfBall_Base:
     type: item
     debug: false

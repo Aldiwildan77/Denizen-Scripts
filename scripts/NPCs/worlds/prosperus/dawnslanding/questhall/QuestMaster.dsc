@@ -198,7 +198,7 @@ QuestMasterInteract:
                     - title "subtitle:<&a>Right-click the Quest Master!"
             click trigger:
                 script:
-                - run QuestCompletionHandler def:SwabbyDelivery
+                - run QuestCompletionHandler def:SwabbyDelivery instantly
                 - zap FirstQuestOffers
         FirstQuestOffers:
             proximity trigger:
@@ -234,7 +234,7 @@ QuestMasterInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready for my first adventure!"
-                    - run QuestAcceptHandler def:WoodTools
+                    - run QuestAcceptHandler def:WoodTools instantly
                     - zap WoodToolsActive
                 Invalid:
                     trigger: /*/
@@ -254,7 +254,7 @@ QuestMasterInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "It's time for me to get out and explore Prosperus. I'm ready for my first adventure!"
-                    - run QuestAcceptHandler def:WoodTools
+                    - run QuestAcceptHandler def:WoodTools instantly
                     - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - zap WoodToolsActiveOnly
@@ -267,7 +267,7 @@ QuestMasterInteract:
                     - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
-                        - run QuestAcceptHandler def:SetHome
+                        - run QuestAcceptHandler def:SetHome instantly
                         - zap SetHomeActive
                     - else:
                         - announce format:PlayerChatFormat <context.message>
@@ -275,11 +275,28 @@ QuestMasterInteract:
             proximity trigger:
                 entry:
                     script:
+                    - define data <player.uuid>_quest_data
+                    - if <yaml[<[data]>].contains[quests.active.WoodTools]>:
+                        - if <yaml[<[data]>].contains[quests.active.SetHome]>:
+                            - zap WoodToolsSetHomeActive
+                        - else:
+                            - zap WoodToolsActiveOnly
                     - narrate format:QuestMasterFormat "Are you ready for your first real adventure?"
             click trigger:
                 script:
+                - define data <player.uuid>_quest_data
                 - narrate format:PlayerChatFormat "Yes, I'm ready!"
-                - run QuestAcceptHandler def:WoodTools
+                - run QuestAcceptHandler def:WoodTools instantly
+                - if <yaml[<[data]>].contains[quests.active.SetHome]>:
+                    - zap WoodToolsSetHomeActive
+                - else:
+                    - zap WoodToolsActiveOnly
+                    - narrate format:QuestMasterFormat "How's it going with getting those wood tools?"
+                    - wait 0.7s
+                    - narrate format:QuestMasterFormat "Don't forget, you can get boats from the docks and sail down the river to get out of Dawn's Landing quickly."
+                    - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
+                        - wait 0.7s
+                        - narrate format:QuestMasterFormat "I can also teach you how to set your home, if you want. It's a useful skill!"
             chat trigger:
                 WoodToolsAcceptance:
                     trigger: /yes|sure|okay|great|yeah/
@@ -287,7 +304,7 @@ QuestMasterInteract:
                     script:
                     - narrate format:PlayerChatFormat "Yes, I'm ready!"
                     - define data <player.uuid>_quest_data
-                    - run QuestAcceptHandler def:WoodTools
+                    - run QuestAcceptHandler def:WoodTools instantly
                     - if <yaml[<[data]>].contains[quests.active.SetHome]>:
                         - zap WoodToolsSetHomeActive
                     - else:
@@ -315,7 +332,7 @@ QuestMasterInteract:
                     - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
                         - narrate format:PlayerChatFormat "Yeah, I'd like to learn how to set my home."
-                        - run QuestAcceptHandler def:SetHome
+                        - run QuestAcceptHandler def:SetHome instantly
                         - zap WoodToolsSethomeActive
                     - else:
                         - announce format:PlayerChatFormat <context.message>
@@ -332,7 +349,7 @@ QuestMasterInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "That sounds useful, please teach me!"
-                - run QuestAccepthandler def:SetHome
+                - run QuestAccepthandler def:SetHome instantly
                 - zap SetHomeActiveOnly
             chat trigger:
                 SetHomeAcceptance:
@@ -340,7 +357,7 @@ QuestMasterInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "That sounds useful, please teach me!"
-                    - run QuestAccepthandler def:SetHome
+                    - run QuestAccepthandler def:SetHome instantly
                     - zap SetHomeActiveOnly
         SetHomeActiveOnly:
             proximity trigger:
@@ -351,7 +368,7 @@ QuestMasterInteract:
                     - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
                         - wait 0.7s
                         - narrate format:QuestMasterFormat "I've also got your first real adventuring quest. Are you ready for it?"
-                    - run QuestProgressHandler def:SetHome
+                    - run QuestProgressHandler def:SetHome instantly
             chat trigger:
                 SetHomeActiveWoodToolsAcceptance:
                     trigger: /yes|sure|okay|great|yeah/
@@ -360,7 +377,7 @@ QuestMasterInteract:
                     - define data <player.uuid>_quest_data
                     - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
                         - narrate format:PlayerChatFormat "Yes, I'm ready!"
-                        - run QuestAcceptHandler def:WoodTools
+                        - run QuestAcceptHandler def:WoodTools instantly
                         - zap WoodToolsSethomeActive
                     - else:
                         - announce format:PlayerChatFormat <context.message>
@@ -369,7 +386,7 @@ QuestMasterInteract:
                 - define data <player.uuid>_quest_data
                 - if <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
                         - narrate format:PlayerChatFormat "Yes, I'm ready!"
-                        - run QuestAcceptHandler def:WoodTools
+                        - run QuestAcceptHandler def:WoodTools instantly
                         - zap WoodToolsSethomeActive
         WoodToolsSetHomeActive:
             proximity trigger:
@@ -391,7 +408,7 @@ QuestMasterInteract:
             click trigger:
                 script:
                 - narrate format:PlayerChatFormat "I'm ready!"
-                - run QuestAcceptHandler def:StoneTools
+                - run QuestAcceptHandler def:StoneTools instantly
                 - zap StoneToolsActive
             chat trigger:
                 StoneToolsAcceptance:
@@ -399,14 +416,14 @@ QuestMasterInteract:
                     hide trigger message: true
                     script:
                     - narrate format:PlayerChatFormat "I'm ready!"
-                    - run QuestAcceptHandler def:StoneTools
+                    - run QuestAcceptHandler def:StoneTools instantly
                     - zap StoneToolsActive
         StoneToolsActive:
             proximity trigger:
                 entry:
                     script:
                     - narrate format:QuestMasterFormat "You putting those wooden tools to work yet?"
-                    - run QuestProgressHandler def:StoneTools
+                    - run QuestProgressHandler def:StoneTools instantly
         LeatherArmorOffer:
             proximity trigger:
                 entry:

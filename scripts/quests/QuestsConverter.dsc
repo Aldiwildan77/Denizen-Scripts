@@ -65,3 +65,19 @@ Converter_Flag_Clear:
     script:
     - foreach <server.players_flagged[old_quests_data_converted]>:
         - flag <[value]> old_quests_data_converted:!
+
+Quest_Data_Clear:
+    type: command
+    name: questdataclear
+    description: Deletes quest data for the specified player, or the user if no player is specified
+    usage: /questdataclear [player]
+    permission: quest.volatile
+    permission message: No.
+    tab completion:
+        1: <server.online_players.parse[name]>
+    debug: true
+    script:
+    - define player <server.match_player[<context.args.get[1]>]>
+    - define data <[player].uuid>_quest_data
+    - yaml set id:<[data]> quests.completed:!
+    - narrate "Data for <[player].name> cleared."
