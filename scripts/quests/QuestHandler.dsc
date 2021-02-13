@@ -381,7 +381,7 @@ QuestGUIItemBuilder:
     # Constructs the item entries in an inventory GUI
     script:
     - define quest_name:<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
-    - define item_lore:<list[<[quest_name]>]>
+    - define item_lore:<list[]>
     - define quest_description:<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
     - define item_lore:<[item_lore].include[<[quest_description]>]>
     - define item_lore:<[item_lore].include[<&6>Rewards:]>

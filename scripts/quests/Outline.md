@@ -15,6 +15,7 @@ Well, dumbass, you wrote a handler for that, and if you're reading this, you for
 # To-do
 
 - [x] Quest quit messages and functions e.g. zap commands
+- [ ] Uhhhhhhhhhh fully modularize the quest master's interact script and replicate that across NPCs
 
 ## Tutorial Quests
 
