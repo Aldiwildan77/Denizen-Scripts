@@ -60,10 +60,11 @@ GolfBallInventory_Base:
     inventory: chest
     debug: false
     title: Mini-Golf Balls
-    size: 45
+    size: 54
     slots:
     - [GolfBall_White] [GolfBall_Red] [GolfBall_Orange [GollfBall_Yellow] [GolfBall_Green] [GolfBall_Sky] [GolfBall_Blue] [GolfBall_Violet] [GolfBall_Purple]
     - [GolfBall_Gray] [GolfBall_Brown] [GolfBall_Goldenrod] [GolfBall_Lime] [GolfBall_Olive] [GolfBall_Cyan] [GolfBall_Black] [GolfBall_Beige] [GolfBall_Pink]
+    - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] [Patron_GolfBall_Inventory_Ball]
@@ -73,12 +74,13 @@ GolfballInventory_Patron:
     inventory: chest
     debug: false
     title: Mini-Golf Balls
-    size: 45
+    size: 54
     slots:
     - [GolfBall_Baseball] [GolfBall_Basketball] [GolfBall_Soccerball] [GolfBall_Football] [GolfBall_TennisBall] [GolfBall_BilliardBall_8] [GolfBall_BilliardBall_9] [GolfBall_BeachBall] [GolfBall_BowlingBall_Black]
     - [GolfBall_Burger] [GolfBall_Taco] [GolfBall_HotDog] [GolfBall_Pizza] [GolfBall_BentoBox] [GolfBall_Cake] [GolfBall_PumpkinPie] [GolfBall_Melon] [GolfBall_GoldenApple]
     - [GolfBall_SmashBall] [GolfBall_MushroomPowerup] [GolfBall_Yoshi_Egg] [GolfBall_Lil_Sparky] [GolfBall_Kirby] [GolfBall_Pokeball] [GolfBall_Navi] [GolfBall_PacMan] [GolfBall_CompanionCube]
     - [GolfBall_R2D2] [GolfBall_Eye_Of_Sauron] [GolfBall_Pride] [GolfBall_TransPride] [GolfBall_USA] [GolfBall_UK] [GolfBall_CA] [GolfBall_AU] [GolfBall_Earth]
+    - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] [Base_GolfBall_Inventory_Ball]
 
 Patron_GolfBall_Inventory_ball:

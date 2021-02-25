@@ -48,7 +48,7 @@ QuestMasterStepUpdater:
             - stop
         - else:
             - if <script[Newbie].step||null> != Greeting:
-                - zap script:Newbie step:General-Dialogue
+                - zap Newbie General-Dialogue
 
 InteractReset_QuestMaster:
     type: task
@@ -69,7 +69,7 @@ QuestMaster_Check_SwabbyDelivery_Active:
         - zap SwabbyDeliveryActive
         - stop
 
-QuestMaster_Dialogue_FirstQuestOffers:
+QuestMaster_Dialogue_FirstQuestIntroduction:
     type: task
     debug: false
     definitions: data
@@ -78,6 +78,23 @@ QuestMaster_Dialogue_FirstQuestOffers:
     - wait 0.7s
     - narrate format:QuestMasterFormat "Say, I think you're ready for something more exciting. How about it?"
     - wait 0.7s
+    - narrate format:QuestMasterFormat "I've got your first real get-out-in-the-world quest for you as soon as you're ready."
+    - define data <player.uuid>_quest_data
+    - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
+        - wait 0.7s
+        - narrate format:QuestMasterFormat "I can also teach you how to set a home! It's an important skill for surviving out there."
+        - wait 0.7s
+        - zap FirstQuests
+        - stop
+    - else:
+        - zap FirstQuests
+        - narrate "<gray>Right-click the Quest Master!"
+
+QuestMaster_Dialogue_FirstQuestOffers:
+    type: task
+    debug: false
+    definitions: data
+    script:
     - narrate format:QuestMasterFormat "I've got your first real get-out-in-the-world quest for you as soon as you're ready."
     - define data <player.uuid>_quest_data
     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
@@ -104,9 +121,13 @@ QuestMaster_Dialogue_FirstQuestsInteract:
     - if <yaml[<[data]>].contains[quests.completed.SwabbyDelivery]> && <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
         - narrate format:PlayerChatFormat "I'm ready for my first real adventure!"
         - run QuestAcceptHandler def:WoodTools instantly
+        - zap FirstQuestsActive
+        - stop
     - else if <yaml[<[data]>].contains[quests.completed.SwabbyDelivery]> && <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
         - narrate format:PlayerChatFormat "Learning how to set my home seems useful, please teach me!"
         - run QuestAcceptHandler def:SetHome instantly
+        - zap FirstQuestsActive
+        - stop
 
 QuestMaster_Choose_First_Quests_Inventory:
     type: inventory
@@ -144,6 +165,76 @@ QuestMaster_Choose_First_Quests_Handler:
         - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
         - run QuestAcceptHandler def:SetHome instantly
 
+QuestMaster_Check_Both_FirstQuests_Completed:
+    type: task
+    debug: false
+    definitions: data
+    script:
+    - define data <player.uuid>_quest_data
+    - if <yaml[<[data]>].contains[quests.completed.SetHome]> && <yaml[<[data]>].contains[quests.completed.WoodTools]>:
+        - zap QuestMasterInteract StoneToolsOffer
+
+QuestMaster_Check_Both_FirstQuests_Active:
+    type: task
+    debug: false
+    definitions: data
+    script:
+    # If both SetHome and WoodTools are active
+    - if <yaml[<[data]>].contains[quests.completed.SetHome].not> && <yaml[<[data]>].contains[quests.active.SetHome]> && <yaml[<[data]>].contains[quests.completed.WoodTools].not> && <yaml[<[data]>].contains[quests.active.WoodTools]>:
+        # First we narrate based on the active status of SetHome
+        - inject QuestMaster_Check_SetHome_Progress
+        # Then we narrate based on the active status of WoodTools
+        - inject QuestMaster_Check_WoodTools_Progress
+    # Neither SetHome nor WoodTools is active, somehow?
+    - else if <yaml[<[data]>].contains[quests.completed.SetHome].not> && <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not> && <yaml[<[data]>].contains[quests.active.WoodTools].not>:
+        - inject QuestMaster_Dialogue_FirstQuestOffers
+
+QuestMaster_Check_SetHome_Progress:
+    type: task
+    debug: false
+    definitions: data
+    script:
+    - if <yaml[<[data]>].read[quests.active.SetHome.current_stage]> == 1:
+        - narrate format:QuestMasterFormat "Still haven't set your home? It's easy, try it."
+        - narrate "<gray>Type /sethome in chat to set your home!"
+    - else if <yaml[<[data]>].read[quests.active.SetHome.current_stage]> == 2:
+        - narrate format:QuestMasterFormat "Well, you went and set your home, but you haven't practiced returning to spawn yet, either. Give that a try."
+        - narrate "<gray>Type /spawn in chat to return to spawn!"
+    - else if <yaml[<[data]>].read[quests.active.SetHome.current_stage]> == 3:
+        - narrate format:QuestMasterFormat "Just one more step left for you, right? Practice returing to your home."
+        - narrate "<gray>Type /home in chat to return to your home!"
+
+QuestMaster_Check_WoodTools_Progress:
+    type: task
+    debug: false
+    definitions: data
+    script:
+    # Crafting
+    - if <yaml[<[data]>].read[quests.active.WoodTools.current_stage]> == 1:
+        - narrate format:QuestMasterFormat "Looks like you're still working on crafting those wooden tools. Don't forget that you've got to head outside of Dawn's Landing to start your adventure! I recommend grabbing a free boat from the docks and sailing down the river."
+    # Bring to quest master
+    - if <yaml[<[data]>].read[quests.active.WoodTools.current_stage]> == 2:
+        - narrate format:QuestMasterFormat "You've crafted all of those wooden tools by now, right? Do you have them for me?"
+
+QuestMaster_Check_NeitherFirstQuest_Active:
+    type: task
+    debug: false
+    definitions: data
+    script:
+    - if <yaml[<[data]>].contains[quests.completed.SetHome].not> && <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not> && <yaml[<[data]>].contains[quests.active.WoodTools].not>:
+        - inject QuestMaster_Dialogue_FirstQuestOffers
+        - stop
+
+QuestMaster_Check_NeitherFirstQuest_Active_Interact:
+    type: task
+    debug: false
+    definitions: data
+    script:
+    - if <yaml[<[data]>].contains[quests.completed.SetHome].not> && <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not> && <yaml[<[data]>].contains[quests.active.WoodTools].not>:
+        - zap FirstQuests
+        - inject QuestMaster_Dialogue_FirstQuestsInteract
+        - stop
+
 QuestMaster_Check_WoodTools_Available:
     type: task
     debug: false
@@ -168,9 +259,7 @@ QuestMaster_Check_WoodTools_Active:
     definitions: data
     script:
     - if <yaml[<[data]>].contains[quests.active.WoodTools]>:
-        - narrate format:QuestMasterFormat "How's it going with getting those wood tools?"
-        - wait 0.7s
-        - narrate format:QuestMasterFormat "Don't forget, you can get boats from the docks and sail down the river to get out of Dawn's Landing quickly."
+        - inject QuestMaster_Check_WoodTools_Progress
         - inject QuestMaster_Check_SetHome_Available
         - stop
 
@@ -188,7 +277,8 @@ QuestMaster_Check_SetHome_Active:
     debug: false
     definitions: data
     script:
-    - narrate format:QuestMasterFormat "You still need to practice setting your home! Go on, give it a try."
+    - if <yaml[<[data]>].contains[quests.completed.SetHome].not> && <yaml[<[data]>].contains[quests.active.SetHome]>:
+        - inject QuestMaster_Check_SetHome_Progress
 
 QuestMaster_Check_StoneTools_Available:
     type: task
@@ -466,13 +556,13 @@ QuestMasterInteract:
             click trigger:
                 script:
                 - inject QuestCompletionHandler def:SwabbyDelivery instantly
-                - inject QuestMaster_Dialogue_FirstQuestOffers
+                - inject QuestMaster_Dialogue_FirstQuestIntroduction
                 - zap FirstQuests
         FirstQuests:
             proximity trigger:
                 entry:
                     script:
-                    - inject QuestMaster_Check_FirstQuestOffers
+                    - inject QuestMaster_Dialogue_FirstQuestOffers
             click trigger:
                 script:
                 - define data <player.uuid>_quest_data
@@ -482,10 +572,16 @@ QuestMasterInteract:
                 entry:
                     script:
                     - define data <player.uuid>_quest_data
+                    - inject QuestMaster_Check_Both_FirstQuests_Completed
+                    - inject QuestMaster_Check_NeitherFirstQuest_Active
+                    - inject QuestMaster_Check_Both_FirstQuests_Active
                     - inject QuestMaster_Check_WoodTools_Active
+                    - inject QuestMaster_Check_SetHome_Active
             click trigger:
                 script:
                 - define data <player.uuid>_quest_data
+                - inject QuestMaster_Check_NeitherFirstQuest_Active_Interact
+                - inject QuestMaster_Check_SetHome_Active
                 - if <yaml[<[data]>].contains[quests.active.WoodTools]> && <yaml[<[data]>].read[quests.active.WoodTools.current_stage]||0> == 2:
                     - inject WoodToolsQuestDeliveryHandler
         SetHomeOffer:
@@ -530,6 +626,11 @@ QuestMasterInteract:
                     script:
                     - narrate format:QuestMasterFormat "You putting those wooden tools to work yet?"
                     - run QuestProgressHandler def:StoneTools instantly
+            click trigger:
+                script:
+                - define data <player.uuid>_quest_data
+                - if <yaml[<[data]>].contains[quests.active.StoneTools]> && <yaml[<[data]>].read[quests.active.StoneTools.current_stage]||0> == 2:
+                    - inject StoneToolsQuestDeliveryHandler
         LeatherArmorOffer:
             proximity trigger:
                 entry:

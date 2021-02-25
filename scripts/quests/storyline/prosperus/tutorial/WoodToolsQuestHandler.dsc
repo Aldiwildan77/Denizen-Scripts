@@ -59,6 +59,9 @@ WoodToolsQuestDeliveryHandler:
     script:
     - define quest_internalname:WoodTools
     - define stage:2
+    - if <player.item_in_hand.durability> < <player.item_in_hand.max_durability>:
+        - narrate format:QuestMasterFormat "Are you trying to stiff me with a used tool? Craft me a new one!"
+        - stop
     - choose <player.item_in_hand.material.name>:
         - case wooden_axe:
             - define objective:1
@@ -96,4 +99,4 @@ WoodToolsQuestDeliveryHandler:
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case default:
-            - narrate format:QuestMasterFormat "Still waiting on that set of wood tools!"
+            - narrate format:QuestMasterFormat "Still waiting on that set of wood tools! You crafted them, didn't you?"
