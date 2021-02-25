@@ -39,17 +39,6 @@ FoundAllDiamonds:
     - give diamond_boots
     - flag player npccount:0
 
-QuestMasterStepUpdater:
-    type: world
-    debug: false
-    events:
-        on player joins:
-        - if <script[newbie].step||null> == General-Dialogue:
-            - stop
-        - else:
-            - if <script[Newbie].step||null> != Greeting:
-                - zap Newbie General-Dialogue
-
 InteractReset_QuestMaster:
     type: task
     debug: false
@@ -66,7 +55,7 @@ QuestMaster_Check_SwabbyDelivery_Active:
         - narrate format:QuestMasterFormat "Have you got something for me?"
         - wait 0.5s
         - title "subtitle:<&a>Right-click the Quest Master!"
-        - zap SwabbyDeliveryActive
+        - zap QuestMasterInteract SwabbyDeliveryActive
         - stop
 
 QuestMaster_Dialogue_FirstQuestIntroduction:
@@ -84,11 +73,8 @@ QuestMaster_Dialogue_FirstQuestIntroduction:
         - wait 0.7s
         - narrate format:QuestMasterFormat "I can also teach you how to set a home! It's an important skill for surviving out there."
         - wait 0.7s
-        - zap FirstQuests
-        - stop
-    - else:
-        - zap FirstQuests
-        - narrate "<gray>Right-click the Quest Master!"
+    - zap QuestMasterInteract FirstQuests
+    - narrate "<gray>Right-click the Quest Master!"
 
 QuestMaster_Dialogue_FirstQuestOffers:
     type: task
@@ -100,12 +86,8 @@ QuestMaster_Dialogue_FirstQuestOffers:
     - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
         - wait 0.7s
         - narrate format:QuestMasterFormat "I can also teach you how to set a home! It's an important skill for surviving out there."
-        - wait 0.7s
-        - zap FirstQuests
-        - stop
-    - else:
-        - zap FirstQuests
-        - narrate "<gray>Right-click the Quest Master!"
+    - zap QuestMasterInteract FirstQuests
+    - narrate "<gray>Right-click the Quest Master!"
 
 QuestMaster_Dialogue_FirstQuestsInteract:
     type: task
@@ -116,17 +98,17 @@ QuestMaster_Dialogue_FirstQuestsInteract:
         - narrate format:QuestMasterFormat "Which quest do you want? Are you ready to get adventuring, or do you want to set your home first?"
         - wait 0.7s
         - inventory open d:QuestMaster_Choose_First_Quests_Inventory
-        - zap FirstQuests
+        - zap QuestMasterInteract FirstQuests
         - stop
     - if <yaml[<[data]>].contains[quests.completed.SwabbyDelivery]> && <yaml[<[data]>].contains[quests.active.WoodTools].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not>:
         - narrate format:PlayerChatFormat "I'm ready for my first real adventure!"
         - run QuestAcceptHandler def:WoodTools instantly
-        - zap FirstQuestsActive
+        - zap QuestMasterInteract FirstQuestsActive
         - stop
     - else if <yaml[<[data]>].contains[quests.completed.SwabbyDelivery]> && <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
         - narrate format:PlayerChatFormat "Learning how to set my home seems useful, please teach me!"
         - run QuestAcceptHandler def:SetHome instantly
-        - zap FirstQuestsActive
+        - zap QuestMasterInteract FirstQuestsActive
         - stop
 
 QuestMaster_Choose_First_Quests_Inventory:
@@ -231,13 +213,13 @@ QuestMaster_Check_NeitherFirstQuest_Active_Interact:
     definitions: data
     script:
     - if <yaml[<[data]>].contains[quests.completed.SetHome].not> && <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not> && <yaml[<[data]>].contains[quests.active.WoodTools].not>:
-        - zap FirstQuests
+        - zap QuestMasterInteract FirstQuests
         - inject QuestMaster_Dialogue_FirstQuestsInteract
         - stop
 
 QuestMaster_Check_WoodTools_Available:
     type: task
-    debug: false
+    debug: true
     definitions: data
     script:
     # Wood tools quest offer
@@ -250,7 +232,7 @@ QuestMaster_Check_WoodTools_Available:
         - if <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.SetHome].not>:
             - wait 0.7s
             - narrate format:QuestMasterFormat "I can also teach you how to set a home! It's an important skill for surviving out there."
-        - zap FirstQuests
+        - zap QuestMasterInteract FirstQuests
         - stop
 
 QuestMaster_Check_WoodTools_Active:
@@ -270,7 +252,7 @@ QuestMaster_Check_SetHome_Available:
     script:
     - if <yaml[<[data]>].contains[quests.completed.SetHome].not> && <yaml[<[data]>].contains[quests.active.SetHome].not>:
         - narrate format:QuestMasterFormat "You still need to learn how to set your home!"
-        - zap SetHomeOffer duration:1m
+        - zap QuestMasterInteract SetHomeOffer duration:1m
 
 QuestMaster_Check_SetHome_Active:
     type: task
@@ -287,7 +269,7 @@ QuestMaster_Check_StoneTools_Available:
     script:
     - if <yaml[<[data]>].contains[quests.completed.WoodTools]> && <yaml[<[data]>].contains[quests.active.StoneTools].not> && <yaml[<[data]>].contains[quests.completed.StoneTools].not>:
         - narrate format:QuestMasterFormat "You did a great job getting those wooden tools! Ready to put them to use?"
-        - zap StoneToolsOffer
+        - zap QuestMasterInteract StoneToolsOffer
         - stop
 
 QuestMaster_Check_StoneTools_Active:
@@ -297,7 +279,7 @@ QuestMaster_Check_StoneTools_Active:
     script:
     - if <yaml[<[data]>].contains[quests.active.StoneTools]>:
         - narrate format:QuestMasterFormat "You putting those wooden tools to work yet?"
-        - zap StoneToolsActive
+        - zap QuestMasterInteract StoneToolsActive
         - stop
 
 QuestMaster_Check_LeatherArmor_Available:
@@ -307,7 +289,7 @@ QuestMaster_Check_LeatherArmor_Available:
     script:
     - if <yaml[<[data]>].contains[quests.completed.StoneTools]> && <yaml[<[data]>].contains[quests.active.LeatherArmor].not> && <yaml[<[data]>].contains[quests.completed.LeatherArmor].not>:
         - narrate format:QuestMasterFormat "Nice job on that last quest. Now you've got some basic tools, but you're still missing an adventurer's essential. Talk to me for the next quest when you're ready."
-        - zap LeatherArmorOffer
+        - zap QuestMasterInteract LeatherArmorOffer
         - stop
 
 QuestMaster_Check_LeatherArmor_Active:
@@ -321,7 +303,7 @@ QuestMaster_Check_LeatherArmor_Active:
         - narrate format:QuestMasterFormat "You can find cows both around Dawn's Landing and all over the world."
         - wait 0.7s
         - narrate format:QuestMasterFormat "Just make sure there's some grass around so they show up to munch on it."
-        - zap LeatherArmorActive
+        - zap QuestMasterInteract LeatherArmorActive
         - stop
 
 QuestMaster_Check_FindReinwald_Available:
@@ -331,7 +313,7 @@ QuestMaster_Check_FindReinwald_Available:
     script:
     - if <yaml[<[data]>].contains[quests.completed.LeatherArmor]> && <yaml[<[data]>].contains[quests.active.FindReinwald].not> && <yaml[<[data]>].contains[quests.completed.FindReinwald].not>:
         - narrate format:QuestMasterFormat "I'm not the only one with quests for you! Why don't you go meet a friend of mine?"
-        - zap FindReinwaldOffer
+        - zap QuestMasterInteract FindReinwaldOffer
         - stop
 
 QuestMaster_Check_FindReinwald_Active:
@@ -341,7 +323,7 @@ QuestMaster_Check_FindReinwald_Active:
     script:
     - if <yaml[<[data]>].contains[quests.active.FindReinwald]>:
         - narrate format:QuestMasterFormat "Having a hard time finding Warmaster Reinwald? He's just over in the castle, but maybe you can ask another adventurer for help."
-        - zap FindReinwaldActive
+        - zap QuestMasterInteract FindReinwaldActive
         - stop
 
 QuestMaster_Check_IronToolsArmor_Available:
@@ -353,7 +335,7 @@ QuestMaster_Check_IronToolsArmor_Available:
         - narrate format:QuestMasterFormat "You found Reinwald! Nice work."
         - wait 0.7s
         - narrate format:QuestMasterFormat "I think you're ready to work on another gear upgrade."
-        - zap IronToolsArmorOffer
+        - zap QuestMasterInteract IronToolsArmorOffer
         - stop
 
 QuestMaster_Check_IronToolsArmor_Active:
@@ -367,7 +349,7 @@ QuestMaster_Check_IronToolsArmor_Active:
         - narrate format:QuestMasterFormat "If you're having a rough time finding it just outside the valley, try going further out."
         - wait 0.7s
         - narrate format:QuestMasterFormat "Many adventurers have been through these parts! Not so many are brave enough to cross the oceans to the other continents, though. I reckon you've got what it takes."
-        - zap IronToolsArmorActive
+        - zap QuestMasterInteract IronToolsArmorActive
         - stop
 
 QuestMaster_Check_FindFishingNewbie_Available:
@@ -377,7 +359,7 @@ QuestMaster_Check_FindFishingNewbie_Available:
     script:
     - if <yaml[<[data]>].contains[quests.completed.IronToolsArmor]> && <yaml[<[data]>].contains[quests.active.FindFishingNewbie].not> && <yaml[<[data]>].contains[quests.completed.FindFishingNewbie].not>:
         - narrate format:QuestMasterFormat "You've been hard at work. Why don't you go find that kid on the docks and teach him how to fish?"
-        - zap FindFishingNewbieOffer
+        - zap QuestMasterInteract FindFishingNewbieOffer
         - stop
 
 QuestMaster_Check_FindFishingNewbie_Active:
@@ -387,7 +369,7 @@ QuestMaster_Check_FindFishingNewbie_Active:
     script:
     - if <yaml[<[data]>].contains[quests.active.FindFishingNewbie]>:
         - narrate format:QuestMasterFormat "Did you find that kid yet? He's just down by the docks."
-        - zap FindFishingNewbieActive
+        - zap QuestMasterInteract FindFishingNewbieActive
         - stop
 
 QuestMaster_Check_MeetSkillTrainers_Available:
@@ -397,7 +379,7 @@ QuestMaster_Check_MeetSkillTrainers_Available:
     script:
     - if <yaml[<[data]>].contains[quests.completed.FindFishingNewbie]> && <yaml[<[data]>].contains[quests.active.MeetSkillTrainers].not> && <yaml[<[data]>].contains[quests.completed.MeetSkillTrainers].not>:
         - narrate format:QuestMasterFormat "Did you know there are skill trainers around Dawn's Landing?"
-        - zap MeetSkillTrainersOffer
+        - zap QuestMasterInteract MeetSkillTrainersOffer
         - stop
 
 QuestMaster_Check_MeetSkillTrainers_Active:
@@ -411,7 +393,7 @@ QuestMaster_Check_MeetSkillTrainers_Active:
         - narrate format:QuestMasterFormat "Lucky for you, I wrote a little book with directions."
         - wait 0.7s
         - adjust <player> show_book:SkillTrainerBook
-        - zap MeetSkillTrainersActive
+        - zap QuestMasterInteract MeetSkillTrainersActive
         - stop
 
 QuestMaster_Check_MeetPostmaster_Available:
@@ -421,7 +403,7 @@ QuestMaster_Check_MeetPostmaster_Available:
     script:
     - if <yaml[<[data]>].contains[quests.completed.MeetSkillTrainers]> && <yaml[<[data]>].contains[quests.active.MeetPostmaster].not> && <yaml[<[data]>].contains[quests.completed.MeetPostmaster].not>:
         - narrate format:QuestMasterFormat "Did you know we have a post office?"
-        - zap MeetPostmasterOffer
+        - zap QuestMasterInteract MeetPostmasterOffer
         - stop
 
 QuestMaster_Check_MeetPostmaster_Active:
@@ -431,7 +413,7 @@ QuestMaster_Check_MeetPostmaster_Active:
     script:
     - if <yaml[<[data]>].contains[quests.active.MeetPostmaster]>:
         - narrate format:QuestMasterFormat "The post office is just around the corner from here."
-        - zap MeetPostmasterActive
+        - zap QuestMasterInteract MeetPostmasterActive
         - stop
 
 QuestMaster_Check_ReinwaldFirstQuest_Available:
@@ -441,7 +423,7 @@ QuestMaster_Check_ReinwaldFirstQuest_Available:
     script:
     - if <yaml[<[data]>].contains[quests.completed.MeetPostmaster]> && <yaml[<[data]>].contains[quests.active.FirstMobHunting].not> && <yaml[<[data]>].contains[quests.completed.FirstMobHunting].not>:
         - narrate format:QuestMasterFormat "You know, I reckon Reinwald has a quest for you."
-        - zap FirstMobHuntingOffer_QM
+        - zap QuestMasterInteract FirstMobHuntingOffer_QM
         - stop
 
 QuestMaster_Check_ReinwaldFirstQuest_Active:
@@ -451,7 +433,7 @@ QuestMaster_Check_ReinwaldFirstQuest_Active:
     script:
     - if <yaml[<[data]>].contains[quests.active.FirstMobHunting]>:
         - narrate format:QuestMasterFormat "You picked up that quest from Reinwald, eh? Don't forget to wear armor!"
-        - zap FirstMobHuntingActive_QM
+        - zap QuestMasterInteract FirstMobHuntingActive_QM
         - stop
 
 QuestMaster_Check_NoActiveQuest:
@@ -464,12 +446,12 @@ QuestMaster_Check_NoActiveQuest:
     - narrate format:QuestMasterFormat "There are some quests around here that we could use your help with every so often, so check back regularly."
     - wait 0.7s
     - narrate format:QuestMasterFormat "Reinwald and his troops have some similar tasks for you, too, I'm sure."
-    - zap NoActiveQuest
+    - zap QuestMasterInteract NoActiveQuest
     - stop
 
 QuestMaster_GeneralDialogue:
     type: task
-    debug: false
+    debug: true
     script:
     - define data <player.uuid>_quest_data
     - if <player.has_flag[QuestMasterSeen].not>:

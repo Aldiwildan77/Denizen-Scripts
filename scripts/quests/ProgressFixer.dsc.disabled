@@ -2,7 +2,8 @@ QuestCompletionInteractFixer:
     type: world
     debug: false
     events:
-        on player joins:
+        after player joins:
+        - wait 1s
         - define data <player.uuid>_quest_data
         - if <yaml[<[data]>].contains[quests.completed.SwabbyDelivery]>:
             - zap SwabbyInteract SwabbyDeliveryCompleted

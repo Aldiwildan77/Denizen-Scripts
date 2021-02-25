@@ -1,7 +1,7 @@
 
 veteran_potential_drop:
     type: world
-    debug: true
+    debug: false
     events:
         on entity killed by player:
         - if !<context.entity.name.starts_with[<&9>]||null>:
@@ -19,7 +19,7 @@ veteran_potential_drop:
 
 elite_potential_drop:
     type: world
-    debug: true
+    debug: false
     events:
         on entity killed by player:
         - if !<context.entity.name.starts_with[<&d>]||null>:

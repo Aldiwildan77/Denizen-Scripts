@@ -252,7 +252,7 @@ QuestRewardHandler:
     - if <yaml[<[quest_internalname]>].contains[config.rewards.items]>:
         - foreach <yaml[<[quest_internalname]>].read[config.rewards.items]>:
             - give <[value]>
-            - narrate "<gold>• <[value].quantity>x <[value].display>"
+            - narrate "<gold>• <[value].quantity||1>x <[value].display>"
     - if <yaml[<[quest_internalname]>].contains[config.rewards.quest_points]>:
         - yaml id:<[data]> set career.quest_points:+:<yaml[<[quest_internalname]>].read[config.rewards.quest_points]>
         - narrate "<gold>• <yaml[<[quest_internalname]>].read[config.rewards.quest_points]> quest points"
@@ -375,32 +375,40 @@ QuestInventorySelectionHandler:
         - determine cancelled
 
 QuestGUIItemBuilder:
-    debug: false
+    debug: true
     type: procedure
     definitions: quest_internalname
     # Constructs the item entries in an inventory GUI
     script:
-    - define quest_name:<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
-    - define item_lore:<list[]>
-    - define quest_description:<yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
-    - define item_lore:<[item_lore].include[<[quest_description]>]>
-    - define item_lore:<[item_lore].include[<&6>Rewards:]>
+    - define quest_name <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>
+    - define item_lore <list[]>
+    - define quest_description <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.description]>
+    - define item_lore <[item_lore].include[<white><[quest_description]>]>
+    - define item_lore <[item_lore].include[<&sp>]>
+    - define item_lore <[item_lore].include[<green>Rewards:]>
     - if <yaml[<[quest_internalname]>].read[config.rewards.money]||null> != null:
-        - define lore_money:"<yaml[<[quest_internalname]>].read[config.rewards.money]> gold"
-        - define item_lore:<[item_lore].include[<[lore_money]>]>
+        - define lore_money "<gold>• <yaml[<[quest_internalname]>].read[config.rewards.money]> gold"
+        - define item_lore <[item_lore].include[<[lore_money]>]>
     - if <yaml[<[quest_internalname]>].read[config.rewards.quest_points]||null> != null:
-        - define "lore_quest_points:<yaml[<[quest_internalname]>].read[config.rewards.quest_points]> quest points"
-        - define item_lore:<[item_lore].include[<[lore_quest_points]>]>
+        - define lore_quest_points "<gold>• <yaml[<[quest_internalname]>].read[config.rewards.quest_points]> quest points"
+        - define item_lore <[item_lore].include[<[lore_quest_points]>]>
+    - if <yaml[<[quest_internalname]>].read[config.rewards.items]||null> != null:
+        - define lore_items <list[]>
+        - foreach <yaml[<[quest_internalname]>].parsed_key[config.rewards.items]>:
+            - define lore_items "<[lore_items].include[<gold>• <[value].quantity||1>x <[value].display||<[value].material.name.replace[_].with[<&sp>].to_titlecase>>]>"
+            #- define lore_items <[lore_items].include[<[value]>]>
+        - define item_lore <[item_lore].include[<[lore_items]>]>
     # Line wrapping time!
-    - define item_lore:<proc[lore_builder].context[40|<[item_lore].escaped>]>
+    - define item_lore <proc[lore_builder].context[<list[40].include_single[<[item_lore]>]>]>
+    #- define item_lore <proc[lore_builder].context[40|<[item_lore].escaped>]>
     - if <item[<[quest_internalname]>_gui_item]||null> != null:
-        - define base_item:<item[<[quest_internalname]>_gui_item]>
+        - define base_item <item[<[quest_internalname]>_gui_item]>
         - if <[base_item].is_enchanted>:
-            - define item_enchantments:<[base_item].enchantment_map>
-            - determine <item[<[base_item]>.material_name.with[display_name=<[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>;flags=HIDE_ENCHANTS;nbt=quest_internalname/<[quest_internalname]>]]>
+            - define item_enchantments <[base_item].enchantment_map>
+            - determine <item[<[base_item]>.material_name.with[display_name=<reset><gold><[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>;flags=HIDE_ALL;nbt=quest_internalname/<[quest_internalname]>]]>
     - else:
-        - define item_material:<yaml[<[quest_internalname]>].read[config.material]>
-        - determine <item[<[item_material]>[display_name=<[quest_name]>;lore=<[item_lore]>;nbt=quest_internalname/<[quest_internalname]>]]>
+        - define item_material <yaml[<[quest_internalname]>].read[config.material]>
+        - determine <item[<[item_material]>[display_name=<reset><gold><[quest_name]>;lore=<[item_lore]>;flags=HIDE_ALL;nbt=quest_internalname/<[quest_internalname]>]]>
 
 ResetQuestInteract:
     type: command

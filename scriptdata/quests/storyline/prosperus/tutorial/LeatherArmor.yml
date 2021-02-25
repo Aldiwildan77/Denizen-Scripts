@@ -7,10 +7,10 @@ config:
     rewards:
         money: 50
         items:
-        - leather_helmet[enchantments=li@DURABILITY,1]
-        - leather_chestplate[enchantments=li@DURABILITY,1]
-        - leather_leggings[enchantments=li@DURABILITY,1]
-        - leather_boots[enchantments=li@DURABILITY,1]
+        - <item[leather_helmet].with[enchantments=<map[unbreaking/1]>]>
+        - <item[leather_chestplate].with[enchantments=<map[unbreaking/1]>]>
+        - <item[leather_leggings].with[enchantments=<map[unbreaking/1]>]>
+        - <item[leather_boots].with[enchantments=<map[unbreaking/1]>]>
         scripts:
         - LeatherArmorCompletion
     material: leather_chestplate

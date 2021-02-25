@@ -7,15 +7,15 @@ config:
     rewards:
         money: 50
         items:
-        - iron_helmet[enchantments=li@DURABILITY,1]
-        - iron_chestplate[enchantments=li@DURABILITY,1]
-        - iron_leggings[enchantments=li@DURABILITY,1]
-        - iron_boots[enchantments=li@DURABILITY,1]
-        - iron_axe[enchantments=li@DURABILITY,1]
-        - iron_pickaxe[enchantments=li@DURABILITY,1]
-        - iron_spade[enchantments=li@DURABILITY,1]
-        - iron_sword[enchantments=li@DURABILITY,1]
-        - iron_hoe[enchantments=li@DURABILITY,1]
+        - <item[iron_helmet].with[enchantments=<map[unbreaking/1]>]>
+        - <item[iron_chestplate].with[enchantments=<map[unbreaking/1]>]>
+        - <item[iron_leggings].with[enchantments=<map[unbreaking/1]>]>
+        - <item[iron_boots].with[enchantments=<map[unbreaking/1]>]>
+        - <item[iron_axe].with[enchantments=<map[unbreaking/1]>]>
+        - <item[iron_pickaxe].with[enchantments=<map[unbreaking/1]>]>
+        - <item[iron_shovel].with[enchantments=<map[unbreaking/1]>]>
+        - <item[iron_sword].with[enchantments=<map[unbreaking/1]>]>
+        - <item[iron_hoe].with[enchantments=<map[unbreaking/1]>]>
         scripts:
         - IronToolsArmorCompletion
     material: iron_chestplate

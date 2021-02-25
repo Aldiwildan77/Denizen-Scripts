@@ -8,11 +8,11 @@ config:
         money: 50
         quest_points: 1
         items:
-        - stone_axe[enchantments=li@DURABILITY,1]
-        - stone_pickaxe[enchantments=li@DURABILITY,1]
-        - stone_spade[enchantments=li@DURABILITY,1]
-        - stone_sword[enchantments=li@DURABILITY,1]
-        - stone_hoe[enchantments=li@DURABILITY,1]
+        - <item[stone_axe].with[enchantments=<map[unbreaking/1]>]>
+        - <item[stone_pickaxe].with[enchantments=<map[unbreaking/1]>]>
+        - <item[stone_shovel].with[enchantments=<map[unbreaking/1]>]>
+        - <item[stone_sword].with[enchantments=<map[unbreaking/1]>]>
+        - <item[stone_hoe].with[enchantments=<map[unbreaking/1]>]>
         scripts:
         - StoneToolsCompletion
     material: stone_axe
