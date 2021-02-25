@@ -405,10 +405,10 @@ QuestGUIItemBuilder:
         - define base_item <item[<[quest_internalname]>_gui_item]>
         - if <[base_item].is_enchanted>:
             - define item_enchantments <[base_item].enchantment_map>
-            - determine <item[<[base_item]>.material_name.with[display_name=<reset><gold><[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>;flags=HIDE_ALL;nbt=quest_internalname/<[quest_internalname]>]]>
+            - determine <item[<[base_item]>.material_name.with[display_name=<reset><gold><[quest_name]>;lore=<[item_lore]>;enchantments=<[item_enchantments]>;hides=ALL;nbt=quest_internalname/<[quest_internalname]>]]>
     - else:
         - define item_material <yaml[<[quest_internalname]>].read[config.material]>
-        - determine <item[<[item_material]>[display_name=<reset><gold><[quest_name]>;lore=<[item_lore]>;flags=HIDE_ALL;nbt=quest_internalname/<[quest_internalname]>]]>
+        - determine <item[<[item_material]>[display_name=<reset><gold><[quest_name]>;lore=<[item_lore]>;hides=ALL;nbt=quest_internalname/<[quest_internalname]>]]>
 
 ResetQuestInteract:
     type: command

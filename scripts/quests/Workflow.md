@@ -1,0 +1,1 @@
+• Add an interact to narrate to the player during the tool quests if they have nothing in their hand and/or if they are not yet on the delivery step.

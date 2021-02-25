@@ -139,12 +139,14 @@ QuestMaster_Choose_First_Quests_Handler:
         - wait 1t
         - inventory close
         - narrate format:PlayerChatFormat "It's time for me to get out and explore Prosperus. I'm ready for my first adventure!"
+        - zap QuestMasterInteract FirstQuestsActive
         - run QuestAcceptHandler def:WoodTools instantly
         on player clicks SetHome_Quest_Offer_Menu_Item in QuestMaster_Choose_First_Quests_Inventory:
         - determine passively cancelled
         - wait 1t
         - inventory close
         - narrate format:PlayerChatFormat "I'd like to learn how to set my home."
+        - zap QuestMasterInteract FirstQuestsActive
         - run QuestAcceptHandler def:SetHome instantly
 
 QuestMaster_Check_Both_FirstQuests_Completed:
@@ -167,6 +169,7 @@ QuestMaster_Check_Both_FirstQuests_Active:
         - inject QuestMaster_Check_SetHome_Progress
         # Then we narrate based on the active status of WoodTools
         - inject QuestMaster_Check_WoodTools_Progress
+        - stop
     # Neither SetHome nor WoodTools is active, somehow?
     - else if <yaml[<[data]>].contains[quests.completed.SetHome].not> && <yaml[<[data]>].contains[quests.active.SetHome].not> && <yaml[<[data]>].contains[quests.completed.WoodTools].not> && <yaml[<[data]>].contains[quests.active.WoodTools].not>:
         - inject QuestMaster_Dialogue_FirstQuestOffers
@@ -177,7 +180,7 @@ QuestMaster_Check_SetHome_Progress:
     definitions: data
     script:
     - if <yaml[<[data]>].read[quests.active.SetHome.current_stage]> == 1:
-        - narrate format:QuestMasterFormat "Still haven't set your home? It's easy, try it."
+        - narrate format:QuestMasterFormat "Still haven't set your home? It's easy, give it a try!"
         - narrate "<gray>Type /sethome in chat to set your home!"
     - else if <yaml[<[data]>].read[quests.active.SetHome.current_stage]> == 2:
         - narrate format:QuestMasterFormat "Well, you went and set your home, but you haven't practiced returning to spawn yet, either. Give that a try."
@@ -185,6 +188,7 @@ QuestMaster_Check_SetHome_Progress:
     - else if <yaml[<[data]>].read[quests.active.SetHome.current_stage]> == 3:
         - narrate format:QuestMasterFormat "Just one more step left for you, right? Practice returing to your home."
         - narrate "<gray>Type /home in chat to return to your home!"
+    - wait 0.7s
 
 QuestMaster_Check_WoodTools_Progress:
     type: task
@@ -506,6 +510,7 @@ QuestMaster_GeneralDialogue:
 QuestMasterInteract:
     type: interact
     debug: true
+    speed: 0
     steps:
         Greeting*:
             proximity trigger:
