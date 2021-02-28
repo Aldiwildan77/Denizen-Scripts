@@ -57,12 +57,32 @@ QuestAcceptHandler:
     - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
     - run QuestResetTimeHandler def:<[quest_internalname]>
     - define current_stage 1
+    - title "title:<green>Quest accepted!" subtitle:<gold><[quest].get[name]> targets:<player>
     - narrate <yaml[<[quest_internalname]>].parsed_key[messages.offer]>
     - narrate format:QuestNameFormat <[quest].get[name]>
     - narrate format:QuestDescriptionFormat <[quest].get[description]>
     - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
     - foreach <[quest].deep_get[stages.<[current_stage]>.objectives]>:
         - narrate "• <[value].get[name]>: <[value].get[progress]>/<[value].get[total]>"
+
+QuestObjectiveProgressHandler:
+    debug: true
+    type: task
+    speed: 0
+    definitions: quest_internalname|objective
+    script:
+    - define data <player.uuid>_quest_data
+    - define quest <yaml[<[data]>].read[quests.active.<[quest_internalname]>]>
+    # Set current stage definition
+    - define current_stage <[quest].get[current_stage]>
+    - define objective_progress <[quest].deep_get[stages.<[current_stage]>.objectives.<[objective]>.progress].add[1]||1>
+    - define objective_total <[quest].deep_get[stages.<[current_stage]>.objectives.<[objective]>.total]>
+    # Advance the current objective progress by 1
+    - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[current_stage]>.objectives.<[objective]>.progress:<[objective_progress]>
+    - if <[objective_progress]> >= <[objective_total]>:
+        - inject QuestStageProgressHandler instantly
+    - else:
+        - inject QuestProgressHandler
 
 QuestStageProgressHandler:
     debug: true
@@ -168,6 +188,7 @@ QuestStageAdvanceHandler:
     # Narrate the quest description
     - narrate format:QuestDescriptionFormat <[quest].get[description]>
     # Narrate the new current stage
+    - title "title:<green>Quest advanced!" "subtitle:<gold><[quest].get[name]> <green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
     - narrate "<green>Stage <[current_stage]>: <&r><[quest].get[stages].get[<[current_stage]>].get[description]>"
     # Narrate the new objectives
     - foreach <[quest].get[stages].get[<[current_stage]>].get[objectives]>:
@@ -185,6 +206,7 @@ QuestQuitHandler:
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
     - if <yaml[<[quest_internalname]>].read[config.availability.offering_npc]||null>:
         - zap <yaml[<[quest_internalname]>].read[config.availability.offering_npc]>Interact <yaml[<[quest_internalname]>].read[config.quit_step]>
+    - title "title:<red>QUEST QUIT" subtitle:<gold><[quest].get[name]> targets:<player>
     - narrate "<red>QUEST QUIT: <[quest].get[name]>"
 
 QuestCompletionHandler:
@@ -198,6 +220,7 @@ QuestCompletionHandler:
     - yaml id:<[data]> set quests.active.<[quest_internalname]>:!
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.completion_count:++
     - yaml id:<[data]> set quests.completed.<[quest_internalname]>.last_completed:<util.time_now>
+    - title "title:<green>QUEST COMPLETE!" subtitle:<gold><yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]> targets:<player>
     - narrate "<gold>QUEST COMPLETE: <yaml[<[quest_internalname]>].read[player_data.<[quest_internalname]>.name]>"
     - narrate <yaml[<[quest_internalname]>].parsed_key[messages.completion]>
     - narrate <green>Rewards<&co>
@@ -250,9 +273,9 @@ QuestRewardHandler:
         - money give quantity:<yaml[<[quest_internalname]>].read[config.rewards.money]> players:<player>
         - narrate "<gold>• <yaml[<[quest_internalname]>].read[config.rewards.money]> gold"
     - if <yaml[<[quest_internalname]>].contains[config.rewards.items]>:
-        - foreach <yaml[<[quest_internalname]>].read[config.rewards.items]>:
-            - give <[value]>
-            - narrate "<gold>• <[value].quantity||1>x <[value].display>"
+        - foreach <yaml[<[quest_internalname]>].parsed_key[config.rewards.items]>:
+            - give <[value]> player:<player>
+            - narrate "<gold>• <[value].quantity||1>x <[value].display||<[value].material.name.replace[_].with[<&sp>].to_titlecase>>"
     - if <yaml[<[quest_internalname]>].contains[config.rewards.quest_points]>:
         - yaml id:<[data]> set career.quest_points:+:<yaml[<[quest_internalname]>].read[config.rewards.quest_points]>
         - narrate "<gold>• <yaml[<[quest_internalname]>].read[config.rewards.quest_points]> quest points"
@@ -412,11 +435,12 @@ QuestGUIItemBuilder:
 
 ResetQuestInteract:
     type: command
+    debug: true
     name: questinteractreset
     description: Resets the interact script for the given NPC and player. Defaults to the current player if no player is specified.
     usage: /questinteractreset [NPC] [player]
     permission: quest.volatile
-    tab completion:
+    tab completions:
         1: <yaml[quest_npc_list].list_keys[]>
         2: <server.online_players.parse[name]>
     script:
@@ -424,4 +448,6 @@ ResetQuestInteract:
     - define player <server.match_player[<context.args.get[2]||null>]||<player>>
     - define data <[player].uuid>_quest_data
     - zap script:<[interact]> step:<script[<[interact]>].default_step> player:<[player]>
+    - if <script[InteractReset_<context.args.get[1]>]||null> != null:
+        - inject InteractReset_<context.args.get[1]>
     - narrate "Interact step for <[player].name> reset."

@@ -45,3 +45,4 @@ Data_Loader:
         - yaml load:scriptdata/professions/Mining.yml id:Mining
         - yaml load:scriptdata/professions/Harvesting.yml id:Harvesting
         - yaml load:scriptdata/professions/Foraging.yml id:Foraging
+        - yaml load:scriptdata/professions/Lumberjacking.yml id:Lumberjacking

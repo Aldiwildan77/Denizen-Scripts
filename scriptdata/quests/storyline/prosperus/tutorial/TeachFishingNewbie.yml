@@ -7,6 +7,8 @@ config:
     rewards:
         money: 250
         quest_points: 1
+        scripts:
+        - TeachFishingNewbieCompletion
     material: fishing_rod
     quit_step: TeachFishingNewbieOffer
 messages:

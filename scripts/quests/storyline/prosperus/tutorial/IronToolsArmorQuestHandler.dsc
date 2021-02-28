@@ -65,68 +65,70 @@ IronToolsArmorQuestDeliveryHandler:
     debug: false
     definitions: data|quest_internalname
     script:
-    - define stage:2
+    - define data <player.uuid>_quest_data
+    - define quest_internalname IronToolsArmor
+    - define stage 2
     - choose <player.item_in_hand.material.name>:
         - case iron_helmet:
             - define objective:1
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take iron_helmet
+                - take material:iron_helmet
                 - narrate format:QuestMasterFormat "An iron helmet - with quite the polished sheen!"
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case iron_chestplate:
             - define objective:2
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take iron_chestplate
+                - take material:iron_chestplate
                 - narrate format:QuestMasterFormat "An iron chestplate! No more arrows stuck in you!"
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case iron_leggings:
             - define objective:3
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take iron_leggings
+                - take material:iron_leggings
                 - narrate format:QuestMasterFormat "Some iron leggings! Expertly crafted."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case iron_boots:
             - define objective:4
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.4.progress]> == 0:
-                - take iron_boots
+                - take material:iron_boots
                 - narrate format:QuestMasterFormat "Iron boots! Hope they don't jingle while you walk."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.4.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|4
         - case iron_axe:
             - define objective:5
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take iron_axe
+                - take material:iron_axe
                 - narrate format:QuestMasterFormat "An iron axe! How many trees can you fell with this bad boy?"
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case iron_pickaxe:
             - define objective:6
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take iron_pickaxe
+                - take material:iron_pickaxe
                 - narrate format:QuestMasterFormat "An iron pickaxe! You know, you can use this to go mine some diamonds."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case iron_shovel:
             - define objective:7
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take iron_shovel
+                - take material:iron_shovel
                 - narrate format:QuestMasterFormat "An iron shovel! With this, you'll be able to clear out plenty of gravel while caving."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case iron_sword:
             - define objective:8
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take iron_sword
+                - take material:iron_sword
                 - narrate format:QuestMasterFormat "An iron sword! And quite sharp, too!"
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
         - case iron_hoe:
             - define objective:9
             - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
-                - take iron_hoe
+                - take material:iron_hoe
                 - narrate format:QuestMasterFormat "An iron hoe! Why, I bet that if you use this, you can farm all the live-long day."
                 - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                 - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>

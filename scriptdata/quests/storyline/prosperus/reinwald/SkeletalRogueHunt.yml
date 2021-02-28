@@ -8,7 +8,8 @@ config:
         money: 100
         quest_points: 3
         items:
-        - diamond[quantity=3]
+        - <item[diamond[quantity=24]]>
+        - <mythic_item[ImbuedSword]>
     material: iron_sword
 messages:
     offer: "<dark_green>Warmaster Reinwald<white>: I think you're ready to start fighting the stronger ranks of the forces of darkness. We've seen them in increased numbers lately, and we're going to need your help to hold them back. To start, I'd like you to track down and defeat some Skeletal Rogues."
@@ -19,7 +20,7 @@ player_data:
         description: "Hunt down monsters for Warmaster Reinwald."
         stages:
             1:
-                description: "Hunt Skeletal Rogues in the Prosperus wilderness."
+                description: "Hunt Skeletal Rogues in the Prosperus wilderness and beyond."
                 objectives:
                     1:
                         name: "Kill Skeletal Rogues"

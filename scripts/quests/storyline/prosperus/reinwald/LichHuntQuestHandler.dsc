@@ -6,15 +6,13 @@ LichHuntCompletion:
 
 LichHuntHandler:
     type: world
-    debug: false
+    debug: true
     events:
         on player kills entity:
         - define data <player.uuid>_quest_data
-        - define quest_internalname:LichHunt
+        - define quest_internalname LichHunt
+        - define objective 1
         - if <yaml[<[data]>].contains[quests.active.LichHunt].not>:
             - stop
-        - if <context.entity.name.starts_with[&d].not||null>:
-            - stop
-        - if <context.entity.mythicmob||null> == Lich:
-            - yaml id:<[data]> set quests.active.LichHunt.stages.1.objectives.1.progress:++
-            - run QuestStageProgressHandler def:LichHunt|1
+        - if <context.entity.mythicmob.internal_name||null> == Lich:
+            - inject QuestObjectiveProgressHandler instantly

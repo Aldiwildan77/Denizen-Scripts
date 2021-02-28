@@ -16,7 +16,7 @@ config:
     quit_step: FirstQuestsActive
 messages:
     offer: "<dark_green>Quest Master<white>: It's time for your adventure to begin! Go out into the wild, scavenge for resources, and craft your first set of wooden tools. Then, bring them to me, and I'll enchant them."
-    completion: "<dark_green>Quest Master<white>: Nicely done! Here are your tools back - and I enchanted them for you, too! Ready for your next task?"
+    completion: "<dark_green>Quest Master<white>: Nicely done! Here are your tools back - and I enchanted them for you, too!"
 player_data:
     WoodTools:
         name: "Adventurer's Toolbox"
@@ -49,7 +49,7 @@ player_data:
                 progress: 0
                 total: 5
             2:
-                description: "Bring wooden tools to the Quest Master."
+                description: "Bring wooden tools to the Quest Master. Hold a tool in your hand and right-click him with it to deliver the tool."
                 objectives:
                     1:
                         name: "Bring a wooden axe to the Quest Master"

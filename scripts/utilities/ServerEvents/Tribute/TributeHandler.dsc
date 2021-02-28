@@ -121,9 +121,9 @@ Tribute_DropTable_Veteran:
             - stop
         - else if <context.entity.name.starts_with[<&9>]||null>:
             - if <server.has_flag[tribute_power_hour]>:
-                - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[6]>
+                - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[4]>
             - else:
-                - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[3]>
+                - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[2]>
 
 Tribute_DropTable_Elite:
     type: world
@@ -138,9 +138,9 @@ Tribute_DropTable_Elite:
             - stop
         - else if <context.entity.name.starts_with[<&d>]||null>:
             - if <server.has_flag[tribute_power_hour]>:
-                - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[10]>
+                - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[8]>
             - else:
-                - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[5]>
+                - drop GodsTribute location:<context.entity.location> quantity:<util.random.int[1].to[4]>
 
 Tribute_Drops_Mining:
     type: world
@@ -151,7 +151,7 @@ Tribute_Drops_Mining:
             - stop
         - if !<yaml[mining].read[materials].contains[<context.material.name>]>:
             - stop
-        - if <util.random.int[1].to[250]> <= 1:
+        - if <util.random.int[1].to[500]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining mining exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
@@ -168,7 +168,7 @@ Tribute_Drops_Harvesting:
             - stop
         - if !<yaml[harvesting].read[materials].contains[<context.material.name>]>:
             - stop
-        - if <util.random.int[1].to[100]> <= 1:
+        - if <util.random.int[1].to[200]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining harvesting exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
@@ -187,7 +187,7 @@ Tribute_Drops_Foraging:
             - stop
         - if <context.material.age||0> != <context.material.maximum_age||null>:
             - stop
-        - if <util.random.int[1].to[100]> <= 1:
+        - if <util.random.int[1].to[200]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining foraging exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
@@ -202,7 +202,7 @@ Tribute_Drops_Fishing:
         on player fishes while caught_fish:
         - if !<yaml[events].read[tribute.active]>:
             - stop
-        - if <util.random.int[1].to[15]> <= 1:
+        - if <util.random.int[1].to[30]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining fishing exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
@@ -219,7 +219,7 @@ Tribute_Drops_Lumberjacking:
             - stop
         - if !<yaml[lumberjacking].read[materials].contains[<context.material.name>]>:
             - stop
-        - if <util.random.int[1].to[50]> <= 1:
+        - if <util.random.int[1].to[100]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining woodcutting exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2
@@ -236,7 +236,7 @@ Tribute_Drops_Digging:
             - stop
         - if !<yaml[digging].read[materials].contains[<context.material.name>]>:
             - stop
-        - if <util.random.int[1].to[250]> <= 1:
+        - if <util.random.int[1].to[500]> <= 1:
             - announce to_console "Tribute drop for <player.name> caused by gaining digging exp"
             - if <server.has_flag[tribute_power_hour]>:
                 - give GodsTribute quantity:2

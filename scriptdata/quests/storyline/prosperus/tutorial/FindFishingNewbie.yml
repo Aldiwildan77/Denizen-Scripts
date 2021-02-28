@@ -6,7 +6,7 @@ config:
         - "WoodTools"
     rewards:
         items:
-        - fishing_rod
+        - <item[fishing_rod]>
     material: compass
     quit_step: FindFishingNewbieOffer
 messages:

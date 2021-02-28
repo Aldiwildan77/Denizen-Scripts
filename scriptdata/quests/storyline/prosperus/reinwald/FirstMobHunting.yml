@@ -8,8 +8,8 @@ config:
         money: 100
         quest_points: 3
         items:
-        - diamond[quantity=1]
-        - iron_ingot[quantity=6]
+        - <item[diamond[quantity=6]]>
+        - <item[iron_ingot[quantity=24]]>
         scripts:
         - FirstMobHuntingCompletion
     material: wooden_sword
@@ -41,4 +41,4 @@ player_data:
                         progress: 0
                         total: 1
                 progress: 0
-                total: 1
+                total: 4

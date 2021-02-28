@@ -16,22 +16,25 @@ FirstMobHuntingHandler:
             - stop
         - choose <context.entity.entity_type>:
             - case CREEPER:
-                - define objective:1
+                - define objective 1
                 - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
                     - narrate "<green>You killed a creeper!"
                     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                     - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
             - case SKELETON:
+                - define objective 2
                 - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
                     - narrate "<green>You killed a skeleton!"
                     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                     - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
             - case SPIDER:
+                - define objective 3
                 - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
                     - narrate "<green>You killed a spider!"
                     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1
                     - run QuestStageProgressHandler def:<[quest_internalname]>|<[objective]>
             - case ZOMBIE:
+                - define objective 4
                 - if <yaml[<[data]>].read[quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress]> == 0:
                     - narrate "<green>You killed a zombie!"
                     - yaml id:<[data]> set quests.active.<[quest_internalname]>.stages.<[stage]>.objectives.<[objective]>.progress:1

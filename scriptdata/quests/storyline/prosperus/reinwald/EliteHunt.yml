@@ -8,14 +8,11 @@ config:
         money: 750
         quest_points: 8
         items:
-        - diamond[quantity=32]
-        commands:
-        - "mm i give -s <player> BurnishedHelm 1"
-        - "mm i give -s <player> BurnishedChest 1"
-        - "mm i give -s <player> BurnishedLegs 1"
-        - "mm i give -s <player> BurnishedBoots 1"
-        command_text:
-        - "<gold>1 set of Burnished armor"
+        - <item[diamond[quantity=64]]>
+        - <mythic_item[BurnishedHelm]>
+        - <mythic_item[BurnishedChest]>
+        - <mythic_item[BurnishedLegs]>
+        - <mythic_item[BurnishedBoots]>
     material: diamond_sword
 messages:
     offer: "<dark_green>Warmaster Reinwald<white>: Those Elite-level monsters aren't going anywhere, and we need your help to fight them off. Get to it."

@@ -39,6 +39,9 @@ Stuff I come up with on lunch breaks.
 
 ## Mobs
 
+### Champions
+* Fix Toxus being passive during the day
+
 ### Elites
 
 #### Spider

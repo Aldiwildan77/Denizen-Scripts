@@ -27,12 +27,6 @@ SwabbyInteract:
                         - bossbar update <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
                     - else:
                         - bossbar create <player.uuid>_swabby players:<player> "title:Right click or chat to NPCs to talk to them! Try saying 'yes' to Swabby!" progress:1 color:blue style:solid
-            chat trigger:
-                Fallback:
-                    trigger: /*/
-                    hide trigger message: true
-                    script:
-                    - announce format:PlayerChatFormat <context.message>
         AdventurePrompt:
             proximity trigger:
                 entry:
@@ -50,6 +44,7 @@ SwabbyInteract:
                     trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
+                    - cooldown 3s
                     - narrate format:PlayerChatFormat "Yeah, I came here for adventure!"
                     - wait 0.1s
                     - narrate format:SwabbyFormat "I can't think of a better place to do it."
@@ -75,6 +70,7 @@ SwabbyInteract:
                     - narrate "<gray>Right-click Swabby or say <&dq>yes<&dq> while looking at him to show him you've come to Prosperus for adventure!"
             click trigger:
                 script:
+                - cooldown 3s
                 - narrate format:PlayerChatFormat "Yeah, I came here for adventure!"
                 - wait 0.1s
                 - narrate format:SwabbyFormat "I can't think of a better place to do it."
@@ -95,6 +91,7 @@ SwabbyInteract:
         SwabbyDeliveryOffer:
             click trigger:
                 script:
+                - cooldown 3s
                 - narrate format:PlayerChatFormat "<green>Sure, I'll deliver your package to the Quest Master."
                 - run QuestAcceptHandler def:SwabbyDelivery instantly
                 - zap SwabbyDeliveryActive
@@ -103,6 +100,7 @@ SwabbyInteract:
                     trigger: /yes|sure|okay|great|yeah/
                     hide trigger message: true
                     script:
+                    - cooldown 3s
                     - narrate format:PlayerChatFormat "<green>Sure, I'll deliver your package to the Quest Master."
                     - run QuestAcceptHandler def:SwabbyDelivery instantly
                     - zap SwabbyDeliveryActive

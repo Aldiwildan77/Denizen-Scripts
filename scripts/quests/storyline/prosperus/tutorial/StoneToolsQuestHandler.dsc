@@ -53,7 +53,7 @@ StoneToolsQuestDeliveryHandler:
     script:
     - define stage:2
     - define quest_internalname:StoneTools
-    - if <player.item_in_hand.durability> < <player.item_in_hand.max_durability>:
+    - if <player.item_in_hand.durability> > 0:
         - narrate format:QuestMasterFormat "Are you trying to stiff me with a used tool? Craft me a new one!"
         - stop
     - choose <player.item_in_hand.material.name>:

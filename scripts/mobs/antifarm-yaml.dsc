@@ -9,6 +9,8 @@ AntiFarm_Proc:
     - else:
         - determine false
 
+# TODO: Check for and exclude passive mobs
+
 YAML_AntiFarm:
     type: world
     debug: false
