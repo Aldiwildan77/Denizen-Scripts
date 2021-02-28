@@ -11,6 +11,7 @@ config:
         - <item[diamond[quantity=24]]>
         - <mythic_item[ImbuedSword]>
     material: iron_sword
+    quit_step: SkeletalRogueHuntOffer
 messages:
     offer: "<dark_green>Warmaster Reinwald<white>: I think you're ready to start fighting the stronger ranks of the forces of darkness. We've seen them in increased numbers lately, and we're going to need your help to hold them back. To start, I'd like you to track down and defeat some Skeletal Rogues."
     completion: "<dark_green>Warmaster Reinwald<white>: Great work. With your help, the world is a little safer. Keep up the fight."

@@ -14,6 +14,7 @@ config:
         - <mythic_item[ImbuedLegs]>
         - <mythic_item[ImbuedBoots]>
     material: iron_sword
+    quit_step: VeteranHuntOffer
 messages:
     offer: "<dark_green>Warmaster Reinwald<white>: Your initial assault against the Skeletal Rogues was a success, and for that, we thank you. You're now ready to take on more intense challenges. Accordingly, your next task is to eliminate the rising squadrons of Veteran-level monsters that have been appearing across the land."
     completion: "<dark_green>Warmaster Reinwald<white>: Fantastic work. You stand as a bulwark against the darkness."

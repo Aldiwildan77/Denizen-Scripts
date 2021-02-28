@@ -357,8 +357,8 @@ prismatic_seer_socket_potential_handler:
         on player clicks in inventory:
         - if <context.inventory.note_name||null> != sealed_potential.<player.uuid>:
             - stop
-        - wait 1t
         - determine passively cancelled
+        - wait 1t
         - if !<player.inventory.contains.scriptname[SocketMaker].quantity[<server.flag[SealedPotentialCost]>]> || !<player.inventory.contains.scriptname[CrystallizedExperienceIngot].quantity[1]>:
             - inventory close
             - narrate format:prismatic_seer_format "Sorry, you don't have enough materials for that!"
